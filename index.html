@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leadership Impact Readiness (LIR) | Henharen Reid</title>
+    <title>Henharen Reid | Leadership Intelligence & Executive Advisory</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     
     <!-- Tailwind CSS CDN & Chart.js -->
@@ -47,7 +47,6 @@
         background-color: #0f172a;
         z-index: 10;
       }
-      /* Custom thin scrollbar for leader table */
       .custom-scroll::-webkit-scrollbar { width: 4px; }
       .custom-scroll::-webkit-scrollbar-track { background: #f8fafc; }
       .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -55,46 +54,279 @@
   </head>
   <body class="bg-[#f4f6f9] text-slate-900 antialiased min-h-screen flex flex-col font-sans">
 
-    <!-- Top Global Navigation -->
+    <!-- Top Global Dark Navy Navigation -->
     <header class="bg-navy-950 text-white sticky top-0 z-50 border-b border-navy-900 shadow-md">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
-        <div class="flex items-center space-x-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between py-2 sm:py-0 sm:h-14 gap-2">
+        <div class="flex items-center space-x-6">
           <div class="flex items-center space-x-2.5">
             <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
               HR
             </div>
-            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid • Talent Intelligence</span>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid</span>
           </div>
 
-          <!-- 5 Sequential Navigation Tabs -->
-          <nav class="flex space-x-1 sm:space-x-4 text-xs font-semibold" id="mainTabs">
-            <button onclick="switchTab('portfolio')" id="tab-portfolio" class="px-3 py-1.5 border-b-2 border-white text-white transition">Portfolio</button>
-            <button onclick="switchTab('leaders')" id="tab-leaders" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Leaders</button>
-            <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Role Demand</button>
-            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Scenarios</button>
-            <button onclick="switchTab('plan2035')" id="tab-plan2035" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">2035 Plan</button>
-          </nav>
+          <!-- Top Mode Switcher (Search Mandate vs Enterprise Succession) -->
+          <div class="flex items-center bg-navy-900 p-1 rounded-xl border border-slate-700 text-xs">
+            <button id="btnModeSearch" onclick="setAppMode('search')" class="px-3 py-1 font-semibold rounded-lg text-slate-300 hover:text-white transition">
+              Executive Search Mandate
+            </button>
+            <button id="btnModeSuccession" onclick="setAppMode('succession')" class="px-3 py-1 font-semibold rounded-lg bg-white text-navy-950 shadow-sm transition">
+              Enterprise Succession & Development
+            </button>
+          </div>
         </div>
 
-        <div class="text-[11px] font-semibold text-slate-400">
-          Q4 2026 • Group Transition View
-        </div>
+        <!-- 5 Sequential Navigation Tabs (Active in Succession Mode) -->
+        <nav class="flex space-x-1 sm:space-x-3 text-xs font-semibold" id="mainTabs">
+          <button onclick="switchTab('portfolio')" id="tab-portfolio" class="px-2.5 py-1.5 border-b-2 border-white text-white transition">Portfolio</button>
+          <button onclick="switchTab('leaders')" id="tab-leaders" class="px-2.5 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Leaders</button>
+          <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="px-2.5 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Role Demand</button>
+          <button onclick="switchTab('scenarios')" id="tab-scenarios" class="px-2.5 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Scenarios</button>
+          <button onclick="switchTab('plan2035')" id="tab-plan2035" class="px-2.5 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">2035 Plan</button>
+        </nav>
       </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
+    <!-- Main Dynamic Application Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
 
       <!-- ========================================================================= -->
-      <!-- TAB 1: PORTFOLIO VIEW (WITH PILLAR FILTERING)                             -->
+      <!-- MODE 1: EXECUTIVE SEARCH MANDATE VIEW (EXTERNAL HIRES)                    -->
       <!-- ========================================================================= -->
+      <div id="view-searchMode" class="hidden space-y-6">
+        
+        <!-- Search Mandate Strategy & Signals -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <span class="text-[10px] font-bold tracking-wider text-amber-600 uppercase">Live Executive Search Mandate</span>
+                <h2 class="text-xl font-bold font-editorial text-slate-900 mt-0.5">Chief Technology Officer & Head of Autonomous Systems</h2>
+              </div>
+              <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-full font-bold">Shortlist Stage</span>
+            </div>
+            
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Seeking an enterprise software and hardware systems leader to spearhead the Level 3/4 autonomous platform transformation across North America and European markets.
+            </p>
+
+            <!-- External Market Reality Sub-panel -->
+            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">External Market & Talent Scarcity Signals</span>
+                <span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">High Scarcity</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-0.5 text-xs font-medium bg-white text-slate-800 border border-slate-200 rounded-md">Neural Network ADAS</span>
+                <span class="px-2 py-0.5 text-xs font-medium bg-white text-slate-800 border border-slate-200 rounded-md">ISO 26262 Functional Safety</span>
+                <span class="px-2 py-0.5 text-xs font-medium bg-white text-slate-800 border border-slate-200 rounded-md">Silicon & Firmware Integration</span>
+              </div>
+              <p class="text-xs text-slate-600 italic border-t border-slate-200 pt-2">
+                <strong>Market Synthesis:</strong> Intense cross-industry competition from pure-play AI robotics firms is driving a 20% premium on total compensation; candidates with proven automotive homologation track records command significant equity bridges.
+              </p>
+            </div>
+          </div>
+
+          <!-- Target Role Demand Specification -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Target Role Benchmark</span>
+              <h3 class="text-base font-bold font-editorial text-slate-900 mt-1">LIR Role Demand: 84 / 100</h3>
+              <div class="space-y-2 mt-3 text-xs">
+                <div>
+                  <div class="flex justify-between font-medium mb-1"><span>Cognitive Complexity Horizon</span><span>Level 5 (Strategic)</span></div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-navy-950 h-full" style="width: 88%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-medium mb-1"><span>Hogan Ambiguity Tolerance</span><span>90th %ile</span></div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-navy-950 h-full" style="width: 90%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-medium mb-1"><span>External Ecosystem Reach</span><span>Top 10%</span></div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-navy-950 h-full" style="width: 85%"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-2.5 bg-blue-50/60 rounded-xl border border-blue-100 text-[11px] text-blue-900">
+              Assessed via: CV Deep-Dive • 360 Referencing • Cognadev CPP • Full Hogan Trinity (HPI / HDS / MVPI).
+            </div>
+          </div>
+        </div>
+
+        <!-- External Candidate Shortlist & Triangulated Deep Dive -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Candidate Shortlist Roster (5 Cols) -->
+          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-3">
+            <div class="flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 pb-2 px-1">
+              <span>Candidate</span>
+              <span>Fit Match</span>
+              <span>HDS Risk</span>
+            </div>
+
+            <div class="space-y-2" id="searchCandidateList">
+              <!-- Candidate 1 -->
+              <div onclick="selectSearchCandidate(0)" class="p-3 rounded-xl border border-blue-600 bg-blue-50/50 cursor-pointer transition flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-xs">MK</div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Dr. Markus Krause</h4>
+                    <p class="text-[10px] text-slate-400">VP, Autonomous Driving Systems • Tier 1 OEM</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">94% Fit</span>
+                  <span class="text-[10px] text-slate-500 block mt-0.5">Low Derailer</span>
+                </div>
+              </div>
+
+              <!-- Candidate 2 -->
+              <div onclick="selectSearchCandidate(1)" class="p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-xs">SL</div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Sarah Lindqvist</h4>
+                    <p class="text-[10px] text-slate-400">Head of Software Architecture • Robotics Scale-up</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs font-black text-blue-700 bg-blue-100 px-2 py-0.5 rounded">89% Fit</span>
+                  <span class="text-[10px] text-amber-600 block mt-0.5">Mod. Derailer</span>
+                </div>
+              </div>
+
+              <!-- Candidate 3 -->
+              <div onclick="selectSearchCandidate(2)" class="p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-xs">TC</div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Tariq Chaudhry</h4>
+                    <p class="text-[10px] text-slate-400">Chief Engineer, Autonomous Platforms • Silicon Vendor</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs font-black text-amber-700 bg-amber-100 px-2 py-0.5 rounded">82% Fit</span>
+                  <span class="text-[10px] text-red-600 block mt-0.5">High Derailer</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Executive Reward & Compensation Benchmarking for Selected Candidate -->
+            <div class="pt-4 border-t border-slate-200/80 space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Reward & Compensation Alignment</span>
+                <span class="text-[10px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded border border-blue-200">FTSE 100 / DAX Peer Band</span>
+              </div>
+
+              <div class="relative w-full bg-slate-100 h-5 rounded-lg overflow-hidden flex text-[9px] font-bold text-slate-600">
+                <div class="w-1/4 bg-slate-200 flex items-center justify-center border-r border-white">P25 ($1.9M)</div>
+                <div class="w-1/4 bg-blue-100 text-blue-900 flex items-center justify-center border-r border-white">P50 ($2.5M)</div>
+                <div class="w-1/4 bg-amber-100 text-amber-900 flex items-center justify-center border-r border-white">P75 ($3.3M)</div>
+                <div class="w-1/4 bg-slate-300 flex items-center justify-center">P90 ($4.2M)</div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <span class="text-[10px] text-slate-400 block font-bold uppercase">Current Base / Target</span>
+                  <span class="font-black text-slate-900">$820k ➔ $900k</span>
+                </div>
+                <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <span class="text-[10px] text-slate-400 block font-bold uppercase">Market Delta</span>
+                  <span class="font-bold text-emerald-600">+6% vs. Industry Median</span>
+                </div>
+              </div>
+
+              <div class="p-2.5 bg-amber-50/70 border border-amber-200 rounded-lg text-[11px] text-amber-950 font-medium">
+                ⚡ <strong>Sign-on Grant:</strong> $1.4M recommended in structured equity to replace unvested Q4 RSUs.
+              </div>
+            </div>
+          </div>
+
+          <!-- Triangulated External Candidate Diagnostic Card (7 Cols) -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
+            <div class="flex justify-between items-start border-b border-slate-100 pb-4">
+              <div>
+                <h3 class="text-xl font-bold font-editorial text-slate-900" id="candName">Dr. Markus Krause</h3>
+                <p class="text-xs text-slate-500 font-medium" id="candTitle">VP, Autonomous Driving Systems • 18 Yrs Experience</p>
+              </div>
+              <div class="text-right">
+                <span class="text-3xl font-black text-slate-900" id="candFit">94%</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase">Mandate Fit Score</span>
+              </div>
+            </div>
+
+            <!-- The 3 Universal Domains for Search -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              
+              <!-- Domain 1: How He Thinks -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <span class="text-[10px] font-bold text-slate-800 uppercase tracking-wider block border-b border-slate-200/60 pb-1">1. How He Thinks</span>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Cognadev CPP Horizon:</span>
+                  <span class="font-bold text-slate-900 text-xs" id="candCpp">Level 5 (Strategic Complex)</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Hogan HPI Inquisitive:</span>
+                  <span class="font-bold text-blue-900" id="candHpi">94th Percentile</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-tight" id="candThinkNotes">
+                  Exceptional cognitive breadth; connects long-range algorithmic evolution with automotive safety standards.
+                </p>
+              </div>
+
+              <!-- Domain 2: How He Shows Up (With Banana Skins Tracker) -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <span class="text-[10px] font-bold text-slate-800 uppercase tracking-wider block border-b border-slate-200/60 pb-1">2. How He Shows Up</span>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">360 Referencing Score:</span>
+                  <span class="font-bold text-slate-900 text-xs" id="candRef">Top Decile (92nd %ile)</span>
+                </div>
+                <div class="p-1.5 bg-red-50 border border-red-100 rounded">
+                  <span class="text-[9px] font-bold text-red-700 uppercase block">Hogan HDS Banana Skin:</span>
+                  <span class="text-[10px] font-bold text-red-900 block" id="candHds">Low Risk (Skeptical: 62%)</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-tight" id="candShowNotes">
+                  Empowering and low ego. Under acute board pressure, defaults to rigorous verification rather than impulsive panic.
+                </p>
+              </div>
+
+              <!-- Domain 3: How He Connects -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <span class="text-[10px] font-bold text-slate-800 uppercase tracking-wider block border-b border-slate-200/60 pb-1">3. How He Connects</span>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Ecosystem Multiplier:</span>
+                  <span class="font-bold text-emerald-800 text-xs" id="candConnLevel">Top 5% Network Reach</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Silicon / Regulatory Gateway:</span>
+                  <span class="text-[11px] text-slate-700 font-medium" id="candConnType">High Academic & Tier-1 Alliances</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-tight" id="candConnNotes">
+                  Deeply respected across Nvidia and Qualcomm ecosystems; proven record attracting top-tier tier-1 AI engineers.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Integrated Executive Search Synthesis -->
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 leading-relaxed space-y-1.5" id="candSynthesis">
+              <strong>Partner Assessment Note:</strong> Rare profile combining high cognitive processing (Level 5) with low Hogan derailer risk. Highly recommended for final board panel.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- MODE 2: ENTERPRISE SUCCESSION & DEVELOPMENT (ALL 5 SEQUENTIAL TABS)       -->
+      <!-- ========================================================================= -->
+      
+      <!-- TAB 1: PORTFOLIO -->
       <div id="view-portfolio" class="space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
             <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leadership Impact Readiness • Group view</h1>
             <p class="text-xs text-slate-500 mt-1 font-medium">Enterprise transformation capability vs. role demand • 52,000 employees • 9 strategic blocks • 320 senior executives scored</p>
           </div>
-          <!-- Interactive Pillar Filter Buttons -->
           <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold" id="pillarFilterButtons">
             <button onclick="filterPillar('all')" id="btn-pillar-all" class="px-3 py-1 bg-navy-900 text-white rounded transition">All pillars</button>
             <button onclick="filterPillar('propulsion')" id="btn-pillar-propulsion" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded transition">Electrified Propulsion</button>
@@ -103,7 +335,6 @@
           </div>
         </div>
 
-        <!-- 5 Top Stat Boxes -->
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3.5">
           <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
             <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Group LIR (Mean)</span>
@@ -147,18 +378,16 @@
           </div>
         </div>
 
+        <!-- Capability vs Demand Bars & Distribution -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- Left: 9 Strategic Blocks -->
           <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
             <div>
               <h2 class="text-base font-bold font-editorial text-slate-900">Portfolio capability vs. role demand</h2>
               <p class="text-xs text-slate-500 mt-0.5">Mean LIR by engineering transformation block • dark tick = target demand • click to drill down</p>
             </div>
 
-            <!-- Pillar 1: Propulsion -->
             <div class="space-y-3.5 pillar-section" id="section-propulsion">
               <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Electrified Propulsion Systems</span>
-              
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Solid-State Battery & Next-Gen Cell Chemistry</span>
@@ -172,7 +401,6 @@
                   <div class="bar-target-tick" style="left: 78%;"></div>
                 </div>
               </div>
-
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Legacy ICE Engine Run-Out & Cash Harvest</span>
@@ -186,7 +414,6 @@
                   <div class="bar-target-tick" style="left: 70%;"></div>
                 </div>
               </div>
-
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Hydrogen Fuel Cell & Heavy Industrial Ventures</span>
@@ -202,10 +429,8 @@
               </div>
             </div>
 
-            <!-- Pillar 2: Software -->
             <div class="space-y-3.5 pt-2 border-t border-slate-100 pillar-section" id="section-software">
               <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Software & Autonomous Systems</span>
-              
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Autonomous Drive & ADAS Platform Architecture</span>
@@ -219,7 +444,6 @@
                   <div class="bar-target-tick" style="left: 80%;"></div>
                 </div>
               </div>
-
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Connected Fleet & Over-The-Air Monetization</span>
@@ -233,7 +457,6 @@
                   <div class="bar-target-tick" style="left: 76%;"></div>
                 </div>
               </div>
-
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Digital Cockpit & In-Vehicle Experience</span>
@@ -249,10 +472,8 @@
               </div>
             </div>
 
-            <!-- Pillar 3: Operations -->
             <div class="space-y-3.5 pt-2 border-t border-slate-100 pillar-section" id="section-operations">
               <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Next-Gen Operations & Scale</span>
-              
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Gigafactory Modular Manufacturing & Automation</span>
@@ -266,7 +487,6 @@
                   <div class="bar-target-tick" style="left: 70%;"></div>
                 </div>
               </div>
-
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Critical Mineral & Battery Supply Chain Resilience</span>
@@ -280,7 +500,6 @@
                   <div class="bar-target-tick" style="left: 78%;"></div>
                 </div>
               </div>
-
               <div>
                 <div class="flex justify-between items-center text-xs mb-1.5">
                   <span class="font-medium text-slate-800">Capital Allocation & Joint Venture Structuring</span>
@@ -297,7 +516,7 @@
             </div>
           </div>
 
-          <!-- Right Column -->
+          <!-- Distribution & Priority Actions -->
           <div class="lg:col-span-5 space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
               <div>
@@ -360,14 +579,12 @@
         </div>
       </div>
 
-      <!-- ========================================================================= -->
-      <!-- TAB 2: EXPANDED 15-LEADER COHORT WITH POPULATED METRICS                   -->
-      <!-- ========================================================================= -->
+      <!-- TAB 2: LEADERS (THE 3-DOMAIN TRIANGULATION CARD WITH HDS DERAILERS) -->
       <div id="view-leaders" class="hidden space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
-            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leaders • multi-method diagnostic profile</h1>
-            <p class="text-xs text-slate-500 mt-1 font-medium">Cognadev CPP (Cognitive Process Profile) • Zenger Folkman 360 • Cognitive Talent Solutions (ONA Centrality)</p>
+            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leaders • 3-Domain Triangulated Diagnostics</h1>
+            <p class="text-xs text-slate-500 mt-1 font-medium">1. How They Think (Cognitive Process) • 2. How They Show Up (ZF 360 + HDS Derailers) • 3. How They Connect (CTS ONA)</p>
           </div>
           <div class="flex items-center gap-2">
             <input type="text" id="leaderSearch" onkeyup="filterLeaderList()" placeholder="Filter by name or role..." class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs w-52 shadow-sm" />
@@ -376,100 +593,121 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          <!-- Populated Leader Roster Table (7 Cols) -->
-          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-3">
-            
-            <!-- Table Header Row -->
-            <div class="grid grid-cols-12 items-center text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2 px-2">
-              <span class="col-span-5">Leader</span>
-              <span class="col-span-1 text-center">LIR</span>
-              <span class="col-span-2 text-center">ZF %ile</span>
-              <span class="col-span-2 text-center">ONA Status</span>
-              <span class="col-span-2 text-right">State</span>
+          <!-- Populated Leader Roster Table with Sort Headers (5 Cols) -->
+          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-3">
+            <div class="grid grid-cols-12 items-center text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-2.5 px-2 select-none">
+              <span onclick="sortTable('name')" class="col-span-6 cursor-pointer hover:text-navy-950 flex items-center gap-1 transition">
+                Leader <span id="sort-icon-name" class="text-[10px] text-slate-400">↕</span>
+              </span>
+              <span onclick="sortTable('lir')" class="col-span-2 text-center cursor-pointer hover:text-navy-950 flex items-center justify-center gap-1 transition">
+                LIR <span id="sort-icon-lir" class="text-[10px] text-slate-400">↕</span>
+              </span>
+              <span onclick="sortTable('zfVal')" class="col-span-2 text-center cursor-pointer hover:text-blue-900 flex items-center justify-center gap-1 transition font-black text-blue-950 bg-blue-50/80 py-1 rounded">
+                ZF % <span id="sort-icon-zfVal" class="text-[10px] text-blue-600">▼</span>
+              </span>
+              <span onclick="sortTable('stateBadge')" class="col-span-2 text-right cursor-pointer hover:text-navy-950 flex items-center justify-end gap-1 transition">
+                State <span id="sort-icon-stateBadge" class="text-[10px] text-slate-400">↕</span>
+              </span>
             </div>
 
-            <!-- 15 Fully Populated Leaders List -->
             <div class="divide-y divide-slate-100 text-xs max-h-[640px] overflow-y-auto pr-1 custom-scroll" id="leaderRoster">
-              <!-- Content dynamically rendered via JS loop below -->
+              <!-- Rendered via JS -->
             </div>
           </div>
 
-          <!-- Diagnostic Deep-Dive (Cognadev + ZF + ONA) (5 Cols) -->
-          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
+          <!-- The 3-Domain Triangulated Profile Card (7 Cols) -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
             <div class="flex justify-between items-start border-b border-slate-100 pb-4">
               <div>
-                <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">Dr. Alexander Holt</h3>
-                <p class="text-xs text-slate-500 font-medium" id="detRole">VP, Solid-State Battery Chemistry • Electrified Propulsion</p>
+                <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">Elena Mercer</h3>
+                <p class="text-xs text-slate-500 font-medium" id="detRole">SVP, Autonomous Software Architecture • Software & Autonomous</p>
               </div>
               <div class="text-right">
-                <span class="text-3xl font-black text-slate-900" id="detLIR">60</span>
-                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="detDemandGap">Demand: 78 • -18 Gap</span>
+                <span class="text-3xl font-black text-slate-900" id="detLIR">78</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="detDemandGap">Demand: 80 • -2 Gap</span>
               </div>
             </div>
 
-            <!-- Cognadev CPP Radar Chart -->
+            <!-- The 3 Distinct Domains -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              
+              <!-- Domain 1: How They Think -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <div class="flex justify-between items-center border-b border-slate-200/60 pb-1">
+                  <span class="font-bold text-slate-800 uppercase tracking-wider text-[10px]">1. How They Think</span>
+                  <span class="text-[9px] font-bold bg-slate-200 text-slate-800 px-1.5 py-0.5 rounded">Cognadev CPP</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Processing Ceiling:</span>
+                  <span class="font-bold text-slate-900 text-xs" id="detCppLevel">Level 5 (Strategic)</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Cognitive Flexibility:</span>
+                  <span class="font-bold text-blue-900" id="detCognitiveFlex">88 / 100</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-tight" id="detThinkNotes">
+                  Comfortable with extreme technical ambiguity; balances system architecture with business viability.
+                </p>
+              </div>
+
+              <!-- Domain 2: How They Show Up & Banana Skins -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <div class="flex justify-between items-center border-b border-slate-200/60 pb-1">
+                  <span class="font-bold text-slate-800 uppercase tracking-wider text-[10px]">2. How They Show Up</span>
+                  <span class="text-[9px] font-bold bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded" id="detZfPct">92nd %ile</span>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Top 3 Strengths (ZF 19):</span>
+                  <ul class="list-disc list-inside text-[11px] text-slate-700 font-medium space-y-0.5" id="detZfStrengths">
+                    <li>Champions Change</li>
+                    <li>Strategic Perspective</li>
+                    <li>Communicates Powerfully</li>
+                  </ul>
+                </div>
+                <div class="p-1.5 bg-red-50 border border-red-100 rounded">
+                  <span class="text-[9px] font-bold text-red-700 uppercase block">Hogan HDS Banana Skin:</span>
+                  <span class="text-[10px] font-bold text-red-900 block truncate" id="detZfFlaw">None detected</span>
+                </div>
+              </div>
+
+              <!-- Domain 3: How They Connect -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <div class="flex justify-between items-center border-b border-slate-200/60 pb-1">
+                  <span class="font-bold text-slate-800 uppercase tracking-wider text-[10px]">3. How They Connect</span>
+                  <span class="text-[9px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded" id="detOnaIndex">0.89 Centrality</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase block">Network Topology Role:</span>
+                  <p class="text-[11px] text-slate-700 font-medium leading-tight" id="detOnaRole">
+                    Top 5% Cross-Silo Bridge
+                  </p>
+                </div>
+                <div class="border-t border-slate-200/60 pt-1">
+                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Influence Horizon:</span>
+                  <span class="text-[11px] text-slate-600 font-medium block truncate" id="detOnaInfluence">Enterprise-wide multiplier</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Radar Spider Profile -->
             <div>
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Cognadev CPP Cognitive Process Profile (7 Dimensions)</span>
-              <div class="relative h-52 w-full flex items-center justify-center">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Cognadev CPP Dimensional vs Role Demand Profile</span>
+              <div class="relative h-48 w-full flex items-center justify-center">
                 <canvas id="leaderRadarChart"></canvas>
               </div>
             </div>
 
-            <!-- Zenger Folkman & ONA Integrated Module -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              
-              <!-- Zenger Folkman Card -->
-              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2 text-xs">
-                <div class="flex justify-between items-center">
-                  <span class="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Zenger Folkman 360</span>
-                  <span class="font-black text-blue-900 bg-blue-100 px-2 py-0.5 rounded text-[10px]" id="detZfPct">74th %ile</span>
-                </div>
-                <div>
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Profound Strengths:</span>
-                  <ul class="list-disc list-inside text-[11px] text-slate-700 font-medium mt-0.5 space-y-0.5" id="detZfStrengths">
-                    <li>Technical Expertise</li>
-                    <li>Solves Problems</li>
-                    <li>Innovates</li>
-                  </ul>
-                </div>
-                <div class="border-t border-slate-200/60 pt-1">
-                  <span class="text-[10px] font-bold text-red-600 uppercase block">Fatal Flaw:</span>
-                  <span class="text-[11px] text-red-700 font-semibold truncate block" id="detZfFlaw">Inability to Lead Change</span>
-                </div>
-              </div>
-
-              <!-- CTS ONA Centrality Card -->
-              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2 text-xs">
-                <div class="flex justify-between items-center">
-                  <span class="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Cognitive Talent ONA</span>
-                  <span class="font-black text-amber-900 bg-amber-100 px-2 py-0.5 rounded text-[10px]" id="detOnaIndex">Centrality: 0.31</span>
-                </div>
-                <div>
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Network Role:</span>
-                  <p class="text-[11px] text-slate-700 font-medium mt-0.5 leading-tight" id="detOnaRole">
-                    Silo Isolated Specialist
-                  </p>
-                </div>
-                <div class="border-t border-slate-200/60 pt-1">
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Influence Direction:</span>
-                  <span class="text-[11px] text-slate-600 font-medium truncate block" id="detOnaInfluence">Internal Deep R&D Node</span>
-                </div>
-              </div>
-
-            </div>
-
             <!-- Integrated Synthesis -->
-            <div class="p-3 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs text-amber-950 leading-relaxed font-medium" id="detSynthesis">
-              <strong>Diagnostic Readout:</strong> High analytical depth in battery chemistry. However, low Ambiguity Tolerance (58) and isolated network topology impede cross-pillar integration.
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 leading-relaxed font-medium" id="detSynthesis">
+              <strong>Multi-Source Diagnostic Readout:</strong> High cognitive flexibility (88) coupled with top-decile ONA centrality and clean Hogan derailer scores. Prime internal successor for Group Chief Technology Officer.
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- ========================================================================= -->
-      <!-- TAB 3: ROLE DEMAND                                                        -->
-      <!-- ========================================================================= -->
+      <!-- TAB 3: ROLE DEMAND -->
       <div id="view-roleDemand" class="hidden space-y-6">
         <div class="border-b border-slate-200/80 pb-5">
           <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Role demand • what each transformation block requires</h1>
@@ -533,9 +771,7 @@
         </div>
       </div>
 
-      <!-- ========================================================================= -->
-      <!-- TAB 4: SCENARIOS SIMULATOR                                                -->
-      <!-- ========================================================================= -->
+      <!-- TAB 4: SCENARIOS SIMULATOR -->
       <div id="view-scenarios" class="hidden space-y-6">
         <div class="border-b border-slate-200/80 pb-5">
           <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Scenario • move an executive, evaluate fit shift</h1>
@@ -549,8 +785,8 @@
             <div>
               <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Select Executive</label>
               <select id="scenLeaderSelect" onchange="runSimulation()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-amber-500">
-                <option value="holt">Dr. Alexander Holt — Solid-State Battery</option>
                 <option value="mercer">Elena Mercer — Autonomous Software</option>
+                <option value="holt">Dr. Alexander Holt — Solid-State Battery</option>
                 <option value="koehler">Marcus Koehler — Gigafactory Ops</option>
               </select>
             </div>
@@ -558,8 +794,8 @@
             <div>
               <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Transfer to target block</label>
               <select id="scenBlockSelect" onchange="runSimulation()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-amber-500">
-                <option value="h2">Hydrogen & Fuel Cell Ventures</option>
                 <option value="ops">Gigafactory Modular Manufacturing</option>
+                <option value="h2">Hydrogen & Fuel Cell Ventures</option>
                 <option value="adas">Autonomous Drive & ADAS Platform</option>
               </select>
             </div>
@@ -568,15 +804,15 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
             <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800">
               <span class="text-[10px] font-bold uppercase text-slate-400">Current Role LIR</span>
-              <div class="text-4xl font-black text-white mt-1" id="scenCurrVal">60</div>
-              <span class="text-xs text-slate-400 mt-1 block" id="scenCurrLabel">Solid-State Battery</span>
+              <div class="text-4xl font-black text-white mt-1" id="scenCurrVal">78</div>
+              <span class="text-xs text-slate-400 mt-1 block" id="scenCurrLabel">Autonomous Software Architecture</span>
             </div>
 
             <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800 relative">
               <span class="text-[10px] font-bold uppercase text-amber-400">Projected Destination LIR</span>
-              <div class="text-4xl font-black text-amber-400 mt-1" id="scenProjVal">51</div>
-              <span class="text-xs text-slate-300 mt-1 block" id="scenProjLabel">Hydrogen & Fuel Cell Ventures</span>
-              <span class="absolute right-4 top-4 text-xs font-bold text-red-400" id="scenDeltaTag">-9 pts</span>
+              <div class="text-4xl font-black text-amber-400 mt-1" id="scenProjVal">72</div>
+              <span class="text-xs text-slate-300 mt-1 block" id="scenProjLabel">Gigafactory Modular Manufacturing</span>
+              <span class="absolute right-4 top-4 text-xs font-bold text-amber-400" id="scenDeltaTag">-6 pts</span>
             </div>
           </div>
         </div>
@@ -592,15 +828,13 @@
           <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-4">
             <h3 class="text-base font-bold font-editorial text-slate-900">Transformation Advisory Readout</h3>
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-2">
-              <p id="scenNarrative">Transferring <strong>Dr. Alexander Holt</strong> to <strong>Hydrogen Ventures</strong> creates an acute capability mismatch (-9 points). The destination requires high ambiguity tolerance and rapid commercial ecosystem orchestration.</p>
+              <p id="scenNarrative">Transferring <strong>Elena Mercer</strong> to <strong>Gigafactory Operations</strong> pulls top digital talent into manufacturing. While viable (-6 points), it under-utilizes her software ecosystem brokerage.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ========================================================================= -->
-      <!-- TAB 5: 2035 PLAN TRAJECTORY                                               -->
-      <!-- ========================================================================= -->
+      <!-- TAB 5: 2035 PLAN TRAJECTORY -->
       <div id="view-plan2035" class="hidden space-y-6">
         <div class="border-b border-slate-200/80 pb-5">
           <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">2035 Plan • technology capability trajectory</h1>
@@ -659,15 +893,15 @@
 
     </main>
 
-    <!-- Bottom Footer Context Bar -->
+    <!-- Bottom Context Bar -->
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
         <div class="flex items-center space-x-2">
           <span class="h-2 w-2 rounded-full bg-amber-500 inline-block"></span>
-          <span class="text-slate-300 font-medium"><strong>Open-Architecture Analytics:</strong> Cognadev CPP (7D) × Zenger Folkman 360 (19 Competencies) × Cognitive Talent Solutions (ONA Centrality).</span>
+          <span class="text-slate-300 font-medium"><strong>Consistent Talent Continuum:</strong> Search Mandate Screening ➔ In-Seat 360 & ONA Calibration ➔ Succession Bench.</span>
         </div>
         <div class="text-[11px] text-slate-400">
-          Henharen Reid • Advisory Preview v0.5
+          Henharen Reid • Enterprise Platform v1.0
         </div>
       </div>
     </footer>
@@ -676,218 +910,86 @@
     <script>
       let leaderRadar = null;
       let scenarioRadar = null;
+      let currentAppMode = 'succession';
+      let currentSortColumn = 'zfVal';
+      let currentSortAsc = false;
+      let activeLeaderIndex = 0;
 
-      // 15 Comprehensive Executive Profiles
-      const leadersData = [
+      // External Search Candidates (Search Mode)
+      const searchCandidates = [
         {
-          initials: "AH",
-          name: "Dr. Alexander Holt",
-          role: "VP, Solid-State Battery Chemistry",
-          pillar: "Electrified Propulsion",
-          lir: 60,
-          zfPct: "74th %ile",
-          onaBadge: "Silo Isolated",
-          onaClass: "bg-amber-100 text-amber-900",
-          stateBadge: "REDEPLOY",
-          stateClass: "bg-red-100 text-red-800",
-          demandGap: "Demand: 78 • -18 Gap",
-          cppScores: [72, 65, 58, 70, 68, 62, 88],
-          demandScores: [82, 80, 78, 76, 75, 70, 78],
-          zfStrengths: ["Technical/Professional Expertise", "Solves Problems & Analyzes", "Innovates"],
-          zfFlaw: "Inability to Lead Change",
-          onaIndex: "Centrality: 0.31",
-          onaRole: "Silo Isolated Specialist (Low cross-silo interaction with digital systems).",
-          onaInfluence: "Internal Chemical R&D Node only",
-          synthesis: "Exceptional analytical depth in battery chemistry. However, low Ambiguity Tolerance (58) and isolated network topology impede cross-pillar integration. Recommended for Principal Fellow track."
+          name: "Dr. Markus Krause",
+          title: "VP, Autonomous Driving Systems • 18 Yrs Experience",
+          fit: "94%",
+          cpp: "Level 5 (Strategic Complex)",
+          hpi: "94th Percentile",
+          thinkNotes: "Exceptional cognitive breadth; connects long-range algorithmic evolution with automotive safety standards.",
+          ref: "Top Decile (92nd %ile)",
+          hds: "Low Risk (Skeptical: 62%)",
+          showNotes: "Empowering and low ego. Under acute board pressure, defaults to rigorous verification rather than impulsive panic.",
+          connLevel: "Top 5% Network Reach",
+          connType: "High Academic & Tier-1 Alliances",
+          connNotes: "Deeply respected across Nvidia and Qualcomm ecosystems; proven record attracting top AI talent.",
+          synthesis: "Rare profile combining Level 5 cognitive processing with low Hogan derailer risk. Prime external hire for CTO."
         },
+        {
+          name: "Sarah Lindqvist",
+          title: "Head of Software Architecture • Robotics Scale-up",
+          fit: "89%",
+          cpp: "Level 4/5 (Transitional)",
+          hpi: "88th Percentile",
+          thinkNotes: "Fast, agile execution focus. Highly capable on near-term software sprint velocity.",
+          ref: "86th Percentile",
+          hds: "Moderate Risk (Bold: 81%)",
+          showNotes: "Dynamic and charismatic. Tends to over-promise delivery timelines during board presentations.",
+          connLevel: "High Venture / Tech Network",
+          connType: "Silicon Valley Robotics Hub",
+          connNotes: "Strong software developer followership, but limited European legacy OEM supplier relationships.",
+          synthesis: "Outstanding commercial software driver. Requires operational deputy to manage functional automotive safety certification."
+        },
+        {
+          name: "Tariq Chaudhry",
+          title: "Chief Engineer, Autonomous Platforms • Silicon Vendor",
+          fit: "82%",
+          cpp: "Level 4 (High Tactical)",
+          hpi: "79th Percentile",
+          thinkNotes: "Brilliant micro-architecture and chip-level processing, but narrower enterprise vision.",
+          ref: "78th Percentile",
+          hds: "High Risk (Cautious: 89%)",
+          showNotes: "High risk of analysis paralysis when navigating un-benchmarked regulatory decisions.",
+          connLevel: "Semiconductor Specialist Node",
+          connType: "Foundry & Chip Alliances",
+          connNotes: "Deep connections into Asian foundries; low visibility with vehicle product styling and commercial teams.",
+          synthesis: "World-class Silicon Fellow candidate, but cognitive ceiling and high cautiousness derailer limit Group CTO suitability."
+        }
+      ];
+
+      // Internal Succession Leaders (Succession Mode)
+      let leadersData = [
         {
           initials: "EM",
           name: "Elena Mercer",
           role: "SVP, Autonomous Software Architecture",
           pillar: "Software & Autonomous",
           lir: 78,
+          zfVal: 92,
           zfPct: "92nd %ile",
+          cppLevel: "Level 5 (Strategic)",
+          cognitiveFlex: "88 / 100",
+          thinkNotes: "Comfortable with extreme technical ambiguity; balances system architecture with business viability.",
+          zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"],
+          zfFlaw: "None detected",
+          onaIndex: "0.89 Centrality",
           onaBadge: "Top 5% Bridge",
           onaClass: "bg-emerald-100 text-emerald-900",
+          onaRole: "Top 5% Cross-Silo Bridge",
+          onaInfluence: "Enterprise-wide multiplier",
           stateBadge: "ALIGNED",
           stateClass: "bg-emerald-100 text-emerald-800",
           demandGap: "Demand: 80 • -2 Gap",
           cppScores: [86, 88, 82, 85, 80, 74, 84],
           demandScores: [85, 88, 80, 84, 80, 72, 80],
-          zfStrengths: ["Champions Change", "Develops Strategic Perspective", "Communicates Powerfully"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.89 (Top 5%)",
-          onaRole: "High-Brokerage Ecosystem Bridge (Unites cloud, silicon, and embedded teams).",
-          onaInfluence: "Enterprise-wide multiplier",
-          synthesis: "High cognitive flexibility (88) coupled with top-decile ONA centrality. Exceptional capacity to lead software-defined vehicle transformations."
-        },
-        {
-          initials: "MK",
-          name: "Marcus Koehler",
-          role: "Head of Gigafactory Operations",
-          pillar: "Next-Gen Operations",
-          lir: 83,
-          zfPct: "88th %ile",
-          onaBadge: "High Hub",
-          onaClass: "bg-blue-100 text-blue-900",
-          stateBadge: "ALIGNED",
-          stateClass: "bg-emerald-100 text-emerald-800",
-          demandGap: "Demand: 70 • +13 Surplus",
-          cppScores: [78, 72, 70, 75, 82, 92, 76],
-          demandScores: [75, 70, 68, 72, 78, 80, 70],
-          zfStrengths: ["Drives for Results", "Establishes Stretch Goals", "Takes Initiative"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.82",
-          onaRole: "Operational Command Hub (Direct linkage across global production facilities).",
-          onaInfluence: "High shop-floor authority",
-          synthesis: "Dominant operational decisiveness (92) and strong execution drive. Surplus capacity can be tapped to mentor new plant directors."
-        },
-        {
-          initials: "SV",
-          name: "Siddharth Varma",
-          role: "Director, Hydrogen Ventures",
-          pillar: "Electrified Propulsion",
-          lir: 46,
-          zfPct: "58th %ile",
-          onaBadge: "Peripheral",
-          onaClass: "bg-amber-100 text-amber-900",
-          stateBadge: "REDEPLOY",
-          stateClass: "bg-red-100 text-red-800",
-          demandGap: "Demand: 82 • -36 Gap",
-          cppScores: [65, 58, 52, 60, 62, 70, 72],
-          demandScores: [86, 85, 84, 82, 80, 75, 80],
-          zfStrengths: ["Technical Expertise", "Displays High Integrity", "Self-Development"],
-          zfFlaw: "Lack of Strategic Perspective",
-          onaIndex: "Centrality: 0.28",
-          onaRole: "Peripheral Node (Low engagement with corporate capital committees).",
-          onaInfluence: "Restricted local team",
-          synthesis: "Severe strategic gap for a speculative venture unit. Lacks the cognitive agility and ecosystem networking required for commercializing fuel cells."
-        },
-        {
-          initials: "CL",
-          name: "Claire Laurent",
-          role: "VP, Battery Raw Materials & Minerals",
-          pillar: "Next-Gen Operations",
-          lir: 77,
-          zfPct: "84th %ile",
-          onaBadge: "Top 10% Bridge",
-          onaClass: "bg-emerald-100 text-emerald-900",
-          stateBadge: "ALIGNED",
-          stateClass: "bg-emerald-100 text-emerald-800",
-          demandGap: "Demand: 78 • -1 Gap",
-          cppScores: [80, 78, 76, 79, 82, 78, 78],
-          demandScores: [80, 76, 75, 78, 80, 76, 75],
-          zfStrengths: ["Builds Relationships", "Collaboration & Teamwork", "Connects to Outside World"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.84",
-          onaRole: "External Sovereign & Supplier Gateway.",
-          onaInfluence: "High cross-industry alliance reach",
-          synthesis: "Balanced multi-attribute profile. Strong geopolitical acumen and external supplier network connectivity."
-        },
-        {
-          initials: "TR",
-          name: "Torsten Richter",
-          role: "Director, Legacy Powertrain Run-Out",
-          pillar: "Electrified Propulsion",
-          lir: 82,
-          zfPct: "81st %ile",
-          onaBadge: "High Hub",
-          onaClass: "bg-blue-100 text-blue-900",
-          stateBadge: "ALIGNED",
-          stateClass: "bg-emerald-100 text-emerald-800",
-          demandGap: "Demand: 70 • +12 Surplus",
-          cppScores: [75, 68, 65, 70, 80, 90, 74],
-          demandScores: [72, 68, 65, 70, 76, 80, 70],
-          zfStrengths: ["Drives for Results", "Solves Problems", "Technical Expertise"],
-          zfFlaw: "Resistant to Lateral Change",
-          onaIndex: "Centrality: 0.76",
-          onaRole: "Traditional Manufacturing Core Hub.",
-          onaInfluence: "Deep legacy engineering credibility",
-          synthesis: "Disciplined operational steward. Ideal for optimizing cash flows during ICE sunsetting, but low adaptability to software ecosystems."
-        },
-        {
-          initials: "NJ",
-          name: "Naomi Jenkins",
-          role: "Head of Connected Fleet Monetization",
-          pillar: "Software & Autonomous",
-          lir: 72,
-          zfPct: "79th %ile",
-          onaBadge: "Connector",
-          onaClass: "bg-emerald-100 text-emerald-900",
-          stateBadge: "STRETCH",
-          stateClass: "bg-amber-100 text-amber-800",
-          demandGap: "Demand: 76 • -4 Gap",
-          cppScores: [78, 80, 74, 76, 74, 70, 72],
-          demandScores: [82, 80, 76, 78, 75, 72, 75],
-          zfStrengths: ["Innovates", "Customer Focus", "Inspires & Motivates"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.68",
-          onaRole: "Commercial-to-Digital Connector.",
-          onaInfluence: "Commercial sales & OEM client interface",
-          synthesis: "Solid commercial acumen. Targeted leadership coaching on data infrastructure scaling will close the 4-point deficit."
-        },
-        {
-          initials: "JT",
-          name: "Jean-Pierre Tanguy",
-          role: "VP, In-Vehicle Digital Experience",
-          pillar: "Software & Autonomous",
-          lir: 75,
-          zfPct: "83rd %ile",
-          onaBadge: "Active Node",
-          onaClass: "bg-blue-100 text-blue-900",
-          stateBadge: "ALIGNED",
-          stateClass: "bg-emerald-100 text-emerald-800",
-          demandGap: "Demand: 76 • -1 Gap",
-          cppScores: [82, 84, 78, 80, 76, 72, 76],
-          demandScores: [80, 82, 78, 80, 78, 72, 75],
-          zfStrengths: ["Innovates", "Communicates Powerfully", "Collaboration"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.74",
-          onaRole: "UI/UX & Product Design Hub.",
-          onaInfluence: "Cross-functional consumer tech lead",
-          synthesis: "Well-aligned to human-machine interface demands. High cognitive flexibility and good ONA integration across design and software."
-        },
-        {
-          initials: "KA",
-          name: "Kavita Anand",
-          role: "Director, Solid-State Scale-Up",
-          pillar: "Electrified Propulsion",
-          lir: 68,
-          zfPct: "76th %ile",
-          onaBadge: "Connector",
-          onaClass: "bg-emerald-100 text-emerald-900",
-          stateBadge: "STRETCH",
-          stateClass: "bg-amber-100 text-amber-800",
-          demandGap: "Demand: 78 • -10 Gap",
-          cppScores: [74, 76, 70, 75, 72, 78, 80],
-          demandScores: [82, 80, 78, 76, 75, 70, 78],
-          zfStrengths: ["Solves Problems", "Drives for Results", "Collaboration"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.65",
-          onaRole: "R&D to Pilot Line Broker.",
-          onaInfluence: "Bridge between lab chemistry and factory tooling",
-          synthesis: "Strong bridge capability between basic science and production engineering. High upside with structured executive sponsorship."
-        },
-        {
-          initials: "LB",
-          name: "Lukas Bergstrom",
-          role: "Head of Silicon & Micro-Architecture",
-          pillar: "Software & Autonomous",
-          lir: 59,
-          zfPct: "69th %ile",
-          onaBadge: "Silo Isolated",
-          onaClass: "bg-amber-100 text-amber-900",
-          stateBadge: "REDEPLOY",
-          stateClass: "bg-red-100 text-red-800",
-          demandGap: "Demand: 80 • -21 Gap",
-          cppScores: [70, 62, 55, 68, 64, 70, 86],
-          demandScores: [85, 88, 80, 84, 80, 72, 80],
-          zfStrengths: ["Technical Expertise", "Solves Problems", "Self-Development"],
-          zfFlaw: "Inability to Lead Change",
-          onaIndex: "Centrality: 0.34",
-          onaRole: "Hardware Chip Design Specialist.",
-          onaInfluence: "Silicon validation group only",
-          synthesis: "Outstanding chip architect, but struggling with cross-functional software stack convergence. Reassign to specialized IC design fellow seat."
+          synthesis: "High cognitive flexibility (88) coupled with top-decile ONA centrality and clean Hogan derailer scores. Prime internal successor for Group CTO."
         },
         {
           initials: "HZ",
@@ -895,137 +997,152 @@
           role: "VP, Global Joint Ventures & Alliances",
           pillar: "Next-Gen Operations",
           lir: 81,
+          zfVal: 90,
           zfPct: "90th %ile",
+          cppLevel: "Level 5 (Strategic)",
+          cognitiveFlex: "82 / 100",
+          thinkNotes: "Master of multi-party negotiation complexity; navigates geopolitical trade barriers fluidly.",
+          zfStrengths: ["Builds Relationships", "Strategic Perspective", "Collaboration"],
+          zfFlaw: "None detected",
+          onaIndex: "0.91 Centrality",
           onaBadge: "Top 5% Bridge",
           onaClass: "bg-emerald-100 text-emerald-900",
+          onaRole: "Global Strategic Gateway",
+          onaInfluence: "High boardroom presence",
           stateBadge: "ALIGNED",
           stateClass: "bg-emerald-100 text-emerald-800",
           demandGap: "Demand: 78 • +3 Surplus",
           cppScores: [84, 82, 80, 82, 85, 80, 76],
           demandScores: [80, 78, 76, 78, 82, 78, 75],
-          zfStrengths: ["Builds Relationships", "Develops Strategic Perspective", "Collaboration"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.91",
-          onaRole: "Global Strategic Alliance Multiplier.",
-          onaInfluence: "High executive committee and partner boardroom presence",
           synthesis: "First-class deal architect with exceptional relational agility. Crucial anchor for East Asia battery JV negotiations."
         },
         {
-          initials: "DO",
-          name: "David O'Connor",
-          role: "Plant Director, Electric Drive Units",
+          initials: "MK",
+          name: "Marcus Koehler",
+          role: "Head of Gigafactory Operations",
           pillar: "Next-Gen Operations",
-          lir: 79,
-          zfPct: "82nd %ile",
+          lir: 83,
+          zfVal: 88,
+          zfPct: "88th %ile",
+          cppLevel: "Level 4 (Operational High)",
+          cognitiveFlex: "72 / 100",
+          thinkNotes: "Linear, highly structured operational problem solver with dominant factory output discipline.",
+          zfStrengths: ["Drives for Results", "Stretch Goals", "Takes Initiative"],
+          zfFlaw: "None detected",
+          onaIndex: "0.82 Centrality",
           onaBadge: "High Hub",
           onaClass: "bg-blue-100 text-blue-900",
+          onaRole: "Operational Command Hub",
+          onaInfluence: "Shop floor & tooling authority",
           stateBadge: "ALIGNED",
           stateClass: "bg-emerald-100 text-emerald-800",
-          demandGap: "Demand: 70 • +9 Surplus",
-          cppScores: [74, 70, 68, 72, 78, 88, 72],
+          demandGap: "Demand: 70 • +13 Surplus",
+          cppScores: [78, 72, 70, 75, 82, 92, 76],
           demandScores: [75, 70, 68, 72, 78, 80, 70],
-          zfStrengths: ["Drives for Results", "Establishes Stretch Goals", "Integrity"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.78",
-          onaRole: "Operational Plant Node.",
-          onaInfluence: "Production line supervisors & plant engineering",
-          synthesis: "Disciplined manufacturing operator with high delivery reliability. Strong track record in electric motor line conversions."
+          synthesis: "Dominant operational decisiveness (92) and strong execution drive. Surplus capacity can mentor younger plant directors."
         },
         {
-          initials: "AM",
-          name: "Amara Mensah",
-          role: "Director, Battery Recycling & Circularity",
-          pillar: "Next-Gen Operations",
-          lir: 74,
-          zfPct: "80th %ile",
-          onaBadge: "Connector",
-          onaClass: "bg-emerald-100 text-emerald-900",
-          stateBadge: "STRETCH",
-          stateClass: "bg-amber-100 text-amber-800",
-          demandGap: "Demand: 78 • -4 Gap",
-          cppScores: [76, 78, 72, 76, 76, 72, 74],
-          demandScores: [80, 76, 75, 78, 80, 76, 75],
-          zfStrengths: ["Innovates", "Customer Focus", "Collaboration"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.71",
-          onaRole: "Circularity & ESG Interface.",
-          onaInfluence: "Cross-functional regulatory & operations lead",
-          synthesis: "Forward-looking circular economy strategist. Closing minor gap in operational scale execution with targeted operational support."
-        },
-        {
-          initials: "SO",
-          name: "Stefan Ortiz",
-          role: "Chief Engineer, Thermal Management",
+          initials: "AH",
+          name: "Dr. Alexander Holt",
+          role: "VP, Solid-State Battery Chemistry",
           pillar: "Electrified Propulsion",
-          lir: 71,
-          zfPct: "75th %ile",
-          onaBadge: "Active Node",
-          onaClass: "bg-blue-100 text-blue-900",
-          stateBadge: "STRETCH",
-          stateClass: "bg-amber-100 text-amber-800",
-          demandGap: "Demand: 78 • -7 Gap",
-          cppScores: [76, 72, 66, 70, 74, 76, 82],
+          lir: 60,
+          zfVal: 74,
+          zfPct: "74th %ile",
+          cppLevel: "Level 4/5 (Specialist)",
+          cognitiveFlex: "65 / 100",
+          thinkNotes: "World-class chemical analyst, but lower strategic ambiguity tolerance creates decision drag.",
+          zfStrengths: ["Technical Expertise", "Solves Problems", "Innovates"],
+          zfFlaw: "HDS: Cautious (84th %ile)",
+          onaIndex: "0.31 Centrality",
+          onaBadge: "Silo Isolated",
+          onaClass: "bg-amber-100 text-amber-900",
+          onaRole: "Deep R&D Specialist Node",
+          onaInfluence: "Internal Chemistry Group",
+          stateBadge: "REDEPLOY",
+          stateClass: "bg-red-100 text-red-800",
+          demandGap: "Demand: 78 • -18 Gap",
+          cppScores: [72, 65, 58, 70, 68, 62, 88],
           demandScores: [82, 80, 78, 76, 75, 70, 78],
-          zfStrengths: ["Technical Expertise", "Solves Problems", "Integrity"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.62",
-          onaRole: "Thermal Integration Specialist.",
-          onaInfluence: "Battery cooling & powertrain engineering",
-          synthesis: "Solid engineering backbone. Focus coaching on enterprise-level trade-off decision making to move from functional lead to director."
+          synthesis: "High analytical depth in chemistry. However, low Ambiguity Tolerance and isolated network topology impede cross-pillar integration. Recommended for Chief Fellow seat."
         },
         {
-          initials: "RL",
-          name: "Rachel Lin",
-          role: "Head of Embedded Cyber-Security",
-          pillar: "Software & Autonomous",
-          lir: 76,
-          zfPct: "85th %ile",
-          onaBadge: "Connector",
-          onaClass: "bg-emerald-100 text-emerald-900",
-          stateBadge: "ALIGNED",
-          stateClass: "bg-emerald-100 text-emerald-800",
-          demandGap: "Demand: 76 • =0 Match",
-          cppScores: [80, 82, 78, 80, 78, 74, 80],
-          demandScores: [80, 80, 76, 78, 76, 74, 78],
-          zfStrengths: ["Solves Problems", "Technical Expertise", "Champions Change"],
-          zfFlaw: "None detected",
-          onaIndex: "Centrality: 0.79",
-          onaRole: "Vehicle Security & Compliance Gateway.",
-          onaInfluence: "Regulator compliance & firmware engineers",
-          synthesis: "Critical asset for software safety assurance. Strong balance of deep technical rigor and cross-firmware influence."
+          initials: "SV",
+          name: "Siddharth Varma",
+          role: "Director, Hydrogen Ventures",
+          pillar: "Electrified Propulsion",
+          lir: 46,
+          zfVal: 58,
+          zfPct: "58th %ile",
+          cppLevel: "Level 3 (Diagnostic)",
+          cognitiveFlex: "58 / 100",
+          thinkNotes: "Overwhelmed by venture market ambiguity and unproven hydrogen commercialization roadmaps.",
+          zfStrengths: ["Technical Expertise", "High Integrity", "Self-Development"],
+          zfFlaw: "HDS: Excitable / Skeptical",
+          onaIndex: "0.28 Centrality",
+          onaBadge: "Peripheral",
+          onaClass: "bg-amber-100 text-amber-900",
+          onaRole: "Peripheral Functional Node",
+          onaInfluence: "Restricted local team",
+          stateBadge: "REDEPLOY",
+          stateClass: "bg-red-100 text-red-800",
+          demandGap: "Demand: 82 • -36 Gap",
+          cppScores: [65, 58, 52, 60, 62, 70, 72],
+          demandScores: [86, 85, 84, 82, 80, 75, 80],
+          synthesis: "Severe strategic gap for a speculative venture unit. Lacks the cognitive agility and ecosystem networking required for commercializing fuel cells."
         }
       ];
 
-      function renderLeaderRoster() {
-        const rosterContainer = document.getElementById('leaderRoster');
-        rosterContainer.innerHTML = '';
+      // Top Application Mode Switcher (Search vs Succession)
+      function setAppMode(mode) {
+        currentAppMode = mode;
+        const btnSearch = document.getElementById('btnModeSearch');
+        const btnSuccession = document.getElementById('btnModeSuccession');
+        const navTabs = document.getElementById('mainTabs');
 
-        leadersData.forEach((l, idx) => {
-          const row = document.createElement('div');
-          row.className = idx === 0 
-            ? 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
-            : 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
-          row.onclick = () => selectLeaderData(idx);
+        if (mode === 'search') {
+          btnSearch.className = 'px-3 py-1 font-semibold rounded-lg bg-white text-navy-950 shadow-sm transition';
+          btnSuccession.className = 'px-3 py-1 font-semibold rounded-lg text-slate-300 hover:text-white transition';
+          navTabs.classList.add('hidden');
 
-          row.innerHTML = `
-            <div class="col-span-5 flex items-center gap-2.5 overflow-hidden pr-1">
-              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${l.initials}</div>
-              <div class="overflow-hidden">
-                <h4 class="font-bold text-slate-900 truncate">${l.name}</h4>
-                <p class="text-[10px] text-slate-400 truncate">${l.role}</p>
-              </div>
-            </div>
-            <span class="col-span-1 text-center font-black text-slate-900">${l.lir}</span>
-            <span class="col-span-2 text-center font-bold text-slate-700">${l.zfPct}</span>
-            <div class="col-span-2 text-center">
-              <span class="px-1.5 py-0.5 rounded text-[9px] font-bold ${l.onaClass} inline-block">${l.onaBadge}</span>
-            </div>
-            <div class="col-span-2 text-right">
-              <span class="px-1.5 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span>
-            </div>
-          `;
-          rosterContainer.appendChild(row);
-        });
+          // Show Search Mode, Hide Succession Views
+          document.getElementById('view-searchMode').classList.remove('hidden');
+          ['portfolio', 'leaders', 'roleDemand', 'scenarios', 'plan2035'].forEach(t => {
+            document.getElementById('view-' + t).classList.add('hidden');
+          });
+          selectSearchCandidate(0);
+        } else {
+          btnSuccession.className = 'px-3 py-1 font-semibold rounded-lg bg-white text-navy-950 shadow-sm transition';
+          btnSearch.className = 'px-3 py-1 font-semibold rounded-lg text-slate-300 hover:text-white transition';
+          navTabs.classList.remove('hidden');
+
+          document.getElementById('view-searchMode').classList.add('hidden');
+          switchTab('portfolio');
+        }
+      }
+
+      function selectSearchCandidate(idx) {
+        const c = searchCandidates[idx];
+        const list = document.getElementById('searchCandidateList').children;
+        for (let i = 0; i < list.length; i++) {
+          list[i].className = i === idx 
+            ? 'p-3 rounded-xl border border-blue-600 bg-blue-50/50 cursor-pointer transition flex items-center justify-between'
+            : 'p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition flex items-center justify-between';
+        }
+
+        document.getElementById('candName').innerText = c.name;
+        document.getElementById('candTitle').innerText = c.title;
+        document.getElementById('candFit').innerText = c.fit;
+        document.getElementById('candCpp').innerText = c.cpp;
+        document.getElementById('candHpi').innerText = c.hpi;
+        document.getElementById('candThinkNotes').innerText = c.thinkNotes;
+        document.getElementById('candRef').innerText = c.ref;
+        document.getElementById('candHds').innerText = c.hds;
+        document.getElementById('candShowNotes').innerText = c.showNotes;
+        document.getElementById('candConnLevel').innerText = c.connLevel;
+        document.getElementById('candConnType').innerText = c.connType;
+        document.getElementById('candConnNotes').innerText = c.connNotes;
+        document.getElementById('candSynthesis').innerHTML = '<strong>Partner Assessment Note:</strong> ' + c.synthesis;
       }
 
       function switchTab(tabId) {
@@ -1033,20 +1150,19 @@
         tabs.forEach(t => {
           document.getElementById('view-' + t).classList.add('hidden');
           const btn = document.getElementById('tab-' + t);
-          btn.className = 'px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition';
+          btn.className = 'px-2.5 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition';
         });
 
         document.getElementById('view-' + tabId).classList.remove('hidden');
-        document.getElementById('tab-' + tabId).className = 'px-3 py-1.5 border-b-2 border-white text-white transition';
+        document.getElementById('tab-' + tabId).className = 'px-2.5 py-1.5 border-b-2 border-white text-white transition';
 
         if (tabId === 'leaders') {
           renderLeaderRoster();
-          selectLeaderData(0);
+          selectLeaderData(activeLeaderIndex);
         }
         if (tabId === 'scenarios') runSimulation();
       }
 
-      // Pillar Filter Logic
       function filterPillar(pillar) {
         const buttons = ['all', 'propulsion', 'software', 'operations'];
         buttons.forEach(b => {
@@ -1081,8 +1197,68 @@
         }
       }
 
-      // Leader Selection Logic
+      function sortTable(column) {
+        if (currentSortColumn === column) {
+          currentSortAsc = !currentSortAsc;
+        } else {
+          currentSortColumn = column;
+          currentSortAsc = column === 'name';
+        }
+
+        const icons = ['name', 'lir', 'zfVal', 'stateBadge'];
+        icons.forEach(ic => {
+          const el = document.getElementById('sort-icon-' + ic);
+          if (el) el.innerText = '↕';
+        });
+
+        const activeIcon = document.getElementById('sort-icon-' + column);
+        if (activeIcon) activeIcon.innerText = currentSortAsc ? '▲' : '▼';
+
+        leadersData.sort((a, b) => {
+          let valA = a[column];
+          let valB = b[column];
+          if (typeof valA === 'string') {
+            return currentSortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+          } else {
+            return currentSortAsc ? valA - valB : valB - valA;
+          }
+        });
+
+        renderLeaderRoster();
+        selectLeaderData(0);
+      }
+
+      function renderLeaderRoster() {
+        const rosterContainer = document.getElementById('leaderRoster');
+        rosterContainer.innerHTML = '';
+
+        leadersData.forEach((l, idx) => {
+          const row = document.createElement('div');
+          row.className = idx === activeLeaderIndex 
+            ? 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
+            : 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
+          row.onclick = () => selectLeaderData(idx);
+
+          row.innerHTML = `
+            <div class="col-span-6 flex items-center gap-2 overflow-hidden pr-1">
+              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${l.initials}</div>
+              <div class="overflow-hidden">
+                <h4 class="font-bold text-slate-900 truncate">${l.name}</h4>
+                <p class="text-[10px] text-slate-400 truncate">${l.role}</p>
+              </div>
+            </div>
+            <span class="col-span-2 text-center font-black text-slate-900">${l.lir}</span>
+            <span class="col-span-2 text-center font-bold text-blue-900">${l.zfPct}</span>
+            <div class="col-span-2 text-right">
+              <span class="px-1.5 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span>
+            </div>
+          `;
+          rosterContainer.appendChild(row);
+        });
+      }
+
       function selectLeaderData(idx) {
+        activeLeaderIndex = idx;
         const l = leadersData[idx];
         const rows = document.querySelectorAll('.leader-row');
         rows.forEach((r, i) => {
@@ -1097,12 +1273,15 @@
         document.getElementById('detRole').innerText = l.role + ' • ' + l.pillar;
         document.getElementById('detLIR').innerText = l.lir;
         document.getElementById('detDemandGap').innerText = l.demandGap;
+        document.getElementById('detCppLevel').innerText = l.cppLevel;
+        document.getElementById('detCognitiveFlex').innerText = l.cognitiveFlex;
+        document.getElementById('detThinkNotes').innerText = l.thinkNotes;
         document.getElementById('detZfPct').innerText = l.zfPct;
         document.getElementById('detZfFlaw').innerText = l.zfFlaw;
         document.getElementById('detOnaIndex').innerText = l.onaIndex;
         document.getElementById('detOnaRole').innerText = l.onaRole;
         document.getElementById('detOnaInfluence').innerText = l.onaInfluence;
-        document.getElementById('detSynthesis').innerHTML = '<strong>Diagnostic Readout:</strong> ' + l.synthesis;
+        document.getElementById('detSynthesis').innerHTML = '<strong>Multi-Source Diagnostic Readout:</strong> ' + l.synthesis;
 
         const ul = document.getElementById('detZfStrengths');
         ul.innerHTML = '';
@@ -1166,28 +1345,25 @@
         const lVal = document.getElementById('scenLeaderSelect').value;
         const bVal = document.getElementById('scenBlockSelect').value;
 
-        let currVal = 60;
-        let currLabel = "Solid-State Battery";
-        let leadName = "Dr. Alexander Holt";
-        let projVal = 51;
-        let projLabel = "Hydrogen & Fuel Cell Ventures";
-        let delta = "-9 pts";
-        let deltaClass = "absolute right-4 top-4 text-xs font-bold text-red-400";
-        let narrative = "Transferring <strong>Dr. Alexander Holt</strong> to <strong>Hydrogen Ventures</strong> creates an acute capability mismatch (-9 points). The destination requires high ambiguity tolerance and rapid commercial ecosystem orchestration.";
+        let currVal = 78;
+        let currLabel = "Autonomous Software Architecture";
+        let projVal = 72;
+        let projLabel = "Gigafactory Modular Manufacturing";
+        let delta = "-6 pts";
+        let deltaClass = "absolute right-4 top-4 text-xs font-bold text-amber-400";
+        let narrative = "Transferring <strong>Elena Mercer</strong> to <strong>Gigafactory Operations</strong> pulls top digital talent into manufacturing. While viable (-6 points), it under-utilizes her software ecosystem brokerage.";
 
-        if (lVal === 'mercer') {
-          leadName = "Elena Mercer";
-          currVal = 78;
-          currLabel = "Autonomous Software";
-          if (bVal === 'ops') {
-            projVal = 72;
-            projLabel = "Gigafactory Modular Manufacturing";
-            delta = "-6 pts";
-            deltaClass = "absolute right-4 top-4 text-xs font-bold text-amber-400";
-            narrative = "Transferring <strong>Elena Mercer</strong> to <strong>Gigafactory Operations</strong> pulls top digital talent into manufacturing. While viable (-6 points), it under-utilizes her software ecosystem brokerage.";
+        if (lVal === 'holt') {
+          currVal = 60;
+          currLabel = "Solid-State Battery";
+          if (bVal === 'h2') {
+            projVal = 51;
+            projLabel = "Hydrogen & Fuel Cell Ventures";
+            delta = "-9 pts";
+            deltaClass = "absolute right-4 top-4 text-xs font-bold text-red-400";
+            narrative = "Transferring <strong>Dr. Alexander Holt</strong> to <strong>Hydrogen Ventures</strong> creates an acute capability mismatch (-9 points).";
           }
         } else if (lVal === 'koehler') {
-          leadName = "Marcus Koehler";
           currVal = 83;
           currLabel = "Gigafactory Operations";
           if (bVal === 'adas') {
@@ -1222,14 +1398,14 @@
             datasets: [
               {
                 label: 'Leader Profile',
-                data: [72, 65, 58, 70, 68, 62, 88],
+                data: [86, 88, 82, 85, 80, 74, 84],
                 backgroundColor: 'rgba(15, 23, 42, 0.2)',
                 borderColor: '#0f172a',
                 borderWidth: 2
               },
               {
                 label: 'Current Demand',
-                data: [82, 80, 78, 76, 75, 70, 78],
+                data: [85, 88, 80, 84, 80, 72, 80],
                 borderColor: '#15803d',
                 borderDash: [3, 3],
                 borderWidth: 1.5,
@@ -1237,7 +1413,7 @@
               },
               {
                 label: 'Destination Demand',
-                data: [86, 85, 84, 82, 80, 75, 80],
+                data: [75, 70, 68, 72, 78, 80, 70],
                 borderColor: '#d97706',
                 borderDash: [3, 3],
                 borderWidth: 2,
@@ -1272,9 +1448,9 @@
         });
       }
 
-      // Initialize default view
       window.onload = function() {
         renderLeaderRoster();
+        selectLeaderData(0);
       };
     </script>
   </body>
