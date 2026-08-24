@@ -6,17 +6,35 @@
     <title>Henharen Reid | Leadership Intelligence</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/index-bcup7v5i.css" />
+    
+    <!-- TanStack Router hydration bootstrap -->
     <script>
-      window.__TSR__ = window.__TSR__ || { matches: [], state: { status: "idle" } };
-      window.__TSR_DEHYDRATED__ = window.__TSR_DEHYDRATED__ || {};
+      window.__TSR__ = {
+        matches: [],
+        manifest: { routes: {} },
+        state: {
+          status: "idle",
+          location: {
+            pathname: "/",
+            search: {},
+            hash: "",
+            href: "/"
+          }
+        }
+      };
+      window.__TSR_DEHYDRATED__ = {
+        manifest: { routes: {} },
+        matches: []
+      };
+      window.__TSR_ROUTER_DATA__ = {};
+      window.__TSR_CONTEXT__ = {};
     </script>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="app"></div>
     <div id="__root"></div>
+    <div id="app"></div>
     <div id="root"></div>
 
-    <!-- Only load the main entry bundle; it imports secondary chunks automatically -->
     <script type="module" src="/index-ckczwvpp.js"></script>
   </body>
 </html>
