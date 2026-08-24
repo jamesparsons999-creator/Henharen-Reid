@@ -3,318 +3,927 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Henharen Reid | Leadership Intelligence & Executive Advisory</title>
+    <title>Leadership Impact Readiness (LIR) | Group View</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     
-    <!-- Tailwind CSS CDN for instant styling -->
+    <!-- Tailwind CSS CDN & Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              brand: {
-                50: '#f8fafc',
-                100: '#f1f5f9',
-                800: '#1e293b',
-                900: '#0f172a',
-                gold: '#b45309',
-                accent: '#2563eb'
+              navy: {
+                950: '#061325',
+                900: '#0b1e36',
+                800: '#142c4c',
+              },
+              lir: {
+                blue: '#1b4d89',
+                gold: '#d97706',
+                red: '#dc2626',
+                green: '#15803d',
+                darkgreen: '#065f46'
               }
+            },
+            fontFamily: {
+              serif: ['Newsreader', 'Georgia', 'serif'],
+              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
             }
           }
         }
       }
     </script>
     <style>
-      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap');
+      .font-editorial { font-family: 'Newsreader', Georgia, serif; }
+      .bar-track { background-color: #f1f5f9; position: relative; }
+      .bar-target-tick {
+        position: absolute;
+        top: -3px;
+        bottom: -3px;
+        width: 2px;
+        background-color: #0f172a;
+        z-index: 10;
+      }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
-    
-    <!-- Navigation Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center space-x-3">
-          <div class="h-9 w-9 rounded-lg bg-slate-900 text-amber-500 font-bold flex items-center justify-center text-lg border border-slate-700 shadow-sm">
-            HR
+  <body class="bg-[#f4f6f9] text-slate-900 antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Top Global Dark Navy Navigation -->
+    <header class="bg-navy-950 text-white sticky top-0 z-50 border-b border-navy-900 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+        <div class="flex items-center space-x-8">
+          <div class="flex items-center space-x-2.5">
+            <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
+              HR
+            </div>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid</span>
           </div>
-          <div>
-            <h1 class="text-base font-semibold text-slate-900 tracking-tight">HENHAREN REID</h1>
-            <p class="text-xs text-slate-500 font-medium">Leadership Intelligence & Board Advisory</p>
-          </div>
+
+          <!-- 5 Sequential Navigation Tabs -->
+          <nav class="flex space-x-1 sm:space-x-4 text-xs font-semibold" id="mainTabs">
+            <button onclick="switchTab('portfolio')" id="tab-portfolio" class="px-3 py-1.5 border-b-2 border-white text-white transition">Portfolio</button>
+            <button onclick="switchTab('leaders')" id="tab-leaders" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Leaders</button>
+            <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Role Demand</button>
+            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Scenarios</button>
+            <button onclick="switchTab('plan2035')" id="tab-plan2035" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">2035 Plan</button>
+          </nav>
         </div>
 
-        <!-- Mode Switcher -->
-        <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <button id="modeSearch" onclick="setMode('search')" class="px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm bg-white text-slate-900 transition">
-            Executive Search Mandate
-          </button>
-          <button id="modeAdvisory" onclick="setMode('advisory')" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-            Enterprise Succession & Advisory
-          </button>
+        <div class="text-[11px] font-semibold text-slate-400">
+          Q4 2026
         </div>
       </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <!-- Main Dynamic Application Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
 
-      <!-- Top Row: Client Strategy & Market Signals -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Client Strategy Intake Card (2 Cols) -->
-        <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Client Strategy Intake</h2>
-            <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-full font-medium">Mandate Active</span>
-          </div>
-          
-          <div class="space-y-2">
-            <h3 class="text-base font-semibold text-slate-900" id="mandateTitle">Chief Executive Officer — Global Industrial Transformation</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Seeking an enterprise leader capable of balancing non-linear portfolio restructuring, supply-chain modernization, and rigorous stakeholder alignment across EMEA and APAC jurisdictions.
-            </p>
-          </div>
-
-          <!-- Market Reality & News Signals Sub-panel -->
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Market Reality & News Signals</span>
-              <span class="flex h-2 w-2 relative">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-              </span>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200 rounded-md">Regulatory Transformation</span>
-              <span class="px-2.5 py-1 text-xs font-medium bg-blue-50 text-blue-800 border border-blue-200 rounded-md">Cost Optimization</span>
-              <span class="px-2.5 py-1 text-xs font-medium bg-purple-50 text-purple-800 border border-purple-200 rounded-md">M&A Integration</span>
-            </div>
-            <p class="text-xs text-slate-600 leading-relaxed italic border-t border-slate-200/60 pt-2">
-              <strong>Live Synthesis:</strong> Headwinds driven by tightening antitrust scrutiny and high cross-border capital costs favor candidates with proven carve-out governance and operational restructuring records over pure commercial growth leaders.
-            </p>
-          </div>
-        </div>
-
-        <!-- Capability Radar / Core Focus (1 Col) -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+      <!-- ========================================================================= -->
+      <!-- TAB 1: PORTFOLIO & STRATEGY VIEW                                         -->
+      <!-- ========================================================================= -->
+      <div id="view-portfolio" class="space-y-6">
+        <!-- Header & Pillar Switcher -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
-            <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3">Benchmark Weighting</h2>
-            <div class="mt-4 space-y-3 text-xs">
-              <div>
-                <div class="flex justify-between font-medium mb-1">
-                  <span>Transformation & Change</span>
-                  <span>95%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div class="bg-slate-800 h-full" style="width: 95%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between font-medium mb-1">
-                  <span>Capital Allocation & M&A</span>
-                  <span>88%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div class="bg-slate-800 h-full" style="width: 88%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between font-medium mb-1">
-                  <span>Organizational Network Influence</span>
-                  <span>82%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div class="bg-slate-800 h-full" style="width: 82%"></div>
-                </div>
-              </div>
-            </div>
+            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leadership Impact Readiness • Group view</h1>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Strategic Navigator capability vs. role demand • 47,000 employees • 9 building blocks • 312 senior leaders scored</p>
           </div>
-          <div class="text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-center">
-            Tool-Agnostic Leadership Analytics: Hogan • SCARF • 360 ONA
-          </div>
-        </div>
-      </div>
-
-      <!-- Middle Row: Talent Shortlist / Bench & Profile Analysis -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Left: Shortlist Selection -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 id="talentSectionTitle" class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Candidate Shortlist</h2>
-            <span class="text-xs text-slate-500">4 Assessed</span>
-          </div>
-
-          <div class="space-y-2.5" id="candidateList">
-            <!-- Candidate 1 (Active) -->
-            <div onclick="selectCandidate(0)" class="p-3.5 rounded-xl border border-blue-600 bg-blue-50/40 cursor-pointer transition">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h4 class="text-sm font-bold text-slate-900">David Sinclair</h4>
-                  <p class="text-xs text-slate-500">Group COO — Industrial Components Plc</p>
-                </div>
-                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">94% Fit</span>
-              </div>
-            </div>
-
-            <!-- Candidate 2 -->
-            <div onclick="selectCandidate(1)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h4 class="text-sm font-bold text-slate-900">Eleanor Vance</h4>
-                  <p class="text-xs text-slate-500">Managing Director — European Operations</p>
-                </div>
-                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">89% Fit</span>
-              </div>
-            </div>
-
-            <!-- Candidate 3 -->
-            <div onclick="selectCandidate(2)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h4 class="text-sm font-bold text-slate-900">Marcus Sterling</h4>
-                  <p class="text-xs text-slate-500">Divisional CEO — Global Logistics & Supply</p>
-                </div>
-                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">85% Fit</span>
-              </div>
-            </div>
+          <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold">
+            <button class="px-3 py-1 bg-navy-900 text-white rounded">All pillars</button>
+            <button class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Quality Growth</button>
+            <button class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Sustainable Future</button>
+            <button class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Dynamic Business</button>
           </div>
         </div>
 
-        <!-- Right: Candidate Profile & Reward Benchmarking (2 Cols) -->
-        <div class="lg:col-span-2 space-y-6">
+        <!-- 5 Top Metric Stat Boxes -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3.5">
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Group LIR (Mean)</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span class="text-3xl font-black text-slate-900">67</span>
+              <span class="text-xs text-slate-400">/100</span>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ +4 vs. baseline Q1 2026</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm border-t-2 border-t-amber-500">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Leaders Aligned to Role</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">21<span class="text-xl font-normal">%</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-amber-600 mt-1 block">➔ below 70% target for 2035 plan</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Capability-at-Risk Blocks</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">3<span class="text-lg font-normal text-slate-400">/9</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-red-600 mt-1 block">▼ in current pillar selection</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Successor Coverage</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">2.1<span class="text-xl font-normal text-slate-400">×</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ +0.4 top 30 critical roles</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm border-t-2 border-t-amber-500">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">FIT2WIN Capability Lift</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">£38<span class="text-lg font-normal">m</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ unlocked by LIR led restructure</span>
+          </div>
+        </div>
+
+        <!-- Capability vs Demand Bars & Distribution Sidebar -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          <!-- Detailed Capability Metadata -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Leadership Competency & Psychometrics</h2>
-              <span class="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full">Level: Tier-1 Exec</span>
+          <!-- Left: 9 Strategic Navigator Blocks (7 Cols) -->
+          <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
+            <div>
+              <h2 class="text-base font-bold font-editorial text-slate-900">Portfolio capability vs. role demand</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Mean LIR by Strategic Navigator building block • gold tick = role demand target • click any block to drill into leaders</p>
             </div>
+
+            <!-- Category 1: Quality Growth -->
+            <div class="space-y-3.5">
+              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Quality Growth</span>
+              
+              <!-- Row 1 -->
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Inspiring New Category Innovations & Brands</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">62</span>
+                    <span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 77 <br class="hidden">-15</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-red-500 h-full" style="width: 62%;"></div>
+                  <div class="bar-target-tick" style="left: 77%;"></div>
+                </div>
+              </div>
+
+              <!-- Row 2 -->
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Managed Combustibles Transition</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">78</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 69 <br class="hidden">+9</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 78%;"></div>
+                  <div class="bar-target-tick" style="left: 69%;"></div>
+                </div>
+              </div>
+
+              <!-- Row 3 -->
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Beyond Nicotine Foundations</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">48</span>
+                    <span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 80 <br class="hidden">-32</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-red-500 h-full" style="width: 48%;"></div>
+                  <div class="bar-target-tick" style="left: 80%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 2: Sustainable Future -->
+            <div class="space-y-3.5 pt-2 border-t border-slate-100">
+              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Sustainable Future</span>
+              
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Tobacco Harm Reduction Acceptance</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">71</span>
+                    <span class="text-[11px] text-amber-600 font-bold w-12 text-right">vs. 76 <br class="hidden">-5</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-amber-500 h-full" style="width: 71%;"></div>
+                  <div class="bar-target-tick" style="left: 76%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Shaping the Landscape</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">74</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 77 <br class="hidden">-3</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 74%;"></div>
+                  <div class="bar-target-tick" style="left: 77%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Leading in Sustainability & Integrity</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">58</span>
+                    <span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 75 <br class="hidden">-17</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-red-500 h-full" style="width: 58%;"></div>
+                  <div class="bar-target-tick" style="left: 75%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 3: Dynamic Business -->
+            <div class="space-y-3.5 pt-2 border-t border-slate-100">
+              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Dynamic Business</span>
+              
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Exciting, Winning Company</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">72</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 73 <br class="hidden">-1</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 72%;"></div>
+                  <div class="bar-target-tick" style="left: 73%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Operational Excellence</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">81</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 68 <br class="hidden">+13</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 81%;"></div>
+                  <div class="bar-target-tick" style="left: 68%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Capital Effectiveness</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">76</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 77 <br class="hidden">-1</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 76%;"></div>
+                  <div class="bar-target-tick" style="left: 77%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Distribution & Priority Actions (5 Cols) -->
+          <div class="lg:col-span-5 space-y-6">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-500 block mb-1">Strategic Grit & Ambiguity</span>
-                <span class="text-base font-bold text-slate-900">96th Percentile</span>
-                <p class="text-[11px] text-slate-500 mt-1">High persistence through complex institutional transformations.</p>
+            <!-- Distribution Chart -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+              <div>
+                <h3 class="text-sm font-bold font-editorial text-slate-900">LIR distribution • senior cohort</h3>
+                <p class="text-[11px] text-slate-500">312 leaders • gold = stretch band where redeployment unlocks value</p>
               </div>
-              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-500 block mb-1">SCARF Status & Autonomy</span>
-                <span class="text-base font-bold text-slate-900">Balanced / High</span>
-                <p class="text-[11px] text-slate-500 mt-1">Drives high autonomy in direct reports with strong psychological safety.</p>
+
+              <!-- Bar Distribution Representation -->
+              <div class="flex items-end justify-between h-32 pt-4 px-2 border-b border-slate-200">
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-2"></div><span class="text-[9px] text-slate-400">&lt;30</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-4"></div><span class="text-[9px] text-slate-400">30-39</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-8"></div><span class="text-[9px] text-slate-400">40-49</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-amber-500 rounded-t h-16"></div><span class="text-[9px] text-slate-400">50-59</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-28"></div><span class="text-[9px] text-slate-400">60-69</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-32"></div><span class="text-[9px] text-slate-400">70-79</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-12"></div><span class="text-[9px] text-slate-400">80-89</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-2"></div><span class="text-[9px] text-slate-400">90+</span></div>
               </div>
-              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-500 block mb-1">ONA Network Centrality</span>
-                <span class="text-base font-bold text-slate-900">Top 5% Bridge</span>
-                <p class="text-[11px] text-slate-500 mt-1">Connects commercial, financial, and engineering silos rapidly.</p>
+
+              <div class="grid grid-cols-4 text-center pt-1 text-xs">
+                <div><span class="font-bold text-slate-900 text-sm">67</span><span class="block text-[10px] text-slate-400 font-bold uppercase">Mean</span></div>
+                <div><span class="font-bold text-slate-900 text-sm">70</span><span class="block text-[10px] text-slate-400 font-bold uppercase">Median</span></div>
+                <div><span class="font-bold text-slate-900 text-sm">4%</span><span class="block text-[10px] text-slate-400 font-bold uppercase">&lt; 50</span></div>
+                <div><span class="font-bold text-slate-900 text-sm">0%</span><span class="block text-[10px] text-slate-400 font-bold uppercase">80+</span></div>
               </div>
             </div>
+
+            <!-- Priority Actions Card -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+              <div>
+                <h3 class="text-sm font-bold font-editorial text-slate-900">Priority actions • this quarter</h3>
+                <p class="text-[11px] text-slate-500">Auto-ranked by capability gap × strategic weight</p>
+              </div>
+
+              <div class="space-y-3 text-xs">
+                <div class="flex items-start gap-2.5 pb-2.5 border-b border-slate-100">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-800 text-white uppercase tracking-wider">REDEPLOY</span>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Beyond Nicotine Foundations</h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5 leading-relaxed">Beyond Nicotine Foundations sits 32 points below role demand. Bench is structurally short — move internal candidates from over supplied blocks; backfill from external.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2.5 pb-2.5 border-b border-slate-100">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-800 text-white uppercase tracking-wider">REDEPLOY</span>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Leading in Sustainability & Integrity</h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5 leading-relaxed">Leading in Sustainability sits 17 points below role demand. Bench is structurally short — move internal candidates from over supplied blocks.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2.5">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-900 text-white uppercase tracking-wider">CALIBRATE</span>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Tobacco Harm Reduction Acceptance</h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5 leading-relaxed">Tobacco Harm Reduction Acceptance reads as a person gap (-5). Re-spec the role first — load may be too high for any single profile.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <!-- NEW CARD: Executive Reward & Comp Benchmarking -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div class="flex items-center space-x-2">
-                <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Executive Reward & Comp Benchmarking</h2>
-                <span class="text-[10px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded border border-blue-200">MARKET ALIGNED</span>
-              </div>
-              <span class="text-xs text-slate-500 font-medium">FTSE 250 / European Peer Group</span>
-            </div>
-
-            <!-- Percentile Peer Market Bands -->
-            <div>
-              <div class="flex justify-between items-baseline mb-2">
-                <span class="text-xs font-semibold text-slate-700">Total Direct Compensation (TDC) Range</span>
-                <span class="text-xs text-slate-500">Median: <strong>$2.45M</strong></span>
-              </div>
-
-              <!-- Bar Visual -->
-              <div class="relative w-full bg-slate-100 h-5 rounded-lg overflow-hidden flex text-[10px] font-bold text-slate-600">
-                <div class="w-1/4 bg-slate-200 flex items-center justify-center border-r border-white">P25 ($1.8M)</div>
-                <div class="w-1/4 bg-blue-100 text-blue-900 flex items-center justify-center border-r border-white">P50 ($2.45M)</div>
-                <div class="w-1/4 bg-amber-100 text-amber-900 flex items-center justify-center border-r border-white">P75 ($3.2M)</div>
-                <div class="w-1/4 bg-slate-300 flex items-center justify-center">P90 ($4.1M)</div>
-              </div>
-            </div>
-
-            <!-- Current Base vs Target Expectation Metrics -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex items-center justify-between">
-                <div>
-                  <span class="text-[11px] text-slate-500 block uppercase font-medium">Current Base</span>
-                  <span class="text-base font-bold text-slate-900">$850,000</span>
-                </div>
-                <div class="text-right">
-                  <span class="text-[11px] text-slate-500 block uppercase font-medium">Target Expectation</span>
-                  <span class="text-base font-bold text-slate-900">$920,000</span>
-                </div>
-              </div>
-
-              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex items-center justify-between">
-                <div>
-                  <span class="text-[11px] text-slate-500 block uppercase font-medium">Market Delta</span>
-                  <span class="text-sm font-bold text-emerald-600">+8% vs. Industry Median</span>
-                </div>
-                <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-bold">Within Budget</span>
-              </div>
-            </div>
-
-            <!-- Package Structure Split -->
-            <div>
-              <span class="text-xs font-semibold text-slate-700 block mb-2">Package Composition Split</span>
-              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
-                <div class="bg-slate-800" style="width: 45%" title="Base 45%"></div>
-                <div class="bg-blue-600" style="width: 25%" title="STIP 25%"></div>
-                <div class="bg-amber-500" style="width: 30%" title="LTIP 30%"></div>
-              </div>
-              <div class="flex justify-between text-xs text-slate-600 mt-2 font-medium">
-                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> Base (45%)</span>
-                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span> STIP Bonus (25%)</span>
-                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> LTIP Equity (30%)</span>
-              </div>
-            </div>
-
-            <!-- AI Synthesis Note -->
-            <div class="p-3 bg-amber-50/70 border border-amber-200/80 rounded-xl flex items-start gap-2.5">
-              <span class="text-amber-700 font-bold text-xs mt-0.5">⚡ Note:</span>
-              <p class="text-xs text-amber-900 leading-relaxed font-medium">
-                Candidate equity cliff ends Q4; structured sign-on grant recommended to bridge gap.
-              </p>
-            </div>
-          </div>
-
         </div>
       </div>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 2: LEADERS 7-DIMENSION PSYCHOMETRIC READ                             -->
+      <!-- ========================================================================= -->
+      <div id="view-leaders" class="hidden space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
+          <div>
+            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leaders • 7-dimension profile read</h1>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Click any leader to see the full Leader Read × Org Read dimensional breakdown against their block's role demand</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="text" placeholder="Search name or block..." class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs w-48 shadow-sm" />
+            <div class="flex bg-white p-1 rounded-lg border border-slate-200 text-xs font-semibold">
+              <button class="px-2.5 py-0.5 bg-navy-900 text-white rounded">All</button>
+              <button class="px-2.5 py-0.5 text-slate-600 rounded">Aligned</button>
+              <button class="px-2.5 py-0.5 text-slate-600 rounded">Stretch</button>
+              <button class="px-2.5 py-0.5 text-slate-600 rounded">Redeploy</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left: Leader Roster Table (7 Cols) -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-4">
+            <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2">
+              <span>Leader</span>
+              <span>Block</span>
+              <span>LIR</span>
+              <span>vs Demand</span>
+              <span>Status</span>
+            </div>
+
+            <div class="divide-y divide-slate-100 text-xs" id="leaderRoster">
+              <!-- Leader 1 -->
+              <div onclick="selectLeader('R. Chen', 63, -14, 'Inspiring New Category Innovations & Brands', 'Director, glo Markets', [79,70,62,74,75,82,78], [82,85,80,78,75,68,72])" class="py-3 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition px-2 rounded-lg bg-blue-50/40">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-900 text-white font-bold flex items-center justify-center text-xs">RC</div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">R. Chen</h4>
+                    <p class="text-[11px] text-slate-400">Director, glo Markets</p>
+                  </div>
+                </div>
+                <span class="text-slate-600 text-[11px] max-w-[140px] truncate">Inspiring New Category...</span>
+                <span class="font-black text-slate-900">63</span>
+                <span class="font-bold text-red-600">-14</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800">REDEPLOY</span>
+              </div>
+
+              <!-- Leader 2 -->
+              <div onclick="selectLeader('D. Bianchi', 76, -1, 'Inspiring New Category Innovations & Brands', 'Head, New Category R&D', [85,82,78,80,76,70,75], [82,85,80,78,75,68,72])" class="py-3 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition px-2 rounded-lg">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-900 text-white font-bold flex items-center justify-center text-xs">DB</div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">D. Bianchi</h4>
+                    <p class="text-[11px] text-slate-400">Head, New Category R&D</p>
+                  </div>
+                </div>
+                <span class="text-slate-600 text-[11px] max-w-[140px] truncate">Inspiring New Category...</span>
+                <span class="font-black text-slate-900">76</span>
+                <span class="font-bold text-emerald-600">-1</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">ALIGNED</span>
+              </div>
+
+              <!-- Leader 3 -->
+              <div onclick="selectLeader('K. Patel', 73, -4, 'Capital Effectiveness', 'VP, Capital Allocation', [78,75,70,72,80,85,82], [80,78,75,76,82,80,84])" class="py-3 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition px-2 rounded-lg">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-900 text-white font-bold flex items-center justify-center text-xs">KP</div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">K. Patel</h4>
+                    <p class="text-[11px] text-slate-400">VP, Capital Allocation</p>
+                  </div>
+                </div>
+                <span class="text-slate-600 text-[11px] max-w-[140px] truncate">Capital Effectiveness</span>
+                <span class="font-black text-slate-900">73</span>
+                <span class="font-bold text-amber-600">-4</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">STRETCH</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Individual Spider Chart & Dimensional Readout (5 Cols) -->
+          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
+            <div class="flex justify-between items-start border-b border-slate-100 pb-4">
+              <div>
+                <h3 class="text-xl font-bold font-editorial text-slate-900" id="detailLeaderName">R. Chen</h3>
+                <p class="text-xs text-slate-500 font-medium" id="detailLeaderTitle">Director, glo Markets • Quality Growth</p>
+              </div>
+              <div class="text-right">
+                <span class="text-3xl font-black text-slate-900" id="detailLeaderLIR">63</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase">role demand: 77 • -14 gap</span>
+              </div>
+            </div>
+
+            <!-- Radar Chart Container -->
+            <div class="relative h-64 w-full flex items-center justify-center">
+              <canvas id="leaderRadarChart"></canvas>
+            </div>
+
+            <!-- Dimension Bars -->
+            <div class="space-y-2 text-xs pt-2">
+              <div>
+                <div class="flex justify-between font-medium text-slate-700 mb-1">
+                  <span>Strategic conceptualisation</span>
+                  <span>79 / 82</span>
+                </div>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-navy-900 h-full" style="width: 79%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between font-medium text-slate-700 mb-1">
+                  <span>Cognitive flexibility</span>
+                  <span>70 / 85</span>
+                </div>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-navy-900 h-full" style="width: 70%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between font-medium text-slate-700 mb-1">
+                  <span>Ambiguity tolerance</span>
+                  <span>62 / 80</span>
+                </div>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-red-500 h-full" style="width: 62%"></div></div>
+              </div>
+            </div>
+
+            <!-- Diagnostic Insight Note -->
+            <div class="p-3.5 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs text-amber-950 leading-relaxed font-medium">
+              <strong>LIR read-out:</strong> Structural mismatch. Profile is more than 10 points below role demand on <em>Cognitive flexibility</em> and <em>Ambiguity tolerance</em>. Recommend redeployment to an operational block where profile is an asset.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 3: ROLE DEMAND • WHAT EACH BLOCK ACTUALLY REQUIRES                   -->
+      <!-- ========================================================================= -->
+      <div id="view-roleDemand" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Role demand • what each block actually requires</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">The 7-dimension role demand profile for each Strategic Navigator building block - this is what we hire and develop against, not legacy job descriptions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">QUALITY GROWTH</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Inspiring New Category Innovations & Brands</h3>
+            <p class="text-xs text-slate-500">Build Vuse, glo, Velo into category defining consumer brands. Lead innovation pipeline.</p>
+            <div class="flex justify-between text-xs font-bold pt-2 border-t border-slate-100">
+              <span>Cohort mean: 62</span>
+              <span>Role demand: 77</span>
+              <span class="text-red-600">Gap: -15</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">QUALITY GROWTH</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Managed Combustibles Transition</h3>
+            <p class="text-xs text-slate-500">Manage the structurally declining combustibles portfolio while funding the transition.</p>
+            <div class="flex justify-between text-xs font-bold pt-2 border-t border-slate-100">
+              <span>Cohort mean: 78</span>
+              <span>Role demand: 69</span>
+              <span class="text-emerald-600">Gap: +9</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">QUALITY GROWTH</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Beyond Nicotine Foundations</h3>
+            <p class="text-xs text-slate-500">Build new categories outside nicotine. Highest ambiguity, longest payback, most speculative.</p>
+            <div class="flex justify-between text-xs font-bold pt-2 border-t border-slate-100">
+              <span>Cohort mean: 48</span>
+              <span>Role demand: 80</span>
+              <span class="text-red-600">Gap: -32</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">SUSTAINABLE FUTURE</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Tobacco Harm Reduction Acceptance</h3>
+            <p class="text-xs text-slate-500">Establish THR as scientifically and regulatorily accepted across key sovereign markets.</p>
+            <div class="flex justify-between text-xs font-bold pt-2 border-t border-slate-100">
+              <span>Cohort mean: 71</span>
+              <span>Role demand: 76</span>
+              <span class="text-amber-600">Gap: -5</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">SUSTAINABLE FUTURE</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Shaping the Landscape</h3>
+            <p class="text-xs text-slate-500">Influence the regulatory, fiscal and policy environment in favor of harm reduction.</p>
+            <div class="flex justify-between text-xs font-bold pt-2 border-t border-slate-100">
+              <span>Cohort mean: 74</span>
+              <span>Role demand: 77</span>
+              <span class="text-emerald-600">Gap: -3</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">DYNAMIC BUSINESS</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Operational Excellence</h3>
+            <p class="text-xs text-slate-500">Run the global manufacturing, supply and commercial machine at industry-leading efficiency.</p>
+            <div class="flex justify-between text-xs font-bold pt-2 border-t border-slate-100">
+              <span>Cohort mean: 81</span>
+              <span>Role demand: 68</span>
+              <span class="text-emerald-600">Gap: +13</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 4: SCENARIO SIMULATOR • MOVE A LEADER, SEE LIR CHANGE                -->
+      <!-- ========================================================================= -->
+      <div id="view-scenarios" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Scenario • move a leader, see the LIR change</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">Drop any leader into any block. LIR is recomputed against the destination role demand profile. This is the "fit right" conversation made quantitative.</p>
+        </div>
+
+        <!-- Scenario Dark Simulation Box -->
+        <div class="bg-navy-950 text-white rounded-2xl p-6 shadow-md space-y-6">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-amber-500">Build a scenario</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Select Leader</label>
+              <select id="scenarioLeaderSelect" onchange="updateScenario()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-amber-500">
+                <option value="chen">R. Chen — Inspiring New Category Innovations & Brands</option>
+                <option value="bianchi">D. Bianchi — Managed Combustibles Transition</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Move to which block?</label>
+              <select id="scenarioBlockSelect" onchange="updateScenario()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-amber-500">
+                <option value="beyond">Quality Growth - Beyond Nicotine Foundations</option>
+                <option value="combustibles">Quality Growth - Managed Combustibles Transition</option>
+                <option value="ops">Dynamic Business - Operational Excellence</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800">
+              <span class="text-[10px] font-bold uppercase text-slate-400">Current LIR • Current Role</span>
+              <div class="text-4xl font-black text-white mt-1" id="scenCurrentLIR">63</div>
+              <span class="text-xs text-slate-400 mt-1 block">Inspiring New Category Innovations</span>
+            </div>
+
+            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800 relative">
+              <span class="text-[10px] font-bold uppercase text-amber-400">Projected LIR • Destination Role</span>
+              <div class="text-4xl font-black text-amber-400 mt-1" id="scenProjectedLIR">58</div>
+              <span class="text-xs text-slate-300 mt-1 block" id="scenProjectedBlockName">Beyond Nicotine Foundations</span>
+              <span class="absolute right-4 top-4 text-xs font-bold text-red-400" id="scenDelta">-5 pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimensional Comparison & Readout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-4">
+            <h3 class="text-base font-bold font-editorial text-slate-900">Dimensional comparison • why the LIR changes</h3>
+            <p class="text-xs text-slate-500">How the leader's profile maps to current role demand vs. destination role demand</p>
+            <div class="relative h-64 w-full flex items-center justify-center">
+              <canvas id="scenarioRadarChart"></canvas>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-4">
+            <h3 class="text-base font-bold font-editorial text-slate-900">Read-out</h3>
+            <p class="text-xs text-slate-500 font-medium">What the LIR change means in business language</p>
+            
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-2">
+              <p>Moving <strong id="scenReadoutName">R. Chen</strong> into <strong id="scenReadoutDest">Beyond Nicotine Foundations</strong> reduces LIR by <span class="font-bold text-red-600">-5 points</span>.</p>
+              <p>The destination demands a different profile mix. Consider only if the strategic case for filling that block dominates the capability loss — and pair with deliberate development on the weakest dimensions.</p>
+            </div>
+
+            <div class="pt-2">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">Dimension-by-Dimension Delta</span>
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between font-medium"><span>Strategic conceptualisation</span><span class="font-bold">79 (+0)</span></div>
+                <div class="flex justify-between font-medium"><span>Cognitive flexibility</span><span class="font-bold text-amber-600">70 (-3)</span></div>
+                <div class="flex justify-between font-medium"><span>Ambiguity tolerance</span><span class="font-bold text-red-600">62 (-10)</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 5: 2035 PLAN • CAPABILITY TRAJECTORY BY BUILDING BLOCK               -->
+      <!-- ========================================================================= -->
+      <div id="view-plan2035" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">2035 Plan • capability trajectory by building block</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">Where the capability sits today, where the 2035 plan needs it to be, and the leadership gap that has to close in between.</p>
+        </div>
+
+        <!-- Capability Trajectory Table with Connected Badges -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-6">
+          <div class="flex justify-between items-center border-b border-slate-100 pb-3 text-xs font-bold text-slate-400 uppercase tracking-wider">
+            <span class="w-1/3">Building Block</span>
+            <span>2026 (Today)</span>
+            <span>2028</span>
+            <span>2031</span>
+            <span>2033</span>
+            <span>2035 Target</span>
+          </div>
+
+          <div class="space-y-6 text-xs">
+            
+            <!-- Row 1 -->
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="w-1/3">
+                <h4 class="font-bold text-slate-900">Inspiring New Category Innovations & Brands</h4>
+                <p class="text-[11px] text-slate-400">Quality Growth</p>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">62</span>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">68</span>
+              <span class="w-9 h-9 rounded-full bg-amber-600 text-white font-black flex items-center justify-center text-xs">75</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">80</span>
+              <span class="w-9 h-9 rounded-full bg-navy-950 text-white font-black flex items-center justify-center text-xs">85</span>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="w-1/3">
+                <h4 class="font-bold text-slate-900">Managed Combustibles Transition</h4>
+                <p class="text-[11px] text-slate-400">Quality Growth</p>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">78</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">78</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">76</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">74</span>
+              <span class="w-9 h-9 rounded-full bg-navy-950 text-white font-black flex items-center justify-center text-xs">72</span>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="w-1/3">
+                <h4 class="font-bold text-slate-900">Beyond Nicotine Foundations</h4>
+                <p class="text-[11px] text-slate-400">Quality Growth</p>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">48</span>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">58</span>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">68</span>
+              <span class="w-9 h-9 rounded-full bg-amber-600 text-white font-black flex items-center justify-center text-xs">75</span>
+              <span class="w-9 h-9 rounded-full bg-navy-950 text-white font-black flex items-center justify-center text-xs">82</span>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="w-1/3">
+                <h4 class="font-bold text-slate-900">Leading in Sustainability & Integrity</h4>
+                <p class="text-[11px] text-slate-400">Sustainable Future</p>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">58</span>
+              <span class="w-9 h-9 rounded-full bg-red-800 text-white font-black flex items-center justify-center text-xs">65</span>
+              <span class="w-9 h-9 rounded-full bg-amber-600 text-white font-black flex items-center justify-center text-xs">72</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">76</span>
+              <span class="w-9 h-9 rounded-full bg-navy-950 text-white font-black flex items-center justify-center text-xs">80</span>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="flex items-center justify-between">
+              <div class="w-1/3">
+                <h4 class="font-bold text-slate-900">Operational Excellence</h4>
+                <p class="text-[11px] text-slate-400">Dynamic Business</p>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">81</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">80</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">78</span>
+              <span class="w-9 h-9 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-xs">77</span>
+              <span class="w-9 h-9 rounded-full bg-navy-950 text-white font-black flex items-center justify-center text-xs">76</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Lower Explanatory Panels -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-2">
+            <h3 class="text-sm font-bold font-editorial text-slate-900">The three blocks that decide the 2035 plan</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Where leadership capability lags the curve required for the Smokeless majority by 2035. Beyond Nicotine and Innovations require immediate external hiring and targeted rotation.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-2">
+            <h3 class="text-sm font-bold font-editorial text-slate-900">What this implies</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              The Operational Excellence and Capital Effectiveness blocks already deliver. Combustibles Transition delivers because the cohort knows that work.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </main>
 
-    <!-- Interactive Script -->
-    <script>
-      function setMode(mode) {
-        const btnSearch = document.getElementById('modeSearch');
-        const btnAdvisory = document.getElementById('modeAdvisory');
-        const talentTitle = document.getElementById('talentSectionTitle');
+    <!-- Bottom Context Bar (Matching Screenshots) -->
+    <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div class="flex items-center space-x-2">
+          <span class="h-2 w-2 rounded-full bg-amber-500 inline-block"></span>
+          <span class="text-slate-300 font-medium"><strong>LIR is composed.</strong> Leader Read (CPP • 7 dimensions) × Org Read (7×7 context) ➔ mapped to role demand for the building block.</span>
+        </div>
+        <div class="text-[11px] text-slate-400">
+          Cognadev • Henharen Reid live preview • v0.2 • For ExCo discussion
+        </div>
+      </div>
+    </footer>
 
-        if (mode === 'search') {
-          btnSearch.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm bg-white text-slate-900 transition';
-          btnAdvisory.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
-          talentTitle.innerText = 'Candidate Shortlist';
-        } else {
-          btnAdvisory.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm bg-white text-slate-900 transition';
-          btnSearch.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
-          talentTitle.innerText = 'Internal Succession Bench';
-        }
+    <!-- Interactive Navigation and Radar Chart Logic -->
+    <script>
+      let leaderRadar = null;
+      let scenarioRadar = null;
+
+      function switchTab(tabId) {
+        const tabs = ['portfolio', 'leaders', 'roleDemand', 'scenarios', 'plan2035'];
+        tabs.forEach(t => {
+          document.getElementById('view-' + t).classList.add('hidden');
+          const btn = document.getElementById('tab-' + t);
+          btn.className = 'px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition';
+        });
+
+        document.getElementById('view-' + tabId).classList.remove('hidden');
+        document.getElementById('tab-' + tabId).className = 'px-3 py-1.5 border-b-2 border-white text-white transition';
+
+        if (tabId === 'leaders') initLeaderRadar();
+        if (tabId === 'scenarios') initScenarioRadar();
       }
 
-      function selectCandidate(index) {
-        // Active selection styling hook
-        const list = document.getElementById('candidateList').children;
-        for (let i = 0; i < list.length; i++) {
-          if (i === index) {
-            list[i].className = 'p-3.5 rounded-xl border border-blue-600 bg-blue-50/40 cursor-pointer transition';
-          } else {
-            list[i].className = 'p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition';
+      function initLeaderRadar(leaderData = [79, 70, 62, 74, 75, 82, 78], demandData = [82, 85, 80, 78, 75, 68, 72]) {
+        const ctx = document.getElementById('leaderRadarChart');
+        if (!ctx) return;
+        if (leaderRadar) leaderRadar.destroy();
+
+        leaderRadar = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['Strategic conceptualisation', 'Cognitive flexibility', 'Ambiguity tolerance', 'Learning velocity', 'Integrative judgement', 'Operational decisiveness', 'Abstract reasoning'],
+            datasets: [
+              {
+                label: 'Leader profile',
+                data: leaderData,
+                backgroundColor: 'rgba(15, 23, 42, 0.25)',
+                borderColor: '#0f172a',
+                borderWidth: 2,
+                pointRadius: 3
+              },
+              {
+                label: 'Role demand',
+                data: demandData,
+                backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                borderColor: '#d97706',
+                borderWidth: 2,
+                borderDash: [4, 4],
+                pointRadius: 3
+              }
+            ]
+          },
+          options: {
+            scales: {
+              r: {
+                min: 40,
+                max: 100,
+                ticks: { display: false },
+                pointLabels: { font: { size: 9 } }
+              }
+            },
+            plugins: {
+              legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+            },
+            responsive: true,
+            maintainAspectRatio: false
           }
+        });
+      }
+
+      function initScenarioRadar() {
+        const ctx = document.getElementById('scenarioRadarChart');
+        if (!ctx) return;
+        if (scenarioRadar) scenarioRadar.destroy();
+
+        scenarioRadar = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['Strategic conceptualisation', 'Cognitive flexibility', 'Ambiguity tolerance', 'Learning velocity', 'Integrative judgement', 'Operational decisiveness', 'Abstract reasoning'],
+            datasets: [
+              {
+                label: 'Leader profile',
+                data: [79, 70, 62, 74, 75, 82, 78],
+                backgroundColor: 'rgba(15, 23, 42, 0.2)',
+                borderColor: '#0f172a',
+                borderWidth: 2
+              },
+              {
+                label: 'Current role demand',
+                data: [82, 85, 80, 78, 75, 68, 72],
+                borderColor: '#15803d',
+                borderDash: [3, 3],
+                borderWidth: 1.5,
+                fill: false
+              },
+              {
+                label: 'Destination role demand',
+                data: [85, 88, 90, 82, 78, 65, 80],
+                borderColor: '#d97706',
+                borderDash: [3, 3],
+                borderWidth: 2,
+                fill: false
+              }
+            ]
+          },
+          options: {
+            scales: {
+              r: {
+                min: 40,
+                max: 100,
+                ticks: { display: false },
+                pointLabels: { font: { size: 9 } }
+              }
+            },
+            plugins: {
+              legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+          }
+        });
+      }
+
+      function selectLeader(name, lir, gap, block, title, leaderScores, demandScores) {
+        document.getElementById('detailLeaderName').innerText = name;
+        document.getElementById('detailLeaderTitle').innerText = title + ' • ' + block;
+        document.getElementById('detailLeaderLIR').innerText = lir;
+        initLeaderRadar(leaderScores, demandScores);
+      }
+
+      function updateScenario() {
+        const leader = document.getElementById('scenarioLeaderSelect').value;
+        const block = document.getElementById('scenarioBlockSelect').value;
+        
+        if (block === 'beyond') {
+          document.getElementById('scenProjectedLIR').innerText = '58';
+          document.getElementById('scenProjectedBlockName').innerText = 'Beyond Nicotine Foundations';
+          document.getElementById('scenDelta').innerText = '-5 pts';
+          document.getElementById('scenDelta').className = 'absolute right-4 top-4 text-xs font-bold text-red-400';
+        } else if (block === 'ops') {
+          document.getElementById('scenProjectedLIR').innerText = '79';
+          document.getElementById('scenProjectedBlockName').innerText = 'Operational Excellence';
+          document.getElementById('scenDelta').innerText = '+16 pts';
+          document.getElementById('scenDelta').className = 'absolute right-4 top-4 text-xs font-bold text-emerald-400';
         }
       }
     </script>
