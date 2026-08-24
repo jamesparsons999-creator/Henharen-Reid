@@ -4,29 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Henharen Reid | Leadership Intelligence</title>
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="./index-bcup7v5i.css" />
-    <link rel="stylesheet" href="./assets/index-bcup7v5i.css" />
-
-    <!-- TanStack Router Hydration Mock & Dynamic Chunk Resolver -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/index-bcup7v5i.css" />
     <script>
-      window.__TSR__ = {
-        matches: [],
-        state: { status: "idle" }
-      };
-      window.__TSR_DEHYDRATED__ = {};
-      window.__TSR_ROUTER_DATA__ = {};
+      window.__TSR__ = window.__TSR__ || { matches: [], state: { status: "idle" } };
+      window.__TSR_DEHYDRATED__ = window.__TSR_DEHYDRATED__ || {};
     </script>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="__root"></div>
     <div id="app"></div>
+    <div id="__root"></div>
     <div id="root"></div>
 
-    <!-- Preload vendor and execute application bundle -->
-    <script type="module">
-      import "./index-cvvzbfe.js";
-      import "./index-ckczwvpp.js";
-    </script>
+    <!-- Only load the main entry bundle; it imports secondary chunks automatically -->
+    <script type="module" src="/index-ckczwvpp.js"></script>
   </body>
 </html>
