@@ -6,12 +6,33 @@
     <title>Henharen Reid | Leadership Intelligence</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/index-bcup7v5i.css" />
-    
-    <!-- TanStack Router hydration bootstrap -->
+
+    <!-- TanStack Router Full Root Match Bootstrap -->
     <script>
       window.__TSR__ = {
-        matches: [],
-        manifest: { routes: {} },
+        matches: [
+          {
+            id: "__root__",
+            routeId: "__root__",
+            pathname: "/",
+            params: {},
+            status: "success",
+            globalNotFound: false
+          }
+        ],
+        manifest: {
+          routes: {
+            __root__: {
+              id: "__root__",
+              preloads: []
+            },
+            "/": {
+              id: "/",
+              parentId: "__root__",
+              preloads: []
+            }
+          }
+        },
         state: {
           status: "idle",
           location: {
@@ -19,14 +40,23 @@
             search: {},
             hash: "",
             href: "/"
-          }
+          },
+          matches: [
+            {
+              id: "__root__",
+              routeId: "__root__",
+              pathname: "/",
+              params: {},
+              status: "success"
+            }
+          ]
         }
       };
-      window.__TSR_DEHYDRATED__ = {
-        manifest: { routes: {} },
-        matches: []
+      window.__TSR_DEHYDRATED__ = window.__TSR__;
+      window.__TSR_ROUTER_DATA__ = {
+        loaderData: {},
+        matches: window.__TSR__.matches
       };
-      window.__TSR_ROUTER_DATA__ = {};
       window.__TSR_CONTEXT__ = {};
     </script>
   </head>
