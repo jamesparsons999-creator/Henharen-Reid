@@ -6,20 +6,64 @@
     <title>Henharen Reid | Leadership Intelligence</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/index-bcup7v5i.css" />
+
+    <!-- TanStack Router Full $_TSR Payload -->
     <script>
-      window.__TSR__ = {
-        matches: [],
-        manifest: { routes: {} },
-        state: {
-          status: "idle",
-          location: { pathname: "/", search: {}, hash: "", href: "/" }
+      window.$_TSR = {
+        initialized: false,
+        buffer: [],
+        router: {
+          matches: [
+            {
+              id: "__root__",
+              routeId: "__root__",
+              pathname: "/",
+              params: {},
+              status: "success",
+              globalNotFound: false,
+              i: "__root__",
+              t: "__root__"
+            },
+            {
+              id: "/",
+              routeId: "/",
+              pathname: "/",
+              params: {},
+              status: "success",
+              globalNotFound: false,
+              i: "/",
+              t: "/"
+            }
+          ],
+          lastMatchId: "__root__",
+          state: {
+            status: "idle",
+            location: {
+              pathname: "/",
+              search: {},
+              hash: "",
+              href: "/"
+            },
+            matches: [
+              {
+                id: "__root__",
+                routeId: "__root__",
+                pathname: "/",
+                params: {},
+                status: "success"
+              }
+            ]
+          }
         }
       };
-      window.__TSR_DEHYDRATED__ = { manifest: { routes: {} }, matches: [] };
-      window.__TSR_ROUTER_DATA__ = {};
+      window.__TSR__ = window.$_TSR;
     </script>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
+    <div id="app"></div>
+    <div id="__root"></div>
+    <div id="root"></div>
+
     <script type="module" src="/index-ckczwvpp.js"></script>
   </body>
 </html>
