@@ -3,70 +3,320 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Henharen Reid | Leadership Intelligence</title>
+    <title>Henharen Reid | Leadership Intelligence & Executive Advisory</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/index-bcup7v5i.css" />
-
-    <!-- TanStack Start Runtime Hooks & Hydration Interface -->
+    
+    <!-- Tailwind CSS CDN for instant styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      window.$_TSR = {
-        initialized: true,
-        buffer: [],
-        h: function() {},
-        clean: function() {},
-        dehydrate: function() { return {}; },
-        router: {
-          matches: [
-            {
-              id: "__root__",
-              routeId: "__root__",
-              pathname: "/",
-              params: {},
-              status: "success",
-              globalNotFound: false,
-              i: "__root__",
-              t: "__root__"
-            },
-            {
-              id: "/",
-              routeId: "/",
-              pathname: "/",
-              params: {},
-              status: "success",
-              globalNotFound: false,
-              i: "/",
-              t: "/"
-            }
-          ],
-          lastMatchId: "__root__",
-          state: {
-            status: "idle",
-            location: {
-              pathname: "/",
-              search: {},
-              hash: "",
-              href: "/"
-            },
-            matches: [
-              {
-                id: "__root__",
-                routeId: "__root__",
-                pathname: "/",
-                params: {},
-                status: "success"
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                800: '#1e293b',
+                900: '#0f172a',
+                gold: '#b45309',
+                accent: '#2563eb'
               }
-            ]
+            }
           }
         }
-      };
-      window.__TSR__ = window.$_TSR;
+      }
     </script>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    </style>
   </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="app"></div>
-    <div id="__root"></div>
-    <div id="root"></div>
+  <body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="h-9 w-9 rounded-lg bg-slate-900 text-amber-500 font-bold flex items-center justify-center text-lg border border-slate-700 shadow-sm">
+            HR
+          </div>
+          <div>
+            <h1 class="text-base font-semibold text-slate-900 tracking-tight">HENHAREN REID</h1>
+            <p class="text-xs text-slate-500 font-medium">Leadership Intelligence & Board Advisory</p>
+          </div>
+        </div>
 
-    <script type="module" src="/index-CkCzWvPp.js"></script>
+        <!-- Mode Switcher -->
+        <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+          <button id="modeSearch" onclick="setMode('search')" class="px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm bg-white text-slate-900 transition">
+            Executive Search Mandate
+          </button>
+          <button id="modeAdvisory" onclick="setMode('advisory')" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+            Enterprise Succession & Advisory
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+      <!-- Top Row: Client Strategy & Market Signals -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Client Strategy Intake Card (2 Cols) -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Client Strategy Intake</h2>
+            <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-full font-medium">Mandate Active</span>
+          </div>
+          
+          <div class="space-y-2">
+            <h3 class="text-base font-semibold text-slate-900" id="mandateTitle">Chief Executive Officer — Global Industrial Transformation</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Seeking an enterprise leader capable of balancing non-linear portfolio restructuring, supply-chain modernization, and rigorous stakeholder alignment across EMEA and APAC jurisdictions.
+            </p>
+          </div>
+
+          <!-- Market Reality & News Signals Sub-panel -->
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Market Reality & News Signals</span>
+              <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200 rounded-md">Regulatory Transformation</span>
+              <span class="px-2.5 py-1 text-xs font-medium bg-blue-50 text-blue-800 border border-blue-200 rounded-md">Cost Optimization</span>
+              <span class="px-2.5 py-1 text-xs font-medium bg-purple-50 text-purple-800 border border-purple-200 rounded-md">M&A Integration</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic border-t border-slate-200/60 pt-2">
+              <strong>Live Synthesis:</strong> Headwinds driven by tightening antitrust scrutiny and high cross-border capital costs favor candidates with proven carve-out governance and operational restructuring records over pure commercial growth leaders.
+            </p>
+          </div>
+        </div>
+
+        <!-- Capability Radar / Core Focus (1 Col) -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+          <div>
+            <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3">Benchmark Weighting</h2>
+            <div class="mt-4 space-y-3 text-xs">
+              <div>
+                <div class="flex justify-between font-medium mb-1">
+                  <span>Transformation & Change</span>
+                  <span>95%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-slate-800 h-full" style="width: 95%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between font-medium mb-1">
+                  <span>Capital Allocation & M&A</span>
+                  <span>88%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-slate-800 h-full" style="width: 88%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between font-medium mb-1">
+                  <span>Organizational Network Influence</span>
+                  <span>82%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-slate-800 h-full" style="width: 82%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-center">
+            Tool-Agnostic Leadership Analytics: Hogan • SCARF • 360 ONA
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle Row: Talent Shortlist / Bench & Profile Analysis -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left: Shortlist Selection -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h2 id="talentSectionTitle" class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Candidate Shortlist</h2>
+            <span class="text-xs text-slate-500">4 Assessed</span>
+          </div>
+
+          <div class="space-y-2.5" id="candidateList">
+            <!-- Candidate 1 (Active) -->
+            <div onclick="selectCandidate(0)" class="p-3.5 rounded-xl border border-blue-600 bg-blue-50/40 cursor-pointer transition">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">David Sinclair</h4>
+                  <p class="text-xs text-slate-500">Group COO — Industrial Components Plc</p>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">94% Fit</span>
+              </div>
+            </div>
+
+            <!-- Candidate 2 -->
+            <div onclick="selectCandidate(1)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">Eleanor Vance</h4>
+                  <p class="text-xs text-slate-500">Managing Director — European Operations</p>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">89% Fit</span>
+              </div>
+            </div>
+
+            <!-- Candidate 3 -->
+            <div onclick="selectCandidate(2)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">Marcus Sterling</h4>
+                  <p class="text-xs text-slate-500">Divisional CEO — Global Logistics & Supply</p>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">85% Fit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Candidate Profile & Reward Benchmarking (2 Cols) -->
+        <div class="lg:col-span-2 space-y-6">
+          
+          <!-- Detailed Capability Metadata -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Leadership Competency & Psychometrics</h2>
+              <span class="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full">Level: Tier-1 Exec</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                <span class="text-slate-500 block mb-1">Strategic Grit & Ambiguity</span>
+                <span class="text-base font-bold text-slate-900">96th Percentile</span>
+                <p class="text-[11px] text-slate-500 mt-1">High persistence through complex institutional transformations.</p>
+              </div>
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                <span class="text-slate-500 block mb-1">SCARF Status & Autonomy</span>
+                <span class="text-base font-bold text-slate-900">Balanced / High</span>
+                <p class="text-[11px] text-slate-500 mt-1">Drives high autonomy in direct reports with strong psychological safety.</p>
+              </div>
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                <span class="text-slate-500 block mb-1">ONA Network Centrality</span>
+                <span class="text-base font-bold text-slate-900">Top 5% Bridge</span>
+                <p class="text-[11px] text-slate-500 mt-1">Connects commercial, financial, and engineering silos rapidly.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NEW CARD: Executive Reward & Comp Benchmarking -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div class="flex items-center space-x-2">
+                <h2 class="text-sm font-semibold text-slate-900 uppercase tracking-wider">Executive Reward & Comp Benchmarking</h2>
+                <span class="text-[10px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded border border-blue-200">MARKET ALIGNED</span>
+              </div>
+              <span class="text-xs text-slate-500 font-medium">FTSE 250 / European Peer Group</span>
+            </div>
+
+            <!-- Percentile Peer Market Bands -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="text-xs font-semibold text-slate-700">Total Direct Compensation (TDC) Range</span>
+                <span class="text-xs text-slate-500">Median: <strong>$2.45M</strong></span>
+              </div>
+
+              <!-- Bar Visual -->
+              <div class="relative w-full bg-slate-100 h-5 rounded-lg overflow-hidden flex text-[10px] font-bold text-slate-600">
+                <div class="w-1/4 bg-slate-200 flex items-center justify-center border-r border-white">P25 ($1.8M)</div>
+                <div class="w-1/4 bg-blue-100 text-blue-900 flex items-center justify-center border-r border-white">P50 ($2.45M)</div>
+                <div class="w-1/4 bg-amber-100 text-amber-900 flex items-center justify-center border-r border-white">P75 ($3.2M)</div>
+                <div class="w-1/4 bg-slate-300 flex items-center justify-center">P90 ($4.1M)</div>
+              </div>
+            </div>
+
+            <!-- Current Base vs Target Expectation Metrics -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span class="text-[11px] text-slate-500 block uppercase font-medium">Current Base</span>
+                  <span class="text-base font-bold text-slate-900">$850,000</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[11px] text-slate-500 block uppercase font-medium">Target Expectation</span>
+                  <span class="text-base font-bold text-slate-900">$920,000</span>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span class="text-[11px] text-slate-500 block uppercase font-medium">Market Delta</span>
+                  <span class="text-sm font-bold text-emerald-600">+8% vs. Industry Median</span>
+                </div>
+                <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-bold">Within Budget</span>
+              </div>
+            </div>
+
+            <!-- Package Structure Split -->
+            <div>
+              <span class="text-xs font-semibold text-slate-700 block mb-2">Package Composition Split</span>
+              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
+                <div class="bg-slate-800" style="width: 45%" title="Base 45%"></div>
+                <div class="bg-blue-600" style="width: 25%" title="STIP 25%"></div>
+                <div class="bg-amber-500" style="width: 30%" title="LTIP 30%"></div>
+              </div>
+              <div class="flex justify-between text-xs text-slate-600 mt-2 font-medium">
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> Base (45%)</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span> STIP Bonus (25%)</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> LTIP Equity (30%)</span>
+              </div>
+            </div>
+
+            <!-- AI Synthesis Note -->
+            <div class="p-3 bg-amber-50/70 border border-amber-200/80 rounded-xl flex items-start gap-2.5">
+              <span class="text-amber-700 font-bold text-xs mt-0.5">⚡ Note:</span>
+              <p class="text-xs text-amber-900 leading-relaxed font-medium">
+                Candidate equity cliff ends Q4; structured sign-on grant recommended to bridge gap.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Interactive Script -->
+    <script>
+      function setMode(mode) {
+        const btnSearch = document.getElementById('modeSearch');
+        const btnAdvisory = document.getElementById('modeAdvisory');
+        const talentTitle = document.getElementById('talentSectionTitle');
+
+        if (mode === 'search') {
+          btnSearch.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm bg-white text-slate-900 transition';
+          btnAdvisory.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
+          talentTitle.innerText = 'Candidate Shortlist';
+        } else {
+          btnAdvisory.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm bg-white text-slate-900 transition';
+          btnSearch.className = 'px-4 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
+          talentTitle.innerText = 'Internal Succession Bench';
+        }
+      }
+
+      function selectCandidate(index) {
+        // Active selection styling hook
+        const list = document.getElementById('candidateList').children;
+        for (let i = 0; i < list.length; i++) {
+          if (i === index) {
+            list[i].className = 'p-3.5 rounded-xl border border-blue-600 bg-blue-50/40 cursor-pointer transition';
+          } else {
+            list[i].className = 'p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition';
+          }
+        }
+      }
+    </script>
   </body>
 </html>
