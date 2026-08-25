@@ -61,13 +61,11 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between py-2.5 md:py-0 md:h-14 gap-3">
         <div class="flex items-center space-x-6">
           <div class="flex items-center space-x-2.5">
-            <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
-              HR
-            </div>
-            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid • Automotive Enterprise Intelligence</span>
+            <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">HR</div>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid • Enterprise Intelligence</span>
           </div>
 
-          <!-- Top Mode Switcher: BUILD (Left) vs BUY (Right) -->
+          <!-- Top Mode Switcher -->
           <div class="flex items-center bg-navy-900 p-1 rounded-xl border border-slate-700 text-xs">
             <button id="btnModeBuild" onclick="setAppMode('build')" class="px-3.5 py-1 font-bold rounded-lg bg-white text-navy-950 shadow-sm transition">
               BUILD • Succession & Bench
@@ -90,189 +88,51 @@
       </div>
     </header>
 
-    <!-- Main Dynamic Application Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
 
       <!-- ========================================================================= -->
-      <!-- TAB 1: PORTFOLIO VIEW (BUILD MODE)                                        -->
+      <!-- BUILD VIEW 1: PORTFOLIO                                                   -->
       <!-- ========================================================================= -->
       <div id="view-portfolio" class="space-y-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
+        <div class="flex justify-between items-end border-b border-slate-200/80 pb-5">
           <div>
             <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leadership Impact Readiness • Group view</h1>
-            <p class="text-xs text-slate-500 mt-1 font-medium">Enterprise transformation capability vs. role demand • Multi-source tool-agnostic ingestion</p>
-          </div>
-          <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold" id="pillarFilterButtons">
-            <button onclick="filterPillar('all')" id="btn-pillar-all" class="px-3 py-1 bg-navy-900 text-white rounded transition">All pillars</button>
-            <button onclick="filterPillar('propulsion')" id="btn-pillar-propulsion" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded transition">Electrified Propulsion</button>
-            <button onclick="filterPillar('software')" id="btn-pillar-software" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded transition">Software & Autonomous</button>
-            <button onclick="filterPillar('operations')" id="btn-pillar-operations" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded transition">Next-Gen Operations</button>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Enterprise transformation capability vs. role demand</p>
           </div>
         </div>
-
-        <!-- 5 Top Stat Boxes -->
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3.5">
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Group LIR (Mean)</span>
-            <div class="flex items-baseline gap-1 mt-1">
-              <span class="text-3xl font-black text-slate-900" id="statMeanLir">68</span>
-              <span class="text-xs text-slate-400">/100</span>
-            </div>
-            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ +5 vs. baseline Q1 2026</span>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm border-t-2 border-t-amber-500">
-            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Leaders Aligned to Role</span>
-            <div class="mt-1">
-              <span class="text-3xl font-black text-slate-900" id="statAligned">24<span class="text-xl font-normal">%</span></span>
-            </div>
-            <span class="text-[11px] font-bold text-amber-600 mt-1 block">➔ target 75% for 2035 roadmap</span>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Capability-at-Risk Blocks</span>
-            <div class="mt-1">
-              <span class="text-3xl font-black text-slate-900" id="statRiskBlocks">3<span class="text-lg font-normal text-slate-400">/9</span></span>
-            </div>
-            <span class="text-[11px] font-bold text-red-600 mt-1 block">▼ in current selection</span>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Successor Coverage</span>
-            <div class="mt-1">
-              <span class="text-3xl font-black text-slate-900" id="statCoverage">2.3<span class="text-xl font-normal text-slate-400">×</span></span>
-            </div>
-            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ +0.5 top 35 critical seats</span>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm border-t-2 border-t-amber-500">
-            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Transformation Lift</span>
-            <div class="mt-1">
-              <span class="text-3xl font-black text-slate-900">£42<span class="text-lg font-normal">m</span></span>
-            </div>
-            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ unlocked via realignment</span>
-          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Group LIR</span><div class="text-3xl font-black mt-1">68<span class="text-xs text-slate-400">/100</span></div></div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-2 border-t-amber-500"><span class="text-[10px] font-bold text-slate-500 uppercase">Aligned to Role</span><div class="text-3xl font-black mt-1">24<span class="text-xl">%</span></div></div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">At-Risk Blocks</span><div class="text-3xl font-black mt-1">3<span class="text-lg text-slate-400">/9</span></div></div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Successor Coverage</span><div class="text-3xl font-black mt-1">2.3<span class="text-xl text-slate-400">×</span></div></div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-2 border-t-amber-500"><span class="text-[10px] font-bold text-slate-500 uppercase">Transformation Lift</span><div class="text-3xl font-black mt-1">£42<span class="text-lg">m</span></div></div>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
-            <div>
-              <h2 class="text-base font-bold font-editorial text-slate-900">Portfolio capability vs. role demand</h2>
-              <p class="text-xs text-slate-500 mt-0.5">Mean LIR by engineering transformation block • dark tick = target demand</p>
-            </div>
-
-            <!-- Pillar 1 -->
-            <div class="space-y-3.5 pillar-section" id="section-propulsion">
-              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Electrified Propulsion Systems</span>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Solid-State Battery & Next-Gen Cell Chemistry</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">60</span><span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 78 (-18)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-red-500 h-full" style="width: 60%;"></div><div class="bar-target-tick" style="left: 78%;"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Legacy ICE Engine Run-Out & Cash Harvest</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">82</span><span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 70 (+12)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-emerald-700 h-full" style="width: 82%;"></div><div class="bar-target-tick" style="left: 70%;"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Hydrogen Fuel Cell & Heavy Industrial Ventures</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">46</span><span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 82 (-36)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-red-500 h-full" style="width: 46%;"></div><div class="bar-target-tick" style="left: 82%;"></div></div>
-              </div>
-            </div>
-
-            <!-- Pillar 2 -->
-            <div class="space-y-3.5 pt-2 border-t border-slate-100 pillar-section" id="section-software">
-              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Software & Autonomous Systems</span>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Autonomous Drive & ADAS Platform Architecture</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">57</span><span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 80 (-23)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-red-500 h-full" style="width: 57%;"></div><div class="bar-target-tick" style="left: 80%;"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Connected Fleet & Over-The-Air Monetization</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">72</span><span class="text-[11px] text-amber-600 font-bold w-12 text-right">vs. 76 (-4)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-amber-500 h-full" style="width: 72%;"></div><div class="bar-target-tick" style="left: 76%;"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Digital Cockpit & In-Vehicle Experience</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">75</span><span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 76 (-1)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-emerald-700 h-full" style="width: 75%;"></div><div class="bar-target-tick" style="left: 76%;"></div></div>
-              </div>
-            </div>
-
-            <!-- Pillar 3 -->
-            <div class="space-y-3.5 pt-2 border-t border-slate-100 pillar-section" id="section-operations">
-              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Next-Gen Operations & Scale</span>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Gigafactory Modular Manufacturing & Automation</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">83</span><span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 70 (+13)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-emerald-700 h-full" style="width: 83%;"></div><div class="bar-target-tick" style="left: 70%;"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Critical Mineral & Battery Supply Chain Resilience</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">77</span><span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 78 (-1)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-emerald-700 h-full" style="width: 77%;"></div><div class="bar-target-tick" style="left: 78%;"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-slate-800">Capital Allocation & Joint Venture Structuring</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-slate-900">79</span><span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 78 (+1)</span></div></div>
-                <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-emerald-700 h-full" style="width: 79%;"></div><div class="bar-target-tick" style="left: 78%;"></div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5 space-y-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-              <div>
-                <h3 class="text-sm font-bold font-editorial text-slate-900">LIR distribution • senior engineering cohort</h3>
-                <p class="text-[11px] text-slate-500">320 leaders assessed • gold = target realignment band</p>
-              </div>
-              <div class="flex items-end justify-between h-28 pt-4 px-2 border-b border-slate-200">
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-2"></div><span class="text-[9px] text-slate-400">&lt;30</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-3"></div><span class="text-[9px] text-slate-400">30-39</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-6"></div><span class="text-[9px] text-slate-400">40-49</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-amber-500 rounded-t h-16"></div><span class="text-[9px] text-slate-400">50-59</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-24"></div><span class="text-[9px] text-slate-400">60-69</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-28"></div><span class="text-[9px] text-slate-400">70-79</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-12"></div><span class="text-[9px] text-slate-400">80-89</span></div>
-                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-2"></div><span class="text-[9px] text-slate-400">90+</span></div>
-              </div>
-            </div>
-
-            <!-- Build vs Buy Triggers -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-              <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
-                <h3 class="text-sm font-bold font-editorial text-slate-900">Strategic Build vs. Buy Triggers</h3>
-                <span class="text-[10px] font-bold bg-navy-950 text-amber-400 px-2 py-0.5 rounded uppercase">ExCo Engine</span>
-              </div>
-              <div class="space-y-3 text-xs">
-                <div class="p-3 bg-red-50/50 border border-red-200 rounded-xl space-y-1">
-                  <div class="flex justify-between font-bold text-slate-900"><span>Hydrogen & Heavy Ventures</span><button onclick="setAppMode('buy')" class="text-red-700 underline text-[10px]">BUY SEARCH ➔</button></div>
-                  <p class="text-[11px] text-slate-600">Deficit: -36 pts. In-house timeline &gt; 36 months. Recommendation: External Tier-1 executive search.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Portfolio Bars Placeholder -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+           <h2 class="text-base font-bold font-editorial text-slate-900 mb-4">Portfolio Overview (Summarized for Demo)</h2>
+           <p class="text-sm text-slate-600">See "Role Demand" tab for detailed capability deficits across the 9 strategic workstreams.</p>
         </div>
       </div>
 
       <!-- ========================================================================= -->
-      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE)                                    -->
+      <!-- BUILD VIEW 2: LEADERS (5-PILLAR)                                          -->
       <!-- ========================================================================= -->
       <div id="view-leaders" class="hidden space-y-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
-          <div>
-            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leaders • 5-Pillar Triangulated Diagnostics</h1>
-            <p class="text-xs text-slate-500 mt-1 font-medium">1. How They Think • 2. How They Show Up • 3. How They Connect • 4. How They Judge • 5. How They Deliver</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <input type="text" id="leaderSearch" onkeyup="filterLeaderList()" placeholder="Filter leaders..." class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs w-60 shadow-sm" />
-          </div>
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leaders • 5-Pillar Triangulated Diagnostics</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">1. Think • 2. Show Up • 3. Connect • 4. Judge • 5. Deliver</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Roster -->
           <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
-            <div class="grid grid-cols-12 items-center text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-2.5 px-2">
-              <span class="col-span-6">Leader ↕</span>
-              <span class="col-span-2 text-center">LIR ▼</span>
-              <span class="col-span-2 text-center bg-blue-50 text-blue-900 rounded py-0.5">ZF %</span>
-              <span class="col-span-2 text-right">Role Fit</span>
+            <div class="grid grid-cols-12 items-center text-xs font-bold text-slate-500 uppercase border-b border-slate-200 pb-2.5 px-2">
+              <span class="col-span-6">Leader ↕</span><span class="col-span-2 text-center">LIR ▼</span><span class="col-span-2 text-center">ZF %</span><span class="col-span-2 text-right">Role Fit</span>
             </div>
-            <div class="divide-y divide-slate-100 text-xs max-h-[600px] overflow-y-auto pr-1 custom-scroll" id="leaderRoster"></div>
+            <div class="divide-y divide-slate-100 text-xs max-h-[500px] overflow-y-auto pr-1 custom-scroll" id="leaderRoster"></div>
           </div>
 
+          <!-- Leader Detail -->
           <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
             <div class="flex justify-between items-start border-b border-slate-100 pb-3">
               <div>
@@ -288,91 +148,137 @@
               </div>
             </div>
 
+            <div class="flex items-center justify-between bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-xs">
+              <span class="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Benchmark Role Target:</span>
+              <select id="benchmarkRoleSelect" onchange="changeBenchmarkRole()" class="bg-white border border-slate-300 text-slate-900 font-bold text-xs rounded-lg px-3 py-1.5 focus:outline-none"></select>
+            </div>
+
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="p1-val">Tactical Strategy</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="p2-val">76%ile</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">3. Connect</span><span class="font-bold text-slate-900 text-[11px]" id="p3-val">Central Hub</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="p4-val">+1P/-1F/+1T/+2J</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-amber-800 text-[11px]" id="p5-val">Practitioner (Expert) [-1]</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-amber-800 text-[11px]" id="p5-val">Practitioner [-1]</span></div>
             </div>
 
-            <div class="relative h-44 w-full flex items-center justify-center">
-              <canvas id="leaderRadarChart"></canvas>
-            </div>
+            <div class="relative h-44 w-full flex items-center justify-center"><canvas id="leaderRadarChart"></canvas></div>
 
             <div class="flex items-center justify-between pt-2 border-t border-slate-100">
-              <div class="text-xs text-slate-700 font-medium truncate max-w-[70%]" id="detSynthesis">
-                <strong>Readout:</strong> Tactical Strategy, Central Hub, Judgment (+1P/-1F/+1T/+2J), Appraisal Cell B4.
-              </div>
-              <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-800 transition shrink-0">
-                Inspect Competency & Vault Audit ➔
-              </button>
+              <div class="text-xs text-slate-700 font-medium truncate max-w-[70%]" id="detSynthesis"></div>
+              <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg hover:bg-slate-800 transition">Inspect Vault ➔</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- TAB 2.5: 9-BOX GRID -->
+      <!-- ========================================================================= -->
+      <!-- BUILD VIEW 3: 9-BOX GRID                                                  -->
+      <!-- ========================================================================= -->
       <div id="view-ninebox" class="hidden space-y-6">
         <div class="border-b border-slate-200/80 pb-5">
           <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">Y-Axis: Future Potential (Think & Connect) • X-Axis: Performance & Delivery (Show Up & Deliver)</p>
         </div>
-      </div>
-
-      <!-- TAB 3: ROLE DEMAND -->
-      <div id="view-roleDemand" class="hidden space-y-6">
-        <div class="border-b border-slate-200/80 pb-5">
-          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Role demand • 5-pillar benchmark profiles</h1>
-        </div>
-      </div>
-
-      <!-- TAB 4: SCENARIOS -->
-      <div id="view-scenarios" class="hidden space-y-6">
-        <div class="border-b border-slate-200/80 pb-5">
-          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Scenario Simulator</h1>
-        </div>
-      </div>
-
-      <!-- TAB 5: 2035 PLAN -->
-      <div id="view-plan2035" class="hidden space-y-6">
-        <div class="border-b border-slate-200/80 pb-5">
-          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">2035 Plan • Technology Capability Trajectory</h1>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9 bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div class="grid grid-cols-3 gap-3 text-xs">
+              <!-- Top Row -->
+              <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-amber-900 uppercase">The Enigma / Maverick</span><div id="box-enigma" class="space-y-1 my-2"></div></div>
+              <div class="bg-blue-50/50 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-blue-900 uppercase">High-Potential Star</span><div id="box-star-growth" class="space-y-1 my-2"></div></div>
+              <div class="bg-emerald-50/60 border border-emerald-300 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-emerald-950 uppercase">Enterprise Star</span><div id="box-star-top" class="space-y-1 my-2"></div></div>
+              <!-- Middle Row -->
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-slate-800 uppercase">Inconsistent Dilemma</span><div id="box-dilemma" class="space-y-1 my-2"></div></div>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-slate-800 uppercase">Core Contributor</span><div id="box-core" class="space-y-1 my-2"></div></div>
+              <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-blue-900 uppercase">Execution Engine</span><div id="box-engine" class="space-y-1 my-2"></div></div>
+              <!-- Bottom Row -->
+              <div class="bg-red-50/50 border border-red-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-red-900 uppercase">Straining Specialist</span><div id="box-risk" class="space-y-1 my-2"></div></div>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-slate-800 uppercase">Effective Specialist</span><div id="box-specialist" class="space-y-1 my-2"></div></div>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-slate-800 uppercase">Solid Rock / Anchor</span><div id="box-rock" class="space-y-1 my-2"></div></div>
+            </div>
+          </div>
+          <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
+            <h3 class="text-sm font-bold font-editorial text-slate-900">Succession Output</h3>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between font-medium"><span class="text-emerald-800 font-bold">Top Talent:</span><span class="font-black" id="countStars">0</span></div>
+              <div class="flex justify-between font-medium"><span class="text-blue-800 font-bold">Engines:</span><span class="font-black" id="countEngines">0</span></div>
+              <div class="flex justify-between font-medium"><span class="text-amber-800 font-bold">Enigmas:</span><span class="font-black" id="countEnigmas">0</span></div>
+              <div class="flex justify-between font-medium"><span class="text-red-800 font-bold">At Risk:</span><span class="font-black" id="countRisk">0</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- ========================================================================= -->
-      <!-- MODE 2: BUY VIEW (EXECUTIVE SEARCH MANDATES LINKED TO ROLE DEMAND)        -->
+      <!-- BUILD VIEW 4: ROLE DEMAND (THE INTELLIGENCE TRIGGER)                      -->
+      <!-- ========================================================================= -->
+      <div id="view-roleDemand" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Role Demand • Internal Capability Mapping</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">Identifies deficits between 2035 structural targets and current internal bench strength.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="roleDemandCardsContainer">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- BUILD VIEW 5: SCENARIOS                                                   -->
+      <!-- ========================================================================= -->
+      <div id="view-scenarios" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Scenario Simulator • Recompute LIR</h1>
+        </div>
+        <div class="bg-navy-950 text-white rounded-2xl p-6 shadow-md space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div><label class="block text-xs font-bold text-slate-300 uppercase mb-2">Select Executive</label><select id="scenLeaderSelect" onchange="runSimulation()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3"></select></div>
+            <div><label class="block text-xs font-bold text-slate-300 uppercase mb-2">Transfer to Workstream</label><select id="scenBlockSelect" onchange="runSimulation()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3"></select></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800"><span class="text-[10px] font-bold uppercase text-slate-400">Current LIR</span><div class="text-4xl font-black text-white mt-1" id="scenCurrVal">-</div></div>
+            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800 relative"><span class="text-[10px] font-bold uppercase text-amber-400">Projected LIR</span><div class="text-4xl font-black text-amber-400 mt-1" id="scenProjVal">-</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- BUILD VIEW 6: 2035 PLAN                                                   -->
+      <!-- ========================================================================= -->
+      <div id="view-plan2035" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">2035 Plan • Technology Trajectory</h1>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- MODE 2: BUY VIEW (EXTERNAL EXECUTIVE SEARCH MANDATES)                     -->
       <!-- ========================================================================= -->
       <div id="view-buyMode" class="hidden space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
             <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">BUY • Executive Search Mandates & Shortlists</h1>
-            <p class="text-xs text-slate-500 mt-1 font-medium">Linked directly to Role Demand blocks from Build view. Evaluated via 5 external telemetry sources.</p>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Assessed via 5 External Telemetry Sources: 1. Think (CPP + Spiral), 2. Show Up (Hogan Flash), 3. Connect (AI Scan), 4. Judge (Virtues), 5. Deliver (CV/Referees).</p>
           </div>
-          
-          <!-- Mandate Selector Dropdown (Linked to 9 Workstreams) -->
-          <div class="flex items-center gap-2 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Select Critical Role Mandate:</span>
-            <select id="buyRoleSelect" onchange="changeBuyMandate()" class="bg-slate-50 border border-slate-300 text-slate-900 font-bold text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-navy-950">
-              <!-- Populated via JS -->
-            </select>
+          <div class="flex items-center gap-3">
+            <button onclick="openCustomMandateDrawer()" class="px-3 py-1.5 bg-white border border-slate-300 text-slate-700 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-50 transition">+ Create Custom Mandate</button>
+            <div class="flex items-center gap-2 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold">
+              <span class="px-3 py-1 bg-navy-950 text-amber-400 rounded">Active Target Mandate:</span>
+              <select id="buyRoleSelect" onchange="changeBuyMandate()" class="bg-transparent border-none text-slate-900 font-bold focus:outline-none cursor-pointer"></select>
+            </div>
           </div>
         </div>
 
         <!-- Rationale & Criticality Card -->
         <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-2">
           <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600" id="buyMandatePillar">Software & Autonomous Systems</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-900 border" id="buyMandateGapTag">Deficit: -23 pts (Role Demand: 80)</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600" id="buyMandatePillar">Pillar</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-900 border" id="buyMandateGapTag">Deficit</span>
           </div>
-          <h3 class="text-lg font-bold font-editorial text-slate-900" id="buyMandateTitle">Autonomous Drive & ADAS Platform Architecture</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-medium" id="buyMandateRationale">
-            <strong>Criticality Rationale:</strong> In-house technical talent capability (57) falls severely short of the 2035 ADAS platform roadmap demand (80). Immediate external retained search is triggered to secure transformational architecture leadership.
-          </p>
+          <h3 class="text-lg font-bold font-editorial text-slate-900" id="buyMandateTitle">Role Title</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium" id="buyMandateRationale">Rationale</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- External Candidates Shortlist -->
+          <!-- External Candidates Roster -->
           <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
             <div class="grid grid-cols-12 items-center text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-2.5 px-2">
               <span class="col-span-6">External Candidate ↕</span>
@@ -383,45 +289,51 @@
             <div class="divide-y divide-slate-100 text-xs max-h-[500px] overflow-y-auto pr-1 custom-scroll" id="buyCandidateRoster"></div>
           </div>
 
-          <!-- External Candidate Profile & Radar vs Role Demand -->
+          <!-- External Candidate Profile & Radar -->
           <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
             <div class="flex justify-between items-start border-b border-slate-100 pb-3">
               <div>
                 <div class="flex items-center gap-2">
-                  <h3 class="text-xl font-bold font-editorial text-slate-900" id="buyDetName">Dr. Henrik Lindqvist</h3>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-900 border" id="buyDetBadge">Tier-1 Shortlist</span>
+                  <h3 class="text-xl font-bold font-editorial text-slate-900" id="buyDetName">-</h3>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold border" id="buyDetBadge">-</span>
                 </div>
-                <p class="text-xs text-slate-500 font-medium mt-0.5" id="buyDetRole">Former VP Autonomous Software, Munich Labs</p>
+                <p class="text-xs text-slate-500 font-medium mt-0.5" id="buyDetRole">-</p>
               </div>
               <div class="text-right">
-                <span class="text-3xl font-black text-slate-900" id="buyDetScore">84</span>
-                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="buyDetDemand">Role Target: 80 • +4 Fit</span>
+                <span class="text-3xl font-black text-slate-900" id="buyDetScore">-</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="buyDetDemand">-</span>
               </div>
             </div>
 
-            <!-- 5 Pillars Grid -->
+            <!-- 5 External Pillars Grid -->
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p1">Level 4 (Parallel)</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p2">Hogan Flash (Strong)</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">3. Connect</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p3">Global AI Network</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="buy-p4">+2P / +2J</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-blue-900 text-[11px]" id="buy-p5">Expert (E)</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p1">-</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p2">-</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">3. Connect</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p3">-</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="buy-p4">-</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-blue-900 text-[11px]" id="buy-p5">-</span></div>
             </div>
 
+            <!-- Radar strictly compares Candidate vs Role Demand -->
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Candidate vs. Exact Role Demand Profile</span>
+            </div>
             <div class="relative h-44 w-full flex items-center justify-center">
               <canvas id="buyRadarChart"></canvas>
             </div>
 
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed font-medium" id="buyDetSynthesis">
-              <strong>External Telemetry Readout:</strong> High parallel processing capability with robust publication record and verified autonomous deployment track record.
-            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed font-medium" id="buyDetSynthesis"></div>
           </div>
         </div>
       </div>
 
     </main>
 
-    <!-- NATIVE SLIDE-OVER DRAWER -->
+    <!-- ========================================================================= -->
+    <!-- DRAWERS & CHATBOT                                                         -->
+    <!-- ========================================================================= -->
+
+    <!-- NATIVE SLIDE-OVER DRAWER (VAULT AUDIT) -->
     <div id="competencyDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
       <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="closeCompetencyDrawer()"></div>
       <div class="absolute inset-y-0 right-0 max-w-xl w-full bg-white shadow-2xl flex flex-col slide-drawer" id="drawerPanel">
@@ -439,7 +351,7 @@
           </div>
           <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
             <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px]">Manager Appraisal Notes</h4>
-            <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes">Practitioner (P) vs Expert (E) Target [-1 Gap].</p>
+            <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes"></p>
           </div>
           <div class="space-y-3 pt-2">
             <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">Secure Document Vault</h4>
@@ -453,68 +365,282 @@
       </div>
     </div>
 
-    <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
+    <!-- CUSTOM MANDATE OVERRIDE DRAWER (MOCK) -->
+    <div id="customMandateDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+      <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="closeCustomMandateDrawer()"></div>
+      <div class="absolute inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl flex flex-col slide-drawer" id="customDrawerPanel">
+        <div class="bg-navy-950 text-white p-6 flex justify-between items-center border-b border-navy-900">
+          <div>
+            <h3 class="text-lg font-bold font-editorial">Create Custom Mandate</h3>
+            <p class="text-xs text-amber-400 mt-0.5 font-medium">Override algorithmic role demand.</p>
+          </div>
+          <button onclick="closeCustomMandateDrawer()" class="text-slate-400 hover:text-white p-2 rounded-lg text-lg font-bold">✕</button>
+        </div>
+        <div class="flex-1 p-6 space-y-4 text-xs text-slate-800">
+          <p class="text-slate-500 mb-4">If a role is not mapped in your 2035 plan, upload the spec here. The AI will auto-calibrate a new 5-pillar external benchmark.</p>
+          <div class="space-y-1">
+            <label class="font-bold">Role Title</label>
+            <input type="text" class="w-full border border-slate-300 rounded p-2" placeholder="e.g. Chief AI Officer">
+          </div>
+          <div class="space-y-1">
+            <label class="font-bold">Upload Job Specification (PDF/Word)</label>
+            <div class="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center text-slate-400 bg-slate-50">
+               Click to browse or drag file here
+            </div>
+          </div>
+          <button class="w-full bg-navy-950 text-white py-2 rounded-lg font-bold mt-4" onclick="closeCustomMandateDrawer()">Generate AI Benchmark</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI CHATBOT -->
+    <div id="aiChatPanel" class="fixed bottom-4 right-4 z-40 bg-navy-950 text-white rounded-2xl shadow-2xl border border-slate-700 w-80 sm:w-96 flex flex-col overflow-hidden transition-all duration-300">
+      <div class="p-3.5 bg-navy-900 border-b border-slate-800 flex justify-between items-center cursor-pointer" onclick="toggleChatPanel()">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span class="font-bold text-xs uppercase tracking-wider text-amber-400">Henharen Reid AI Advisor</span>
+        </div>
+        <span id="chatToggleIcon" class="text-slate-400 text-xs font-bold">▼</span>
+      </div>
+      <div id="chatBody" class="flex flex-col h-72 hidden">
+        <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
+          <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
+            <strong>Advisory AI:</strong> Vault ingested! James Parsons CPP = Tactical Strategy, ONA = Central Hub, Judgment = +1P / -1F / +1T / +2J. Ask me anything!
+          </div>
+        </div>
+        <div class="p-2.5 bg-navy-900 border-t border-slate-800 flex gap-2">
+          <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="Ask AI..." class="flex-1 bg-navy-950 border border-slate-700 text-white text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-amber-500" />
+          <button onclick="sendAiMessage()" class="px-3 py-2 bg-amber-500 text-navy-950 font-bold rounded-lg hover:bg-amber-400 transition text-xs">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs mt-auto">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v3.8</span>
+        <span>Henharen Reid • v4.0</span>
       </div>
     </footer>
 
-    <!-- Interactive Script Engine -->
+    <!-- INTERACTIVE JAVASCRIPT ENGINE -->
     <script>
       let leaderRadar = null;
       let buyRadar = null;
       let currentAppMode = 'build';
       let activeLeaderIndex = 0;
       let activeBuyIndex = 0;
+      let chatOpen = false;
 
+      // The 9 Strategic Blocks with Target Demand vs Current Capability
       const strategicWorkstreams = [
-        { id: "ssb", name: "Solid-State Battery & Next-Gen Chemistry", pillar: "Electrified Propulsion", demand: 78, currentCap: 60, deficit: -18, rationale: "In-house cell R&D is bottlenecked by silo isolation. External search required for advanced electrochemistry scale-up leadership." },
-        { id: "ice", name: "Legacy ICE Engine Run-Out & Cash Harvest", pillar: "Electrified Propulsion", demand: 70, currentCap: 82, deficit: 12, rationale: "Fully covered by internal anchors. No external acquisition required." },
-        { id: "h2", name: "Hydrogen Fuel Cell & Heavy Industrial Ventures", pillar: "Electrified Propulsion", demand: 82, currentCap: 46, deficit: -36, rationale: "Severe capability gap (-36 pts). In-house timeline > 36 months. Priority #1 external executive search mandate." },
-        { id: "adas", name: "Autonomous Drive & ADAS Platform Architecture", pillar: "Software & Autonomous", demand: 80, currentCap: 57, deficit: -23, rationale: "In-house talent capacity falls short of 2035 ADAS platform roadmap demand. Immediate external search triggered." },
-        { id: "ota", name: "Connected Fleet & Over-The-Air Monetization", pillar: "Software & Autonomous", demand: 76, currentCap: 72, deficit: -4, rationale: "Near-aligned. Internal stretch development sufficient." },
-        { id: "ux", name: "Digital Cockpit & In-Vehicle Experience", pillar: "Software & Autonomous", demand: 76, currentCap: 75, deficit: -1, rationale: "Fully aligned with internal design leadership." },
-        { id: "giga", name: "Gigafactory Modular Manufacturing & Automation", pillar: "Next-Gen Operations", demand: 70, currentCap: 83, deficit: 13, rationale: "Strong internal plant execution engines in place." },
-        { id: "minerals", name: "Critical Mineral & Supply Resilience", pillar: "Next-Gen Operations", demand: 78, currentCap: 77, deficit: -1, rationale: "Minor gap, managed via internal rotation." },
-        { id: "jv", name: "Capital Allocation & JV Structuring", pillar: "Next-Gen Operations", demand: 78, currentCap: 79, deficit: 1, rationale: "Fully covered by global JV dealmakers." }
+        { id: "ssb", name: "Solid-State Battery & Next-Gen Chemistry", pillar: "Electrified Propulsion", demand: 78, currentCap: 60, deficit: -18, demandScores: [82, 80, 78, 76, 75], rationale: "In-house cell R&D is bottlenecked by silo isolation. External search required for advanced electrochemistry scale-up leadership." },
+        { id: "ice", name: "Legacy ICE Engine Run-Out & Cash Harvest", pillar: "Electrified Propulsion", demand: 70, currentCap: 82, deficit: 12, demandScores: [72, 68, 65, 70, 76], rationale: "Fully covered by internal anchors. No external acquisition required." },
+        { id: "h2", name: "Hydrogen Fuel Cell & Heavy Industrial Ventures", pillar: "Electrified Propulsion", demand: 82, currentCap: 46, deficit: -36, demandScores: [86, 85, 84, 82, 80], rationale: "Severe capability gap (-36 pts). In-house timeline > 36 months. Priority #1 external executive search mandate." },
+        { id: "adas", name: "Autonomous Drive & ADAS Platform Architecture", pillar: "Software & Autonomous", demand: 80, currentCap: 57, deficit: -23, demandScores: [85, 88, 80, 84, 80], rationale: "In-house talent capacity falls short of 2035 ADAS platform roadmap demand. Immediate external search triggered." },
+        { id: "ota", name: "Connected Fleet & Over-The-Air Monetization", pillar: "Software & Autonomous", demand: 76, currentCap: 72, deficit: -4, demandScores: [82, 80, 76, 78, 75], rationale: "Near-aligned. Internal stretch development sufficient." },
+        { id: "ux", name: "Digital Cockpit & In-Vehicle Experience", pillar: "Software & Autonomous", demand: 76, currentCap: 75, deficit: -1, demandScores: [80, 82, 78, 80, 78], rationale: "Fully aligned with internal design leadership." },
+        { id: "giga", name: "Gigafactory Modular Manufacturing & Automation", pillar: "Next-Gen Operations", demand: 70, currentCap: 83, deficit: 13, demandScores: [75, 70, 68, 72, 78], rationale: "Strong internal plant execution engines in place." },
+        { id: "minerals", name: "Critical Mineral & Supply Resilience", pillar: "Next-Gen Operations", demand: 78, currentCap: 77, deficit: -1, demandScores: [80, 76, 75, 78, 80], rationale: "Minor gap, managed via internal rotation." },
+        { id: "jv", name: "Capital Allocation & JV Structuring", pillar: "Next-Gen Operations", demand: 78, currentCap: 79, deficit: 1, demandScores: [80, 78, 76, 78, 82], rationale: "Fully covered by global JV dealmakers." }
       ];
 
+      // Internal Leaders (James Parsons full, others compressed for code size)
       let leadersData = [
         {
-          id: "parsons", initials: "JP", name: "James Parsons", role: "VP, FCP", pillar: "Software & Autonomous", currentBlockId: "adas",
+          id: "parsons", initials: "JP", name: "James Parsons", role: "VP, FCP", currentBlockId: "adas",
           pillarScores: [70, 76, 78, 74, 75], derailerPenalty: 0, roleDemand: 80, lir: 78, zfVal: 76, zfPct: "76th %ile",
-          cppLevel: "Tactical Strategy", cognitiveFlex: "70 / 100", thinkNotes: "Tactical strategy working environment (Potential Level 4).",
-          zfStrengths: ["Execution Focus", "Collaboration"], zfFlaw: "None detected", onaBadge: "Central Hub / Broker",
-          stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Execution Engine",
-          judgeScore: "+1P / -1F / +1T / +2J", deliverScore: "Practitioner (Target: Expert) [-1]",
-          synthesis: "Synced with Vault: CPP Tactical Strategy, active-ona Central Hub, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P.",
+          cppLevel: "Tactical Strategy", onaBadge: "Central Hub / Broker", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Execution Engine",
+          judgeScore: "+1P / -1F / +1T / +2J", deliverScore: "Practitioner [-1]",
+          synthesis: "Synced with Vault: CPP Tactical Strategy, active-ona Central Hub, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P (Target: Expert).",
           competencies: [
-            { name: "Financial Crime Detection & Prevention", score: "Practitioner (P) [Role Target: Expert (E)]" },
-            { name: "Research & Risk Identification", score: "Practitioner (P) [Role Target: Expert (E)]" },
-            { name: "Cross-Functional Working Group Leadership", score: "Competent / Developing" },
-            { name: "Audit Liaison & Control Improvements", score: "Practitioner (P)" }
+            { name: "Financial Crime Detection", score: "Practitioner (P) [Role Target: E]" },
+            { name: "Research & Risk Identification", score: "Practitioner (P) [Role Target: E]" },
+            { name: "Cross-Functional Working Group", score: "Competent / Developing" },
+            { name: "Audit Liaison & Controls", score: "Practitioner (P)" }
           ],
-          devNotes: "Current Level in appraisal tab (Cell B4) = Practitioner (P) vs Role Requirement (Cell C4) = Expert (E) [-1 Gap].",
+          devNotes: "Current Level (Cell B4) = Practitioner (P) vs Role Requirement (Cell C4) = Expert (E) [-1 Gap]. 3 competencies at target or exceeded.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        }
+        },
+        { id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Battery Chemistry", pillarScores: [96, 74, 28, 62, 72], lir: 69, zfPct: "74th %ile", cppLevel: "Pure Strategy", onaBadge: "Silo Isolated", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick", judgeScore: "-1F / +3T", deliverScore: "Competent", roleDemand: 78, synthesis: "High intellect, isolated network.", competencies:[], reports:{} },
+        { id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of OTA", pillarScores: [58, 82, 95, 78, 84], lir: 76, zfPct: "82nd %ile", cppLevel: "Parallel Processing", onaBadge: "Top 1% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star", judgeScore: "+2J / +1P", deliverScore: "Highly Effective", roleDemand: 76, synthesis: "Super-connector.", competencies:[], reports:{} },
+        { id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory", pillarScores: [66, 94, 60, 80, 93], lir: 74, zfPct: "94th %ile", cppLevel: "Tactical Strategy", onaBadge: "Operational Hub", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine", judgeScore: "+2P / +2T", deliverScore: "Transformational", roleDemand: 70, synthesis: "Plant execution engine.", competencies:[], reports:{} },
+        { id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global JV", pillarScores: [88, 86, 92, 88, 89], lir: 88, zfPct: "86th %ile", cppLevel: "Pure Strategy", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star", judgeScore: "+3J / +1P", deliverScore: "Transformational", roleDemand: 78, synthesis: "Elite dealmaker.", competencies:[], reports:{} },
+        { id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Minerals", pillarScores: [78, 84, 76, 82, 80], lir: 80, zfPct: "84th %ile", cppLevel: "Parallel Processing", onaBadge: "Connector", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star", judgeScore: "+2P / +2J", deliverScore: "Highly Effective", roleDemand: 78, synthesis: "Reliable commodity strategist.", competencies:[], reports:{} },
+        { id: "richter", initials: "TR", name: "Torsten Richter", role: "Dir, Legacy Run-Out", pillarScores: [54, 88, 45, 60, 76], lir: 63, zfPct: "88th %ile", cppLevel: "Diagnostic Acc.", onaBadge: "Core Hub", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor", judgeScore: "-2F / +1T", deliverScore: "Competent", roleDemand: 70, synthesis: "Traditional operator.", competencies:[], reports:{} },
+        { id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon", pillarScores: [90, 62, 30, 50, 60], lir: 65, zfPct: "62nd %ile", cppLevel: "Pure Strategy", onaBadge: "Silo Isolated", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma", judgeScore: "-3F / -2T", deliverScore: "Gap", roleDemand: 80, synthesis: "High cognitive score offset by severe interpersonal friction.", competencies:[], reports:{} },
+        { id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, Digital UX", pillarScores: [72, 75, 70, 72, 75], lir: 73, zfPct: "75th %ile", cppLevel: "Tactical Strategy", onaBadge: "Active Node", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor", judgeScore: "+1P / +1T", deliverScore: "Highly Effective", roleDemand: 76, synthesis: "Effective product design head.", competencies:[], reports:{} },
+        { id: "varma", initials: "SV", name: "Siddharth Varma", role: "Dir, Hydrogen Ventures", pillarScores: [52, 60, 35, 45, 50], lir: 43, zfPct: "60th %ile", cppLevel: "Diagnostic Acc.", onaBadge: "Peripheral", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist", judgeScore: "-2F / -2J", deliverScore: "Gap", roleDemand: 82, synthesis: "Significant performance gap.", competencies:[], reports:{} }
       ];
 
+      // External Candidates mapped by mandate ID
       let buyCandidatesMap = {
         "adas": [
-          { name: "Dr. Henrik Lindqvist", role: "Former VP Autonomous Software, Munich", score: 84, badge: "Tier-1 Shortlist", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [88, 85, 82, 86, 85], think: "Level 4 (Parallel)", show: "Hogan Flash (Strong)", connect: "Global AI Network", judge: "+2P / +2J", deliver: "Expert (E)", synthesis: "Extensive autonomous driving architecture experience from tier-1 European labs." },
-          { name: "Marcus von Stern", role: "Chief Architect, Silicon Valley AI Mobility", score: 79, badge: "Interviewing", badgeClass: "bg-blue-100 text-blue-900 border", scores: [90, 72, 78, 80, 82], think: "Level 5 (Strategic)", show: "Hogan Flash (Moderate)", connect: "US West Coast Hub", judge: "+1P / +1T", deliver: "Practitioner (P)", synthesis: "Elite silicon and neural network architecture background." },
-          { name: "Amara Rostova", role: "Head of ADAS Delivery, London", score: 82, badge: "Shortlisted", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [82, 88, 85, 84, 80], think: "Level 4 (Parallel)", show: "Hogan Flash (High Trust)", connect: "UK OEM Network", judge: "+2P / +1T / +1J", deliver: "Expert (E)", synthesis: "Exceptional regulatory navigation and team leadership." }
+          { name: "Dr. Henrik Lindqvist", role: "Former VP Auto Software, Munich", score: 84, badge: "Tier-1 Shortlist", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [88, 85, 82, 86, 85], think: "Level 4 (Parallel)", show: "Hogan Flash (Strong)", connect: "AI News Scan", judge: "+2P / +2J", deliver: "Expert (E)", synthesis: "Extensive autonomous driving architecture experience from tier-1 European labs." },
+          { name: "Marcus von Stern", role: "Chief Architect, SV Mobility", score: 79, badge: "Interviewing", badgeClass: "bg-blue-100 text-blue-900 border", scores: [90, 72, 78, 80, 82], think: "Level 5 (Strategic)", show: "Hogan Flash (Moderate)", connect: "LinkedIn Hub", judge: "+1P / +1T", deliver: "Practitioner (P)", synthesis: "Elite silicon architecture background, minor cultural integration risks." }
         ],
         "h2": [
-          { name: "Dr. Klaus Reinhardt", role: "Director of Hydrogen Systems, Stuttgart", score: 89, badge: "Preferred Search", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [92, 88, 85, 89, 90], think: "Level 5 (Strategic)", show: "Hogan Flash (Elite)", connect: "Global Clean Energy Network", judge: "+3P / +2J", deliver: "Expert (E)", synthesis: "World-class heavy venture governance and hydrogen fuel cell commercialisation." },
-          { name: "Sophie DuPont", role: "Head of Clean Energy Ventures, Paris", score: 81, badge: "Shortlisted", badgeClass: "bg-blue-100 text-blue-900 border", scores: [84, 82, 80, 82, 83], think: "Level 4 (Parallel)", show: "Hogan Flash (Strong)", connect: "European Industrial Hub", judge: "+2P / +1T", deliver: "Expert (E)", synthesis: "Strong multi-border negotiation and joint venture structuring." }
-        ],
-        "ssb": [
-          { name: "Dr. Aris Thorne", role: "Principal Cell Chemist, MIT Energy Initiative", score: 85, badge: "Tier-1 Shortlist", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [94, 78, 76, 80, 85], think: "Level 5 (Strategic)", show: "Hogan Flash (Technical)", connect: "Global R&D Consortia", judge: "+2P / +3T", deliver: "Expert (E)", synthesis: "Exceptional breakthrough electrochemistry background." }
+          { name: "Dr. Klaus Reinhardt", role: "Dir Hydrogen Systems, Stuttgart", score: 89, badge: "Preferred Search", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [92, 88, 85, 89, 90], think: "Level 5 (Strategic)", show: "Hogan Flash (Elite)", connect: "Global Energy Net", judge: "+3P / +2J", deliver: "Expert (E)", synthesis: "World-class heavy venture governance and commercialisation." }
         ]
       };
 
+      /* ========================================================================= */
+      /* BUILD MODE LOGIC                                                          */
+      /* ========================================================================= */
+
+      function populateBenchmarkDropdown() {
+        const sel = document.getElementById('benchmarkRoleSelect');
+        if (!sel) return;
+        sel.innerHTML = '';
+        strategicWorkstreams.forEach(b => {
+          const opt = document.createElement('option');
+          opt.value = b.id; opt.innerText = `${b.pillar} • ${b.name} (Demand: ${b.demand})`;
+          sel.appendChild(opt);
+        });
+      }
+
+      function renderLeaderRoster() {
+        const roster = document.getElementById('leaderRoster');
+        if (!roster) return;
+        roster.innerHTML = '';
+        leadersData.forEach((l, idx) => {
+          const row = document.createElement('div');
+          row.className = idx === activeLeaderIndex ? 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200' : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
+          row.onclick = () => selectLeaderData(idx);
+          row.innerHTML = `
+            <div class="col-span-6 flex items-center gap-2 overflow-hidden pr-1">
+              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${l.initials}</div>
+              <div class="overflow-hidden"><h4 class="font-bold text-slate-900 truncate">${l.name}</h4><p class="text-[10px] text-slate-400 truncate">${l.archetype}</p></div>
+            </div>
+            <span class="col-span-2 text-center font-black text-slate-900">${l.lir}</span>
+            <span class="col-span-2 text-center font-bold text-blue-900">${l.zfPct}</span>
+            <div class="col-span-2 text-right"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span></div>
+          `;
+          roster.appendChild(row);
+        });
+      }
+
+      function selectLeaderData(idx) {
+        activeLeaderIndex = idx;
+        const l = leadersData[idx];
+        document.getElementById('detName').innerText = l.name;
+        document.getElementById('detRole').innerText = l.role;
+        document.getElementById('detArchetypeBadge').innerText = l.archetype;
+        document.getElementById('detLIR').innerText = l.lir;
+        
+        let delta = l.lir - l.roleDemand;
+        document.getElementById('detDemandGap').innerText = `Demand: ${l.roleDemand} • ${delta >= 0 ? '+'+delta : delta} Gap`;
+        
+        document.getElementById('p1-val').innerText = l.cppLevel;
+        document.getElementById('p2-val').innerText = l.zfPct;
+        document.getElementById('p3-val').innerText = l.onaBadge;
+        document.getElementById('p4-val').innerText = l.judgeScore;
+        document.getElementById('p5-val').innerText = l.deliverScore;
+        document.getElementById('detSynthesis').innerHTML = `<strong>Readout:</strong> ${l.synthesis}`;
+
+        const sel = document.getElementById('benchmarkRoleSelect');
+        if(sel) sel.value = strategicWorkstreams.find(b => b.demand === l.roleDemand)?.id || strategicWorkstreams[0].id;
+        
+        renderLeaderRoster(); // update selected state
+        renderLeaderRadar(l.pillarScores, strategicWorkstreams.find(b => b.demand === l.roleDemand)?.demandScores || [80,80,80,80,80]);
+      }
+
+      function renderLeaderRadar(leaderScores, demandScores) {
+        const ctx = document.getElementById('leaderRadarChart');
+        if (!ctx) return;
+        if (leaderRadar) leaderRadar.destroy();
+        leaderRadar = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
+            datasets: [
+              { label: 'Candidate', data: leaderScores, backgroundColor: 'rgba(15, 23, 42, 0.25)', borderColor: '#0f172a', borderWidth: 2, pointRadius: 3 },
+              { label: 'Benchmark', data: demandScores, backgroundColor: 'rgba(217, 119, 6, 0.1)', borderColor: '#d97706', borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
+            ]
+          },
+          options: { scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 10, weight: 'bold' } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }, responsive: true, maintainAspectRatio: false }
+        });
+      }
+
+      function updateNineBoxGrid() {
+        const boxIds = ['box-enigma', 'box-star-growth', 'box-star-top', 'box-dilemma', 'box-core', 'box-engine', 'box-risk', 'box-specialist', 'box-rock'];
+        boxIds.forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+        
+        leadersData.forEach((l, idx) => {
+          let potScore = (l.pillarScores[0] * 0.5) + (l.pillarScores[2] * 0.5);
+          let perfScore = l.pillarScores[4];
+          let targetBox = '';
+          let potLevel = potScore >= 78 ? 'high' : (potScore >= 62 ? 'med' : 'low');
+          let perfLevel = perfScore >= 80 ? 'high' : (perfScore >= 68 ? 'med' : 'low');
+
+          if (potLevel === 'high' && perfLevel === 'high') targetBox = 'box-star-top';
+          else if (potLevel === 'high' && perfLevel === 'med') targetBox = 'box-star-growth';
+          else if (potLevel === 'high' && perfLevel === 'low') targetBox = 'box-enigma';
+          else if (potLevel === 'med' && perfLevel === 'high') targetBox = 'box-engine';
+          else if (potLevel === 'med' && perfLevel === 'med') targetBox = 'box-core';
+          else if (potLevel === 'med' && perfLevel === 'low') targetBox = 'box-dilemma';
+          else if (potLevel === 'low' && perfLevel === 'high') targetBox = 'box-rock';
+          else if (potLevel === 'low' && perfLevel === 'med') targetBox = 'box-specialist';
+          else targetBox = 'box-risk';
+
+          const boxEl = document.getElementById(targetBox);
+          if (boxEl) {
+            const pill = document.createElement('div');
+            pill.className = 'flex items-center justify-between p-1 bg-white rounded border border-slate-200 cursor-pointer hover:border-navy-950 transition';
+            pill.onclick = () => { switchTab('leaders'); selectLeaderData(idx); };
+            pill.innerHTML = `<div class="flex items-center gap-1 overflow-hidden"><span class="w-4 h-4 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[8px] shrink-0">${l.initials}</span><span class="font-bold text-[9px] text-slate-800 truncate">${l.name}</span></div><span class="text-[8px] font-black ${l.stateClass} px-1 rounded">${l.lir}</span>`;
+            boxEl.appendChild(pill);
+          }
+        });
+      }
+
+      /* ========================================================================= */
+      /* ROLE DEMAND (INTELLIGENCE TRIGGER TO BUY MODE)                            */
+      /* ========================================================================= */
+      function populateRoleDemandCards() {
+        const container = document.getElementById('roleDemandCardsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        strategicWorkstreams.forEach(b => {
+          const isAtRisk = b.deficit <= -10;
+          const card = document.createElement('div');
+          card.className = "bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between";
+          
+          let warningHTML = '';
+          if (isAtRisk) {
+            warningHTML = `
+              <div class="mt-4 p-3 bg-red-50 border border-red-200 rounded-xl space-y-2">
+                <p class="text-[10px] font-bold text-red-800 leading-tight">⚠️ Structural Deficit (${b.deficit} pts). Internal succession unlikely to meet demand.</p>
+                <button onclick="triggerExternalSearch('${b.id}')" class="w-full py-1.5 bg-navy-950 text-white text-[10px] font-bold rounded shadow-sm hover:bg-slate-800 transition">Initiate External Search (BUY) ➔</button>
+              </div>`;
+          }
+
+          card.innerHTML = `
+            <div>
+              <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">${b.pillar}</span>
+              <h3 class="text-base font-bold font-editorial text-slate-900 mt-1">${b.name}</h3>
+              <div class="flex justify-between text-xs font-bold pt-3 mt-3 border-t border-slate-100">
+                <span class="text-slate-500">Target Demand:</span><span class="text-navy-950 font-black">${b.demand}</span>
+              </div>
+              <div class="flex justify-between text-xs font-bold pt-1">
+                <span class="text-slate-500">Current Internal LIR:</span><span class="${isAtRisk ? 'text-red-600' : 'text-emerald-600'} font-black">${b.currentCap}</span>
+              </div>
+            </div>
+            ${warningHTML}
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      function triggerExternalSearch(blockId) {
+        setAppMode('buy');
+        const sel = document.getElementById('buyRoleSelect');
+        if (sel) sel.value = blockId;
+        changeBuyMandate();
+      }
+
+      /* ========================================================================= */
+      /* BUY MODE LOGIC                                                            */
+      /* ========================================================================= */
       function populateBuyDropdown() {
         const sel = document.getElementById('buyRoleSelect');
         if (!sel) return;
@@ -522,7 +648,7 @@
         strategicWorkstreams.forEach(b => {
           const opt = document.createElement('option');
           opt.value = b.id;
-          opt.innerText = `${b.pillar} • ${b.name} (Demand: ${b.demand} | Deficit: ${b.deficit})`;
+          opt.innerText = `${b.pillar} • ${b.name} (Deficit: ${b.deficit})`;
           sel.appendChild(opt);
         });
       }
@@ -535,28 +661,31 @@
 
         document.getElementById('buyMandatePillar').innerText = workstream.pillar;
         document.getElementById('buyMandateTitle').innerText = workstream.name;
-        document.getElementById('buyMandateGapTag').innerText = `Deficit: ${workstream.deficit} pts (Role Demand: ${workstream.demand})`;
+        document.getElementById('buyMandateGapTag').innerText = `Deficit: ${workstream.deficit} pts`;
         document.getElementById('buyMandateRationale').innerHTML = `<strong>Criticality Rationale:</strong> ${workstream.rationale}`;
 
         activeBuyIndex = 0;
         renderBuyCandidateRoster(workstream.id);
       }
 
-      function renderBuyCandidateRoster(workgroupId = 'adas') {
+      function renderBuyCandidateRoster(workgroupId) {
         const roster = document.getElementById('buyCandidateRoster');
         if (!roster) return;
         roster.innerHTML = '';
-        const candidates = buyCandidatesMap[workgroupId] || buyCandidatesMap['adas'];
+        const candidates = buyCandidatesMap[workgroupId] || [];
         
+        if(candidates.length === 0) {
+            roster.innerHTML = '<div class="p-4 text-center text-xs text-slate-500 font-bold">No active candidates. Generate mandate.</div>';
+            return;
+        }
+
         candidates.forEach((c, idx) => {
           const row = document.createElement('div');
-          row.className = idx === activeBuyIndex 
-            ? 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
-            : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
+          row.className = idx === activeBuyIndex ? 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200' : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
           row.onclick = () => selectBuyCandidate(workgroupId, idx);
           row.innerHTML = `
             <div class="col-span-6 flex items-center gap-2 overflow-hidden pr-1">
-              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${c.name.split(' ').pop().substring(0,2).toUpperCase()}</div>
+              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${c.name.charAt(0)}${c.name.split(' ').pop().charAt(0)}</div>
               <div class="overflow-hidden"><h4 class="font-bold text-slate-900 truncate">${c.name}</h4><p class="text-[10px] text-slate-400 truncate">${c.role}</p></div>
             </div>
             <span class="col-span-2 text-center font-black text-slate-900">${c.score}</span>
@@ -570,16 +699,19 @@
 
       function selectBuyCandidate(workgroupId, idx) {
         activeBuyIndex = idx;
-        const candidates = buyCandidatesMap[workgroupId] || buyCandidatesMap['adas'];
+        const candidates = buyCandidatesMap[workgroupId];
+        if(!candidates || candidates.length === 0) return;
         const c = candidates[idx];
         const workstream = strategicWorkstreams.find(b => b.id === workgroupId);
 
         document.getElementById('buyDetName').innerText = c.name;
         document.getElementById('buyDetBadge').innerText = c.badge;
-        document.getElementById('buyDetBadgeclassName'] = `px-2 py-0.5 rounded text-[10px] font-bold border ${c.badgeClass}`;
+        document.getElementById('buyDetBadge').className = `px-2 py-0.5 rounded text-[10px] font-bold border ${c.badgeClass}`;
         document.getElementById('buyDetRole').innerText = c.role;
         document.getElementById('buyDetScore').innerText = c.score;
-        document.getElementById('buyDetDemand').innerText = `Role Target: ${workstream.demand} • ${c.score - workstream.demand >= 0 ? '+' + (c.score - workstream.demand) : (c.score - workstream.demand)} Fit`;
+        
+        let delta = c.score - workstream.demand;
+        document.getElementById('buyDetDemand').innerText = `Role Target: ${workstream.demand} • ${delta >= 0 ? '+'+delta : delta} Fit`;
 
         document.getElementById('buy-p1').innerText = c.think;
         document.getElementById('buy-p2').innerText = c.show;
@@ -587,6 +719,12 @@
         document.getElementById('buy-p4').innerText = c.judge;
         document.getElementById('buy-p5').innerText = c.deliver;
         document.getElementById('buyDetSynthesis').innerHTML = `<strong>External Telemetry Readout:</strong> ${c.synthesis}`;
+
+        // Re-render roster to update selected visual state
+        const rosterRows = document.getElementById('buyCandidateRoster').children;
+        Array.from(rosterRows).forEach((row, i) => {
+            row.className = i === idx ? 'grid grid-cols-12 items-center py-2.5 px-2 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200' : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
+        });
 
         renderBuyRadar(c.scores, workstream.demand);
       }
@@ -599,42 +737,32 @@
         buyRadar = new Chart(ctx, {
           type: 'radar',
           data: {
-            labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
+            labels: ['1. Think (CPP/Spiral)', '2. Show Up (Hogan Flash)', '3. Connect (AI News/LinkedIn)', '4. Judge (Virtues)', '5. Deliver (CV/Ref)'],
             datasets: [
-              {
-                label: 'Candidate Telemetry',
-                data: scores,
-                backgroundColor: 'rgba(217, 119, 6, 0.2)',
-                borderColor: '#d97706',
-                borderWidth: 2,
-                pointRadius: 3
-              },
-              {
-                label: `Role Demand Benchmark (${targetDemand})`,
-                data: [targetDemand, targetDemand, targetDemand, targetDemand, targetDemand],
-                backgroundColor: 'rgba(15, 23, 42, 0.05)',
-                borderColor: '#0f172a',
-                borderWidth: 1.5,
-                borderDash: [4, 4],
-                pointRadius: 2
-              }
+              { label: 'External Telemetry', data: scores, backgroundColor: 'rgba(217, 119, 6, 0.2)', borderColor: '#d97706', borderWidth: 2, pointRadius: 3 },
+              { label: `Role Demand Benchmark (${targetDemand})`, data: [targetDemand, targetDemand, targetDemand, targetDemand, targetDemand], backgroundColor: 'rgba(15, 23, 42, 0.05)', borderColor: '#0f172a', borderWidth: 1.5, borderDash: [4, 4], pointRadius: 2 }
             ]
           },
-          options: { scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 10, weight: 'bold' } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }, responsive: true, maintainAspectRatio: false }
+          options: { scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 9, weight: 'bold' } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }, responsive: true, maintainAspectRatio: false }
         });
       }
 
+      /* ========================================================================= */
+      /* NAVIGATION & DRAWERS                                                      */
+      /* ========================================================================= */
       function setAppMode(mode) {
         currentAppMode = mode;
         const btnBuild = document.getElementById('btnModeBuild');
         const btnBuy = document.getElementById('btnModeBuy');
         const navTabs = document.getElementById('mainTabs');
+        
         if (mode === 'buy') {
           btnBuy.className = 'px-3.5 py-1 font-bold rounded-lg bg-white text-navy-950 shadow-sm transition';
           btnBuild.className = 'px-3.5 py-1 font-bold rounded-lg text-slate-300 hover:text-white transition';
           navTabs.classList.add('hidden');
           document.getElementById('view-buyMode').classList.remove('hidden');
           ['portfolio', 'leaders', 'ninebox', 'roleDemand', 'scenarios', 'plan2035'].forEach(t => document.getElementById('view-' + t).classList.add('hidden'));
+          
           populateBuyDropdown();
           changeBuyMandate();
         } else {
@@ -656,70 +784,14 @@
         const activeBtn = document.getElementById('tab-' + tabId);
         if (activeBtn) activeBtn.className = 'px-2.5 py-1.5 border-b-2 border-white text-white transition whitespace-nowrap';
 
-        if (tabId === 'leaders') { renderLeaderRoster(); selectLeaderData(0); }
-      }
-
-      function renderLeaderRoster() {
-        const rosterContainer = document.getElementById('leaderRoster');
-        if (!rosterContainer) return;
-        rosterContainer.innerHTML = '';
-        leadersData.forEach((l, idx) => {
-          const row = document.createElement('div');
-          row.className = idx === activeLeaderIndex 
-            ? 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
-            : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
-          row.onclick = () => selectLeaderData(idx);
-          row.innerHTML = `
-            <div class="col-span-6 flex items-center gap-2 overflow-hidden pr-1">
-              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${l.initials}</div>
-              <div class="overflow-hidden"><h4 class="font-bold text-slate-900 truncate">${l.name}</h4><p class="text-[10px] text-slate-400 truncate">${l.archetype}</p></div>
-            </div>
-            <span class="col-span-2 text-center font-black text-slate-900">${l.lir}</span>
-            <span class="col-span-2 text-center font-bold text-blue-900">${l.zfPct}</span>
-            <div class="col-span-2 text-right"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span></div>
-          `;
-          rosterContainer.appendChild(row);
-        });
-      }
-
-      function selectLeaderData(idx) {
-        activeLeaderIndex = idx;
-        const l = leadersData[idx];
-        document.getElementById('detName').innerText = l.name;
-        document.getElementById('detRole').innerText = l.role;
-        document.getElementById('detArchetypeBadge').innerText = l.archetype;
-        document.getElementById('detLIR').innerText = l.lir;
-        document.getElementById('detDemandGap').innerText = l.demandGap;
-        document.getElementById('p1-val').innerText = l.cppLevel;
-        document.getElementById('p2-val').innerText = l.zfPct;
-        document.getElementById('p3-val').innerText = l.onaBadge;
-        document.getElementById('p4-val').innerText = l.judgeScore;
-        document.getElementById('p5-val').innerText = l.deliverScore;
-        document.getElementById('detSynthesis').innerHTML = '<strong>Readout:</strong> ' + l.synthesis;
-        renderLeaderRadar(l.pillarScores, [80, 80, 80, 80, 80]);
-      }
-
-      function renderLeaderRadar(leaderScores, demandScores) {
-        const ctx = document.getElementById('leaderRadarChart');
-        if (!ctx) return;
-        if (leaderRadar) leaderRadar.destroy();
-        leaderRadar = new Chart(ctx, {
-          type: 'radar',
-          data: {
-            labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
-            datasets: [
-              { label: 'James Parsons', data: leaderScores, backgroundColor: 'rgba(15, 23, 42, 0.25)', borderColor: '#0f172a', borderWidth: 2, pointRadius: 3 },
-              { label: 'Role Demand Benchmark', data: demandScores, backgroundColor: 'rgba(217, 119, 6, 0.1)', borderColor: '#d97706', borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
-            ]
-          },
-          options: { scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 10, weight: 'bold' } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }, responsive: true, maintainAspectRatio: false }
-        });
+        if (tabId === 'leaders') { populateBenchmarkDropdown(); renderLeaderRoster(); selectLeaderData(0); }
+        if (tabId === 'ninebox') updateNineBoxGrid();
+        if (tabId === 'roleDemand') populateRoleDemandCards();
       }
 
       function openCompetencyDrawer() {
         const l = leadersData[activeLeaderIndex];
         document.getElementById('drawerLeaderName').innerText = l.name;
-        document.getElementById('drawerLeaderRole').innerText = l.role + ' • Appraisal Competency Audit & Secure Vault';
         document.getElementById('drawerDevelopmentNotes').innerText = l.devNotes;
 
         const compList = document.getElementById('competencyList');
@@ -731,15 +803,13 @@
           compList.appendChild(item);
         });
 
-        const vaultContainer = document.getElementById('vaultLinksContainer');
-        vaultContainer.innerHTML = `
-          <a href="${l.reports.think}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📄 1. How They Think (James Parsons CPP.pdf)</span><span class="text-blue-600 underline text-[11px]">Open PDF ↗</span></a>
-          <a href="${l.reports.show}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📄 2. How They Show Up (James Parsons Full 34 .pdf)</span><span class="text-blue-600 underline text-[11px]">Open PDF ↗</span></a>
-          <a href="${l.reports.connect}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📊 3. How They Connect (active-ona.xlsx)</span><span class="text-blue-600 underline text-[11px]">Open File ↗</span></a>
-          <a href="${l.reports.judge}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>⚖ 4. How They Judge (Judgment Diagnostic JP.xlsx)</span><span class="text-blue-600 underline text-[11px]">Open File ↗</span></a>
-          <a href="${l.reports.deliver}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📋 5. How They Deliver (James Parsons Assessio.pdf)</span><span class="text-blue-600 underline text-[11px]">Open PDF ↗</span></a>
+        document.getElementById('vaultLinksContainer').innerHTML = `
+          <a href="${l.reports.think}" target="_blank" class="p-2 bg-slate-50 hover:bg-slate-100 rounded border flex justify-between text-xs font-bold text-navy-950"><span>📄 1. Think (CPP)</span><span class="text-blue-600 underline">Open</span></a>
+          <a href="${l.reports.show}" target="_blank" class="p-2 bg-slate-50 hover:bg-slate-100 rounded border flex justify-between text-xs font-bold text-navy-950"><span>📄 2. Show Up (360)</span><span class="text-blue-600 underline">Open</span></a>
+          <a href="${l.reports.connect}" target="_blank" class="p-2 bg-slate-50 hover:bg-slate-100 rounded border flex justify-between text-xs font-bold text-navy-950"><span>📊 3. Connect (ONA)</span><span class="text-blue-600 underline">Open</span></a>
+          <a href="${l.reports.judge}" target="_blank" class="p-2 bg-slate-50 hover:bg-slate-100 rounded border flex justify-between text-xs font-bold text-navy-950"><span>⚖ 4. Judge (Virtues)</span><span class="text-blue-600 underline">Open</span></a>
+          <a href="${l.reports.deliver}" target="_blank" class="p-2 bg-slate-50 hover:bg-slate-100 rounded border flex justify-between text-xs font-bold text-navy-950"><span>📋 5. Deliver (Appraisal)</span><span class="text-blue-600 underline">Open</span></a>
         `;
-
         document.getElementById('competencyDrawer').classList.remove('hidden');
         setTimeout(() => document.getElementById('drawerPanel').classList.add('open'), 10);
       }
@@ -749,9 +819,39 @@
         setTimeout(() => document.getElementById('competencyDrawer').classList.add('hidden'), 300);
       }
 
+      function openCustomMandateDrawer() {
+        document.getElementById('customMandateDrawer').classList.remove('hidden');
+        setTimeout(() => document.getElementById('customDrawerPanel').classList.add('open'), 10);
+      }
+      function closeCustomMandateDrawer() {
+        document.getElementById('customDrawerPanel').classList.remove('open');
+        setTimeout(() => document.getElementById('customMandateDrawer').classList.add('hidden'), 300);
+      }
+
+      function toggleChatPanel() {
+        chatOpen = !chatOpen;
+        const body = document.getElementById('chatBody');
+        const icon = document.getElementById('chatToggleIcon');
+        if(chatOpen) { body.classList.remove('hidden'); icon.innerText = '▲'; } else { body.classList.add('hidden'); icon.innerText = '▼'; }
+      }
+
+      function sendAiMessage() {
+        const input = document.getElementById('chatInput');
+        if(!input.value.trim()) return;
+        document.getElementById('chatMessages').innerHTML += `<div class="p-2.5 bg-navy-950 rounded-xl border border-slate-800 text-white text-right"><strong>You:</strong> ${input.value}</div>`;
+        input.value = '';
+        setTimeout(() => {
+          document.getElementById('chatMessages').innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> James Parsons verified: CPP Tactical Strategy, ONA Central Hub, Judgment +1P/-1F/+1T/+2J, Appraisal P vs Target E.</div>`;
+          document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }, 600);
+      }
+
       window.onload = function() {
+        populateBenchmarkDropdown();
+        populateRoleDemandCards();
         renderLeaderRoster();
         selectLeaderData(0);
+        updateNineBoxGrid();
       };
     </script>
   </body>
