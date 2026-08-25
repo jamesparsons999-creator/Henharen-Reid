@@ -50,6 +50,9 @@
       .custom-scroll::-webkit-scrollbar { width: 4px; }
       .custom-scroll::-webkit-scrollbar-track { background: #f8fafc; }
       .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      /* Slide-over drawer transition */
+      .slide-drawer { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+      .slide-drawer.open { transform: translateX(0); }
     </style>
   </head>
   <body class="bg-[#f4f6f9] text-slate-900 antialiased min-h-screen flex flex-col font-sans">
@@ -247,7 +250,7 @@
       </div>
 
       <!-- ========================================================================= -->
-      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + ROLE BENCHMARK SELECTOR)           -->
+      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + DRAWER TRIGGER)                    -->
       <!-- ========================================================================= -->
       <div id="view-leaders" class="hidden space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
@@ -357,12 +360,17 @@
               </div>
             </div>
 
-            <div class="relative h-48 w-full flex items-center justify-center">
+            <div class="relative h-44 w-full flex items-center justify-center">
               <canvas id="leaderRadarChart"></canvas>
             </div>
 
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed font-medium" id="detSynthesis">
-              <strong>Multi-Source Diagnostic Readout:</strong> Balanced cognitive agility with top-decile network centrality and high deliver competency.
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+              <div class="text-xs text-slate-700 font-medium truncate max-w-[70%]" id="detSynthesis">
+                <strong>Readout:</strong> Balanced cognitive agility and transformational delivery.
+              </div>
+              <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-800 transition shrink-0">
+                Inspect GCGRA & Vault Audit ➔
+              </button>
             </div>
           </div>
         </div>
@@ -400,16 +408,13 @@
         </div>
       </div>
 
-      <!-- TAB 3: ROLE DEMAND (POPULATED WITH 9 WORKSTREAM CARDS) -->
+      <!-- TAB 3: ROLE DEMAND -->
       <div id="view-roleDemand" class="hidden space-y-6">
         <div class="border-b border-slate-200/80 pb-5">
           <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Role demand • 5-pillar benchmark profiles</h1>
           <p class="text-xs text-slate-500 mt-1 font-medium">The 5-pillar role demand profile for all 9 engineering building blocks — what we hire, develop, and benchmark against.</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="roleDemandCardsContainer">
-          <!-- Populated via JS -->
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="roleDemandCardsContainer"></div>
       </div>
 
       <!-- TAB 4: SCENARIOS SIMULATOR -->
@@ -446,10 +451,88 @@
 
     </main>
 
+    <!-- NATIVE SLIDE-OVER DRAWER (GCGRA COMPETENCY AUDIT & SECURE VAULT) -->
+    <div id="competencyDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+      <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="closeCompetencyDrawer()"></div>
+      <div class="absolute inset-y-0 right-0 max-w-xl w-full bg-white shadow-2xl flex flex-col slide-drawer" id="drawerPanel">
+        <!-- Drawer Header -->
+        <div class="bg-navy-950 text-white p-6 flex justify-between items-center border-b border-navy-900">
+          <div>
+            <h3 class="text-lg font-bold font-editorial" id="drawerLeaderName">Elena Mercer</h3>
+            <p class="text-xs text-amber-400 mt-0.5 font-medium" id="drawerLeaderRole">GCGRA Competency Audit & Secure Document Vault</p>
+          </div>
+          <button onclick="closeCompetencyDrawer()" class="text-slate-400 hover:text-white p-2 rounded-lg text-lg font-bold">✕</button>
+        </div>
+
+        <!-- Drawer Body -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-800 custom-scroll">
+          
+          <!-- Section 1: GCGRA 8-Competency Breakdown -->
+          <div class="space-y-3">
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • GCGRA 8-Block Competency Scores</h4>
+            <p class="text-slate-500 text-[11px]">Evaluated against division-specific line manager appraisal benchmarks (Scale: Novice ➔ Practitioner ➔ Expert / Transformational).</p>
+            
+            <div class="space-y-2.5 pt-2" id="gcgraCompetencyList">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <!-- Section 2: Qualitative Development & Stretch Ideas -->
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px]">Manager Appraisal & Development Notes</h4>
+            <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes">
+              High strategic delivery. Recommended for cross-functional international rotation to broaden sovereign supply chain experience before ExCo succession.
+            </p>
+          </div>
+
+          <!-- Section 3: Secure Vault Report Links -->
+          <div class="space-y-3 pt-2">
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">Secure Document Vault (Verified Reports)</h4>
+            <div class="grid grid-cols-1 gap-2" id="vaultLinksContainer">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="bg-slate-50 p-4 border-t border-slate-200 flex justify-between items-center text-xs">
+          <span class="text-slate-500">Henharen Reid Secure Compliance Vault</span>
+          <button onclick="closeCompetencyDrawer()" class="px-4 py-2 bg-navy-950 text-white font-bold rounded-lg hover:bg-slate-800 transition">Close Audit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMBEDDED AI SENSE-MAKING CHATBOT PANEL -->
+    <div id="aiChatPanel" class="fixed bottom-4 right-4 z-40 bg-navy-950 text-white rounded-2xl shadow-2xl border border-slate-700 w-80 sm:w-96 flex flex-col overflow-hidden transition-all duration-300">
+      <!-- Chat Header -->
+      <div class="p-3.5 bg-navy-900 border-b border-slate-800 flex justify-between items-center cursor-pointer" onclick="toggleChatPanel()">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span class="font-bold text-xs uppercase tracking-wider text-amber-400">Henharen Reid AI Advisor</span>
+        </div>
+        <span id="chatToggleIcon" class="text-slate-400 text-xs font-bold">▼</span>
+      </div>
+
+      <!-- Chat Body (Collapsible) -->
+      <div id="chatBody" class="flex flex-col h-72 hidden">
+        <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
+          <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
+            <strong>Advisory AI:</strong> Ask me anything about our 10 leaders, 5-pillar triangulations, or GCGRA competency audits. (e.g. <em>"Why is Alexander Holt flagged as Redeploy?"</em>)
+          </div>
+        </div>
+        <div class="p-2.5 bg-navy-900 border-t border-slate-800 flex gap-2">
+          <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="Ask advisory AI..." class="flex-1 bg-navy-950 border border-slate-700 text-white text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-amber-500" />
+          <button onclick="sendAiMessage()" class="px-3 py-2 bg-amber-500 text-navy-950 font-bold rounded-lg hover:bg-amber-400 transition text-xs">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v2.1</span>
+        <span>Henharen Reid • v2.2</span>
       </div>
     </footer>
 
@@ -461,6 +544,7 @@
       let currentSortColumn = 'lir';
       let currentSortAsc = false;
       let activeLeaderIndex = 0;
+      let chatOpen = false;
 
       let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
 
@@ -477,16 +561,216 @@
       ];
 
       let leadersData = [
-        { id: "mercer", initials: "EM", name: "Elena Mercer", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas", pillarScores: [86, 92, 89, 85, 91], derailerPenalty: 0, roleDemand: 80, lir: 88, zfVal: 92, zfPct: "92nd %ile", cppLevel: "Level 5 (Strategic)", cognitiveFlex: "86 / 100", thinkNotes: "Balanced, high cognitive agility.", zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star", judgeScore: "+3P / +2T", deliverScore: "Transformational", synthesis: "Balanced enterprise star across all 5 dimensions." },
-        { id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Solid-State Battery Chemistry", pillar: "Electrified Propulsion", currentBlockId: "ssb", pillarScores: [96, 74, 28, 62, 72], derailerPenalty: 4, roleDemand: 78, lir: 69, zfVal: 74, zfPct: "74th %ile", cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "96 / 100", thinkNotes: "World-class cognitive complexity.", zfStrengths: ["Technical Expertise", "Solves Problems", "Innovates"], zfFlaw: "HDS: Cautious", onaBadge: "Silo Isolated", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick", judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining", synthesis: "World-class intellectual horsepower (96), but isolated network topology." },
-        { id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota", pillarScores: [58, 82, 95, 78, 84], derailerPenalty: 0, roleDemand: 76, lir: 76, zfVal: 82, zfPct: "82nd %ile", cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.", zfStrengths: ["Builds Relationships", "Collaboration"], zfFlaw: "None detected", onaBadge: "Top 1% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star", judgeScore: "+2J / +1P", deliverScore: "Highly Effective", synthesis: "Super-connector (95) with strong delivery." },
-        { id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga", pillarScores: [66, 94, 60, 80, 93], derailerPenalty: 0, roleDemand: 70, lir: 74, zfVal: 94, zfPct: "94th %ile", cppLevel: "Level 4 (Operational Command)", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.", zfStrengths: ["Drives for Results"], zfFlaw: "None detected", onaBadge: "Operational Hub", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine", judgeScore: "+2P / +2T", deliverScore: "Transformational", synthesis: "Dominant plant execution engine." },
-        { id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv", pillarScores: [88, 86, 92, 88, 89], derailerPenalty: 0, roleDemand: 78, lir: 88, zfVal: 86, zfPct: "86th %ile", cppLevel: "Level 5 (Strategic)", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.", zfStrengths: ["Builds Relationships"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star", judgeScore: "+3J / +1P", deliverScore: "Transformational", synthesis: "Elite global joint-venture dealmaker." },
-        { id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals", pillarScores: [78, 84, 76, 82, 80], derailerPenalty: 0, roleDemand: 78, lir: 80, zfVal: 84, zfPct: "84th %ile", cppLevel: "Level 4/5 (Transitional)", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.", zfStrengths: ["Collaboration"], zfFlaw: "None detected", onaBadge: "Connector", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star", judgeScore: "+2P / +2J", deliverScore: "Highly Effective", synthesis: "Reliable commodity strategist." },
-        { id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice", pillarScores: [54, 88, 45, 60, 76], derailerPenalty: 2, roleDemand: 70, lir: 63, zfVal: 88, zfPct: "88th %ile", cppLevel: "Level 3/4 (Operational)", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.", zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Cautious", onaBadge: "Core Hub", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor", judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining", synthesis: "Solid traditional operator." },
-        { id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas", pillarScores: [90, 62, 30, 50, 60], derailerPenalty: 6, roleDemand: 80, lir: 65, zfVal: 62, zfPct: "62nd %ile", cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.", zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Arrogant", onaBadge: "Silo Isolated", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma / Maverick", judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap", synthesis: "High cognitive score offset by severe interpersonal friction." },
-        { id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux", pillarScores: [72, 75, 70, 72, 75], derailerPenalty: 0, roleDemand: 76, lir: 73, zfVal: 75, zfPct: "75th %ile", cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.", zfStrengths: ["Innovates"], zfFlaw: "None detected", onaBadge: "Active Node", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor", judgeScore: "+1P / +1T", deliverScore: "Highly Effective", synthesis: "Effective product design head." },
-        { id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2", pillarScores: [52, 60, 35, 45, 50], derailerPenalty: 8, roleDemand: 82, lir: 43, zfVal: 60, zfPct: "60th %ile", cppLevel: "Level 3 (Diagnostic)", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.", zfStrengths: ["Technical Integrity"], zfFlaw: "HDS: Excitable", onaBadge: "Peripheral", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist", judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap", synthesis: "Significant performance gap across all 5 dimensions." }
+        {
+          id: "mercer", initials: "EM", name: "Elena Mercer", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
+          pillarScores: [86, 92, 89, 85, 91], derailerPenalty: 0, roleDemand: 80, lir: 88, zfVal: 92, zfPct: "92nd %ile",
+          cppLevel: "Level 5 (Strategic)", cognitiveFlex: "86 / 100", thinkNotes: "Balanced, high cognitive agility.",
+          zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge",
+          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
+          judgeScore: "+3P / +2T", deliverScore: "Transformational",
+          synthesis: "Balanced enterprise star across all 5 dimensions.",
+          gcgraCompetencies: [
+            { name: "Neural Network Scale & ADAS Integration", score: "Expert (Transformational)" },
+            { name: "ASIL-D Automotive Safety Compliance", score: "Practitioner (Highly Effective)" },
+            { name: "Cross-Functional Agile Execution", score: "Expert (Transformational)" },
+            { name: "Technical Talent Attraction & Mentorship", score: "Expert (Transformational)" },
+            { name: "Commercial ROI & OTA Monetization", score: "Practitioner (Highly Effective)" },
+            { name: "Stakeholder Expectation Management", score: "Practitioner (Highly Effective)" },
+            { name: "Regulatory & Homologation Navigation", score: "Expert (Transformational)" },
+            { name: "Crisis Resilience under Tech Ambiguity", score: "Expert (Transformational)" }
+          ],
+          devNotes: "High strategic delivery. Recommended for international board exposure.",
+          reports: { think: "vault/mercer-cpp.pdf", show: "vault/mercer-zf360.pdf", connect: "vault/mercer-ona.pdf", judge: "vault/mercer-virtues.pdf", deliver: "vault/mercer-gcgra.pdf" }
+        },
+        {
+          id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Solid-State Battery Chemistry", pillar: "Electrified Propulsion", currentBlockId: "ssb",
+          pillarScores: [96, 74, 28, 62, 72], derailerPenalty: 4, roleDemand: 78, lir: 69, zfVal: 74, zfPct: "74th %ile",
+          cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "96 / 100", thinkNotes: "World-class cognitive complexity.",
+          zfStrengths: ["Technical Expertise", "Solves Problems", "Innovates"], zfFlaw: "HDS: Cautious", onaBadge: "Silo Isolated",
+          stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick",
+          judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining",
+          synthesis: "World-class intellectual horsepower (96), but isolated network topology.",
+          gcgraCompetencies: [
+            { name: "Electrochemistry & Cell R&D", score: "Expert (Transformational)" },
+            { name: "Lab-to-Line Scale-up Discipline", score: "Novice (Gap)" },
+            { name: "Cross-Functional Lab Collaboration", score: "Novice (Gap)" },
+            { name: "Safety Compliance & Risk Sign-off", score: "Practitioner (Sustaining)" },
+            { name: "Commercial Cost Modeling", score: "Novice (Gap)" },
+            { name: "Stakeholder Persuasion", score: "Practitioner (Sustaining)" },
+            { name: "Patent Portfolio Governance", score: "Expert (Transformational)" },
+            { name: "Resilience under Commercial Pressure", score: "Novice (Gap)" }
+          ],
+          devNotes: "Requires executive mentorship and mandatory cross-functional rotation to break R&D silo isolation.",
+          reports: { think: "vault/holt-cpp.pdf", show: "vault/holt-zf360.pdf", connect: "vault/holt-ona.pdf", judge: "vault/holt-virtues.pdf", deliver: "vault/holt-gcgra.pdf" }
+        },
+        {
+          id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota",
+          pillarScores: [58, 82, 95, 78, 84], derailerPenalty: 0, roleDemand: 76, lir: 76, zfVal: 82, zfPct: "82nd %ile",
+          cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.",
+          zfStrengths: ["Builds Relationships", "Collaboration"], zfFlaw: "None detected", onaBadge: "Top 1% Bridge",
+          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
+          judgeScore: "+2J / +1P", deliverScore: "Highly Effective",
+          synthesis: "Super-connector (95) with strong commercial delivery.",
+          gcgraCompetencies: [
+            { name: "Recurring Revenue Structuring", score: "Practitioner (Highly Effective)" },
+            { name: "Cross-OEM Commercial Alliances", score: "Expert (Transformational)" },
+            { name: "Cybersecurity & Data Governance", score: "Practitioner (Highly Effective)" },
+            { name: "Platform Uptime Reliability", score: "Practitioner (Highly Effective)" },
+            { name: "Stakeholder Empathy & Bridge Building", score: "Expert (Transformational)" },
+            { name: "Tactical Execution Speed", score: "Practitioner (Highly Effective)" },
+            { name: "Strategic Vision under Ambiguity", score: "Practitioner (Sustaining)" },
+            { name: "Team Inspiration & Culture", score: "Expert (Transformational)" }
+          ],
+          devNotes: "Outstanding network broker. Pair with a deep technical architect for complex tech negotiations.",
+          reports: { think: "vault/jenkins-cpp.pdf", show: "vault/jenkins-zf360.pdf", connect: "vault/jenkins-ona.pdf", judge: "vault/jenkins-virtues.pdf", deliver: "vault/jenkins-gcgra.pdf" }
+        },
+        {
+          id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga",
+          pillarScores: [66, 94, 60, 80, 93], derailerPenalty: 0, roleDemand: 70, lir: 74, zfVal: 94, zfPct: "94th %ile",
+          cppLevel: "Level 4 (Operational Command)", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.",
+          zfStrengths: ["Drives for Results"], zfFlaw: "None detected", onaBadge: "Operational Hub",
+          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine",
+          judgeScore: "+2P / +2T", deliverScore: "Transformational",
+          synthesis: "Dominant plant execution engine.",
+          gcgraCompetencies: [
+            { name: "Plant-Floor Automation & OEE", score: "Expert (Transformational)" },
+            { name: "Standard Work Discipline", score: "Expert (Transformational)" },
+            { name: "Capital Project Execution", score: "Practitioner (Highly Effective)" },
+            { name: "Supply Chain Coordination", score: "Practitioner (Highly Effective)" },
+            { name: "Labor Relations & Safety", score: "Expert (Transformational)" },
+            { name: "Operational Cost Reduction", score: "Expert (Transformational)" },
+            { name: "Quality Defect Elimination", score: "Practitioner (Highly Effective)" },
+            { name: "Crisis Response on Shop Floor", score: "Expert (Transformational)" }
+          ],
+          devNotes: "Anchor of manufacturing operations. Ready for multi-plant European regional oversight.",
+          reports: { think: "vault/koehler-cpp.pdf", show: "vault/koehler-zf360.pdf", connect: "vault/koehler-ona.pdf", judge: "vault/koehler-virtues.pdf", deliver: "vault/koehler-gcgra.pdf" }
+        },
+        {
+          id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv",
+          pillarScores: [88, 86, 92, 88, 89], derailerPenalty: 0, roleDemand: 78, lir: 88, zfVal: 86, zfPct: "86th %ile",
+          cppLevel: "Level 5 (Strategic)", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.",
+          zfStrengths: ["Builds Relationships"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge",
+          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
+          judgeScore: "+3J / +1P", deliverScore: "Transformational",
+          synthesis: "Elite global joint-venture dealmaker.",
+          gcgraCompetencies: [
+            { name: "Multi-Border Negotiation", score: "Expert (Transformational)" },
+            { name: "M&A Due Diligence & Valuation", score: "Expert (Transformational)" },
+            { name: "Strategic Capital Governance", score: "Practitioner (Highly Effective)" },
+            { name: "Cross-Cultural Diplomacy", score: "Expert (Transformational)" },
+            { name: "Boardroom Presence & Advisory", score: "Practitioner (Highly Effective)" },
+            { name: "Risk Mitigation & Legal Structuring", score: "Expert (Transformational)" },
+            { name: "Ecosystem Relationship Building", score: "Expert (Transformational)" },
+            { name: "Post-Merger Integration", score: "Practitioner (Highly Effective)" }
+          ],
+          devNotes: "Prime candidate for Group Strategy Director or Head of Corporate Development.",
+          reports: { think: "vault/zhang-cpp.pdf", show: "vault/zhang-zf360.pdf", connect: "vault/zhang-ona.pdf", judge: "vault/zhang-virtues.pdf", deliver: "vault/zhang-gcgra.pdf" }
+        },
+        {
+          id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals",
+          pillarScores: [78, 84, 76, 82, 80], derailerPenalty: 0, roleDemand: 78, lir: 80, zfVal: 84, zfPct: "84th %ile",
+          cppLevel: "Level 4/5 (Transitional)", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.",
+          zfStrengths: ["Collaboration"], zfFlaw: "None detected", onaBadge: "Connector",
+          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
+          judgeScore: "+2P / +2J", deliverScore: "Highly Effective",
+          synthesis: "Reliable commodity strategist.",
+          gcgraCompetencies: [
+            { name: "Sovereign Mineral Sourcing", score: "Practitioner (Highly Effective)" },
+            { name: "Upstream ESG Compliance", score: "Expert (Transformational)" },
+            { name: "Hedge & Price Volatility Management", score: "Practitioner (Highly Effective)" },
+            { name: "Supplier Relationship Governance", score: "Practitioner (Highly Effective)" },
+            { name: "Geopolitical Risk Assessment", score: "Expert (Transformational)" },
+            { name: "Contract Negotiation", score: "Practitioner (Highly Effective)" },
+            { name: "Logistics Resilience Planning", score: "Practitioner (Highly Effective)" },
+            { name: "Stakeholder Reporting", score: "Practitioner (Highly Effective)" }
+          ],
+          devNotes: "Solid supply chain leader with strong ethical grounding.",
+          reports: { think: "vault/laurent-cpp.pdf", show: "vault/laurent-zf360.pdf", connect: "vault/laurent-ona.pdf", judge: "vault/laurent-virtues.pdf", deliver: "vault/laurent-gcgra.pdf" }
+        },
+        {
+          id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice",
+          pillarScores: [54, 88, 45, 60, 76], derailerPenalty: 2, roleDemand: 70, lir: 63, zfVal: 88, zfPct: "88th %ile",
+          cppLevel: "Level 3/4 (Operational)", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.",
+          zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Cautious", onaBadge: "Core Hub",
+          stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor",
+          judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining",
+          synthesis: "Solid traditional operator.",
+          gcgraCompetencies: [
+            { name: "ICE Engine Run-Out Efficiency", score: "Expert (Transformational)" },
+            { name: "Cash Harvest & Cost Control", score: "Practitioner (Highly Effective)" },
+            { name: "Legacy Quality Assurance", score: "Practitioner (Highly Effective)" },
+            { name: "Workforce Transition Management", score: "Practitioner (Sustaining)" },
+            { name: "Strategic Transformation Vision", score: "Novice (Gap)" },
+            { name: "Digital Modernization", score: "Novice (Gap)" },
+            { name: "Supplier Cash Management", score: "Practitioner (Highly Effective)" },
+            { name: "Plant Stakeholder Trust", score: "Expert (Transformational)" }
+          ],
+          devNotes: "Valuable anchor for legacy cash generation. Do not move to EV R&D.",
+          reports: { think: "vault/richter-cpp.pdf", show: "vault/richter-zf360.pdf", connect: "vault/richter-ona.pdf", judge: "vault/richter-virtues.pdf", deliver: "vault/richter-gcgra.pdf" }
+        },
+        {
+          id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
+          pillarScores: [90, 62, 30, 50, 60], derailerPenalty: 6, roleDemand: 80, lir: 65, zfVal: 62, zfPct: "62nd %ile",
+          cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.",
+          zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Arrogant", onaBadge: "Silo Isolated",
+          stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma / Maverick",
+          judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap",
+          synthesis: "High cognitive score offset by severe interpersonal friction.",
+          gcgraCompetencies: [
+            { name: "Silicon Micro-Architecture Design", score: "Expert (Transformational)" },
+            { name: "Chip-Level Performance Optimization", score: "Expert (Transformational)" },
+            { name: "Cross-Team Collaboration", score: "Novice (Gap)" },
+            { name: "Stakeholder Diplomacy", score: "Novice (Gap)" },
+            { name: "Behavioral Self-Regulation", score: "Novice (Gap)" },
+            { name: "Project Delivery on Schedule", score: "Practitioner (Sustaining)" },
+            { name: "Mentorship of Junior Engineers", score: "Novice (Gap)" },
+            { name: "Vendor Foundry Relations", score: "Practitioner (Sustaining)" }
+          ],
+          devNotes: "Severe derailer risk (Arrogance). Requires executive coaching or technical individual contributor containment.",
+          reports: { think: "vault/bergstrom-cpp.pdf", show: "vault/bergstrom-zf360.pdf", connect: "vault/bergstrom-ona.pdf", judge: "vault/bergstrom-virtues.pdf", deliver: "vault/bergstrom-gcgra.pdf" }
+        },
+        {
+          id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux",
+          pillarScores: [72, 75, 70, 72, 75], derailerPenalty: 0, roleDemand: 76, lir: 73, zfVal: 75, zfPct: "75th %ile",
+          cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.",
+          zfStrengths: ["Innovates"], zfFlaw: "None detected", onaBadge: "Active Node",
+          stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor",
+          judgeScore: "+1P / +1T", deliverScore: "Highly Effective",
+          synthesis: "Effective product design head.",
+          gcgraCompetencies: [
+            { name: "Consumer UI/UX Prototyping", score: "Expert (Transformational)" },
+            { name: "In-Vehicle Infotainment Integration", score: "Practitioner (Highly Effective)" },
+            { name: "Design Team Leadership", score: "Practitioner (Highly Effective)" },
+            { name: "Hardware-Software Co-Design", score: "Practitioner (Sustaining)" },
+            { name: "Customer Telemetry Analysis", score: "Practitioner (Highly Effective)" },
+            { name: "Cross-Functional Collaboration", score: "Practitioner (Highly Effective)" },
+            { name: "Budget & Vendor Management", score: "Practitioner (Sustaining)" },
+            { name: "Strategic Roadmapping", score: "Practitioner (Sustaining)" }
+          ],
+          devNotes: "Strong design head. Pair with system architects for rigorous delivery timing.",
+          reports: { think: "vault/tanguy-cpp.pdf", show: "vault/tanguy-zf360.pdf", connect: "vault/tanguy-ona.pdf", judge: "vault/tanguy-virtues.pdf", deliver: "vault/tanguy-gcgra.pdf" }
+        },
+        {
+          id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2",
+          pillarScores: [52, 60, 35, 45, 50], derailerPenalty: 8, roleDemand: 82, lir: 43, zfVal: 60, zfPct: "60th %ile",
+          cppLevel: "Level 3 (Diagnostic)", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.",
+          zfStrengths: ["Technical Integrity"], zfFlaw: "HDS: Excitable", onaBadge: "Peripheral",
+          stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist",
+          judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap",
+          synthesis: "Significant performance gap across all 5 dimensions.",
+          gcgraCompetencies: [
+            { name: "Venture Financial Modeling", score: "Novice (Gap)" },
+            { name: "Ecosystem Partnership Building", score: "Novice (Gap)" },
+            { name: "Regulatory Compliance for H2", score: "Practitioner (Sustaining)" },
+            { name: "Capital Governance", score: "Novice (Gap)" },
+            { name: "Team Leadership under Pressure", score: "Novice (Gap)" },
+            { name: "Strategic Foresight", score: "Novice (Gap)" },
+            { name: "Stakeholder Communication", score: "Practitioner (Sustaining)" },
+            { name: "Technical R&D Oversight", score: "Practitioner (Sustaining)" }
+          ],
+          devNotes: "Significant capability gap for heavy venture role. Recommend immediate redeployment to standard technical advisory.",
+          reports: { think: "vault/varma-cpp.pdf", show: "vault/varma-zf360.pdf", connect: "vault/varma-ona.pdf", judge: "vault/varma-virtues.pdf", deliver: "vault/varma-gcgra.pdf" }
+        }
       ];
 
       function populateBenchmarkDropdown() {
@@ -519,6 +803,94 @@
           `;
           container.appendChild(card);
         });
+      }
+
+      function openCompetencyDrawer() {
+        const l = leadersData[activeLeaderIndex];
+        document.getElementById('drawerLeaderName').innerText = l.name;
+        document.getElementById('drawerLeaderRole').innerText = l.role + ' • GCGRA Competency & Document Vault Audit';
+        document.getElementById('drawerDevelopmentNotes').innerText = l.devNotes;
+
+        // Render GCGRA Competencies
+        const compList = document.getElementById('gcgraCompetencyList');
+        compList.innerHTML = '';
+        l.gcgraCompetencies.forEach(c => {
+          const item = document.createElement('div');
+          item.className = "flex justify-between items-center p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs";
+          item.innerHTML = `
+            <span class="font-bold text-slate-800">${c.name}</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${c.score.includes('Transformational') || c.score.includes('Expert') ? 'bg-emerald-100 text-emerald-900' : (c.score.includes('Gap') ? 'bg-red-100 text-red-900' : 'bg-blue-100 text-blue-900')}">${c.score}</span>
+          `;
+          compList.appendChild(item);
+        });
+
+        // Render Vault Links
+        const vaultContainer = document.getElementById('vaultLinksContainer');
+        vaultContainer.innerHTML = `
+          <a href="${l.reports.think}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
+            <span>📄 1. How They Think (Cognadev CPP Report)</span>
+            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
+          </a>
+          <a href="${l.reports.show}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
+            <span>📄 2. How They Show Up (ZF 360 & Hogan HDS Report)</span>
+            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
+          </a>
+          <a href="${l.reports.connect}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
+            <span>📊 3. How They Connect (CTS ONA Network Metrics)</span>
+            <span class="text-blue-600 underline text-[11px]">Open Data ↗</span>
+          </a>
+          <a href="${l.reports.judge}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
+            <span>⚖ 4. How They Judge (Phronesis Virtue Audit)</span>
+            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
+          </a>
+          <a href="${l.reports.deliver}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
+            <span>📋 5. How They Deliver (GCGRA Competency Appraisal)</span>
+            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
+          </a>
+        `;
+
+        document.getElementById('competencyDrawer').classList.remove('hidden');
+        setTimeout(() => document.getElementById('drawerPanel').classList.add('open'), 10);
+      }
+
+      function closeCompetencyDrawer() {
+        document.getElementById('drawerPanel').classList.remove('open');
+        setTimeout(() => document.getElementById('competencyDrawer').classList.add('hidden'), 300);
+      }
+
+      function toggleChatPanel() {
+        chatOpen = !chatOpen;
+        const body = document.getElementById('chatBody');
+        const icon = document.getElementById('chatToggleIcon');
+        if(chatOpen) {
+          body.classList.remove('hidden');
+          icon.innerText = '▲';
+        } else {
+          body.classList.add('hidden');
+          icon.innerText = '▼';
+        }
+      }
+
+      function sendAiMessage() {
+        const input = document.getElementById('chatInput');
+        const msg = input.value.trim();
+        if(!msg) return;
+
+        const chatMsgs = document.getElementById('chatMessages');
+        chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-950 rounded-xl border border-slate-800 text-white text-right"><strong>You:</strong> ${msg}</div>`;
+        input.value = '';
+
+        setTimeout(() => {
+          let reply = "Based on our 5-pillar triangulation and GCGRA appraisal feeds, this leader demonstrates strong functional capability, though board attention should be directed toward their network centrality and delivery speed under extreme structural ambiguity.";
+          const lower = msg.toLowerCase();
+          if(lower.includes('holt') || lower.includes('alexander')) {
+            reply = "Dr. Alexander Holt possesses elite cognitive capability (Think: 96), but his network centrality is isolated (28) and his Cautious derailer triggers a performance penalty, resulting in a LIR of 69 against a 78 role demand.";
+          } else if(lower.includes('mercer') || lower.includes('elena')) {
+            reply = "Elena Mercer is our top Enterprise Star (LIR 88). She exhibits Level 5 cognitive agility, top-decile ONA network brokerage, robust virtue scoring, and transformational GCGRA delivery execution.";
+          }
+          chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> ${reply}</div>`;
+          chatMsgs.scrollTop = chatMsgs.scrollHeight;
+        }, 600);
       }
 
       function changeBenchmarkRole() {
@@ -745,7 +1117,7 @@
         document.getElementById('p3-val').innerText = l.onaBadge;
         document.getElementById('p4-val').innerText = l.judgeScore;
         document.getElementById('p5-val').innerText = l.deliverScore;
-        document.getElementById('detSynthesis').innerHTML = '<strong>5-Pillar Triangulated Readout:</strong> ' + l.synthesis;
+        document.getElementById('detSynthesis').innerHTML = '<strong>Readout:</strong> ' + l.synthesis;
 
         const sel = document.getElementById('benchmarkRoleSelect');
         if (sel) {
