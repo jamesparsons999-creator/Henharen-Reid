@@ -428,7 +428,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs mt-auto">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v4.5</span>
+        <span>Henharen Reid • v4.6</span>
       </div>
     </footer>
 
@@ -582,7 +582,6 @@
       function renderLeaderRadar(leaderScores, demandScores) {
         const ctx = document.getElementById('leaderRadarChart');
         if (!ctx) return;
-        // Optimization: prevent hidden canvas ResizeObserver CPU freeze
         if (document.getElementById('view-leaders').classList.contains('hidden')) return;
 
         if (leaderRadar) leaderRadar.destroy();
@@ -610,7 +609,6 @@
         let counts = { succession: 0, backbone: 0, dev: 0, action: 0 };
 
         leadersData.forEach((l, idx) => {
-          // Dynamic calculation driven directly by Slider Weights
           let potWeightTotal = weights.p1 + weights.p3 || 1;
           let perfWeightTotal = weights.p2 + weights.p4 + weights.p5 || 1;
           
@@ -699,7 +697,6 @@
         const sel = document.getElementById('buyRoleSelect');
         if (!sel) return;
         sel.innerHTML = '';
-        // Only show mandates with severe deficits (<= -10)
         const activeMandates = strategicWorkstreams.filter(b => b.deficit <= -10);
         activeMandates.forEach(b => {
           const opt = document.createElement('option');
@@ -722,6 +719,9 @@
 
         activeBuyIndex = 0;
         setBuyRadarMode('role');
+        
+        // Explicitly render roster on mandate switch
+        renderBuyCandidateRoster(workstream.id);
       }
 
       function renderBuyCandidateRoster(workgroupId) {
@@ -797,7 +797,6 @@
       function renderBuyRadar(scores, targetDemand, workgroupId) {
         const ctx = document.getElementById('buyRadarChart');
         if (!ctx) return;
-        // Optimization: prevent hidden canvas ResizeObserver CPU freeze
         if (document.getElementById('view-buyMode').classList.contains('hidden')) return;
 
         if (buyRadar) buyRadar.destroy();
