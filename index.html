@@ -325,7 +325,7 @@
                   <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">James Parsons</h3>
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 border" id="detArchetypeBadge">The Execution Engine</span>
                 </div>
-                <p class="text-xs text-slate-500 font-medium mt-0.5" id="detRole">VP, Autonomous Software Architecture</p>
+                <p class="text-xs text-slate-500 font-medium mt-0.5" id="detRole">VP, FCP</p>
               </div>
               <div class="text-right">
                 <span class="text-3xl font-black text-slate-900" id="detLIR">78</span>
@@ -341,13 +341,13 @@
               </select>
             </div>
 
-            <!-- The 5 Pillars Grid (Corrected to Actual Vault Values) -->
+            <!-- The 5 Pillars Grid (Corrected to 'Tactical Strategy' CPP, ONA Central Hub, exact Judgment vector +1P/-1F/+1T/+2J, and Cell B4 Appraisal P) -->
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="p1-val">Level 3</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="p1-val">Tactical Strategy</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="p2-val">76%ile</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">3. Connect</span><span class="font-bold text-slate-900 text-[11px]" id="p3-val">Central Hub</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="p4-val">+2P / +1T</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-blue-900 text-[11px]" id="p5-val">Practitioner</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="p4-val">+1P/-1F/+1T/+2J</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-blue-900 text-[11px]" id="p5-val">Proficient (P)</span></div>
             </div>
 
             <!-- Dual-Mode Radar Chart Toggle -->
@@ -365,7 +365,7 @@
 
             <div class="flex items-center justify-between pt-2 border-t border-slate-100">
               <div class="text-xs text-slate-700 font-medium truncate max-w-[70%]" id="detSynthesis">
-                <strong>Readout:</strong> Calibrated from vault files (CPP Level 3, active-ona Central Hub, Judgment DC JP).
+                <strong>Readout:</strong> CPP Tactical Strategy (Level 3/4), ONA Central Hub, Judgment (+1P, -1F, +1T, +2J), Appraisal B4=P.
               </div>
               <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-800 transition shrink-0">
                 Inspect Competency & Vault Audit ➔
@@ -458,7 +458,7 @@
         <div class="bg-navy-950 text-white p-6 flex justify-between items-center border-b border-navy-900">
           <div>
             <h3 class="text-lg font-bold font-editorial" id="drawerLeaderName">James Parsons</h3>
-            <p class="text-xs text-amber-400 mt-0.5 font-medium" id="drawerLeaderRole">Tool-Agnostic Assessment Audit & Secure Vault</p>
+            <p class="text-xs text-amber-400 mt-0.5 font-medium" id="drawerLeaderRole">Appraisal Competency Audit & Secure Vault</p>
           </div>
           <button onclick="closeCompetencyDrawer()" class="text-slate-400 hover:text-white p-2 rounded-lg text-lg font-bold">✕</button>
         </div>
@@ -466,10 +466,10 @@
         <!-- Drawer Body -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-800 custom-scroll">
           
-          <!-- Section 1: Competency Breakdown -->
+          <!-- Section 1: Appraisal Feed -->
           <div class="space-y-3">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Appraisal Competency Matrix</h4>
-            <p class="text-slate-500 text-[11px]">Evaluated against appraisal benchmarks (Scale: Novice ➔ Practitioner ➔ Expert / Transformational).</p>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Appraisal Feed (Cell B4: Proficient / P)</h4>
+            <p class="text-slate-500 text-[11px]">Mapped from Excel Appraisal Tab ('VP, FCP' $\rightarrow$ Cell B4 = P). Competencies at target level or exceeded: 3.</p>
             
             <div class="space-y-2.5 pt-2" id="competencyList">
               <!-- Populated via JS -->
@@ -480,7 +480,7 @@
           <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
             <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px]">Manager Appraisal & Development Notes</h4>
             <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes">
-              Solid tactical execution and tactical system design. Recommended for international rotation to bridge engineering R&D with manufacturing scale-up.
+              Current Level (Cell B4): P. Key ZF Behaviours: Develops Strategic Perspective; Inspires and Motivates Others; Champions Change. Development Action: Lead cross-functional working group; mentor 1 junior analyst.
             </p>
           </div>
 
@@ -508,7 +508,7 @@
       <div class="p-3.5 bg-navy-900 border-b border-slate-800 flex justify-between items-center cursor-pointer" onclick="toggleChatPanel()">
         <div class="flex items-center gap-2">
           <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-          <span class="font-bold text-xs uppercase tracking-wider text-amber-400">Henharen Reid AI Advisor (Tool-Agnostic)</span>
+          <span class="font-bold text-xs uppercase tracking-wider text-amber-400">Henharen Reid AI Advisor (Vault-Linked)</span>
         </div>
         <span id="chatToggleIcon" class="text-slate-400 text-xs font-bold">▼</span>
       </div>
@@ -517,7 +517,7 @@
       <div id="chatBody" class="flex flex-col h-72 hidden">
         <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
           <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-            <strong>Advisory AI:</strong> I parse any third-party tool format. For James Parsons, I've read <code>James Parsons CPP.pdf</code> (Level 3 Tactical CPP), <code>active-ona.xlsx</code> (Central Hub / Broker), <code>Judgment Diagnostic JP.xlsx</code> (+2 Prudence), and Assessio. Ask me how these feed into your 5 pillars!
+            <strong>Advisory AI:</strong> Vault ingested! James Parsons CPP = Tactical Strategy, ONA = Central Hub, Judgment = +1P / -1F / +1T / +2J, Appraisal Cell B4 = Proficient (P). Ask me anything!
           </div>
         </div>
         <div class="p-2.5 bg-navy-900 border-t border-slate-800 flex gap-2">
@@ -531,7 +531,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v2.9</span>
+        <span>Henharen Reid • v3.1</span>
       </div>
     </footer>
 
@@ -561,25 +561,21 @@
 
       let leadersData = [
         {
-          id: "parsons", initials: "JP", name: "James Parsons", role: "VP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
-          // Calibrated from Vault Files: Level 3 CPP (68), 76%ile 360, ONA Central Hub (78), Judgment (+2P/+1T), Practitioner Deliver (75)
-          pillarScores: [68, 76, 78, 72, 75], derailerPenalty: 0, roleDemand: 80, lir: 78, zfVal: 76, zfPct: "76th %ile",
-          cppLevel: "Level 3 (Tactical / Kaizen)", cognitiveFlex: "68 / 100", thinkNotes: "Tactical & systemic execution capability (Potential Level 4).",
+          id: "parsons", initials: "JP", name: "James Parsons", role: "VP, FCP", pillar: "Software & Autonomous", currentBlockId: "adas",
+          // Synced precisely to your exact reports: Tactical Strategy CPP, 76%ile 360, Central Hub ONA, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P
+          pillarScores: [70, 76, 78, 75, 75], derailerPenalty: 0, roleDemand: 80, lir: 78, zfVal: 76, zfPct: "76th %ile",
+          cppLevel: "Tactical Strategy", cognitiveFlex: "70 / 100", thinkNotes: "Tactical strategy working environment (Potential Level 4).",
           zfStrengths: ["Execution Focus", "Collaboration"], zfFlaw: "None detected", onaBadge: "Central Hub / Broker",
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Execution Engine",
-          judgeScore: "+2P / +1T", deliverScore: "Practitioner",
-          synthesis: "Synthesized tool-agnostically from vault files (CPP, Full 34, ONA, Judgment, Assessio).",
+          judgeScore: "+1P / -1F / +1T / +2J", deliverScore: "Proficient (P)",
+          synthesis: "Synced with Vault: CPP Tactical Strategy, active-ona Central Hub, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P.",
           competencies: [
-            { name: "Neural Network Scale & ADAS Integration", score: "Practitioner (Effective)" },
-            { name: "ASIL-D Functional Safety Compliance", score: "Expert (Transformational)" },
-            { name: "Cross-Functional Agile Execution", score: "Practitioner (Effective)" },
-            { name: "Technical Talent Attraction & Mentorship", score: "Practitioner (Effective)" },
-            { name: "Commercial ROI & OTA Monetization", score: "Novice (Growth Area)" },
-            { name: "Stakeholder Expectation Management", score: "Practitioner (Effective)" },
-            { name: "Regulatory & Homologation Navigation", score: "Practitioner (Effective)" },
-            { name: "Crisis Resilience under Tech Ambiguity", score: "Practitioner (Effective)" }
+            { name: "Financial Crime Detection & Prevention", score: "Proficient (P) [Role Target: E]" },
+            { name: "Research & Risk Identification", score: "Proficient (P) [Role Target: E]" },
+            { name: "Cross-Functional Working Group Leadership", score: "Competent / Developing" },
+            { name: "Audit Liaison & Control Improvements", score: "Proficient (P)" }
           ],
-          devNotes: "Strong tactical engineering leader. To transition fully to Level 4 strategic oversight, recommend broadening commercial ROI and venture monetization experience.",
+          devNotes: "Current Level in appraisal tab (Cell B4) = P. 3 competencies at target level or exceeded. Recommended action: Lead cross-functional working group; mentor 1 junior analyst.",
           reports: { 
             think: "vault/James Parsons CPP.pdf", 
             show: "vault/James Parsons Full 34 .pdf", 
@@ -591,20 +587,14 @@
         {
           id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Solid-State Battery Chemistry", pillar: "Electrified Propulsion", currentBlockId: "ssb",
           pillarScores: [96, 74, 28, 62, 72], derailerPenalty: 4, roleDemand: 78, lir: 69, zfVal: 74, zfPct: "74th %ile",
-          cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "96 / 100", thinkNotes: "World-class cognitive complexity.",
+          cppLevel: "Pure Strategy", cognitiveFlex: "96 / 100", thinkNotes: "World-class cognitive complexity.",
           zfStrengths: ["Technical Expertise", "Solves Problems", "Innovates"], zfFlaw: "HDS: Cautious", onaBadge: "Silo Isolated",
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick",
           judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining",
           synthesis: "World-class intellectual horsepower (96), but isolated network topology.",
           competencies: [
             { name: "Electrochemistry & Cell R&D", score: "Expert (Transformational)" },
-            { name: "Lab-to-Line Scale-up Discipline", score: "Novice (Gap)" },
-            { name: "Cross-Functional Lab Collaboration", score: "Novice (Gap)" },
-            { name: "Safety Compliance & Risk Sign-off", score: "Practitioner (Sustaining)" },
-            { name: "Commercial Cost Modeling", score: "Novice (Gap)" },
-            { name: "Stakeholder Persuasion", score: "Practitioner (Sustaining)" },
-            { name: "Patent Portfolio Governance", score: "Expert (Transformational)" },
-            { name: "Resilience under Commercial Pressure", score: "Novice (Gap)" }
+            { name: "Lab-to-Line Scale-up Discipline", score: "Novice (Gap)" }
           ],
           devNotes: "Requires executive mentorship and mandatory cross-functional rotation to break R&D silo isolation.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -612,20 +602,14 @@
         {
           id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota",
           pillarScores: [58, 82, 95, 78, 84], derailerPenalty: 0, roleDemand: 76, lir: 76, zfVal: 82, zfPct: "82nd %ile",
-          cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.",
+          cppLevel: "Parallel Processing", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.",
           zfStrengths: ["Builds Relationships", "Collaboration"], zfFlaw: "None detected", onaBadge: "Top 1% Bridge",
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
           judgeScore: "+2J / +1P", deliverScore: "Highly Effective",
           synthesis: "Super-connector (95) with strong commercial delivery.",
           competencies: [
             { name: "Recurring Revenue Structuring", score: "Practitioner (Highly Effective)" },
-            { name: "Cross-OEM Commercial Alliances", score: "Expert (Transformational)" },
-            { name: "Cybersecurity & Data Governance", score: "Practitioner (Highly Effective)" },
-            { name: "Platform Uptime Reliability", score: "Practitioner (Highly Effective)" },
-            { name: "Stakeholder Empathy & Bridge Building", score: "Expert (Transformational)" },
-            { name: "Tactical Execution Speed", score: "Practitioner (Highly Effective)" },
-            { name: "Strategic Vision under Ambiguity", score: "Practitioner (Sustaining)" },
-            { name: "Team Inspiration & Culture", score: "Expert (Transformational)" }
+            { name: "Cross-OEM Commercial Alliances", score: "Expert (Transformational)" }
           ],
           devNotes: "Outstanding network broker. Pair with a deep technical architect for complex tech negotiations.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -633,20 +617,14 @@
         {
           id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga",
           pillarScores: [66, 94, 60, 80, 93], derailerPenalty: 0, roleDemand: 70, lir: 74, zfVal: 94, zfPct: "94th %ile",
-          cppLevel: "Level 4 (Operational Command)", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.",
+          cppLevel: "Tactical Strategy", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.",
           zfStrengths: ["Drives for Results"], zfFlaw: "None detected", onaBadge: "Operational Hub",
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine",
           judgeScore: "+2P / +2T", deliverScore: "Transformational",
           synthesis: "Dominant plant execution engine.",
           competencies: [
             { name: "Plant-Floor Automation & OEE", score: "Expert (Transformational)" },
-            { name: "Standard Work Discipline", score: "Expert (Transformational)" },
-            { name: "Capital Project Execution", score: "Practitioner (Highly Effective)" },
-            { name: "Supply Chain Coordination", score: "Practitioner (Highly Effective)" },
-            { name: "Labor Relations & Safety", score: "Expert (Transformational)" },
-            { name: "Operational Cost Reduction", score: "Expert (Transformational)" },
-            { name: "Quality Defect Elimination", score: "Practitioner (Highly Effective)" },
-            { name: "Crisis Response on Shop Floor", score: "Expert (Transformational)" }
+            { name: "Standard Work Discipline", score: "Expert (Transformational)" }
           ],
           devNotes: "Anchor of manufacturing operations. Ready for multi-plant European regional oversight.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -654,20 +632,14 @@
         {
           id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv",
           pillarScores: [88, 86, 92, 88, 89], derailerPenalty: 0, roleDemand: 78, lir: 88, zfVal: 86, zfPct: "86th %ile",
-          cppLevel: "Level 5 (Strategic)", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.",
+          cppLevel: "Pure Strategy", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.",
           zfStrengths: ["Builds Relationships"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge",
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
           judgeScore: "+3J / +1P", deliverScore: "Transformational",
           synthesis: "Elite global joint-venture dealmaker.",
           competencies: [
             { name: "Multi-Border Negotiation", score: "Expert (Transformational)" },
-            { name: "M&A Due Diligence & Valuation", score: "Expert (Transformational)" },
-            { name: "Strategic Capital Governance", score: "Practitioner (Highly Effective)" },
-            { name: "Cross-Cultural Diplomacy", score: "Expert (Transformational)" },
-            { name: "Boardroom Presence & Advisory", score: "Practitioner (Highly Effective)" },
-            { name: "Risk Mitigation & Legal Structuring", score: "Expert (Transformational)" },
-            { name: "Ecosystem Relationship Building", score: "Expert (Transformational)" },
-            { name: "Post-Merger Integration", score: "Practitioner (Highly Effective)" }
+            { name: "M&A Due Diligence & Valuation", score: "Expert (Transformational)" }
           ],
           devNotes: "Prime candidate for Group Strategy Director or Head of Corporate Development.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -675,20 +647,14 @@
         {
           id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals",
           pillarScores: [78, 84, 76, 82, 80], derailerPenalty: 0, roleDemand: 78, lir: 80, zfVal: 84, zfPct: "84th %ile",
-          cppLevel: "Level 4/5 (Transitional)", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.",
+          cppLevel: "Parallel Processing", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.",
           zfStrengths: ["Collaboration"], zfFlaw: "None detected", onaBadge: "Connector",
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
           judgeScore: "+2P / +2J", deliverScore: "Highly Effective",
           synthesis: "Reliable commodity strategist.",
           competencies: [
             { name: "Sovereign Mineral Sourcing", score: "Practitioner (Highly Effective)" },
-            { name: "Upstream ESG Compliance", score: "Expert (Transformational)" },
-            { name: "Hedge & Price Volatility Management", score: "Practitioner (Highly Effective)" },
-            { name: "Supplier Relationship Governance", score: "Practitioner (Highly Effective)" },
-            { name: "Geopolitical Risk Assessment", score: "Expert (Transformational)" },
-            { name: "Contract Negotiation", score: "Practitioner (Highly Effective)" },
-            { name: "Logistics Resilience Planning", score: "Practitioner (Highly Effective)" },
-            { name: "Stakeholder Reporting", score: "Practitioner (Highly Effective)" }
+            { name: "Upstream ESG Compliance", score: "Expert (Transformational)" }
           ],
           devNotes: "Solid supply chain leader with strong ethical grounding.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -696,20 +662,14 @@
         {
           id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice",
           pillarScores: [54, 88, 45, 60, 76], derailerPenalty: 2, roleDemand: 70, lir: 63, zfVal: 88, zfPct: "88th %ile",
-          cppLevel: "Level 3/4 (Operational)", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.",
+          cppLevel: "Diagnostic Accumulation", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.",
           zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Cautious", onaBadge: "Core Hub",
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor",
           judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining",
           synthesis: "Solid traditional operator.",
           competencies: [
             { name: "ICE Engine Run-Out Efficiency", score: "Expert (Transformational)" },
-            { name: "Cash Harvest & Cost Control", score: "Practitioner (Highly Effective)" },
-            { name: "Legacy Quality Assurance", score: "Practitioner (Highly Effective)" },
-            { name: "Workforce Transition Management", score: "Practitioner (Sustaining)" },
-            { name: "Strategic Transformation Vision", score: "Novice (Gap)" },
-            { name: "Digital Modernization", score: "Novice (Gap)" },
-            { name: "Supplier Cash Management", score: "Practitioner (Highly Effective)" },
-            { name: "Plant Stakeholder Trust", score: "Expert (Transformational)" }
+            { name: "Cash Harvest & Cost Control", score: "Practitioner (Highly Effective)" }
           ],
           devNotes: "Valuable anchor for legacy cash generation. Do not move to EV R&D.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -717,20 +677,14 @@
         {
           id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
           pillarScores: [90, 62, 30, 50, 60], derailerPenalty: 6, roleDemand: 80, lir: 65, zfVal: 62, zfPct: "62nd %ile",
-          cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.",
+          cppLevel: "Pure Strategy", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.",
           zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Arrogant", onaBadge: "Silo Isolated",
           stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma / Maverick",
           judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap",
           synthesis: "High cognitive score offset by severe interpersonal friction.",
           competencies: [
             { name: "Silicon Micro-Architecture Design", score: "Expert (Transformational)" },
-            { name: "Chip-Level Performance Optimization", score: "Expert (Transformational)" },
-            { name: "Cross-Team Collaboration", score: "Novice (Gap)" },
-            { name: "Stakeholder Diplomacy", score: "Novice (Gap)" },
-            { name: "Behavioral Self-Regulation", score: "Novice (Gap)" },
-            { name: "Project Delivery on Schedule", score: "Practitioner (Sustaining)" },
-            { name: "Mentorship of Junior Engineers", score: "Novice (Gap)" },
-            { name: "Vendor Foundry Relations", score: "Practitioner (Sustaining)" }
+            { name: "Chip-Level Performance Optimization", score: "Expert (Transformational)" }
           ],
           devNotes: "Severe derailer risk (Arrogance). Requires executive coaching or technical individual contributor containment.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -738,20 +692,14 @@
         {
           id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux",
           pillarScores: [72, 75, 70, 72, 75], derailerPenalty: 0, roleDemand: 76, lir: 73, zfVal: 75, zfPct: "75th %ile",
-          cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.",
+          cppLevel: "Tactical Strategy", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.",
           zfStrengths: ["Innovates"], zfFlaw: "None detected", onaBadge: "Active Node",
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor",
           judgeScore: "+1P / +1T", deliverScore: "Highly Effective",
           synthesis: "Effective product design head.",
           competencies: [
             { name: "Consumer UI/UX Prototyping", score: "Expert (Transformational)" },
-            { name: "In-Vehicle Infotainment Integration", score: "Practitioner (Highly Effective)" },
-            { name: "Design Team Leadership", score: "Practitioner (Highly Effective)" },
-            { name: "Hardware-Software Co-Design", score: "Practitioner (Sustaining)" },
-            { name: "Customer Telemetry Analysis", score: "Practitioner (Highly Effective)" },
-            { name: "Cross-Functional Collaboration", score: "Practitioner (Highly Effective)" },
-            { name: "Budget & Vendor Management", score: "Practitioner (Sustaining)" },
-            { name: "Strategic Roadmapping", score: "Practitioner (Sustaining)" }
+            { name: "In-Vehicle Infotainment Integration", score: "Practitioner (Highly Effective)" }
           ],
           devNotes: "Strong design head. Pair with system architects for rigorous delivery timing.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -759,20 +707,14 @@
         {
           id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2",
           pillarScores: [52, 60, 35, 45, 50], derailerPenalty: 8, roleDemand: 82, lir: 43, zfVal: 60, zfPct: "60th %ile",
-          cppLevel: "Level 3 (Diagnostic)", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.",
+          cppLevel: "Diagnostic Accumulation", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.",
           zfStrengths: ["Technical Integrity"], zfFlaw: "HDS: Excitable", onaBadge: "Peripheral",
           stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist",
           judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap",
           synthesis: "Significant performance gap across all 5 dimensions.",
           competencies: [
             { name: "Venture Financial Modeling", score: "Novice (Gap)" },
-            { name: "Ecosystem Partnership Building", score: "Novice (Gap)" },
-            { name: "Regulatory Compliance for H2", score: "Practitioner (Sustaining)" },
-            { name: "Capital Governance", score: "Novice (Gap)" },
-            { name: "Team Leadership under Pressure", score: "Novice (Gap)" },
-            { name: "Strategic Foresight", score: "Novice (Gap)" },
-            { name: "Stakeholder Communication", score: "Practitioner (Sustaining)" },
-            { name: "Technical R&D Oversight", score: "Practitioner (Sustaining)" }
+            { name: "Ecosystem Partnership Building", score: "Novice (Gap)" }
           ],
           devNotes: "Significant capability gap for heavy venture role. Recommend immediate redeployment to standard technical advisory.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
@@ -814,7 +756,7 @@
       function openCompetencyDrawer() {
         const l = leadersData[activeLeaderIndex];
         document.getElementById('drawerLeaderName').innerText = l.name;
-        document.getElementById('drawerLeaderRole').innerText = l.role + ' • Automotive Competency Audit & Document Vault';
+        document.getElementById('drawerLeaderRole').innerText = l.role + ' • Appraisal Competency Audit & Document Vault';
         document.getElementById('drawerDevelopmentNotes').innerText = l.devNotes;
 
         // Render Competencies
@@ -825,7 +767,7 @@
           item.className = "flex justify-between items-center p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs";
           item.innerHTML = `
             <span class="font-bold text-slate-800">${c.name}</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${c.score.includes('Transformational') || c.score.includes('Expert') ? 'bg-emerald-100 text-emerald-900' : (c.score.includes('Gap') ? 'bg-red-100 text-red-900' : 'bg-blue-100 text-blue-900')}">${c.score}</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-900">${c.score}</span>
           `;
           compList.appendChild(item);
         });
@@ -887,10 +829,10 @@
         input.value = '';
 
         setTimeout(() => {
-          let reply = "Based on tool-agnostic parsing of your vault files, your profile reflects Level 3 tactical thinking, central hub network connectivity, and practitioner-level delivery.";
+          let reply = "Based on tool-agnostic parsing of your vault files, your profile reflects Tactical Strategy CPP, Central Hub ONA, and Proficient appraisal.";
           const lower = msg.toLowerCase();
           if(lower.includes('parsons') || lower.includes('james') || lower.includes('report') || lower.includes('vault') || lower.includes('cpp')) {
-            reply = "Tool-Agnostic Vault Analysis for James Parsons:\n• **1. Think:** Parsed from `James Parsons CPP.pdf` ➔ Level 3 (Tactical / Systemic Kaizen) with potential to Level 4.\n• **2. Show Up:** Parsed from `James Parsons Full 34 .pdf` & Assessio ➔ 76th percentile effectiveness.\n• **3. Connect:** Parsed from `active-ona.xlsx` ➔ Central Hub / Broker.\n• **4. Judge:** Parsed from `Judgment Diagnostic JP.xlsx` ➔ +2 Prudence / +1 Temperance vector.\n• **5. Deliver:** Ground-truth GCGRA competency appraisal ➔ Practitioner.";
+            reply = "Vault Analysis for James Parsons:\n• **1. Think:** `James Parsons CPP.pdf` (Page 4) ➔ Tactical Strategy (Potential Level 4).\n• **2. Show Up:** `James Parsons Full 34 .pdf` ➔ 76th percentile effectiveness.\n• **3. Connect:** `active-ona.xlsx` ➔ Central Hub / Broker.\n• **4. Judge:** `Judgment Diagnostic JP.xlsx` ➔ Prudence +1, Fortitude -1, Temperance +1, Justice +2.\n• **5. Deliver:** Appraisal Tab 'VP, FCP' (Cell B4) ➔ Proficient (P), 3 competencies at target or exceeded.";
           }
           chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> ${reply}</div>`;
           chatMsgs.scrollTop = chatMsgs.scrollHeight;
