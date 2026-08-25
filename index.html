@@ -64,7 +64,7 @@
             <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
               HR
             </div>
-            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid • Tool-Agnostic Enterprise Intelligence</span>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300" id="topTenantTitle">Henharen Reid • Automotive Enterprise Intelligence</span>
           </div>
 
           <!-- Top Mode Switcher: BUILD (Left) vs BUY (Right) -->
@@ -94,7 +94,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
 
       <!-- ========================================================================= -->
-      <!-- TAB 1: PORTFOLIO VIEW                                                     -->
+      <!-- TAB 1: PORTFOLIO VIEW (BUILD MODE)                                        -->
       <!-- ========================================================================= -->
       <div id="view-portfolio" class="space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
@@ -249,7 +249,7 @@
       </div>
 
       <!-- ========================================================================= -->
-      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + DRAWER TRIGGER)                    -->
+      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + ROLE BENCHMARK SELECTOR)           -->
       <!-- ========================================================================= -->
       <div id="view-leaders" class="hidden space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
@@ -341,7 +341,7 @@
               </select>
             </div>
 
-            <!-- The 5 Pillars Grid (Corrected: CPP Tactical Strategy, ONA Central Hub, Judgment +1P/-1F/+1T/+2J, Deliver Practitioner vs Expert target with [-1 Gap]) -->
+            <!-- The 5 Pillars Grid -->
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="p1-val">Tactical Strategy</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="p2-val">76%ile</span></div>
@@ -365,7 +365,7 @@
 
             <div class="flex items-center justify-between pt-2 border-t border-slate-100">
               <div class="text-xs text-slate-700 font-medium truncate max-w-[70%]" id="detSynthesis">
-                <strong>Readout:</strong> CPP Tactical Strategy, ONA Central Hub, Judgment (+1P, -1F, +1T, +2J), Appraisal Cell B4 (Practitioner vs Expert target).
+                <strong>Readout:</strong> Tactical Strategy, Central Hub, Judgment (+1P/-1F/+1T/+2J), Appraisal Cell B4 (Practitioner vs Expert target).
               </div>
               <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-800 transition shrink-0">
                 Inspect Competency & Vault Audit ➔
@@ -440,11 +440,39 @@
         </div>
       </div>
 
-      <!-- MODE 2: BUY VIEW -->
+      <!-- MODE 2: BUY VIEW (EXTERNAL EXECUTIVE SEARCH MANDATES & EXTERNAL 5-PILLAR TELEMETRY) -->
       <div id="view-buyMode" class="hidden space-y-6">
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
-          <span class="text-[10px] font-bold tracking-wider text-amber-600 uppercase">External Acquisition Triggered via 2035 Plan Gap</span>
-          <h2 class="text-xl font-bold font-editorial text-slate-900 mt-0.5">Chief Technology Officer & Head of Autonomous Systems</h2>
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-4 gap-4">
+            <div>
+              <span class="text-[10px] font-bold tracking-wider text-amber-600 uppercase">External Acquisition Engine (Tool-Agnostic Telemetry)</span>
+              <h2 class="text-2xl font-bold font-editorial text-slate-900 mt-0.5">Executive Search Mandates & External Candidate Shortlists</h2>
+              <p class="text-xs text-slate-500 mt-1">Assessing external talent via: 1. Think (CPP + Spiral Dynamics), 2. Show Up (Hogan Flash HPI/HDS proxy), 3. Connect (AI Newsflow & LinkedIn Scan), 4. Judge (Virtues Diagnostic), 5. Deliver (CV, Track Record & Referees).</p>
+            </div>
+            <span class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shrink-0">Retained Search Portal</span>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-[10px] font-bold text-slate-400 uppercase">Mandate #1</span><span class="px-2 py-0.5 bg-red-100 text-red-800 text-[10px] font-bold rounded">Gap: -36 pts</span></div>
+              <h3 class="font-bold text-base text-slate-900">Chief Technology Officer & Head of Autonomous Systems</h3>
+              <p class="text-xs text-slate-600">External search active across Munich, London, and Silicon Valley. Telemetry ingested from Hogan Flash proxies and AI LinkedIn sentiment mapping.</p>
+              <div class="flex justify-between text-xs pt-2 border-t border-slate-200 font-bold">
+                <span>Shortlist Candidates: 4 Shortlisted</span>
+                <span class="text-blue-700 underline cursor-pointer">Inspect External Telemetry ➔</span>
+              </div>
+            </div>
+
+            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-[10px] font-bold text-slate-400 uppercase">Mandate #2</span><span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded">Gap: -28 pts</span></div>
+              <h3 class="font-bold text-base text-slate-900">Head of Hydrogen Fuel Cell & Heavy Industrial Ventures</h3>
+              <p class="text-xs text-slate-600">European heavy industry sweep. Evaluated via Phronesis cardinal virtue diagnostics and reference track-record audits.</p>
+              <div class="flex justify-between text-xs pt-2 border-t border-slate-200 font-bold">
+                <span>Shortlist Candidates: 3 Interviewing</span>
+                <span class="text-blue-700 underline cursor-pointer">Inspect External Telemetry ➔</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -531,7 +559,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v3.3</span>
+        <span>Henharen Reid • v3.6</span>
       </div>
     </footer>
 
@@ -562,7 +590,6 @@
       let leadersData = [
         {
           id: "parsons", initials: "JP", name: "James Parsons", role: "VP, FCP", pillar: "Software & Autonomous", currentBlockId: "adas",
-          // Synced precisely to your exact reports: Tactical Strategy CPP, 76%ile 360, Central Hub ONA, Judgment (+1P / -1F / +1T / +2J), Appraisal Cell B4 = P (Target E, -1 Gap)
           pillarScores: [70, 76, 78, 74, 75], derailerPenalty: 0, roleDemand: 80, lir: 78, zfVal: 76, zfPct: "76th %ile",
           cppLevel: "Tactical Strategy", cognitiveFlex: "70 / 100", thinkNotes: "Tactical strategy working environment (Potential Level 4).",
           zfStrengths: ["Execution Focus", "Collaboration"], zfFlaw: "None detected", onaBadge: "Central Hub / Broker",
