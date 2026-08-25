@@ -50,7 +50,6 @@
       .custom-scroll::-webkit-scrollbar { width: 4px; }
       .custom-scroll::-webkit-scrollbar-track { background: #f8fafc; }
       .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-      /* Slide-over drawer transition */
       .slide-drawer { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
       .slide-drawer.open { transform: translateX(0); }
     </style>
@@ -65,7 +64,7 @@
             <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
               HR
             </div>
-            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid</span>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300" id="tenantBranding">Henharen Reid • Automotive Enterprise Intelligence</span>
           </div>
 
           <!-- Top Mode Switcher: BUILD (Left) vs BUY (Right) -->
@@ -101,7 +100,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
             <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leadership Impact Readiness • Group view</h1>
-            <p class="text-xs text-slate-500 mt-1 font-medium">Enterprise transformation capability vs. role demand • 52,000 employees • 9 strategic blocks • 320 senior executives scored</p>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Enterprise transformation capability vs. role demand • 52,000 employees • 9 strategic blocks • Multi-source executive intelligence</p>
           </div>
           <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold" id="pillarFilterButtons">
             <button onclick="filterPillar('all')" id="btn-pillar-all" class="px-3 py-1 bg-navy-900 text-white rounded transition">All pillars</button>
@@ -323,7 +322,7 @@
             <div class="flex justify-between items-start border-b border-slate-100 pb-3">
               <div>
                 <div class="flex items-center gap-2">
-                  <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">Elena Mercer</h3>
+                  <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">James Parsons</h3>
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-900 border" id="detArchetypeBadge">The Enterprise Star</span>
                 </div>
                 <p class="text-xs text-slate-500 font-medium mt-0.5" id="detRole">SVP, Autonomous Software Architecture</p>
@@ -369,7 +368,7 @@
                 <strong>Readout:</strong> Balanced cognitive agility and transformational delivery.
               </div>
               <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-800 transition shrink-0">
-                Inspect GCGRA & Vault Audit ➔
+                Inspect Competency & Vault Audit ➔
               </button>
             </div>
           </div>
@@ -451,15 +450,15 @@
 
     </main>
 
-    <!-- NATIVE SLIDE-OVER DRAWER (GCGRA COMPETENCY AUDIT & SECURE VAULT) -->
+    <!-- NATIVE SLIDE-OVER DRAWER (COMPETENCY AUDIT & SECURE VAULT) -->
     <div id="competencyDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
       <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="closeCompetencyDrawer()"></div>
       <div class="absolute inset-y-0 right-0 max-w-xl w-full bg-white shadow-2xl flex flex-col slide-drawer" id="drawerPanel">
         <!-- Drawer Header -->
         <div class="bg-navy-950 text-white p-6 flex justify-between items-center border-b border-navy-900">
           <div>
-            <h3 class="text-lg font-bold font-editorial" id="drawerLeaderName">Elena Mercer</h3>
-            <p class="text-xs text-amber-400 mt-0.5 font-medium" id="drawerLeaderRole">GCGRA Competency Audit & Secure Document Vault</p>
+            <h3 class="text-lg font-bold font-editorial" id="drawerLeaderName">James Parsons</h3>
+            <p class="text-xs text-amber-400 mt-0.5 font-medium" id="drawerLeaderRole">Automotive Competency Audit & Secure Document Vault</p>
           </div>
           <button onclick="closeCompetencyDrawer()" class="text-slate-400 hover:text-white p-2 rounded-lg text-lg font-bold">✕</button>
         </div>
@@ -467,12 +466,12 @@
         <!-- Drawer Body -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-800 custom-scroll">
           
-          <!-- Section 1: GCGRA 8-Competency Breakdown -->
+          <!-- Section 1: Competency Breakdown -->
           <div class="space-y-3">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • GCGRA 8-Block Competency Scores</h4>
-            <p class="text-slate-500 text-[11px]">Evaluated against division-specific line manager appraisal benchmarks (Scale: Novice ➔ Practitioner ➔ Expert / Transformational).</p>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Automotive Engineering Competency Matrix</h4>
+            <p class="text-slate-500 text-[11px]">Evaluated against division-specific appraisal benchmarks (Scale: Novice ➔ Practitioner ➔ Expert / Transformational).</p>
             
-            <div class="space-y-2.5 pt-2" id="gcgraCompetencyList">
+            <div class="space-y-2.5 pt-2" id="competencyList">
               <!-- Populated via JS -->
             </div>
           </div>
@@ -485,7 +484,7 @@
             </p>
           </div>
 
-          <!-- Section 3: Secure Vault Report Links -->
+          <!-- Section 3: Secure Vault Report Links (Mapped to James Parsons files) -->
           <div class="space-y-3 pt-2">
             <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">Secure Document Vault (Verified Reports)</h4>
             <div class="grid grid-cols-1 gap-2" id="vaultLinksContainer">
@@ -518,7 +517,7 @@
       <div id="chatBody" class="flex flex-col h-72 hidden">
         <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
           <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-            <strong>Advisory AI:</strong> Ask me anything about our 10 leaders, 5-pillar triangulations, or GCGRA competency audits. (e.g. <em>"Why is Alexander Holt flagged as Redeploy?"</em>)
+            <strong>Advisory AI:</strong> Ask me anything about our 10 leaders, 5-pillar triangulations, or competency audits. (e.g. <em>"Why is Alexander Holt flagged as Redeploy?"</em>)
           </div>
         </div>
         <div class="p-2.5 bg-navy-900 border-t border-slate-800 flex gap-2">
@@ -532,7 +531,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v2.2</span>
+        <span>Henharen Reid • v2.5</span>
       </div>
     </footer>
 
@@ -562,16 +561,16 @@
 
       let leadersData = [
         {
-          id: "mercer", initials: "EM", name: "Elena Mercer", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
+          id: "parsons", initials: "JP", name: "James Parsons", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
           pillarScores: [86, 92, 89, 85, 91], derailerPenalty: 0, roleDemand: 80, lir: 88, zfVal: 92, zfPct: "92nd %ile",
           cppLevel: "Level 5 (Strategic)", cognitiveFlex: "86 / 100", thinkNotes: "Balanced, high cognitive agility.",
           zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge",
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
           judgeScore: "+3P / +2T", deliverScore: "Transformational",
           synthesis: "Balanced enterprise star across all 5 dimensions.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Neural Network Scale & ADAS Integration", score: "Expert (Transformational)" },
-            { name: "ASIL-D Automotive Safety Compliance", score: "Practitioner (Highly Effective)" },
+            { name: "ASIL-D Functional Safety Compliance", score: "Practitioner (Highly Effective)" },
             { name: "Cross-Functional Agile Execution", score: "Expert (Transformational)" },
             { name: "Technical Talent Attraction & Mentorship", score: "Expert (Transformational)" },
             { name: "Commercial ROI & OTA Monetization", score: "Practitioner (Highly Effective)" },
@@ -579,8 +578,14 @@
             { name: "Regulatory & Homologation Navigation", score: "Expert (Transformational)" },
             { name: "Crisis Resilience under Tech Ambiguity", score: "Expert (Transformational)" }
           ],
-          devNotes: "High strategic delivery. Recommended for international board exposure.",
-          reports: { think: "vault/mercer-cpp.pdf", show: "vault/mercer-zf360.pdf", connect: "vault/mercer-ona.pdf", judge: "vault/mercer-virtues.pdf", deliver: "vault/mercer-gcgra.pdf" }
+          devNotes: "High strategic delivery. Recommended for international board exposure and software architecture governance.",
+          reports: { 
+            think: "vault/James Parsons CPP.pdf", 
+            show: "vault/James Parsons Full 34 .pdf", 
+            connect: "vault/active-ona.xlsx", 
+            judge: "vault/Judgment Diagnostic JP.xlsx", 
+            deliver: "vault/James Parsons Assessio.pdf" 
+          }
         },
         {
           id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Solid-State Battery Chemistry", pillar: "Electrified Propulsion", currentBlockId: "ssb",
@@ -590,7 +595,7 @@
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick",
           judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining",
           synthesis: "World-class intellectual horsepower (96), but isolated network topology.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Electrochemistry & Cell R&D", score: "Expert (Transformational)" },
             { name: "Lab-to-Line Scale-up Discipline", score: "Novice (Gap)" },
             { name: "Cross-Functional Lab Collaboration", score: "Novice (Gap)" },
@@ -601,7 +606,7 @@
             { name: "Resilience under Commercial Pressure", score: "Novice (Gap)" }
           ],
           devNotes: "Requires executive mentorship and mandatory cross-functional rotation to break R&D silo isolation.",
-          reports: { think: "vault/holt-cpp.pdf", show: "vault/holt-zf360.pdf", connect: "vault/holt-ona.pdf", judge: "vault/holt-virtues.pdf", deliver: "vault/holt-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota",
@@ -611,7 +616,7 @@
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
           judgeScore: "+2J / +1P", deliverScore: "Highly Effective",
           synthesis: "Super-connector (95) with strong commercial delivery.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Recurring Revenue Structuring", score: "Practitioner (Highly Effective)" },
             { name: "Cross-OEM Commercial Alliances", score: "Expert (Transformational)" },
             { name: "Cybersecurity & Data Governance", score: "Practitioner (Highly Effective)" },
@@ -622,7 +627,7 @@
             { name: "Team Inspiration & Culture", score: "Expert (Transformational)" }
           ],
           devNotes: "Outstanding network broker. Pair with a deep technical architect for complex tech negotiations.",
-          reports: { think: "vault/jenkins-cpp.pdf", show: "vault/jenkins-zf360.pdf", connect: "vault/jenkins-ona.pdf", judge: "vault/jenkins-virtues.pdf", deliver: "vault/jenkins-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga",
@@ -632,7 +637,7 @@
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine",
           judgeScore: "+2P / +2T", deliverScore: "Transformational",
           synthesis: "Dominant plant execution engine.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Plant-Floor Automation & OEE", score: "Expert (Transformational)" },
             { name: "Standard Work Discipline", score: "Expert (Transformational)" },
             { name: "Capital Project Execution", score: "Practitioner (Highly Effective)" },
@@ -643,7 +648,7 @@
             { name: "Crisis Response on Shop Floor", score: "Expert (Transformational)" }
           ],
           devNotes: "Anchor of manufacturing operations. Ready for multi-plant European regional oversight.",
-          reports: { think: "vault/koehler-cpp.pdf", show: "vault/koehler-zf360.pdf", connect: "vault/koehler-ona.pdf", judge: "vault/koehler-virtues.pdf", deliver: "vault/koehler-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv",
@@ -653,7 +658,7 @@
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
           judgeScore: "+3J / +1P", deliverScore: "Transformational",
           synthesis: "Elite global joint-venture dealmaker.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Multi-Border Negotiation", score: "Expert (Transformational)" },
             { name: "M&A Due Diligence & Valuation", score: "Expert (Transformational)" },
             { name: "Strategic Capital Governance", score: "Practitioner (Highly Effective)" },
@@ -664,7 +669,7 @@
             { name: "Post-Merger Integration", score: "Practitioner (Highly Effective)" }
           ],
           devNotes: "Prime candidate for Group Strategy Director or Head of Corporate Development.",
-          reports: { think: "vault/zhang-cpp.pdf", show: "vault/zhang-zf360.pdf", connect: "vault/zhang-ona.pdf", judge: "vault/zhang-virtues.pdf", deliver: "vault/zhang-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals",
@@ -674,7 +679,7 @@
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
           judgeScore: "+2P / +2J", deliverScore: "Highly Effective",
           synthesis: "Reliable commodity strategist.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Sovereign Mineral Sourcing", score: "Practitioner (Highly Effective)" },
             { name: "Upstream ESG Compliance", score: "Expert (Transformational)" },
             { name: "Hedge & Price Volatility Management", score: "Practitioner (Highly Effective)" },
@@ -685,7 +690,7 @@
             { name: "Stakeholder Reporting", score: "Practitioner (Highly Effective)" }
           ],
           devNotes: "Solid supply chain leader with strong ethical grounding.",
-          reports: { think: "vault/laurent-cpp.pdf", show: "vault/laurent-zf360.pdf", connect: "vault/laurent-ona.pdf", judge: "vault/laurent-virtues.pdf", deliver: "vault/laurent-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice",
@@ -695,7 +700,7 @@
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor",
           judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining",
           synthesis: "Solid traditional operator.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "ICE Engine Run-Out Efficiency", score: "Expert (Transformational)" },
             { name: "Cash Harvest & Cost Control", score: "Practitioner (Highly Effective)" },
             { name: "Legacy Quality Assurance", score: "Practitioner (Highly Effective)" },
@@ -706,7 +711,7 @@
             { name: "Plant Stakeholder Trust", score: "Expert (Transformational)" }
           ],
           devNotes: "Valuable anchor for legacy cash generation. Do not move to EV R&D.",
-          reports: { think: "vault/richter-cpp.pdf", show: "vault/richter-zf360.pdf", connect: "vault/richter-ona.pdf", judge: "vault/richter-virtues.pdf", deliver: "vault/richter-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
@@ -716,7 +721,7 @@
           stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma / Maverick",
           judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap",
           synthesis: "High cognitive score offset by severe interpersonal friction.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Silicon Micro-Architecture Design", score: "Expert (Transformational)" },
             { name: "Chip-Level Performance Optimization", score: "Expert (Transformational)" },
             { name: "Cross-Team Collaboration", score: "Novice (Gap)" },
@@ -727,7 +732,7 @@
             { name: "Vendor Foundry Relations", score: "Practitioner (Sustaining)" }
           ],
           devNotes: "Severe derailer risk (Arrogance). Requires executive coaching or technical individual contributor containment.",
-          reports: { think: "vault/bergstrom-cpp.pdf", show: "vault/bergstrom-zf360.pdf", connect: "vault/bergstrom-ona.pdf", judge: "vault/bergstrom-virtues.pdf", deliver: "vault/bergstrom-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux",
@@ -737,7 +742,7 @@
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor",
           judgeScore: "+1P / +1T", deliverScore: "Highly Effective",
           synthesis: "Effective product design head.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Consumer UI/UX Prototyping", score: "Expert (Transformational)" },
             { name: "In-Vehicle Infotainment Integration", score: "Practitioner (Highly Effective)" },
             { name: "Design Team Leadership", score: "Practitioner (Highly Effective)" },
@@ -748,7 +753,7 @@
             { name: "Strategic Roadmapping", score: "Practitioner (Sustaining)" }
           ],
           devNotes: "Strong design head. Pair with system architects for rigorous delivery timing.",
-          reports: { think: "vault/tanguy-cpp.pdf", show: "vault/tanguy-zf360.pdf", connect: "vault/tanguy-ona.pdf", judge: "vault/tanguy-virtues.pdf", deliver: "vault/tanguy-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         },
         {
           id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2",
@@ -758,7 +763,7 @@
           stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist",
           judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap",
           synthesis: "Significant performance gap across all 5 dimensions.",
-          gcgraCompetencies: [
+          competencies: [
             { name: "Venture Financial Modeling", score: "Novice (Gap)" },
             { name: "Ecosystem Partnership Building", score: "Novice (Gap)" },
             { name: "Regulatory Compliance for H2", score: "Practitioner (Sustaining)" },
@@ -769,7 +774,7 @@
             { name: "Technical R&D Oversight", score: "Practitioner (Sustaining)" }
           ],
           devNotes: "Significant capability gap for heavy venture role. Recommend immediate redeployment to standard technical advisory.",
-          reports: { think: "vault/varma-cpp.pdf", show: "vault/varma-zf360.pdf", connect: "vault/varma-ona.pdf", judge: "vault/varma-virtues.pdf", deliver: "vault/varma-gcgra.pdf" }
+          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         }
       ];
 
@@ -808,13 +813,13 @@
       function openCompetencyDrawer() {
         const l = leadersData[activeLeaderIndex];
         document.getElementById('drawerLeaderName').innerText = l.name;
-        document.getElementById('drawerLeaderRole').innerText = l.role + ' • GCGRA Competency & Document Vault Audit';
+        document.getElementById('drawerLeaderRole').innerText = l.role + ' • Automotive Competency Audit & Document Vault';
         document.getElementById('drawerDevelopmentNotes').innerText = l.devNotes;
 
-        // Render GCGRA Competencies
-        const compList = document.getElementById('gcgraCompetencyList');
+        // Render Competencies
+        const compList = document.getElementById('competencyList');
         compList.innerHTML = '';
-        l.gcgraCompetencies.forEach(c => {
+        l.competencies.forEach(c => {
           const item = document.createElement('div');
           item.className = "flex justify-between items-center p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs";
           item.innerHTML = `
@@ -824,27 +829,27 @@
           compList.appendChild(item);
         });
 
-        // Render Vault Links
+        // Render Vault Links (Mapped to James Parsons files)
         const vaultContainer = document.getElementById('vaultLinksContainer');
         vaultContainer.innerHTML = `
           <a href="${l.reports.think}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📄 1. How They Think (Cognadev CPP Report)</span>
+            <span>📄 1. How They Think (James Parsons CPP.pdf)</span>
             <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
           </a>
           <a href="${l.reports.show}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📄 2. How They Show Up (ZF 360 & Hogan HDS Report)</span>
+            <span>📄 2. How They Show Up (James Parsons Full 34 .pdf)</span>
             <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
           </a>
           <a href="${l.reports.connect}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📊 3. How They Connect (CTS ONA Network Metrics)</span>
-            <span class="text-blue-600 underline text-[11px]">Open Data ↗</span>
+            <span>📊 3. How They Connect (active-ona.xlsx)</span>
+            <span class="text-blue-600 underline text-[11px]">Open File ↗</span>
           </a>
           <a href="${l.reports.judge}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>⚖ 4. How They Judge (Phronesis Virtue Audit)</span>
-            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
+            <span>⚖ 4. How They Judge (Judgment Diagnostic JP.xlsx)</span>
+            <span class="text-blue-600 underline text-[11px]">Open File ↗</span>
           </a>
           <a href="${l.reports.deliver}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📋 5. How They Deliver (GCGRA Competency Appraisal)</span>
+            <span>📋 5. How They Deliver (James Parsons Assessio.pdf)</span>
             <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
           </a>
         `;
@@ -881,12 +886,10 @@
         input.value = '';
 
         setTimeout(() => {
-          let reply = "Based on our 5-pillar triangulation and GCGRA appraisal feeds, this leader demonstrates strong functional capability, though board attention should be directed toward their network centrality and delivery speed under extreme structural ambiguity.";
+          let reply = "Based on our 5-pillar triangulation and appraisal feeds, this leader demonstrates strong functional capability, though board attention should be directed toward their network centrality and delivery speed under extreme structural ambiguity.";
           const lower = msg.toLowerCase();
-          if(lower.includes('holt') || lower.includes('alexander')) {
-            reply = "Dr. Alexander Holt possesses elite cognitive capability (Think: 96), but his network centrality is isolated (28) and his Cautious derailer triggers a performance penalty, resulting in a LIR of 69 against a 78 role demand.";
-          } else if(lower.includes('mercer') || lower.includes('elena')) {
-            reply = "Elena Mercer is our top Enterprise Star (LIR 88). She exhibits Level 5 cognitive agility, top-decile ONA network brokerage, robust virtue scoring, and transformational GCGRA delivery execution.";
+          if(lower.includes('parsons') || lower.includes('james')) {
+            reply = "James Parsons is our top Enterprise Star (LIR 88). He exhibits Level 5 cognitive agility, top-decile network brokerage, robust virtue scoring, and transformational delivery execution.";
           }
           chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> ${reply}</div>`;
           chatMsgs.scrollTop = chatMsgs.scrollHeight;
