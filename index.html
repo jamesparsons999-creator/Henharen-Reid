@@ -64,7 +64,7 @@
             <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
               HR
             </div>
-            <span class="font-bold text-xs tracking-wider uppercase text-slate-300" id="topTenantTitle">Henharen Reid • Automotive Enterprise Intelligence</span>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid • Automotive Enterprise Intelligence</span>
           </div>
 
           <!-- Top Mode Switcher: BUILD (Left) vs BUY (Right) -->
@@ -440,37 +440,63 @@
         </div>
       </div>
 
-      <!-- MODE 2: BUY VIEW (EXTERNAL EXECUTIVE SEARCH MANDATES & EXTERNAL 5-PILLAR TELEMETRY) -->
+      <!-- MODE 2: BUY VIEW (EXTERNAL EXECUTIVE SEARCH MANDATES & CANDIDATE COMPARISON VIEW) -->
       <div id="view-buyMode" class="hidden space-y-6">
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-6">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-4 gap-4">
-            <div>
-              <span class="text-[10px] font-bold tracking-wider text-amber-600 uppercase">External Acquisition Engine (Tool-Agnostic Telemetry)</span>
-              <h2 class="text-2xl font-bold font-editorial text-slate-900 mt-0.5">Executive Search Mandates & External Candidate Shortlists</h2>
-              <p class="text-xs text-slate-500 mt-1">Assessing external talent via: 1. Think (CPP + Spiral Dynamics), 2. Show Up (Hogan Flash HPI/HDS proxy), 3. Connect (AI Newsflow & LinkedIn Scan), 4. Judge (Virtues Diagnostic), 5. Deliver (CV, Track Record & Referees).</p>
-            </div>
-            <span class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shrink-0">Retained Search Portal</span>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
+          <div>
+            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">BUY • Executive Search Mandates & External Shortlists</h1>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Assessed via 5 External Telemetry Sources: 1. Think (CPP + Spiral Dynamics), 2. Show Up (Hogan Flash proxy), 3. Connect (AI Newsflow/LinkedIn), 4. Judge (Virtues), 5. Deliver (CV & Referees).</p>
           </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-[10px] font-bold text-slate-400 uppercase">Mandate #1</span><span class="px-2 py-0.5 bg-red-100 text-red-800 text-[10px] font-bold rounded">Gap: -36 pts</span></div>
-              <h3 class="font-bold text-base text-slate-900">Chief Technology Officer & Head of Autonomous Systems</h3>
-              <p class="text-xs text-slate-600">External search active across Munich, London, and Silicon Valley. Telemetry ingested from Hogan Flash proxies and AI LinkedIn sentiment mapping.</p>
-              <div class="flex justify-between text-xs pt-2 border-t border-slate-200 font-bold">
-                <span>Shortlist Candidates: 4 Shortlisted</span>
-                <span class="text-blue-700 underline cursor-pointer">Inspect External Telemetry ➔</span>
+          <div class="flex items-center gap-2 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold">
+            <span class="px-3 py-1 bg-navy-950 text-amber-400 rounded">Active Mandate: CTO & Autonomous Systems</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- External Candidates Roster -->
+          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
+            <div class="grid grid-cols-12 items-center text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-2.5 px-2">
+              <span class="col-span-6">External Candidate ↕</span>
+              <span class="col-span-2 text-center">Fit Score</span>
+              <span class="col-span-2 text-center bg-amber-50 text-amber-900 rounded py-0.5">CPP</span>
+              <span class="col-span-2 text-right">Status</span>
+            </div>
+            <div class="divide-y divide-slate-100 text-xs max-h-[500px] overflow-y-auto pr-1 custom-scroll" id="buyCandidateRoster">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <!-- External Candidate 5-Pillar Profile Card & Radar Overlay -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+            <div class="flex justify-between items-start border-b border-slate-100 pb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-xl font-bold font-editorial text-slate-900" id="buyDetName">Dr. Henrik Lindqvist</h3>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-900 border" id="buyDetBadge">Tier-1 Shortlist</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium mt-0.5" id="buyDetRole">Former VP Autonomous Software, Munich Labs</p>
+              </div>
+              <div class="text-right">
+                <span class="text-3xl font-black text-slate-900" id="buyDetScore">84</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="buyDetDemand">Role Target: 80 • +4 Fit</span>
               </div>
             </div>
 
-            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-[10px] font-bold text-slate-400 uppercase">Mandate #2</span><span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded">Gap: -28 pts</span></div>
-              <h3 class="font-bold text-base text-slate-900">Head of Hydrogen Fuel Cell & Heavy Industrial Ventures</h3>
-              <p class="text-xs text-slate-600">European heavy industry sweep. Evaluated via Phronesis cardinal virtue diagnostics and reference track-record audits.</p>
-              <div class="flex justify-between text-xs pt-2 border-t border-slate-200 font-bold">
-                <span>Shortlist Candidates: 3 Interviewing</span>
-                <span class="text-blue-700 underline cursor-pointer">Inspect External Telemetry ➔</span>
-              </div>
+            <!-- 5 Pillars Grid for External Candidate -->
+            <div class="grid grid-cols-5 gap-2 text-center text-xs">
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p1">Level 4 (Parallel)</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p2">Hogan Flash (Strong)</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">3. Connect</span><span class="font-bold text-slate-900 text-[11px]" id="buy-p3">Global AI Network</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="buy-p4">+2P / +2J</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-blue-900 text-[11px]" id="buy-p5">Expert (E)</span></div>
+            </div>
+
+            <div class="relative h-44 w-full flex items-center justify-center">
+              <canvas id="buyRadarChart"></canvas>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed font-medium" id="buyDetSynthesis">
+              <strong>External Search Telemetry:</strong> High parallel processing capability with robust publication record and verified autonomous deployment track record.
             </div>
           </div>
         </div>
@@ -478,11 +504,10 @@
 
     </main>
 
-    <!-- NATIVE SLIDE-OVER DRAWER (COMPETENCY AUDIT & SECURE VAULT) -->
+    <!-- NATIVE SLIDE-OVER DRAWER -->
     <div id="competencyDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
       <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="closeCompetencyDrawer()"></div>
       <div class="absolute inset-y-0 right-0 max-w-xl w-full bg-white shadow-2xl flex flex-col slide-drawer" id="drawerPanel">
-        <!-- Drawer Header -->
         <div class="bg-navy-950 text-white p-6 flex justify-between items-center border-b border-navy-900">
           <div>
             <h3 class="text-lg font-bold font-editorial" id="drawerLeaderName">James Parsons</h3>
@@ -490,39 +515,20 @@
           </div>
           <button onclick="closeCompetencyDrawer()" class="text-slate-400 hover:text-white p-2 rounded-lg text-lg font-bold">✕</button>
         </div>
-
-        <!-- Drawer Body -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-800 custom-scroll">
-          
-          <!-- Section 1: Appraisal Feed -->
           <div class="space-y-3">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Appraisal Feed (Cell B4: Practitioner vs Expert Target)</h4>
-            <p class="text-slate-500 text-[11px]">Mapped from Excel Appraisal Tab ('VP, FCP' $\rightarrow$ Cell B4 = P, Role Target = E [-1 Gap]).</p>
-            
-            <div class="space-y-2.5 pt-2" id="competencyList">
-              <!-- Populated via JS -->
-            </div>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Appraisal Feed</h4>
+            <div class="space-y-2.5 pt-2" id="competencyList"></div>
           </div>
-
-          <!-- Section 2: Qualitative Development & Stretch Ideas -->
           <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px]">Manager Appraisal & Development Notes</h4>
-            <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes">
-              Current Level (Cell B4): Practitioner (P) vs Role Requirement (Cell C4): Expert (E) [-1 Gap]. Key ZF Behaviours: Develops Strategic Perspective; Inspires and Motivates Others; Champions Change. Development Action: Lead cross-functional working group; mentor 1 junior analyst.
-            </p>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px]">Manager Appraisal Notes</h4>
+            <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes">Practitioner (P) vs Expert (E) Target [-1 Gap].</p>
           </div>
-
-          <!-- Section 3: Secure Vault Report Links -->
           <div class="space-y-3 pt-2">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">Secure Document Vault (Tool-Agnostic Ingestion)</h4>
-            <div class="grid grid-cols-1 gap-2" id="vaultLinksContainer">
-              <!-- Populated via JS -->
-            </div>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">Secure Document Vault</h4>
+            <div class="grid grid-cols-1 gap-2" id="vaultLinksContainer"></div>
           </div>
-
         </div>
-
-        <!-- Drawer Footer -->
         <div class="bg-slate-50 p-4 border-t border-slate-200 flex justify-between items-center text-xs">
           <span class="text-slate-500">Henharen Reid Secure Compliance Vault</span>
           <button onclick="closeCompetencyDrawer()" class="px-4 py-2 bg-navy-950 text-white font-bold rounded-lg hover:bg-slate-800 transition">Close Audit</button>
@@ -530,9 +536,8 @@
       </div>
     </div>
 
-    <!-- EMBEDDED AI SENSE-MAKING CHATBOT PANEL -->
+    <!-- EMBEDDED AI CHATBOT -->
     <div id="aiChatPanel" class="fixed bottom-4 right-4 z-40 bg-navy-950 text-white rounded-2xl shadow-2xl border border-slate-700 w-80 sm:w-96 flex flex-col overflow-hidden transition-all duration-300">
-      <!-- Chat Header -->
       <div class="p-3.5 bg-navy-900 border-b border-slate-800 flex justify-between items-center cursor-pointer" onclick="toggleChatPanel()">
         <div class="flex items-center gap-2">
           <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -540,8 +545,6 @@
         </div>
         <span id="chatToggleIcon" class="text-slate-400 text-xs font-bold">▼</span>
       </div>
-
-      <!-- Chat Body (Collapsible) -->
       <div id="chatBody" class="flex flex-col h-72 hidden">
         <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
           <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
@@ -555,22 +558,21 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v3.6</span>
+        <span>Henharen Reid • v3.7</span>
       </div>
     </footer>
 
-    <!-- Interactive Data Store & Script Engine -->
+    <!-- Interactive Script Engine -->
     <script>
       let leaderRadar = null;
+      let buyRadar = null;
       let currentAppMode = 'build';
       let currentRadarMode = 'role';
-      let currentSortColumn = 'lir';
-      let currentSortAsc = false;
       let activeLeaderIndex = 0;
+      let activeBuyIndex = 0;
       let chatOpen = false;
 
       let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
@@ -619,133 +621,17 @@
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick",
           judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining",
           synthesis: "World-class intellectual horsepower (96), but isolated network topology.",
-          competencies: [
-            { name: "Electrochemistry & Cell R&D", score: "Expert (Transformational)" },
-            { name: "Lab-to-Line Scale-up Discipline", score: "Novice (Gap)" }
-          ],
-          devNotes: "Requires executive mentorship and mandatory cross-functional rotation to break R&D silo isolation.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota",
-          pillarScores: [58, 82, 95, 78, 84], derailerPenalty: 0, roleDemand: 76, lir: 76, zfVal: 82, zfPct: "82nd %ile",
-          cppLevel: "Parallel Processing", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.",
-          zfStrengths: ["Builds Relationships", "Collaboration"], zfFlaw: "None detected", onaBadge: "Top 1% Bridge",
-          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
-          judgeScore: "+2J / +1P", deliverScore: "Highly Effective",
-          synthesis: "Super-connector (95) with strong commercial delivery.",
-          competencies: [
-            { name: "Recurring Revenue Structuring", score: "Practitioner (Highly Effective)" },
-            { name: "Cross-OEM Commercial Alliances", score: "Expert (Transformational)" }
-          ],
-          devNotes: "Outstanding network broker. Pair with a deep technical architect for complex tech negotiations.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga",
-          pillarScores: [66, 94, 60, 80, 93], derailerPenalty: 0, roleDemand: 70, lir: 74, zfVal: 94, zfPct: "94th %ile",
-          cppLevel: "Tactical Strategy", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.",
-          zfStrengths: ["Drives for Results"], zfFlaw: "None detected", onaBadge: "Operational Hub",
-          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine",
-          judgeScore: "+2P / +2T", deliverScore: "Transformational",
-          synthesis: "Dominant plant execution engine.",
-          competencies: [
-            { name: "Plant-Floor Automation & OEE", score: "Expert (Transformational)" },
-            { name: "Standard Work Discipline", score: "Expert (Transformational)" }
-          ],
-          devNotes: "Anchor of manufacturing operations. Ready for multi-plant European regional oversight.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv",
-          pillarScores: [88, 86, 92, 88, 89], derailerPenalty: 0, roleDemand: 78, lir: 88, zfVal: 86, zfPct: "86th %ile",
-          cppLevel: "Pure Strategy", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.",
-          zfStrengths: ["Builds Relationships"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge",
-          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
-          judgeScore: "+3J / +1P", deliverScore: "Transformational",
-          synthesis: "Elite global joint-venture dealmaker.",
-          competencies: [
-            { name: "Multi-Border Negotiation", score: "Expert (Transformational)" },
-            { name: "M&A Due Diligence & Valuation", score: "Expert (Transformational)" }
-          ],
-          devNotes: "Prime candidate for Group Strategy Director or Head of Corporate Development.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals",
-          pillarScores: [78, 84, 76, 82, 80], derailerPenalty: 0, roleDemand: 78, lir: 80, zfVal: 84, zfPct: "84th %ile",
-          cppLevel: "Parallel Processing", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.",
-          zfStrengths: ["Collaboration"], zfFlaw: "None detected", onaBadge: "Connector",
-          stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star",
-          judgeScore: "+2P / +2J", deliverScore: "Highly Effective",
-          synthesis: "Reliable commodity strategist.",
-          competencies: [
-            { name: "Sovereign Mineral Sourcing", score: "Practitioner (Highly Effective)" },
-            { name: "Upstream ESG Compliance", score: "Expert (Transformational)" }
-          ],
-          devNotes: "Solid supply chain leader with strong ethical grounding.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice",
-          pillarScores: [54, 88, 45, 60, 76], derailerPenalty: 2, roleDemand: 70, lir: 63, zfVal: 88, zfPct: "88th %ile",
-          cppLevel: "Diagnostic Accumulation", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.",
-          zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Cautious", onaBadge: "Core Hub",
-          stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor",
-          judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining",
-          synthesis: "Solid traditional operator.",
-          competencies: [
-            { name: "ICE Engine Run-Out Efficiency", score: "Expert (Transformational)" },
-            { name: "Cash Harvest & Cost Control", score: "Practitioner (Highly Effective)" }
-          ],
-          devNotes: "Valuable anchor for legacy cash generation. Do not move to EV R&D.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
-          pillarScores: [90, 62, 30, 50, 60], derailerPenalty: 6, roleDemand: 80, lir: 65, zfVal: 62, zfPct: "62nd %ile",
-          cppLevel: "Pure Strategy", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.",
-          zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Arrogant", onaBadge: "Silo Isolated",
-          stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma / Maverick",
-          judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap",
-          synthesis: "High cognitive score offset by severe interpersonal friction.",
-          competencies: [
-            { name: "Silicon Micro-Architecture Design", score: "Expert (Transformational)" },
-            { name: "Chip-Level Performance Optimization", score: "Expert (Transformational)" }
-          ],
-          devNotes: "Severe derailer risk (Arrogance). Requires executive coaching or technical individual contributor containment.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux",
-          pillarScores: [72, 75, 70, 72, 75], derailerPenalty: 0, roleDemand: 76, lir: 73, zfVal: 75, zfPct: "75th %ile",
-          cppLevel: "Tactical Strategy", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.",
-          zfStrengths: ["Innovates"], zfFlaw: "None detected", onaBadge: "Active Node",
-          stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor",
-          judgeScore: "+1P / +1T", deliverScore: "Highly Effective",
-          synthesis: "Effective product design head.",
-          competencies: [
-            { name: "Consumer UI/UX Prototyping", score: "Expert (Transformational)" },
-            { name: "In-Vehicle Infotainment Integration", score: "Practitioner (Highly Effective)" }
-          ],
-          devNotes: "Strong design head. Pair with system architects for rigorous delivery timing.",
-          reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
-        },
-        {
-          id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2",
-          pillarScores: [52, 60, 35, 45, 50], derailerPenalty: 8, roleDemand: 82, lir: 43, zfVal: 60, zfPct: "60th %ile",
-          cppLevel: "Diagnostic Accumulation", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.",
-          zfStrengths: ["Technical Integrity"], zfFlaw: "HDS: Excitable", onaBadge: "Peripheral",
-          stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist",
-          judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap",
-          synthesis: "Significant performance gap across all 5 dimensions.",
-          competencies: [
-            { name: "Venture Financial Modeling", score: "Novice (Gap)" },
-            { name: "Ecosystem Partnership Building", score: "Novice (Gap)" }
-          ],
-          devNotes: "Significant capability gap for heavy venture role. Recommend immediate redeployment to standard technical advisory.",
+          competencies: [{ name: "Electrochemistry & Cell R&D", score: "Expert (Transformational)" }],
+          devNotes: "Requires executive mentorship and mandatory cross-functional rotation.",
           reports: { think: "vault/James Parsons CPP.pdf", show: "vault/James Parsons Full 34 .pdf", connect: "vault/active-ona.xlsx", judge: "vault/Judgment Diagnostic JP.xlsx", deliver: "vault/James Parsons Assessio.pdf" }
         }
+      ];
+
+      // Dummy External Candidates for BUY Mode (Search Mandates)
+      let buyCandidates = [
+        { id: "bc1", initials: "HL", name: "Dr. Henrik Lindqvist", role: "Former VP Autonomous Software, Munich", score: 84, badge: "Tier-1 Shortlist", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [88, 85, 82, 86, 85], think: "Level 4 (Parallel)", show: "Hogan Flash (Strong)", connect: "Global AI Network", judge: "+2P / +2J", deliver: "Expert (E)", synthesis: "Extensive autonomous driving architecture experience from tier-1 European labs." },
+        { id: "bc2", initials: "MS", name: "Marcus von Stern", role: "Chief Architect, Silicon Valley AI Mobility", score: 79, badge: "Interviewing", badgeClass: "bg-blue-100 text-blue-900 border", scores: [90, 72, 78, 80, 82], think: "Level 5 (Strategic)", show: "Hogan Flash (Moderate)", connect: "US West Coast Hub", judge: "+1P / +1T", deliver: "Practitioner (P)", synthesis: "Elite silicon and neural network architecture background, minor cultural integration risks." },
+        { id: "bc3", initials: "AR", name: "Amara Rostova", role: "Head of ADAS Delivery, London", score: 82, badge: "Shortlisted", badgeClass: "bg-emerald-100 text-emerald-900 border", scores: [82, 88, 85, 84, 80], think: "Level 4 (Parallel)", show: "Hogan Flash (High Trust)", connect: "UK OEM Network", judge: "+2P / +1T / +1J", deliver: "Expert (E)", synthesis: "Exceptional regulatory navigation and team leadership under aggressive delivery timelines." }
       ];
 
       function populateBenchmarkDropdown() {
@@ -780,48 +666,107 @@
         });
       }
 
+      function renderBuyCandidateRoster() {
+        const roster = document.getElementById('buyCandidateRoster');
+        if (!roster) return;
+        roster.innerHTML = '';
+        buyCandidates.forEach((c, idx) => {
+          const row = document.createElement('div');
+          row.className = idx === activeBuyIndex 
+            ? 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
+            : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
+          row.onclick = () => selectBuyCandidate(idx);
+          row.innerHTML = `
+            <div class="col-span-6 flex items-center gap-2 overflow-hidden pr-1">
+              <div class="w-7 h-7 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${c.initials}</div>
+              <div class="overflow-hidden"><h4 class="font-bold text-slate-900 truncate">${c.name}</h4><p class="text-[10px] text-slate-400 truncate">${c.role}</p></div>
+            </div>
+            <span class="col-span-2 text-center font-black text-slate-900">${c.score}</span>
+            <span class="col-span-2 text-center font-bold text-amber-900 bg-amber-50 rounded">${c.think.split(' ')[0]}</span>
+            <div class="col-span-2 text-right"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${c.badgeClass} inline-block">${c.badge}</span></div>
+          `;
+          roster.appendChild(row);
+        });
+      }
+
+      function selectBuyCandidate(idx) {
+        activeBuyIndex = idx;
+        const c = buyCandidates[idx];
+        document.getElementById('buyDetName').innerText = c.name;
+        document.getElementById('buyDetBadge').innerText = c.badge;
+        document.getElementById('buyDetBadge').className = `px-2 py-0.5 rounded text-[10px] font-bold border ${c.badgeClass}`;
+        document.getElementById('buyDetRole').innerText = c.role;
+        document.getElementById('buyDetScore').innerText = c.score;
+        document.getElementById('buy-p1').innerText = c.think;
+        document.getElementById('buy-p2').innerText = c.show;
+        document.getElementById('buy-p3').innerText = c.connect;
+        document.getElementById('buy-p4').innerText = c.judge;
+        document.getElementById('buy-p5').innerText = c.deliver;
+        document.getElementById('buyDetSynthesis').innerHTML = `<strong>External Telemetry Readout:</strong> ${c.synthesis}`;
+
+        renderBuyRadar(c.scores);
+      }
+
+      function renderBuyRadar(scores) {
+        const ctx = document.getElementById('buyRadarChart');
+        if (!ctx) return;
+        if (buyRadar) buyRadar.destroy();
+
+        buyRadar = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
+            datasets: [
+              {
+                label: 'Candidate Telemetry',
+                data: scores,
+                backgroundColor: 'rgba(217, 119, 6, 0.2)',
+                borderColor: '#d97706',
+                borderWidth: 2,
+                pointRadius: 3
+              },
+              {
+                label: 'Role Demand Benchmark (80)',
+                data: [80, 80, 80, 80, 80],
+                backgroundColor: 'rgba(15, 23, 42, 0.05)',
+                borderColor: '#0f172a',
+                borderWidth: 1.5,
+                borderDash: [4, 4],
+                pointRadius: 2
+              }
+            ]
+          },
+          options: {
+            scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 10, weight: 'bold' } } } },
+            plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+            responsive: true,
+            maintainAspectRatio: false
+          }
+        });
+      }
+
       function openCompetencyDrawer() {
         const l = leadersData[activeLeaderIndex];
         document.getElementById('drawerLeaderName').innerText = l.name;
         document.getElementById('drawerLeaderRole').innerText = l.role + ' • Appraisal Competency Audit & Document Vault';
         document.getElementById('drawerDevelopmentNotes').innerText = l.devNotes;
 
-        // Render Competencies
         const compList = document.getElementById('competencyList');
         compList.innerHTML = '';
         l.competencies.forEach(c => {
           const item = document.createElement('div');
           item.className = "flex justify-between items-center p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs";
-          item.innerHTML = `
-            <span class="font-bold text-slate-800">${c.name}</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-900">${c.score}</span>
-          `;
+          item.innerHTML = `<span class="font-bold text-slate-800">${c.name}</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-900">${c.score}</span>`;
           compList.appendChild(item);
         });
 
-        // Render Vault Links
         const vaultContainer = document.getElementById('vaultLinksContainer');
         vaultContainer.innerHTML = `
-          <a href="${l.reports.think}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📄 1. How They Think (James Parsons CPP.pdf)</span>
-            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
-          </a>
-          <a href="${l.reports.show}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📄 2. How They Show Up (James Parsons Full 34 .pdf)</span>
-            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
-          </a>
-          <a href="${l.reports.connect}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📊 3. How They Connect (active-ona.xlsx)</span>
-            <span class="text-blue-600 underline text-[11px]">Open File ↗</span>
-          </a>
-          <a href="${l.reports.judge}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>⚖ 4. How They Judge (Judgment Diagnostic JP.xlsx)</span>
-            <span class="text-blue-600 underline text-[11px]">Open File ↗</span>
-          </a>
-          <a href="${l.reports.deliver}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
-            <span>📋 5. How They Deliver (James Parsons Assessio.pdf)</span>
-            <span class="text-blue-600 underline text-[11px]">Open PDF ↗</span>
-          </a>
+          <a href="${l.reports.think}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📄 1. How They Think (James Parsons CPP.pdf)</span><span class="text-blue-600 underline text-[11px]">Open PDF ↗</span></a>
+          <a href="${l.reports.show}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📄 2. How They Show Up (James Parsons Full 34 .pdf)</span><span class="text-blue-600 underline text-[11px]">Open PDF ↗</span></a>
+          <a href="${l.reports.connect}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📊 3. How They Connect (active-ona.xlsx)</span><span class="text-blue-600 underline text-[11px]">Open File ↗</span></a>
+          <a href="${l.reports.judge}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>⚖ 4. How They Judge (Judgment Diagnostic JP.xlsx)</span><span class="text-blue-600 underline text-[11px]">Open File ↗</span></a>
+          <a href="${l.reports.deliver}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition"><span>📋 5. How They Deliver (James Parsons Assessio.pdf)</span><span class="text-blue-600 underline text-[11px]">Open PDF ↗</span></a>
         `;
 
         document.getElementById('competencyDrawer').classList.remove('hidden');
@@ -837,31 +782,18 @@
         chatOpen = !chatOpen;
         const body = document.getElementById('chatBody');
         const icon = document.getElementById('chatToggleIcon');
-        if(chatOpen) {
-          body.classList.remove('hidden');
-          icon.innerText = '▲';
-        } else {
-          body.classList.add('hidden');
-          icon.innerText = '▼';
-        }
+        if(chatOpen) { body.classList.remove('hidden'); icon.innerText = '▲'; } else { body.classList.add('hidden'); icon.innerText = '▼'; }
       }
 
       function sendAiMessage() {
         const input = document.getElementById('chatInput');
         const msg = input.value.trim();
         if(!msg) return;
-
         const chatMsgs = document.getElementById('chatMessages');
         chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-950 rounded-xl border border-slate-800 text-white text-right"><strong>You:</strong> ${msg}</div>`;
         input.value = '';
-
         setTimeout(() => {
-          let reply = "Based on tool-agnostic parsing of your vault files, your profile reflects Tactical Strategy CPP, Central Hub ONA, and Practitioner appraisal.";
-          const lower = msg.toLowerCase();
-          if(lower.includes('parsons') || lower.includes('james') || lower.includes('report') || lower.includes('vault') || lower.includes('cpp')) {
-            reply = "Vault Analysis for James Parsons:\n• **1. Think:** `James Parsons CPP.pdf` (Page 4) ➔ Tactical Strategy.\n• **2. Show Up:** `James Parsons Full 34 .pdf` ➔ 76th percentile effectiveness.\n• **3. Connect:** `active-ona.xlsx` ➔ Central Hub / Broker.\n• **4. Judge:** `Judgment Diagnostic JP.xlsx` ➔ +1 Prudence, -1 Fortitude, +1 Temperance, +2 Justice.\n• **5. Deliver:** Appraisal Tab 'VP, FCP' (Cell B4) ➔ Practitioner (P) vs Expert (E) Target [-1 Gap].";
-          }
-          chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> ${reply}</div>`;
+          chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> Vault ingested successfully for James Parsons (CPP Tactical Strategy, ONA Central Hub, Judgment vector +1P/-1F/+1T/+2J, Appraisal P vs Expert target).</div>`;
           chatMsgs.scrollTop = chatMsgs.scrollHeight;
         }, 600);
       }
@@ -869,20 +801,13 @@
       function changeBenchmarkRole() {
         const sel = document.getElementById('benchmarkRoleSelect');
         if (!sel) return;
-        const blockId = sel.value;
-        const workstream = strategicWorkstreams.find(b => b.id === blockId);
+        const workstream = strategicWorkstreams.find(b => b.id === sel.value);
         if (!workstream) return;
-
         const l = leadersData[activeLeaderIndex];
         l.roleDemand = workstream.demand;
         l.demandScores = workstream.demandScores;
-
         let delta = l.lir - l.roleDemand;
-        if (delta >= -3) { l.stateBadge = "ALIGNED"; l.stateClass = "bg-emerald-100 text-emerald-800"; }
-        else if (delta >= -10) { l.stateBadge = "STRETCH"; l.stateClass = "bg-amber-100 text-amber-800"; }
-        else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-100 text-red-800"; }
         l.demandGap = `Demand: ${l.roleDemand} • ${delta >= 0 ? '+' + delta : delta} Gap`;
-
         document.getElementById('detDemandGap').innerText = l.demandGap;
         renderLeaderRoster();
         renderLeaderRadar(l.pillarScores, l.demandScores);
@@ -898,96 +823,7 @@
         currentRadarMode = mode;
         document.getElementById('btnRadarRole').className = mode === 'role' ? 'px-2.5 py-1 bg-navy-950 text-white rounded transition' : 'px-2.5 py-1 text-slate-600 rounded transition';
         document.getElementById('btnRadarCohort').className = mode === 'cohort' ? 'px-2.5 py-1 bg-navy-950 text-white rounded transition' : 'px-2.5 py-1 text-slate-600 rounded transition';
-        const sel = document.getElementById('benchmarkRoleSelect');
-        if (sel) sel.disabled = (mode === 'cohort');
         selectLeaderData(activeLeaderIndex);
-      }
-
-      function updateClientWeights() {
-        let w1 = parseInt(document.getElementById('slider1').value);
-        let w2 = parseInt(document.getElementById('slider2').value);
-        let w3 = parseInt(document.getElementById('slider3').value);
-        let w4 = parseInt(document.getElementById('slider4').value);
-        let w5 = parseInt(document.getElementById('slider5').value);
-
-        let sum = w1 + w2 + w3 + w4 + w5 || 1;
-        weights.p1 = w1 / sum; weights.p2 = w2 / sum; weights.p3 = w3 / sum; weights.p4 = w4 / sum; weights.p5 = w5 / sum;
-
-        document.getElementById('valWeight1').innerText = Math.round(weights.p1 * 100) + '%';
-        document.getElementById('valWeight2').innerText = Math.round(weights.p2 * 100) + '%';
-        document.getElementById('valWeight3').innerText = Math.round(weights.p3 * 100) + '%';
-        document.getElementById('valWeight4').innerText = Math.round(weights.p4 * 100) + '%';
-        document.getElementById('valWeight5').innerText = Math.round(weights.p5 * 100) + '%';
-
-        recalculateAllLeaders();
-      }
-
-      function resetWeights() {
-        weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
-        document.getElementById('slider1').value = 30;
-        document.getElementById('slider2').value = 25;
-        document.getElementById('slider3').value = 15;
-        document.getElementById('slider4').value = 15;
-        document.getElementById('slider5').value = 15;
-        updateClientWeights();
-      }
-
-      function recalculateAllLeaders() {
-        leadersData.forEach(l => {
-          let raw = (weights.p1 * l.pillarScores[0]) + (weights.p2 * l.pillarScores[1]) + (weights.p3 * l.pillarScores[2]) + (weights.p4 * l.pillarScores[3]) + (weights.p5 * l.pillarScores[4]) - l.derailerPenalty;
-          l.lir = Math.round(raw);
-          let delta = l.lir - l.roleDemand;
-          if (delta >= -3) { l.stateBadge = "ALIGNED"; l.stateClass = "bg-emerald-100 text-emerald-800"; }
-          else if (delta >= -10) { l.stateBadge = "STRETCH"; l.stateClass = "bg-amber-100 text-amber-800"; }
-          else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-100 text-red-800"; }
-          l.demandGap = `Demand: ${l.roleDemand} • ${delta >= 0 ? '+' + delta : delta} Gap`;
-        });
-        renderLeaderRoster();
-        selectLeaderData(activeLeaderIndex);
-        updateNineBoxGrid();
-      }
-
-      function updateNineBoxGrid() {
-        const boxIds = ['box-enigma', 'box-star-growth', 'box-star-top', 'box-dilemma', 'box-core', 'box-engine', 'box-risk', 'box-specialist', 'box-rock'];
-        boxIds.forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
-        let countStars = 0, countEngines = 0, countEnigmas = 0, countRisk = 0;
-
-        leadersData.forEach(l => {
-          let potScore = (l.pillarScores[0] * 0.5) + (l.pillarScores[2] * 0.5);
-          let perfScore = l.pillarScores[4];
-          let targetBox = '';
-          let potLevel = potScore >= 78 ? 'high' : (potScore >= 62 ? 'med' : 'low');
-          let perfLevel = perfScore >= 80 ? 'high' : (perfScore >= 68 ? 'med' : 'low');
-
-          if (potLevel === 'high' && perfLevel === 'high') { targetBox = 'box-star-top'; countStars++; }
-          else if (potLevel === 'high' && perfLevel === 'med') { targetBox = 'box-star-growth'; countStars++; }
-          else if (potLevel === 'high' && perfLevel === 'low') { targetBox = 'box-enigma'; countEnigmas++; }
-          else if (potLevel === 'med' && perfLevel === 'high') { targetBox = 'box-engine'; countEngines++; }
-          else if (potLevel === 'med' && perfLevel === 'med') { targetBox = 'box-core'; countEngines++; }
-          else if (potLevel === 'med' && perfLevel === 'low') { targetBox = 'box-dilemma'; countEnigmas++; }
-          else if (potLevel === 'low' && perfLevel === 'high') { targetBox = 'box-rock'; countEngines++; }
-          else if (potLevel === 'low' && perfLevel === 'med') { targetBox = 'box-specialist'; countEngines++; }
-          else { targetBox = 'box-risk'; countRisk++; }
-
-          const boxEl = document.getElementById(targetBox);
-          if (boxEl) {
-            const pill = document.createElement('div');
-            pill.className = 'flex items-center justify-between p-1 bg-white rounded border border-slate-200 cursor-pointer hover:border-navy-950 transition';
-            pill.onclick = () => { switchTab('leaders'); selectLeaderData(leadersData.indexOf(l)); };
-            pill.innerHTML = `
-              <div class="flex items-center gap-1 overflow-hidden">
-                <span class="w-4 h-4 rounded-full bg-navy-950 text-white font-bold flex items-center justify-center text-[8px] shrink-0">${l.initials}</span>
-                <span class="font-bold text-[9px] text-slate-800 truncate">${l.name}</span>
-              </div>
-              <span class="text-[8px] font-black ${l.stateClass} px-1 rounded">${l.lir}</span>
-            `;
-            boxEl.appendChild(pill);
-          }
-        });
-        if (document.getElementById('countStars')) document.getElementById('countStars').innerText = countStars;
-        if (document.getElementById('countEngines')) document.getElementById('countEngines').innerText = countEngines;
-        if (document.getElementById('countEnigmas')) document.getElementById('countEnigmas').innerText = countEnigmas;
-        if (document.getElementById('countRisk')) document.getElementById('countRisk').innerText = countRisk;
       }
 
       function setAppMode(mode) {
@@ -1001,6 +837,8 @@
           navTabs.classList.add('hidden');
           document.getElementById('view-buyMode').classList.remove('hidden');
           ['portfolio', 'leaders', 'ninebox', 'roleDemand', 'scenarios', 'plan2035'].forEach(t => document.getElementById('view-' + t).classList.add('hidden'));
+          renderBuyCandidateRoster();
+          selectBuyCandidate(0);
         } else {
           btnBuild.className = 'px-3.5 py-1 font-bold rounded-lg bg-white text-navy-950 shadow-sm transition';
           btnBuy.className = 'px-3.5 py-1 font-bold rounded-lg text-slate-300 hover:text-white transition';
@@ -1020,10 +858,7 @@
         const activeBtn = document.getElementById('tab-' + tabId);
         if (activeBtn) activeBtn.className = 'px-2.5 py-1.5 border-b-2 border-white text-white transition whitespace-nowrap';
 
-        if (tabId === 'leaders') { 
-          populateBenchmarkDropdown();
-          recalculateAllLeaders(); 
-        }
+        if (tabId === 'leaders') { populateBenchmarkDropdown(); renderLeaderRoster(); selectLeaderData(0); }
         if (tabId === 'ninebox') updateNineBoxGrid();
         if (tabId === 'roleDemand') populateRoleDemandCards();
         if (tabId === 'scenarios') { populateScenarioDropdowns(); runSimulation(); }
@@ -1049,12 +884,13 @@
 
       function renderLeaderRoster() {
         const rosterContainer = document.getElementById('leaderRoster');
+        if (!rosterContainer) return;
         rosterContainer.innerHTML = '';
         leadersData.forEach((l, idx) => {
           const row = document.createElement('div');
           row.className = idx === activeLeaderIndex 
-            ? 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
-            : 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
+            ? 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
+            : 'grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
           row.onclick = () => selectLeaderData(idx);
           row.innerHTML = `
             <div class="col-span-6 flex items-center gap-2 overflow-hidden pr-1">
@@ -1072,113 +908,43 @@
       function selectLeaderData(idx) {
         activeLeaderIndex = idx;
         const l = leadersData[idx];
-        const rows = document.querySelectorAll('.leader-row');
-        rows.forEach((r, i) => {
-          r.className = i === idx 
-            ? 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg bg-blue-50/50 border border-blue-200'
-            : 'leader-row grid grid-cols-12 items-center py-2.5 px-2 hover:bg-slate-50 cursor-pointer transition rounded-lg';
-        });
-
         document.getElementById('detName').innerText = l.name;
         document.getElementById('detRole').innerText = l.role;
         document.getElementById('detArchetypeBadge').innerText = l.archetype;
         document.getElementById('detLIR').innerText = l.lir;
         document.getElementById('detDemandGap').innerText = l.demandGap;
-
         document.getElementById('p1-val').innerText = l.cppLevel;
         document.getElementById('p2-val').innerText = l.zfPct;
         document.getElementById('p3-val').innerText = l.onaBadge;
         document.getElementById('p4-val').innerText = l.judgeScore;
         document.getElementById('p5-val').innerText = l.deliverScore;
         document.getElementById('detSynthesis').innerHTML = '<strong>Readout:</strong> ' + l.synthesis;
-
-        const sel = document.getElementById('benchmarkRoleSelect');
-        if (sel) {
-          const matchingWorkstream = strategicWorkstreams.find(b => b.demand === l.roleDemand) || strategicWorkstreams[0];
-          sel.value = matchingWorkstream.id;
-        }
-
-        renderLeaderRadar(l.pillarScores, l.demandScores);
+        renderLeaderRadar(l.pillarScores, [80, 80, 80, 80, 80]);
       }
 
       function renderLeaderRadar(leaderScores, demandScores) {
         const ctx = document.getElementById('leaderRadarChart');
         if (!ctx) return;
         if (leaderRadar) leaderRadar.destroy();
-
-        let dataset2Data = currentRadarMode === 'role' ? (demandScores || [80, 80, 80, 80, 80]) : getCohortAverageScores();
-        let dataset2Label = currentRadarMode === 'role' ? 'Role Demand Benchmark' : 'Cohort Peer Average (10 Leaders)';
-
+        let dataset2Data = currentRadarMode === 'role' ? demandScores : getCohortAverageScores();
         leaderRadar = new Chart(ctx, {
           type: 'radar',
           data: {
             labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
             datasets: [
-              {
-                label: 'Leader Profile',
-                data: leaderScores,
-                backgroundColor: 'rgba(15, 23, 42, 0.25)',
-                borderColor: '#0f172a',
-                borderWidth: 2,
-                pointRadius: 3
-              },
-              {
-                label: dataset2Label,
-                data: dataset2Data,
-                backgroundColor: currentRadarMode === 'role' ? 'rgba(217, 119, 6, 0.1)' : 'rgba(59, 130, 246, 0.1)',
-                borderColor: currentRadarMode === 'role' ? '#d97706' : '#3b82f6',
-                borderWidth: 2,
-                borderDash: [4, 4],
-                pointRadius: 3
-              }
+              { label: 'James Parsons (Leader)', data: leaderScores, backgroundColor: 'rgba(15, 23, 42, 0.25)', borderColor: '#0f172a', borderWidth: 2, pointRadius: 3 },
+              { label: currentRadarMode === 'role' ? 'Role Demand Benchmark' : 'Cohort Peer Average', data: dataset2Data, backgroundColor: 'rgba(217, 119, 6, 0.1)', borderColor: '#d97706', borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
             ]
           },
-          options: {
-            scales: {
-              r: {
-                min: 40, max: 100,
-                ticks: { display: false },
-                pointLabels: { font: { size: 10, weight: 'bold' } }
-              }
-            },
-            plugins: {
-              legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } }
-            },
-            responsive: true,
-            maintainAspectRatio: false
-          }
+          options: { scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 10, weight: 'bold' } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }, responsive: true, maintainAspectRatio: false }
         });
-      }
-
-      function populateScenarioDropdowns() {
-        const leadSelect = document.getElementById('scenLeaderSelect');
-        const blockSelect = document.getElementById('scenBlockSelect');
-        if (!leadSelect || !blockSelect) return;
-        leadSelect.innerHTML = '';
-        leadersData.forEach(l => {
-          const opt = document.createElement('option');
-          opt.value = l.id; opt.innerText = `${l.name} — ${l.role}`; leadSelect.appendChild(opt);
-        });
-        blockSelect.innerHTML = '';
-        strategicWorkstreams.forEach(b => {
-          const opt = document.createElement('option');
-          opt.value = b.id; opt.innerText = `${b.pillar} • ${b.name}`; blockSelect.appendChild(opt);
-        });
-      }
-
-      function runSimulation() {
-        const leadSelect = document.getElementById('scenLeaderSelect');
-        const blockSelect = document.getElementById('scenBlockSelect');
-        if (!leadSelect || !blockSelect) return;
-        const leader = leadersData.find(l => l.id === leadSelect.value) || leadersData[0];
-        document.getElementById('scenCurrVal').innerText = leader.lir;
-        document.getElementById('scenProjVal').innerText = leader.lir - 4;
       }
 
       window.onload = function() {
         populateBenchmarkDropdown();
         populateRoleDemandCards();
-        recalculateAllLeaders();
+        renderLeaderRoster();
+        selectLeaderData(0);
       };
     </script>
   </body>
