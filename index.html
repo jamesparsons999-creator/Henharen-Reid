@@ -247,7 +247,7 @@
       </div>
 
       <!-- ========================================================================= -->
-      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + 5-PILLAR WEIGHTING CONSOLE)        -->
+      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + ROLE BENCHMARK SELECTOR)           -->
       <!-- ========================================================================= -->
       <div id="view-leaders" class="hidden space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
@@ -260,7 +260,7 @@
           </div>
         </div>
 
-        <!-- 5-PILLAR CLIENT CALIBRATION CONSOLE (DYNAMIC WEIGHTING SLIDERS) -->
+        <!-- 5-PILLAR CLIENT CALIBRATION CONSOLE -->
         <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div class="flex items-center space-x-2">
@@ -331,6 +331,14 @@
               </div>
             </div>
 
+            <!-- Role Benchmark Selector Dropdown -->
+            <div class="flex items-center justify-between bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-xs">
+              <span class="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Benchmark Role Target:</span>
+              <select id="benchmarkRoleSelect" onchange="changeBenchmarkRole()" class="bg-white border border-slate-300 text-slate-900 font-bold text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-navy-950">
+                <!-- Populated via JS -->
+              </select>
+            </div>
+
             <!-- The 5 Pillars Grid -->
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="p1-val">Level 5</span></div>
@@ -341,7 +349,7 @@
             </div>
 
             <!-- Dual-Mode Radar Chart Toggle -->
-            <div class="flex items-center justify-between pt-2">
+            <div class="flex items-center justify-between pt-1">
               <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">5-Axis Benchmark Overlay:</span>
               <div class="flex bg-slate-100 p-1 rounded-lg text-xs font-semibold">
                 <button onclick="setRadarMode('role')" id="btnRadarRole" class="px-2.5 py-1 bg-navy-950 text-white rounded transition">Role Demand</button>
@@ -437,7 +445,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v2.0</span>
+        <span>Henharen Reid • v2.1</span>
       </div>
     </footer>
 
@@ -450,7 +458,6 @@
       let currentSortAsc = false;
       let activeLeaderIndex = 0;
 
-      // 5-Pillar Weighting Engine (Default: 30, 25, 15, 15, 15)
       let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
 
       const strategicWorkstreams = [
@@ -466,23 +473,55 @@
       ];
 
       let leadersData = [
-        { id: "mercer", initials: "EM", name: "Elena Mercer", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas", pillarScores: [86, 92, 89, 85, 91], derailerPenalty: 0, roleDemand: 80, lir: 88, zfVal: 92, zfPct: "92nd %ile", cppLevel: "Level 5 (Strategic)", cognitiveFlex: "86 / 100", thinkNotes: "Balanced, high cognitive agility.", zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", demandGap: "Demand: 80 • +8 Gap", archetype: "The Enterprise Star", judgeScore: "+3P / +2T", deliverScore: "Transformational", demandScores: [80, 80, 80, 80, 80], synthesis: "Balanced enterprise star across all 5 dimensions." },
-        { id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Solid-State Battery Chemistry", pillar: "Electrified Propulsion", currentBlockId: "ssb", pillarScores: [96, 74, 28, 62, 72], derailerPenalty: 4, roleDemand: 78, lir: 69, zfVal: 74, zfPct: "74th %ile", cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "96 / 100", thinkNotes: "World-class cognitive complexity.", zfStrengths: ["Technical Expertise", "Solves Problems", "Innovates"], zfFlaw: "HDS: Cautious", onaBadge: "Silo Isolated", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", demandGap: "Demand: 78 • -9 Gap", archetype: "The Enigma / Maverick", judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining", demandScores: [80, 80, 80, 80, 80], synthesis: "World-class intellectual horsepower (96), but isolated network topology." },
-        { id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota", pillarScores: [58, 82, 95, 78, 84], derailerPenalty: 0, roleDemand: 76, lir: 76, zfVal: 82, zfPct: "82nd %ile", cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.", zfStrengths: ["Builds Relationships", "Collaboration"], zfFlaw: "None detected", onaBadge: "Top 1% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", demandGap: "Demand: 76 • =0 Match", archetype: "The High-Potential Star", judgeScore: "+2J / +1P", deliverScore: "Highly Effective", demandScores: [80, 80, 80, 80, 80], synthesis: "Super-connector (95) with strong delivery." },
-        { id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga", pillarScores: [66, 94, 60, 80, 93], derailerPenalty: 0, roleDemand: 70, lir: 74, zfVal: 94, zfPct: "94th %ile", cppLevel: "Level 4 (Operational Command)", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.", zfStrengths: ["Drives for Results"], zfFlaw: "None detected", onaBadge: "Operational Hub", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", demandGap: "Demand: 70 • +4 Surplus", archetype: "The Execution Engine", judgeScore: "+2P / +2T", deliverScore: "Transformational", demandScores: [80, 80, 80, 80, 80], synthesis: "Dominant plant execution engine." },
-        { id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv", pillarScores: [88, 86, 92, 88, 89], derailerPenalty: 0, roleDemand: 78, lir: 88, zfVal: 86, zfPct: "86th %ile", cppLevel: "Level 5 (Strategic)", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.", zfStrengths: ["Builds Relationships"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", demandGap: "Demand: 78 • +10 Surplus", archetype: "The Enterprise Star", judgeScore: "+3J / +1P", deliverScore: "Transformational", demandScores: [80, 80, 80, 80, 80], synthesis: "Elite global joint-venture dealmaker." },
-        { id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals", pillarScores: [78, 84, 76, 82, 80], derailerPenalty: 0, roleDemand: 78, lir: 80, zfVal: 84, zfPct: "84th %ile", cppLevel: "Level 4/5 (Transitional)", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.", zfStrengths: ["Collaboration"], zfFlaw: "None detected", onaBadge: "Connector", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", demandGap: "Demand: 78 • +2 Surplus", archetype: "The High-Potential Star", judgeScore: "+2P / +2J", deliverScore: "Highly Effective", demandScores: [80, 80, 80, 80, 80], synthesis: "Reliable commodity strategist." },
-        { id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice", pillarScores: [54, 88, 45, 60, 76], derailerPenalty: 2, roleDemand: 70, lir: 63, zfVal: 88, zfPct: "88th %ile", cppLevel: "Level 3/4 (Operational)", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.", zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Cautious", onaBadge: "Core Hub", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", demandGap: "Demand: 70 • -7 Gap", archetype: "The Solid Rock / Anchor", judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining", demandScores: [80, 80, 80, 80, 80], synthesis: "Solid traditional operator." },
-        { id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas", pillarScores: [90, 62, 30, 50, 60], derailerPenalty: 6, roleDemand: 80, lir: 65, zfVal: 62, zfPct: "62nd %ile", cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.", zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Arrogant", onaBadge: "Silo Isolated", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", demandGap: "Demand: 80 • -15 Gap", archetype: "The Enigma / Maverick", judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap", demandScores: [80, 80, 80, 80, 80], synthesis: "High cognitive score offset by severe interpersonal friction." },
-        { id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux", pillarScores: [72, 75, 70, 72, 75], derailerPenalty: 0, roleDemand: 76, lir: 73, zfVal: 75, zfPct: "75th %ile", cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.", zfStrengths: ["Innovates"], zfFlaw: "None detected", onaBadge: "Active Node", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", demandGap: "Demand: 76 • -3 Gap", archetype: "The Core Contributor", judgeScore: "+1P / +1T", deliverScore: "Highly Effective", demandScores: [80, 80, 80, 80, 80], synthesis: "Effective product design head." },
-        { id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2", pillarScores: [52, 60, 35, 45, 50], derailerPenalty: 8, roleDemand: 82, lir: 43, zfVal: 60, zfPct: "60th %ile", cppLevel: "Level 3 (Diagnostic)", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.", zfStrengths: ["Technical Integrity"], zfFlaw: "HDS: Excitable", onaBadge: "Peripheral", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", demandGap: "Demand: 82 • -39 Gap", archetype: "The Straining Specialist", judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap", demandScores: [80, 80, 80, 80, 80], synthesis: "Significant performance gap across all 5 dimensions." }
+        { id: "mercer", initials: "EM", name: "Elena Mercer", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas", pillarScores: [86, 92, 89, 85, 91], derailerPenalty: 0, lir: 88, zfVal: 92, zfPct: "92nd %ile", cppLevel: "Level 5 (Strategic)", cognitiveFlex: "86 / 100", thinkNotes: "Balanced, high cognitive agility.", zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star", judgeScore: "+3P / +2T", deliverScore: "Transformational", synthesis: "Balanced enterprise star across all 5 dimensions." },
+        { id: "holt", initials: "AH", name: "Dr. Alexander Holt", role: "VP, Solid-State Battery Chemistry", pillar: "Electrified Propulsion", currentBlockId: "ssb", pillarScores: [96, 74, 28, 62, 72], derailerPenalty: 4, lir: 69, zfVal: 74, zfPct: "74th %ile", cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "96 / 100", thinkNotes: "World-class cognitive complexity.", zfStrengths: ["Technical Expertise", "Solves Problems", "Innovates"], zfFlaw: "HDS: Cautious", onaBadge: "Silo Isolated", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Enigma / Maverick", judgeScore: "-1F / +3T", deliverScore: "Competent / Sustaining", synthesis: "World-class intellectual horsepower (96), but isolated network topology." },
+        { id: "jenkins", initials: "NJ", name: "Naomi Jenkins", role: "Head of Connected Fleet Monetization", pillar: "Software & Autonomous", currentBlockId: "ota", pillarScores: [58, 82, 95, 78, 84], derailerPenalty: 0, lir: 76, zfVal: 82, zfPct: "82nd %ile", cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "58 / 100", thinkNotes: "Pragmatic, commercial problem solver.", zfStrengths: ["Builds Relationships", "Collaboration"], zfFlaw: "None detected", onaBadge: "Top 1% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star", judgeScore: "+2J / +1P", deliverScore: "Highly Effective", synthesis: "Super-connector (95) with strong delivery." },
+        { id: "koehler", initials: "MK", name: "Marcus Koehler", role: "Head of Gigafactory Operations", pillar: "Next-Gen Operations", currentBlockId: "giga", pillarScores: [66, 94, 60, 80, 93], derailerPenalty: 0, lir: 74, zfVal: 94, zfPct: "94th %ile", cppLevel: "Level 4 (Operational Command)", cognitiveFlex: "66 / 100", thinkNotes: "Relentless execution focus.", zfStrengths: ["Drives for Results"], zfFlaw: "None detected", onaBadge: "Operational Hub", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Execution Engine", judgeScore: "+2P / +2T", deliverScore: "Transformational", synthesis: "Dominant plant execution engine." },
+        { id: "zhang", initials: "HZ", name: "Hui Zhang", role: "VP, Global Joint Ventures & Alliances", pillar: "Next-Gen Operations", currentBlockId: "jv", pillarScores: [88, 86, 92, 88, 89], derailerPenalty: 0, lir: 88, zfVal: 86, zfPct: "86th %ile", cppLevel: "Level 5 (Strategic)", cognitiveFlex: "88 / 100", thinkNotes: "High strategic vision.", zfStrengths: ["Builds Relationships"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star", judgeScore: "+3J / +1P", deliverScore: "Transformational", synthesis: "Elite global joint-venture dealmaker." },
+        { id: "laurent", initials: "CL", name: "Claire Laurent", role: "VP, Battery Raw Materials & Minerals", pillar: "Next-Gen Operations", currentBlockId: "minerals", pillarScores: [78, 84, 76, 82, 80], derailerPenalty: 0, lir: 80, zfVal: 84, zfPct: "84th %ile", cppLevel: "Level 4/5 (Transitional)", cognitiveFlex: "78 / 100", thinkNotes: "Balanced geopolitical acumen.", zfStrengths: ["Collaboration"], zfFlaw: "None detected", onaBadge: "Connector", stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The High-Potential Star", judgeScore: "+2P / +2J", deliverScore: "Highly Effective", synthesis: "Reliable commodity strategist." },
+        { id: "richter", initials: "TR", name: "Torsten Richter", role: "Director, Legacy Powertrain Run-Out", pillar: "Electrified Propulsion", currentBlockId: "ice", pillarScores: [54, 88, 45, 60, 76], derailerPenalty: 2, lir: 63, zfVal: 88, zfPct: "88th %ile", cppLevel: "Level 3/4 (Operational)", cognitiveFlex: "54 / 100", thinkNotes: "Disciplined on legacy manufacturing.", zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Cautious", onaBadge: "Core Hub", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Solid Rock / Anchor", judgeScore: "-2F / +1T", deliverScore: "Competent / Sustaining", synthesis: "Solid traditional operator." },
+        { id: "bergstrom", initials: "LB", name: "Lukas Bergstrom", role: "Head of Silicon & Micro-Architecture", pillar: "Software & Autonomous", currentBlockId: "adas", pillarScores: [90, 62, 30, 50, 60], derailerPenalty: 6, lir: 65, zfVal: 62, zfPct: "62nd %ile", cppLevel: "Level 5 (Strategic Complex)", cognitiveFlex: "90 / 100", thinkNotes: "Exceptional semiconductor architecture.", zfStrengths: ["Technical Expertise"], zfFlaw: "HDS: Arrogant", onaBadge: "Silo Isolated", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Enigma / Maverick", judgeScore: "-3F / -2T", deliverScore: "Under-Performing / Gap", synthesis: "High cognitive score offset by severe interpersonal friction." },
+        { id: "tanguy", initials: "JT", name: "Jean-Pierre Tanguy", role: "VP, In-Vehicle Digital Experience", pillar: "Software & Autonomous", currentBlockId: "ux", pillarScores: [72, 75, 70, 72, 75], derailerPenalty: 0, lir: 73, zfVal: 75, zfPct: "75th %ile", cppLevel: "Level 4 (Tactical High)", cognitiveFlex: "72 / 100", thinkNotes: "Good consumer product instincts.", zfStrengths: ["Innovates"], zfFlaw: "None detected", onaBadge: "Active Node", stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Core Contributor", judgeScore: "+1P / +1T", deliverScore: "Highly Effective", synthesis: "Effective product design head." },
+        { id: "varma", initials: "SV", name: "Siddharth Varma", role: "Director, Hydrogen Ventures", pillar: "Electrified Propulsion", currentBlockId: "h2", pillarScores: [52, 60, 35, 45, 50], derailerPenalty: 8, lir: 43, zfVal: 60, zfPct: "60th %ile", cppLevel: "Level 3 (Diagnostic)", cognitiveFlex: "52 / 100", thinkNotes: "Struggling with venture ambiguity.", zfStrengths: ["Technical Integrity"], zfFlaw: "HDS: Excitable", onaBadge: "Peripheral", stateBadge: "REDEPLOY", stateClass: "bg-red-100 text-red-800", archetype: "The Straining Specialist", judgeScore: "-2F / -2J", deliverScore: "Under-Performing / Gap", synthesis: "Significant performance gap across all 5 dimensions." }
       ];
+
+      function populateBenchmarkDropdown() {
+        const sel = document.getElementById('benchmarkRoleSelect');
+        if (!sel) return;
+        sel.innerHTML = '';
+        strategicWorkstreams.forEach(b => {
+          const opt = document.createElement('option');
+          opt.value = b.id;
+          opt.innerText = `${b.pillar} • ${b.name} (Demand: ${b.demand})`;
+          sel.appendChild(opt);
+        });
+      }
+
+      function changeBenchmarkRole() {
+        const sel = document.getElementById('benchmarkRoleSelect');
+        if (!sel) return;
+        const blockId = sel.value;
+        const workstream = strategicWorkstreams.find(b => b.id === blockId);
+        if (!workstream) return;
+
+        const l = leadersData[activeLeaderIndex];
+        l.roleDemand = workstream.demand;
+        l.demandScores = workstream.demandScores;
+
+        let delta = l.lir - l.roleDemand;
+        if (delta >= -3) { l.stateBadge = "ALIGNED"; l.stateClass = "bg-emerald-100 text-emerald-800"; }
+        else if (delta >= -10) { l.stateBadge = "STRETCH"; l.stateClass = "bg-amber-100 text-amber-800"; }
+        else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-100 text-red-800"; }
+        l.demandGap = `Demand: ${l.roleDemand} • ${delta >= 0 ? '+' + delta : delta} Gap`;
+
+        document.getElementById('detDemandGap').innerText = l.demandGap;
+        renderLeaderRoster();
+        renderLeaderRadar(l.pillarScores, l.demandScores);
+      }
 
       function getCohortAverageScores() {
         let sums = [0, 0, 0, 0, 0];
-        leadersData.forEach(l => {
-          for(let i=0; i<5; i++) sums[i] += l.pillarScores[i];
-        });
+        leadersData.forEach(l => { for(let i=0; i<5; i++) sums[i] += l.pillarScores[i]; });
         return sums.map(s => Math.round(s / leadersData.length));
       }
 
@@ -490,6 +529,8 @@
         currentRadarMode = mode;
         document.getElementById('btnRadarRole').className = mode === 'role' ? 'px-2.5 py-1 bg-navy-950 text-white rounded transition' : 'px-2.5 py-1 text-slate-600 rounded transition';
         document.getElementById('btnRadarCohort').className = mode === 'cohort' ? 'px-2.5 py-1 bg-navy-950 text-white rounded transition' : 'px-2.5 py-1 text-slate-600 rounded transition';
+        const sel = document.getElementById('benchmarkRoleSelect');
+        if (sel) sel.disabled = (mode === 'cohort');
         selectLeaderData(activeLeaderIndex);
       }
 
@@ -501,11 +542,7 @@
         let w5 = parseInt(document.getElementById('slider5').value);
 
         let sum = w1 + w2 + w3 + w4 + w5 || 1;
-        weights.p1 = w1 / sum;
-        weights.p2 = w2 / sum;
-        weights.p3 = w3 / sum;
-        weights.p4 = w4 / sum;
-        weights.p5 = w5 / sum;
+        weights.p1 = w1 / sum; weights.p2 = w2 / sum; weights.p3 = w3 / sum; weights.p4 = w4 / sum; weights.p5 = w5 / sum;
 
         document.getElementById('valWeight1').innerText = Math.round(weights.p1 * 100) + '%';
         document.getElementById('valWeight2').innerText = Math.round(weights.p2 * 100) + '%';
@@ -614,7 +651,10 @@
         const activeBtn = document.getElementById('tab-' + tabId);
         if (activeBtn) activeBtn.className = 'px-2.5 py-1.5 border-b-2 border-white text-white transition whitespace-nowrap';
 
-        if (tabId === 'leaders') { recalculateAllLeaders(); }
+        if (tabId === 'leaders') { 
+          populateBenchmarkDropdown();
+          recalculateAllLeaders(); 
+        }
         if (tabId === 'ninebox') updateNineBoxGrid();
         if (tabId === 'scenarios') { populateScenarioDropdowns(); runSimulation(); }
       }
@@ -682,15 +722,22 @@
         document.getElementById('p5-val').innerText = l.deliverScore;
         document.getElementById('detSynthesis').innerHTML = '<strong>5-Pillar Triangulated Readout:</strong> ' + l.synthesis;
 
-        renderLeaderRadar(l.pillarScores);
+        const sel = document.getElementById('benchmarkRoleSelect');
+        if (sel) {
+          // match dropdown to leader's current role benchmark
+          const matchingWorkstream = strategicWorkstreams.find(b => b.demand === l.roleDemand) || strategicWorkstreams[0];
+          sel.value = matchingWorkstream.id;
+        }
+
+        renderLeaderRadar(l.pillarScores, l.demandScores);
       }
 
-      function renderLeaderRadar(leaderScores) {
+      function renderLeaderRadar(leaderScores, demandScores) {
         const ctx = document.getElementById('leaderRadarChart');
         if (!ctx) return;
         if (leaderRadar) leaderRadar.destroy();
 
-        let dataset2Data = currentRadarMode === 'role' ? [80, 80, 80, 80, 80] : getCohortAverageScores();
+        let dataset2Data = currentRadarMode === 'role' ? (demandScores || [80, 80, 80, 80, 80]) : getCohortAverageScores();
         let dataset2Label = currentRadarMode === 'role' ? 'Role Demand Benchmark' : 'Cohort Peer Average (10 Leaders)';
 
         leaderRadar = new Chart(ctx, {
@@ -760,6 +807,7 @@
       }
 
       window.onload = function() {
+        populateBenchmarkDropdown();
         recalculateAllLeaders();
       };
     </script>
