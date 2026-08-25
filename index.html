@@ -341,13 +341,13 @@
               </select>
             </div>
 
-            <!-- The 5 Pillars Grid (Corrected to 'Tactical Strategy' CPP, ONA Central Hub, exact Judgment vector +1P/-1F/+1T/+2J, and Cell B4 Appraisal P) -->
+            <!-- The 5 Pillars Grid (Corrected: CPP Tactical Strategy, ONA Central Hub, Judgment +1P/-1F/+1T/+2J, Deliver Practitioner vs Expert target with [-1 Gap]) -->
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">1. Think</span><span class="font-bold text-slate-900 text-[11px]" id="p1-val">Tactical Strategy</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">2. Show Up</span><span class="font-bold text-slate-900 text-[11px]" id="p2-val">76%ile</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">3. Connect</span><span class="font-bold text-slate-900 text-[11px]" id="p3-val">Central Hub</span></div>
               <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">4. Judge</span><span class="font-bold text-emerald-800 text-[11px]" id="p4-val">+1P/-1F/+1T/+2J</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-blue-900 text-[11px]" id="p5-val">Proficient (P)</span></div>
+              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[9px] text-slate-400 font-bold uppercase">5. Deliver</span><span class="font-bold text-amber-800 text-[11px]" id="p5-val">Practitioner (Expert) [-1]</span></div>
             </div>
 
             <!-- Dual-Mode Radar Chart Toggle -->
@@ -365,7 +365,7 @@
 
             <div class="flex items-center justify-between pt-2 border-t border-slate-100">
               <div class="text-xs text-slate-700 font-medium truncate max-w-[70%]" id="detSynthesis">
-                <strong>Readout:</strong> CPP Tactical Strategy (Level 3/4), ONA Central Hub, Judgment (+1P, -1F, +1T, +2J), Appraisal B4=P.
+                <strong>Readout:</strong> CPP Tactical Strategy, ONA Central Hub, Judgment (+1P, -1F, +1T, +2J), Appraisal Cell B4 (Practitioner vs Expert target).
               </div>
               <button onclick="openCompetencyDrawer()" class="px-3 py-1.5 bg-navy-950 text-amber-400 text-xs font-bold rounded-lg shadow-sm hover:bg-slate-800 transition shrink-0">
                 Inspect Competency & Vault Audit ➔
@@ -468,8 +468,8 @@
           
           <!-- Section 1: Appraisal Feed -->
           <div class="space-y-3">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Appraisal Feed (Cell B4: Proficient / P)</h4>
-            <p class="text-slate-500 text-[11px]">Mapped from Excel Appraisal Tab ('VP, FCP' $\rightarrow$ Cell B4 = P). Competencies at target level or exceeded: 3.</p>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Appraisal Feed (Cell B4: Practitioner vs Expert Target)</h4>
+            <p class="text-slate-500 text-[11px]">Mapped from Excel Appraisal Tab ('VP, FCP' $\rightarrow$ Cell B4 = P, Role Target = E [-1 Gap]).</p>
             
             <div class="space-y-2.5 pt-2" id="competencyList">
               <!-- Populated via JS -->
@@ -480,7 +480,7 @@
           <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
             <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px]">Manager Appraisal & Development Notes</h4>
             <p class="text-slate-600 leading-relaxed font-medium" id="drawerDevelopmentNotes">
-              Current Level (Cell B4): P. Key ZF Behaviours: Develops Strategic Perspective; Inspires and Motivates Others; Champions Change. Development Action: Lead cross-functional working group; mentor 1 junior analyst.
+              Current Level (Cell B4): Practitioner (P) vs Role Requirement (Cell C4): Expert (E) [-1 Gap]. Key ZF Behaviours: Develops Strategic Perspective; Inspires and Motivates Others; Champions Change. Development Action: Lead cross-functional working group; mentor 1 junior analyst.
             </p>
           </div>
 
@@ -517,7 +517,7 @@
       <div id="chatBody" class="flex flex-col h-72 hidden">
         <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
           <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-            <strong>Advisory AI:</strong> Vault ingested! James Parsons CPP = Tactical Strategy, ONA = Central Hub, Judgment = +1P / -1F / +1T / +2J, Appraisal Cell B4 = Proficient (P). Ask me anything!
+            <strong>Advisory AI:</strong> Vault ingested! James Parsons CPP = Tactical Strategy, ONA = Central Hub, Judgment = +1P / -1F / +1T / +2J, Appraisal Cell B4 = Practitioner (P) vs Expert (E) Target [-1 Gap]. Ask me anything!
           </div>
         </div>
         <div class="p-2.5 bg-navy-900 border-t border-slate-800 flex gap-2">
@@ -531,7 +531,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v3.1</span>
+        <span>Henharen Reid • v3.3</span>
       </div>
     </footer>
 
@@ -562,20 +562,20 @@
       let leadersData = [
         {
           id: "parsons", initials: "JP", name: "James Parsons", role: "VP, FCP", pillar: "Software & Autonomous", currentBlockId: "adas",
-          // Synced precisely to your exact reports: Tactical Strategy CPP, 76%ile 360, Central Hub ONA, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P
-          pillarScores: [70, 76, 78, 75, 75], derailerPenalty: 0, roleDemand: 80, lir: 78, zfVal: 76, zfPct: "76th %ile",
+          // Synced precisely to your exact reports: Tactical Strategy CPP, 76%ile 360, Central Hub ONA, Judgment (+1P / -1F / +1T / +2J), Appraisal Cell B4 = P (Target E, -1 Gap)
+          pillarScores: [70, 76, 78, 74, 75], derailerPenalty: 0, roleDemand: 80, lir: 78, zfVal: 76, zfPct: "76th %ile",
           cppLevel: "Tactical Strategy", cognitiveFlex: "70 / 100", thinkNotes: "Tactical strategy working environment (Potential Level 4).",
           zfStrengths: ["Execution Focus", "Collaboration"], zfFlaw: "None detected", onaBadge: "Central Hub / Broker",
           stateBadge: "STRETCH", stateClass: "bg-amber-100 text-amber-800", archetype: "The Execution Engine",
-          judgeScore: "+1P / -1F / +1T / +2J", deliverScore: "Proficient (P)",
-          synthesis: "Synced with Vault: CPP Tactical Strategy, active-ona Central Hub, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P.",
+          judgeScore: "+1P / -1F / +1T / +2J", deliverScore: "Practitioner (Target: Expert) [-1]",
+          synthesis: "Synced with Vault: CPP Tactical Strategy, active-ona Central Hub, Judgment (+1P / -1F / +1T / +2J), Appraisal B4=P (Target: Expert).",
           competencies: [
-            { name: "Financial Crime Detection & Prevention", score: "Proficient (P) [Role Target: E]" },
-            { name: "Research & Risk Identification", score: "Proficient (P) [Role Target: E]" },
+            { name: "Financial Crime Detection & Prevention", score: "Practitioner (P) [Role Target: Expert (E)]" },
+            { name: "Research & Risk Identification", score: "Practitioner (P) [Role Target: Expert (E)]" },
             { name: "Cross-Functional Working Group Leadership", score: "Competent / Developing" },
-            { name: "Audit Liaison & Control Improvements", score: "Proficient (P)" }
+            { name: "Audit Liaison & Control Improvements", score: "Practitioner (P)" }
           ],
-          devNotes: "Current Level in appraisal tab (Cell B4) = P. 3 competencies at target level or exceeded. Recommended action: Lead cross-functional working group; mentor 1 junior analyst.",
+          devNotes: "Current Level in appraisal tab (Cell B4) = Practitioner (P) vs Role Requirement (Cell C4) = Expert (E) [-1 Gap]. 3 competencies at target level or exceeded.",
           reports: { 
             think: "vault/James Parsons CPP.pdf", 
             show: "vault/James Parsons Full 34 .pdf", 
@@ -829,10 +829,10 @@
         input.value = '';
 
         setTimeout(() => {
-          let reply = "Based on tool-agnostic parsing of your vault files, your profile reflects Tactical Strategy CPP, Central Hub ONA, and Proficient appraisal.";
+          let reply = "Based on tool-agnostic parsing of your vault files, your profile reflects Tactical Strategy CPP, Central Hub ONA, and Practitioner appraisal.";
           const lower = msg.toLowerCase();
           if(lower.includes('parsons') || lower.includes('james') || lower.includes('report') || lower.includes('vault') || lower.includes('cpp')) {
-            reply = "Vault Analysis for James Parsons:\n• **1. Think:** `James Parsons CPP.pdf` (Page 4) ➔ Tactical Strategy (Potential Level 4).\n• **2. Show Up:** `James Parsons Full 34 .pdf` ➔ 76th percentile effectiveness.\n• **3. Connect:** `active-ona.xlsx` ➔ Central Hub / Broker.\n• **4. Judge:** `Judgment Diagnostic JP.xlsx` ➔ Prudence +1, Fortitude -1, Temperance +1, Justice +2.\n• **5. Deliver:** Appraisal Tab 'VP, FCP' (Cell B4) ➔ Proficient (P), 3 competencies at target or exceeded.";
+            reply = "Vault Analysis for James Parsons:\n• **1. Think:** `James Parsons CPP.pdf` (Page 4) ➔ Tactical Strategy.\n• **2. Show Up:** `James Parsons Full 34 .pdf` ➔ 76th percentile effectiveness.\n• **3. Connect:** `active-ona.xlsx` ➔ Central Hub / Broker.\n• **4. Judge:** `Judgment Diagnostic JP.xlsx` ➔ +1 Prudence, -1 Fortitude, +1 Temperance, +2 Justice.\n• **5. Deliver:** Appraisal Tab 'VP, FCP' (Cell B4) ➔ Practitioner (P) vs Expert (E) Target [-1 Gap].";
           }
           chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> ${reply}</div>`;
           chatMsgs.scrollTop = chatMsgs.scrollHeight;
