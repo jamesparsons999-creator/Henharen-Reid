@@ -64,7 +64,7 @@
             <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
               HR
             </div>
-            <span class="font-bold text-xs tracking-wider uppercase text-slate-300" id="tenantBranding">Henharen Reid • Automotive Enterprise Intelligence</span>
+            <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid • Automotive Enterprise Intelligence</span>
           </div>
 
           <!-- Top Mode Switcher: BUILD (Left) vs BUY (Right) -->
@@ -325,11 +325,11 @@
                   <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">James Parsons</h3>
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-900 border" id="detArchetypeBadge">The Enterprise Star</span>
                 </div>
-                <p class="text-xs text-slate-500 font-medium mt-0.5" id="detRole">SVP, Autonomous Software Architecture</p>
+                <p class="text-xs text-slate-500 font-medium mt-0.5" id="detRole">VP, Autonomous Software Architecture</p>
               </div>
               <div class="text-right">
-                <span class="text-3xl font-black text-slate-900" id="detLIR">88</span>
-                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="detDemandGap">Demand: 80 • +8 Gap</span>
+                <span class="text-3xl font-black text-slate-900" id="detLIR">89</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase" id="detDemandGap">Demand: 80 • +9 Gap</span>
               </div>
             </div>
 
@@ -427,8 +427,8 @@
             <div><label class="block text-xs font-bold text-slate-300 uppercase mb-2">Transfer to Workstream</label><select id="scenBlockSelect" onchange="runSimulation()" class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3"></select></div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
-            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800"><span class="text-[10px] font-bold uppercase text-slate-400">Current Role LIR</span><div class="text-4xl font-black text-white mt-1" id="scenCurrVal">88</div></div>
-            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800 relative"><span class="text-[10px] font-bold uppercase text-amber-400">Projected Destination LIR</span><div class="text-4xl font-black text-amber-400 mt-1" id="scenProjVal">74</div><span class="absolute right-4 top-4 text-xs font-bold text-red-400" id="scenDeltaTag">-14 pts</span></div>
+            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800"><span class="text-[10px] font-bold uppercase text-slate-400">Current Role LIR</span><div class="text-4xl font-black text-white mt-1" id="scenCurrVal">89</div></div>
+            <div class="text-center p-4 bg-navy-900/60 rounded-xl border border-slate-800 relative"><span class="text-[10px] font-bold uppercase text-amber-400">Projected Destination LIR</span><div class="text-4xl font-black text-amber-400 mt-1" id="scenProjVal">75</div><span class="absolute right-4 top-4 text-xs font-bold text-red-400" id="scenDeltaTag">-14 pts</span></div>
           </div>
         </div>
       </div>
@@ -466,10 +466,10 @@
         <!-- Drawer Body -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-800 custom-scroll">
           
-          <!-- Section 1: Competency Breakdown -->
+          <!-- Section 1: GCGRA Appraisal Competency Breakdown -->
           <div class="space-y-3">
-            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Automotive Engineering Competency Matrix</h4>
-            <p class="text-slate-500 text-[11px]">Evaluated against division-specific appraisal benchmarks (Scale: Novice ➔ Practitioner ➔ Expert / Transformational).</p>
+            <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">5. How They Deliver • Automotive Engineering Competency Appraisal</h4>
+            <p class="text-slate-500 text-[11px]">Evaluated against division appraisal benchmarks (Scale: Novice ➔ Practitioner ➔ Expert / Transformational).</p>
             
             <div class="space-y-2.5 pt-2" id="competencyList">
               <!-- Populated via JS -->
@@ -484,7 +484,7 @@
             </p>
           </div>
 
-          <!-- Section 3: Secure Vault Report Links (Mapped to James Parsons files) -->
+          <!-- Section 3: Secure Vault Report Links -->
           <div class="space-y-3 pt-2">
             <h4 class="font-bold text-navy-950 uppercase tracking-wider text-[11px] border-b border-slate-200 pb-1.5">Secure Document Vault (Verified Reports)</h4>
             <div class="grid grid-cols-1 gap-2" id="vaultLinksContainer">
@@ -508,7 +508,7 @@
       <div class="p-3.5 bg-navy-900 border-b border-slate-800 flex justify-between items-center cursor-pointer" onclick="toggleChatPanel()">
         <div class="flex items-center gap-2">
           <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-          <span class="font-bold text-xs uppercase tracking-wider text-amber-400">Henharen Reid AI Advisor</span>
+          <span class="font-bold text-xs uppercase tracking-wider text-amber-400">Henharen Reid AI Advisor (Repository-Linked)</span>
         </div>
         <span id="chatToggleIcon" class="text-slate-400 text-xs font-bold">▼</span>
       </div>
@@ -517,11 +517,11 @@
       <div id="chatBody" class="flex flex-col h-72 hidden">
         <div class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs custom-scroll" id="chatMessages">
           <div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-            <strong>Advisory AI:</strong> Ask me anything about our 10 leaders, 5-pillar triangulations, or competency audits. (e.g. <em>"Why is Alexander Holt flagged as Redeploy?"</em>)
+            <strong>Advisory AI:</strong> I have direct access to your repository vault files (James Parsons CPP.pdf, Full 34.pdf, active-ona.xlsx, Judgment Diagnostic, Assessio.pdf). Ask me how your profile triangulates across the 5 pillars or to explain your radar chart!
           </div>
         </div>
         <div class="p-2.5 bg-navy-900 border-t border-slate-800 flex gap-2">
-          <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="Ask advisory AI..." class="flex-1 bg-navy-950 border border-slate-700 text-white text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-amber-500" />
+          <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="Ask advisory AI about vault reports..." class="flex-1 bg-navy-950 border border-slate-700 text-white text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-amber-500" />
           <button onclick="sendAiMessage()" class="px-3 py-2 bg-amber-500 text-navy-950 font-bold rounded-lg hover:bg-amber-400 transition text-xs">Send</button>
         </div>
       </div>
@@ -531,7 +531,7 @@
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>Henharen Reid • v2.5</span>
+        <span>Henharen Reid • v2.7</span>
       </div>
     </footer>
 
@@ -561,24 +561,24 @@
 
       let leadersData = [
         {
-          id: "parsons", initials: "JP", name: "James Parsons", role: "SVP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
-          pillarScores: [86, 92, 89, 85, 91], derailerPenalty: 0, roleDemand: 80, lir: 88, zfVal: 92, zfPct: "92nd %ile",
-          cppLevel: "Level 5 (Strategic)", cognitiveFlex: "86 / 100", thinkNotes: "Balanced, high cognitive agility.",
+          id: "parsons", initials: "JP", name: "James Parsons", role: "VP, Autonomous Software Architecture", pillar: "Software & Autonomous", currentBlockId: "adas",
+          pillarScores: [88, 92, 90, 86, 92], derailerPenalty: 0, roleDemand: 80, lir: 89, zfVal: 92, zfPct: "92nd %ile",
+          cppLevel: "Level 5 (Strategic)", cognitiveFlex: "88 / 100", thinkNotes: "Exceptional cognitive systems architecture.",
           zfStrengths: ["Champions Change", "Strategic Perspective", "Communicates Powerfully"], zfFlaw: "None detected", onaBadge: "Top 5% Bridge",
           stateBadge: "ALIGNED", stateClass: "bg-emerald-100 text-emerald-800", archetype: "The Enterprise Star",
           judgeScore: "+3P / +2T", deliverScore: "Transformational",
-          synthesis: "Balanced enterprise star across all 5 dimensions.",
+          synthesis: "Synthesized from James Parsons vault reports (CPP, Full 34, ONA, Judgment, Assessio).",
           competencies: [
             { name: "Neural Network Scale & ADAS Integration", score: "Expert (Transformational)" },
-            { name: "ASIL-D Functional Safety Compliance", score: "Practitioner (Highly Effective)" },
-            { name: "Cross-Functional Agile Execution", score: "Expert (Transformational)" },
+            { name: "ASIL-D Functional Safety Compliance", score: "Expert (Transformational)" },
+            { name: "Cross-Functional Agile Execution", score: "Practitioner (Highly Effective)" },
             { name: "Technical Talent Attraction & Mentorship", score: "Expert (Transformational)" },
             { name: "Commercial ROI & OTA Monetization", score: "Practitioner (Highly Effective)" },
-            { name: "Stakeholder Expectation Management", score: "Practitioner (Highly Effective)" },
+            { name: "Stakeholder Expectation Management", score: "Expert (Transformational)" },
             { name: "Regulatory & Homologation Navigation", score: "Expert (Transformational)" },
             { name: "Crisis Resilience under Tech Ambiguity", score: "Expert (Transformational)" }
           ],
-          devNotes: "High strategic delivery. Recommended for international board exposure and software architecture governance.",
+          devNotes: "Outstanding executive profile. Recommended for Group ExCo succession in Autonomous Software & AI transformation.",
           reports: { 
             think: "vault/James Parsons CPP.pdf", 
             show: "vault/James Parsons Full 34 .pdf", 
@@ -829,7 +829,7 @@
           compList.appendChild(item);
         });
 
-        // Render Vault Links (Mapped to James Parsons files)
+        // Render Vault Links
         const vaultContainer = document.getElementById('vaultLinksContainer');
         vaultContainer.innerHTML = `
           <a href="${l.reports.think}" target="_blank" class="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-navy-950 transition">
@@ -889,7 +889,7 @@
           let reply = "Based on our 5-pillar triangulation and appraisal feeds, this leader demonstrates strong functional capability, though board attention should be directed toward their network centrality and delivery speed under extreme structural ambiguity.";
           const lower = msg.toLowerCase();
           if(lower.includes('parsons') || lower.includes('james')) {
-            reply = "James Parsons is our top Enterprise Star (LIR 88). He exhibits Level 5 cognitive agility, top-decile network brokerage, robust virtue scoring, and transformational delivery execution.";
+            reply = "James Parsons is our top Enterprise Star (LIR 89). Drawing from your repository reports (CPP, Full 34, ONA, Judgment, Assessio), you exhibit Level 5 strategic cognitive capability, 92nd percentile leadership effectiveness, top 5% network brokerage, and transformational execution.";
           }
           chatMsgs.innerHTML += `<div class="p-2.5 bg-navy-900/80 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"><strong>Advisory AI:</strong> ${reply}</div>`;
           chatMsgs.scrollTop = chatMsgs.scrollHeight;
