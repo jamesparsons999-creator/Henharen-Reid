@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leadership Impact Readiness (LIR) | Henharen Reid</title>
+    <title>Leadership Impact Readiness (LIR) | Group View</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Tailwind CSS CDN & Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -11,7 +14,18 @@
         theme: {
           extend: {
             colors: {
-              navy: { 950: '#061325', 900: '#0b1e36', 800: '#142c4c' }
+              navy: {
+                950: '#061325',
+                900: '#0b1e36',
+                800: '#142c4c',
+              },
+              lir: {
+                blue: '#1b4d89',
+                gold: '#d97706',
+                red: '#dc2626',
+                green: '#15803d',
+                darkgreen: '#065f46'
+              }
             },
             fontFamily: {
               serif: ['Newsreader', 'Georgia', 'serif'],
@@ -25,7 +39,14 @@
       @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap');
       .font-editorial { font-family: 'Newsreader', Georgia, serif; }
       .bar-track { background-color: #f1f5f9; position: relative; }
-      .bar-target-tick { position: absolute; top: -3px; bottom: -3px; width: 2px; background-color: #0f172a; z-index: 10; }
+      .bar-target-tick {
+        position: absolute;
+        top: -3px;
+        bottom: -3px;
+        width: 2px;
+        background-color: #0f172a;
+        z-index: 10;
+      }
     </style>
   </head>
   <body class="bg-[#f4f6f9] text-slate-900 antialiased min-h-screen flex flex-col font-sans">
@@ -35,9 +56,13 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
         <div class="flex items-center space-x-8">
           <div class="flex items-center space-x-2.5">
-            <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">HR</div>
+            <div class="h-6 w-6 rounded bg-amber-500 font-black text-navy-950 flex items-center justify-center text-xs">
+              HR
+            </div>
             <span class="font-bold text-xs tracking-wider uppercase text-slate-300">Henharen Reid</span>
           </div>
+
+          <!-- 5 Sequential Navigation Tabs -->
           <nav class="flex space-x-1 sm:space-x-4 text-xs font-semibold" id="mainTabs">
             <button onclick="switchTab('portfolio')" id="tab-portfolio" class="px-3 py-1.5 border-b-2 border-white text-white transition">Portfolio</button>
             <button onclick="switchTab('leaders')" id="tab-leaders" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">Leaders</button>
@@ -46,258 +71,500 @@
             <button onclick="switchTab('plan2035')" id="tab-plan2035" class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition">2035 Plan</button>
           </nav>
         </div>
-        <div class="text-[11px] font-semibold text-slate-400">Q4 2026</div>
+
+        <div class="text-[11px] font-semibold text-slate-400">
+          Q4 2026
+        </div>
       </div>
     </header>
 
+    <!-- Main Dynamic Application Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
 
-      <!-- TAB 1: PORTFOLIO -->
+      <!-- ========================================================================= -->
+      <!-- TAB 1: PORTFOLIO & STRATEGY VIEW                                         -->
+      <!-- ========================================================================= -->
       <div id="view-portfolio" class="space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
             <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leadership Impact Readiness • Group view</h1>
             <p class="text-xs text-slate-500 mt-1 font-medium">Strategic Navigator capability vs. role demand • 47,000 employees • 9 building blocks • 312 senior leaders scored</p>
           </div>
+          <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-slate-200 shadow-sm text-xs font-semibold">
+            <button class="px-3 py-1 bg-navy-900 text-white rounded">All pillars</button>
+            <button class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Quality Growth</button>
+            <button class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Sustainable Future</button>
+            <button class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Dynamic Business</button>
+          </div>
         </div>
+
+        <!-- 5 Top Metric Stat Boxes -->
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3.5">
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Group LIR (Mean)</span><div class="text-3xl font-black text-slate-900 mt-1">67<span class="text-xs text-slate-400">/100</span></div></div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Leaders Aligned</span><div class="text-3xl font-black text-slate-900 mt-1">21%</div></div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Risk Blocks</span><div class="text-3xl font-black text-slate-900 mt-1">3/9</div></div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Successor Coverage</span><div class="text-3xl font-black text-slate-900 mt-1">2.1×</div></div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">FIT2WIN Lift</span><div class="text-3xl font-black text-slate-900 mt-1">£38m</div></div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Group LIR (Mean)</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span class="text-3xl font-black text-slate-900">67</span>
+              <span class="text-xs text-slate-400">/100</span>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ +4 vs. baseline Q1 2026</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm border-t-2 border-t-amber-500">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Leaders Aligned to Role</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">21<span class="text-xl font-normal">%</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-amber-600 mt-1 block">➔ below 70% target for 2035 plan</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Capability-at-Risk Blocks</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">3<span class="text-lg font-normal text-slate-400">/9</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-red-600 mt-1 block">▼ in current pillar selection</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Successor Coverage</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">2.1<span class="text-xl font-normal text-slate-400">×</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ +0.4 top 30 critical roles</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm border-t-2 border-t-amber-500">
+            <span class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">FIT2WIN Capability Lift</span>
+            <div class="mt-1">
+              <span class="text-3xl font-black text-slate-900">£38<span class="text-lg font-normal">m</span></span>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 mt-1 block">▲ unlocked by LIR led restructure</span>
+          </div>
+        </div>
+
+        <!-- Capability vs Demand Bars & Distribution Sidebar -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Left: 9 Strategic Navigator Blocks (7 Cols) -->
+          <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
+            <div>
+              <h2 class="text-base font-bold font-editorial text-slate-900">Portfolio capability vs. role demand</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Mean LIR by Strategic Navigator building block • gold tick = role demand target</p>
+            </div>
+
+            <!-- Category 1: Quality Growth -->
+            <div class="space-y-3.5">
+              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Quality Growth</span>
+              
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Inspiring New Category Innovations & Brands</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">62</span>
+                    <span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 77 <br class="hidden">-15</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-red-500 h-full" style="width: 62%;"></div>
+                  <div class="bar-target-tick" style="left: 77%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Managed Combustibles Transition</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">78</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 69 <br class="hidden">+9</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 78%;"></div>
+                  <div class="bar-target-tick" style="left: 69%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Beyond Nicotine Foundations</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">48</span>
+                    <span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 80 <br class="hidden">-32</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-red-500 h-full" style="width: 48%;"></div>
+                  <div class="bar-target-tick" style="left: 80%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 2: Sustainable Future -->
+            <div class="space-y-3.5 pt-2 border-t border-slate-100">
+              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Sustainable Future</span>
+              
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Tobacco Harm Reduction Acceptance</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">71</span>
+                    <span class="text-[11px] text-amber-600 font-bold w-12 text-right">vs. 76 <br class="hidden">-5</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-amber-500 h-full" style="width: 71%;"></div>
+                  <div class="bar-target-tick" style="left: 76%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Shaping the Landscape</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">74</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 77 <br class="hidden">-3</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 74%;"></div>
+                  <div class="bar-target-tick" style="left: 77%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Leading in Sustainability & Integrity</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">58</span>
+                    <span class="text-[11px] text-red-600 font-bold w-12 text-right">vs. 75 <br class="hidden">-17</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-red-500 h-full" style="width: 58%;"></div>
+                  <div class="bar-target-tick" style="left: 75%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 3: Dynamic Business -->
+            <div class="space-y-3.5 pt-2 border-t border-slate-100">
+              <span class="text-[11px] font-bold text-slate-400 tracking-wider uppercase block">Dynamic Business</span>
+              
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Exciting, Winning Company</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">72</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 73 <br class="hidden">-1</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 72%;"></div>
+                  <div class="bar-target-tick" style="left: 73%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Operational Excellence</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">81</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 68 <br class="hidden">+13</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 81%;"></div>
+                  <div class="bar-target-tick" style="left: 68%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1.5">
+                  <span class="font-medium text-slate-800">Capital Effectiveness</span>
+                  <div class="flex items-center space-x-3">
+                    <span class="font-black text-sm text-slate-900">76</span>
+                    <span class="text-[11px] text-emerald-600 font-bold w-12 text-right">vs. 77 <br class="hidden">-1</span>
+                  </div>
+                </div>
+                <div class="bar-track w-full h-3 rounded-sm overflow-hidden">
+                  <div class="bg-emerald-700 h-full" style="width: 76%;"></div>
+                  <div class="bar-target-tick" style="left: 77%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Distribution & Priority Actions (5 Cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <!-- Distribution Chart -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+              <div>
+                <h3 class="text-sm font-bold font-editorial text-slate-900">LIR distribution • senior cohort</h3>
+                <p class="text-[11px] text-slate-500">312 leaders • gold = stretch band</p>
+              </div>
+
+              <div class="flex items-end justify-between h-32 pt-4 px-2 border-b border-slate-200">
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-2"></div><span class="text-[9px] text-slate-400">&lt;30</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-4"></div><span class="text-[9px] text-slate-400">30-39</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-8"></div><span class="text-[9px] text-slate-400">40-49</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-amber-500 rounded-t h-16"></div><span class="text-[9px] text-slate-400">50-59</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-28"></div><span class="text-[9px] text-slate-400">60-69</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-32"></div><span class="text-[9px] text-slate-400">70-79</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-12"></div><span class="text-[9px] text-slate-400">80-89</span></div>
+                <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-navy-900 rounded-t h-2"></div><span class="text-[9px] text-slate-400">90+</span></div>
+              </div>
+
+              <div class="grid grid-cols-4 text-center pt-1 text-xs">
+                <div><span class="font-bold text-slate-900 text-sm">67</span><span class="block text-[10px] text-slate-400 font-bold uppercase">Mean</span></div>
+                <div><span class="font-bold text-slate-900 text-sm">70</span><span class="block text-[10px] text-slate-400 font-bold uppercase">Median</span></div>
+                <div><span class="font-bold text-slate-900 text-sm">4%</span><span class="block text-[10px] text-slate-400 font-bold uppercase">&lt; 50</span></div>
+                <div><span class="font-bold text-slate-900 text-sm">0%</span><span class="block text-[10px] text-slate-400 font-bold uppercase">80+</span></div>
+              </div>
+            </div>
+
+            <!-- Priority Actions Card -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+              <div>
+                <h3 class="text-sm font-bold font-editorial text-slate-900">Priority actions • this quarter</h3>
+              </div>
+
+              <div class="space-y-3 text-xs">
+                <div class="flex items-start gap-2.5 pb-2.5 border-b border-slate-100">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-800 text-white uppercase">REDEPLOY</span>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Beyond Nicotine Foundations</h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5">Beyond Nicotine Foundations sits 32 points below role demand. Bench is structurally short.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2.5">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-800 text-white uppercase">REDEPLOY</span>
+                  <div>
+                    <h4 class="font-bold text-slate-900">Leading in Sustainability & Integrity</h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5">Sitting 17 points below role demand. Move internal candidates from over-supplied blocks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
-      <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE & ALL 10 LEADERS) -->
+      <!-- ========================================================================= -->
+      <!-- TAB 2: LEADERS 7-DIMENSION PSYCHOMETRIC READ                             -->
+      <!-- ========================================================================= -->
       <div id="view-leaders" class="hidden space-y-6">
-        <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
           <div>
-            <h1 class="text-2xl font-bold font-editorial text-slate-900">Leaders • 5-Pillar Triangulation Read</h1>
-            <p class="text-xs text-slate-500">1. How They Think | 2. How They Show Up | 3. How They Connect | 4. How They Judge | 5. How They Deliver</p>
+            <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Leaders • 7-dimension profile read</h1>
+            <p class="text-xs text-slate-500 mt-1 font-medium">Click any leader to see the full Leader Read × Org Read dimensional breakdown against their block's role demand</p>
           </div>
         </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-2 max-h-[600px] overflow-y-auto" id="leaderListContainer">
-            <!-- Populated via JS -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-4">
+            <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2">
+              <span>Leader</span>
+              <span>Block</span>
+              <span>LIR</span>
+              <span>vs Demand</span>
+              <span>Status</span>
+            </div>
+
+            <div class="divide-y divide-slate-100 text-xs" id="leaderRoster">
+              <div onclick="selectLeader('R. Chen', 63, -14, 'Inspiring New Category Innovations & Brands', 'Director, glo Markets', [79,70,62,74,75,82,78], [82,85,80,78,75,68,72])" class="py-3 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition px-2 rounded-lg bg-blue-50/40">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-900 text-white font-bold flex items-center justify-center text-xs">RC</div>
+                  <div><h4 class="font-bold text-slate-900">R. Chen</h4><p class="text-[11px] text-slate-400">Director, glo Markets</p></div>
+                </div>
+                <span class="text-slate-600 text-[11px]">Inspiring New Category...</span>
+                <span class="font-black text-slate-900">63</span>
+                <span class="font-bold text-red-600">-14</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800">REDEPLOY</span>
+              </div>
+
+              <div onclick="selectLeader('D. Bianchi', 76, -1, 'Inspiring New Category Innovations & Brands', 'Head, New Category R&D', [85,82,78,80,76,70,75], [82,85,80,78,75,68,72])" class="py-3 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition px-2 rounded-lg">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-900 text-white font-bold flex items-center justify-center text-xs">DB</div>
+                  <div><h4 class="font-bold text-slate-900">D. Bianchi</h4><p class="text-[11px] text-slate-400">Head, New Category R&D</p></div>
+                </div>
+                <span class="text-slate-600 text-[11px]">Inspiring New Category...</span>
+                <span class="font-black text-slate-900">76</span>
+                <span class="font-bold text-emerald-600">-1</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">ALIGNED</span>
+              </div>
+
+              <div onclick="selectLeader('K. Patel', 73, -4, 'Capital Effectiveness', 'VP, Capital Allocation', [78,75,70,72,80,85,82], [80,78,75,76,82,80,84])" class="py-3 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition px-2 rounded-lg">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-navy-900 text-white font-bold flex items-center justify-center text-xs">KP</div>
+                  <div><h4 class="font-bold text-slate-900">K. Patel</h4><p class="text-[11px] text-slate-400">VP, Capital Allocation</p></div>
+                </div>
+                <span class="text-slate-600 text-[11px]">Capital Effectiveness</span>
+                <span class="font-black text-slate-900">73</span>
+                <span class="font-bold text-amber-600">-4</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">STRETCH</span>
+              </div>
+            </div>
           </div>
-          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-            <div class="flex justify-between items-start border-b border-slate-100 pb-3">
+
+          <!-- Right: Individual Spider Chart -->
+          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
+            <div class="flex justify-between items-start border-b border-slate-100 pb-4">
               <div>
-                <h3 class="text-xl font-bold font-editorial text-slate-900" id="detName">Elena Mercer</h3>
-                <p class="text-xs text-slate-500" id="detTitle">SVP, Autonomous Software Architecture</p>
+                <h3 class="text-xl font-bold font-editorial text-slate-900" id="detailLeaderName">R. Chen</h3>
+                <p class="text-xs text-slate-500 font-medium" id="detailLeaderTitle">Director, glo Markets • Quality Growth</p>
               </div>
               <div class="text-right">
-                <span class="text-3xl font-black text-slate-900" id="detLIR">89</span>
-                <span class="block text-[10px] text-slate-400 font-bold uppercase">Role Readiness Index</span>
+                <span class="text-3xl font-black text-slate-900" id="detailLeaderLIR">63</span>
+                <span class="block text-[10px] text-slate-400 font-bold uppercase">role demand: 77</span>
               </div>
             </div>
+
             <div class="relative h-64 w-full flex items-center justify-center">
-              <canvas id="pillarRadarChart"></canvas>
-            </div>
-            <div class="grid grid-cols-5 gap-2 text-center text-xs pt-2">
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[10px] text-slate-400 uppercase font-bold">1. Think</span><span class="font-bold text-slate-900" id="p1">86</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[10px] text-slate-400 uppercase font-bold">2. Show Up</span><span class="font-bold text-slate-900" id="p2">92</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[10px] text-slate-400 uppercase font-bold">3. Connect</span><span class="font-bold text-slate-900" id="p3">89</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[10px] text-slate-400 uppercase font-bold">4. Judge</span><span class="font-bold text-slate-900" id="p4">85</span></div>
-              <div class="bg-slate-50 p-2 rounded border"><span class="block text-[10px] text-slate-400 uppercase font-bold">5. Deliver</span><span class="font-bold text-slate-900" id="p5">91</span></div>
+              <canvas id="leaderRadarChart"></canvas>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- TAB 3: ROLE DEMAND -->
+      <!-- ========================================================================= -->
+      <!-- TAB 3: ROLE DEMAND                                                       -->
+      <!-- ========================================================================= -->
       <div id="view-roleDemand" class="hidden space-y-6">
-        <h1 class="text-2xl font-bold font-editorial text-slate-900">Role Demand • Strategic Building Blocks</h1>
-        <p class="text-xs text-slate-500">Benchmark requirements across 5 pillars for each role.</p>
-      </div>
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Role demand • what each block actually requires</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">The 7-dimension role demand profile for each Strategic Navigator building block.</p>
+        </div>
 
-      <!-- TAB 4: SCENARIOS (VIRTUE & JUDGMENT BATTERY) -->
-      <div id="view-scenarios" class="hidden space-y-6">
-        <h1 class="text-2xl font-bold font-editorial text-slate-900">4. How They Judge • Executive Virtue & Judgment Battery</h1>
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6" id="quizContainer">
-          <div id="quiz">
-            <div class="text-xs text-slate-400 font-bold uppercase mb-2" id="q-counter">Scenario 1 of 6</div>
-            <div class="text-lg font-bold text-slate-900 mb-2" id="scenario-title"></div>
-            <div class="text-sm text-slate-600 mb-6" id="scenario-text"></div>
-            <div id="options-container" class="space-y-3"></div>
-          </div>
-          <div id="results" style="display:none;" class="space-y-4">
-            <h2 class="text-xl font-bold">Diagnostic Assessment Complete</h2>
-            <div class="grid grid-cols-4 gap-4 text-center">
-              <div class="p-3 bg-slate-50 rounded border"><div class="text-xs text-slate-500 uppercase font-bold">Prudence</div><div class="text-xl font-black" id="score-p">0</div></div>
-              <div class="p-3 bg-slate-50 rounded border"><div class="text-xs text-slate-500 uppercase font-bold">Fortitude</div><div class="text-xl font-black" id="score-f">0</div></div>
-              <div class="p-3 bg-slate-50 rounded border"><div class="text-xs text-slate-500 uppercase font-bold">Temperance</div><div class="text-xl font-black" id="score-t">0</div></div>
-              <div class="p-3 bg-slate-50 rounded border"><div class="text-xs text-slate-500 uppercase font-bold">Justice</div><div class="text-xl font-black" id="score-j">0</div></div>
-            </div>
-            <button onclick="resetQuiz()" class="px-4 py-2 bg-navy-950 text-white rounded-lg text-xs font-bold">Retake Diagnostic</button>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold text-slate-400 uppercase">QUALITY GROWTH</span>
+            <h3 class="text-base font-bold font-editorial text-slate-900">Inspiring New Category Innovations & Brands</h3>
+            <p class="text-xs text-slate-500">Build Vuse, glo, Velo into category defining consumer brands.</p>
           </div>
         </div>
       </div>
 
-      <!-- TAB 5: 2035 PLAN -->
+      <!-- ========================================================================= -->
+      <!-- TAB 4: SCENARIOS                                                         -->
+      <!-- ========================================================================= -->
+      <div id="view-scenarios" class="hidden space-y-6">
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">Scenario • move a leader, see the LIR change</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">Drop any leader into any block. LIR is recomputed against destination role demand.</p>
+        </div>
+
+        <div class="bg-navy-950 text-white rounded-2xl p-6 shadow-md space-y-6">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-amber-500">Build a scenario</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Select Leader</label>
+              <select class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3">
+                <option>R. Chen — Inspiring New Category Innovations & Brands</option>
+                <option>D. Bianchi — Managed Combustibles Transition</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Move to which block?</label>
+              <select class="w-full bg-navy-900 border border-slate-700 text-white text-xs rounded-xl p-3">
+                <option>Quality Growth - Beyond Nicotine Foundations</option>
+                <option>Dynamic Business - Operational Excellence</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 5: 2035 PLAN                                                         -->
+      <!-- ========================================================================= -->
       <div id="view-plan2035" class="hidden space-y-6">
-        <h1 class="text-2xl font-bold font-editorial text-slate-900">2035 Plan • Capability Trajectory</h1>
+        <div class="border-b border-slate-200/80 pb-5">
+          <h1 class="text-3xl font-bold font-editorial text-slate-900 tracking-tight">2035 Plan • capability trajectory by building block</h1>
+          <p class="text-xs text-slate-500 mt-1 font-medium">Where capability sits today vs. 2035 targets.</p>
+        </div>
       </div>
 
     </main>
 
     <footer class="bg-navy-950 text-slate-400 py-3 border-t border-navy-900 text-xs">
       <div class="max-w-7xl mx-auto px-4 flex justify-between">
-        <span><strong>5-Pillar Architecture:</strong> Think • Show Up • Connect • Judge • Deliver</span>
-        <span>Henharen Reid • Platform v0.3</span>
+        <span><strong>LIR is composed:</strong> Leader Read × Org Read ➔ mapped to role demand.</span>
+        <span>Henharen Reid • v0.2</span>
       </div>
     </footer>
 
     <script>
-      const leadersData = [
-        { name: "Elena Mercer", title: "SVP, Autonomous Software", lir: 89, block: "Quality Growth", scores: [86, 92, 89, 85, 91] },
-        { name: "Dr. Alexander Holt", title: "VP, Solid-State Battery", lir: 64, block: "Sustainable Future", scores: [69, 74, 31, 60, 72] },
-        { name: "Marcus Vance", title: "COO, Global Supply Chain", lir: 79, block: "Dynamic Business", scores: [78, 88, 85, 75, 84] },
-        { name: "Sarah Jenkins", title: "Head of Regulatory Affairs", lir: 72, block: "Sustainable Future", scores: [75, 80, 78, 82, 70] },
-        { name: "David Thorne", title: "VP, Capital Markets", lir: 81, block: "Dynamic Business", scores: [82, 85, 79, 70, 88] },
-        { name: "Amina Al-Hassan", title: "Director, Middle East Operations", lir: 85, block: "Quality Growth", scores: [84, 90, 88, 86, 89] },
-        { name: "Liam O'Connor", title: "Head of Digital Transformation", lir: 76, block: "Dynamic Business", scores: [80, 75, 82, 72, 78] },
-        { name: "Dr. Beatrice Meyer", title: "Chief Scientific Officer", lir: 92, block: "Quality Growth", scores: [94, 88, 85, 90, 93] },
-        { name: "Carlos Santana", title: "VP, Global Compliance", lir: 70, block: "Sustainable Future", scores: [71, 72, 68, 75, 70] },
-        { name: "Yuki Tanaka", title: "Head of Strategic Partnerships", lir: 83, block: "Quality Growth", scores: [82, 89, 91, 80, 82] }
-      ];
-
-      let pillarRadar = null;
+      let leaderRadar = null;
 
       function switchTab(tabId) {
-        ['portfolio', 'leaders', 'roleDemand', 'scenarios', 'plan2035'].forEach(t => {
+        const tabs = ['portfolio', 'leaders', 'roleDemand', 'scenarios', 'plan2035'];
+        tabs.forEach(t => {
           document.getElementById('view-' + t).classList.add('hidden');
           document.getElementById('tab-' + t).className = 'px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition';
         });
+
         document.getElementById('view-' + tabId).classList.remove('hidden');
         document.getElementById('tab-' + tabId).className = 'px-3 py-1.5 border-b-2 border-white text-white transition';
 
-        if(tabId === 'leaders') {
-          renderLeaderList();
-          selectLeaderObj(leadersData[0]);
-        }
+        if (tabId === 'leaders') initLeaderRadar();
       }
 
-      function renderLeaderList() {
-        const container = document.getElementById('leaderListContainer');
-        let html = '';
-        leadersData.forEach((l, idx) => {
-          html += `
-            <div onclick="selectLeaderObj(leadersData[${idx}])" class="p-3 hover:bg-slate-50 border border-slate-200 rounded-xl cursor-pointer transition">
-              <div class="flex justify-between items-center">
-                <div class="font-bold text-slate-900 text-xs">${l.name}</div>
-                <div class="text-xs font-black text-blue-600">LIR: ${l.lir}</div>
-              </div>
-              <div class="text-[11px] text-slate-500">${l.title}</div>
-            </div>`;
-        });
-        container.innerHTML = html;
-      }
+      function initLeaderRadar(leaderData = [79,70,62,74,75,82,78], demandData = [82,85,80,78,75,68,72]) {
+        const ctx = document.getElementById('leaderRadarChart');
+        if (!ctx) return;
+        if (leaderRadar) leaderRadar.destroy();
 
-      function selectLeaderObj(l) {
-        document.getElementById('detName').innerText = l.name;
-        document.getElementById('detTitle').innerText = l.title + ' • ' + l.block;
-        document.getElementById('detLIR').innerText = l.lir;
-        document.getElementById('p1').innerText = l.scores[0];
-        document.getElementById('p2').innerText = l.scores[1];
-        document.getElementById('p3').innerText = l.scores[2];
-        document.getElementById('p4').innerText = l.scores[3];
-        document.getElementById('p5').innerText = l.scores[4];
-        initPillarRadar(l.scores);
-      }
-
-      function initPillarRadar(scores) {
-        const ctx = document.getElementById('pillarRadarChart');
-        if(!ctx) return;
-        if(pillarRadar) pillarRadar.destroy();
-
-        pillarRadar = new Chart(ctx, {
+        leaderRadar = new Chart(ctx, {
           type: 'radar',
           data: {
-            labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
-            datasets: [{
-              label: 'Leader Profile',
-              data: scores,
-              backgroundColor: 'rgba(59, 130, 246, 0.2)',
-              borderColor: '#3b82f6',
-              borderWidth: 2,
-              pointBackgroundColor: '#3b82f6'
-            }, {
-              label: 'Role Demand',
-              data: [80, 80, 80, 80, 80],
-              backgroundColor: 'rgba(245, 158, 11, 0.1)',
-              borderColor: '#f59e0b',
-              borderWidth: 1.5,
-              borderDash: [4, 4]
-            }]
+            labels: ['Strategic conceptualisation', 'Cognitive flexibility', 'Ambiguity tolerance', 'Learning velocity', 'Integrative judgement', 'Operational decisiveness', 'Abstract reasoning'],
+            datasets: [
+              {
+                label: 'Leader profile',
+                data: leaderData,
+                backgroundColor: 'rgba(15, 23, 42, 0.25)',
+                borderColor: '#0f172a',
+                borderWidth: 2,
+                pointRadius: 3
+              },
+              {
+                label: 'Role demand',
+                data: demandData,
+                backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                borderColor: '#d97706',
+                borderWidth: 2,
+                borderDash: [4, 4],
+                pointRadius: 3
+              }
+            ]
           },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
             scales: {
               r: {
-                min: 40, max: 100,
+                min: 40,
+                max: 100,
                 ticks: { display: false },
-                pointLabels: { font: { size: 11, weight: '600' }, color: '#334155' }
+                pointLabels: { font: { size: 9 } }
               }
             },
-            plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+            plugins: {
+              legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+            },
+            responsive: true,
+            maintainAspectRatio: false
           }
         });
       }
 
-      const scenarios = [
-        {
-          title: "Scenario 1: Capital Payout vs. Unseen Structural Wear",
-          text: "You are CEO of an infrastructure firm. Following a successful turnaround, a promised £120m dividend payout is due next week. A new inspection reveals hidden sub-surface fatigue at your primary distribution hub. Fixing it costs £110m over 3 years.",
-          options: [
-            { text: "A) Pay 50% dividend (£60m); deploy £60m to immediate repairs and apply for state matching grants.", scores: { P: 2, F: -2, T: 1, J: 0 } },
-            { text: "B) Cancel dividend entirely; reallocate all £120m to asset overhaul and accept credit rating drop.", scores: { P: 1, F: 2, T: 0, J: -2 } },
-            { text: "C) Proceed with full £120m payout; secure commercial bank loans over 24 months for repairs.", scores: { P: 1, F: -2, T: -1, J: 2 } },
-            { text: "D) Lock funds in 12-month repair escrow; issue long-dated equity warrants to managers.", scores: { P: -2, F: 0, T: 2, J: 2 } }
-          ]
-        }
-      ];
-      let currentQ = 0;
-      let userScores = { P: 0, F: 0, T: 0, J: 0 };
-
-      function renderQuiz() {
-        if(currentQ < scenarios.length) {
-          document.getElementById('q-counter').innerText = `Scenario ${currentQ + 1} of ${scenarios.length}`;
-          document.getElementById('scenario-title').innerText = scenarios[currentQ].title;
-          document.getElementById('scenario-text').innerText = scenarios[currentQ].text;
-          let html = '';
-          scenarios[currentQ].options.forEach((opt, idx) => {
-            html += `<button onclick="answer(${idx})" class="w-full text-left p-3 rounded-lg border border-slate-200 hover:border-blue-500 hover:bg-blue-50 text-xs transition">${opt.text}</button>`;
-          });
-          document.getElementById('options-container').innerHTML = html;
-        } else {
-          document.getElementById('quiz').style.display = 'none';
-          document.getElementById('results').style.display = 'block';
-          document.getElementById('score-p').innerText = (userScores.P > 0 ? '+' : '') + userScores.P;
-          document.getElementById('score-f').innerText = (userScores.F > 0 ? '+' : '') + userScores.F;
-          document.getElementById('score-t').innerText = (userScores.T > 0 ? '+' : '') + userScores.T;
-          document.getElementById('score-j').innerText = (userScores.J > 0 ? '+' : '') + userScores.J;
-        }
+      function selectLeader(name, lir, gap, block, title, leaderScores, demandScores) {
+        document.getElementById('detailLeaderName').innerText = name;
+        document.getElementById('detailLeaderTitle').innerText = title + ' • ' + block;
+        document.getElementById('detailLeaderLIR').innerText = lir;
+        initLeaderRadar(leaderScores, demandScores);
       }
-
-      function answer(optIdx) {
-        const scores = scenarios[currentQ].options[optIdx].scores;
-        userScores.P += scores.P; userScores.F += scores.F; userScores.T += scores.T; userScores.J += scores.J;
-        currentQ++;
-        renderQuiz();
-      }
-
-      function resetQuiz() {
-        currentQ = 0;
-        userScores = { P: 0, F: 0, T: 0, J: 0 };
-        document.getElementById('quiz').style.display = 'block';
-        document.getElementById('results').style.display = 'none';
-        renderQuiz();
-      }
-
-      window.onload = function() { renderQuiz(); };
     </script>
   </body>
 </html>
