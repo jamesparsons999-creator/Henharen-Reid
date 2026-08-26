@@ -42,9 +42,6 @@
             background-color: rgb(6, 1, 0);
             z-index: 10;
         }
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-        .custom-scroll::-webkit-scrollbar-track { background: rgb(242, 242, 242); }
-        .custom-scroll::-webkit-scrollbar-thumb { background: rgb(91, 89, 89); border-radius: 4px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col font-sans">
@@ -197,7 +194,7 @@
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div class="lg:col-span-9 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6">
+                <div class="lg:col-span-12 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6">
                     <div class="grid grid-cols-3 gap-3 text-xs">
                         <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Catalyst</span><div class="space-y-1 my-2" id="box-catalyst"></div></div>
                         <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Pioneer</span><div class="space-y-1 my-2" id="box-pioneer"></div></div>
@@ -233,8 +230,60 @@
 
         <!-- BUY MODE VIEW -->
         <div id="view-buyMode" class="hidden space-y-6">
-            <div class="border-b border-telosGrey/30 pb-5">
-                <h1 class="text-2xl font-bold text-telosBlue tracking-tight">BUY • Executive Search Mandates</h1>
+            <div class="border-b border-telosGrey/30 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-telosBlue tracking-tight">BUY • Executive Search Mandates & Arbitrage</h1>
+                    <p class="text-xs text-telosGrey mt-1 font-medium">External shortlists for roles requiring acquisition based on role demand gap analysis.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label class="text-xs font-bold text-telosGrey">Active Mandate:</label>
+                    <select id="buyMandateSelect" onchange="changeBuyMandate()" class="bg-white border border-telosGrey/30 text-telosBlue font-bold text-xs rounded-lg p-2.5 shadow-sm"></select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-4 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-5 space-y-3">
+                    <h3 class="text-sm font-bold text-telosBlue">Candidate Shortlist (3 Candidates)</h3>
+                    <div class="space-y-2 text-xs" id="searchCandidateList"></div>
+                </div>
+                <div class="lg:col-span-8 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 space-y-6">
+                    <div class="flex justify-between items-start border-b border-telosGrey/20 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-telosBlue" id="buyCandName">Dr. Aris Thorne</h3>
+                            <p class="text-xs text-telosGrey font-medium mt-0.5" id="buyCandRole">Candidate for Hydrogen Fuel Cell & Heavy Industrial Ventures</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-3xl font-black text-telosOrange" id="buyCandFit">94%</span>
+                            <span class="block text-[10px] text-telosGrey font-bold uppercase">Match Fit</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-5 gap-2 text-center text-xs">
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">1. Think</span><span class="font-bold text-telosDark text-[11px]" id="buyP1">Level 5</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">2. Show Up</span><span class="font-bold text-telosDark text-[11px]" id="buyP2">92nd %ile</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">3. Connect</span><span class="font-bold text-telosDark text-[11px]" id="buyP3">Global Hub</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">4. Judge</span><span class="font-bold text-telosBlue text-[11px]" id="buyP4">+2P / +2J</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">5. Deliver</span><span class="font-bold text-telosBlue text-[11px]" id="buyP5">Exceeding</span></div>
+                    </div>
+
+                    <!-- 3-WAY TOGGLE FOR BUY RADAR -->
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="text-[10px] font-bold text-telosGrey uppercase tracking-wider">Benchmark Overlay:</span>
+                        <div class="flex bg-gray-100 p-1 rounded-lg text-xs font-semibold gap-1">
+                            <button onclick="setBuyRadarMode('role')" id="btnBuyRole" class="px-3 py-1 bg-telosBlue text-telosWhite rounded transition">Role Benchmark</button>
+                            <button onclick="setBuyRadarMode('cohort')" id="btnBuyCohort" class="px-3 py-1 text-telosGrey rounded transition">Cohort Average</button>
+                            <button onclick="setBuyRadarMode('peer')" id="btnBuyPeer" class="px-3 py-1 text-telosGrey rounded transition">Compare Peer...</button>
+                        </div>
+                    </div>
+
+                    <div class="relative h-56 w-full flex items-center justify-center">
+                        <canvas id="buyRadarChart"></canvas>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 rounded-xl border border-telosGrey/30 text-xs text-telosDark leading-relaxed font-medium" id="buyCandSynthesis">
+                        <strong>Partner Search Assessment:</strong> Exceptional systemic integrator with deep chemical engineering pedigree.
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -307,13 +356,23 @@
 
     <footer class="bg-telosBlue text-telosWhite/80 py-3 px-6 border-t border-telosWhite/10 text-xs mt-auto flex justify-between items-center">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>TELOS Executive Intelligence • v2.8</span>
+        <span>TELOS Executive Intelligence • v2.9</span>
     </footer>
 
     <!-- SCRIPT ENGINE -->
     <script>
+        let buyRadar = null;
         let currentAppMode = 'build';
+        let currentBuyRadarMode = 'role';
+        let activeBuyMandateKey = 'h2';
+        let activeBuyCandIdx = 0;
         let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
+
+        const strategicWorkstreams = [
+            { id: "ssb", name: "Solid-State Battery & Next-Gen Cell Chemistry", pillar: "Electrified Propulsion", demand: 78, gap: -18, action: "BUY" },
+            { id: "h2", name: "Hydrogen Fuel Cell & Heavy Industrial Ventures", pillar: "Electrified Propulsion", demand: 82, gap: -36, action: "BUY" },
+            { id: "adas", name: "Autonomous Drive & ADAS Platform Architecture", pillar: "Software & Autonomous", demand: 80, gap: -23, action: "BUY" }
+        ];
 
         let leadersData = [
             { 
@@ -386,6 +445,22 @@
             }
         ];
 
+        let buyMandatesData = {
+            'h2': {
+                title: 'Hydrogen Fuel Cell & Heavy Industrial Ventures',
+                candidates: [
+                    { name: 'Dr. Aris Thorne', fit: '94%', scores: [94, 92, 88, 90, 95], think: 'Level 5 (Pure Strategy)', show: '92nd %ile', conn: 'Global Hub', judge: '+2P, +2J', deliver: 'Exceeding', synthesis: 'Exceptional systemic integrator with deep chemical engineering pedigree and zero derailer risks.' },
+                    { name: 'Siobhan Gallagher', fit: '89%', scores: [90, 86, 84, 88, 90], think: 'Level 5 (Pure Strategy)', show: '86th %ile', conn: 'Cross-Silo Bridge', judge: '+1P, +2J', deliver: 'Exceeding', synthesis: 'Extensive industrial scale experience across European hydrogen consortia.' }
+                ]
+            },
+            'adas': {
+                title: 'Autonomous Drive & ADAS Platform Architecture',
+                candidates: [
+                    { name: 'Elena Rostova', fit: '91%', scores: [92, 89, 90, 88, 92], think: 'Level 5 (Pure Strategy)', show: '89th %ile', conn: 'Super-Connector', judge: '+2P, +1J, +2F', deliver: 'Exceeding', synthesis: 'Visionary software systems architect with tier-1 autonomous delivery track record.' }
+                ]
+            }
+        };
+
         function setAppMode(mode) {
             currentAppMode = mode;
             const btnBuild = document.getElementById('btnModeBuild');
@@ -397,6 +472,7 @@
                 navTabs.classList.add('hidden');
                 document.getElementById('view-buyMode').classList.remove('hidden');
                 ['portfolio', 'leaders', 'ninebox', 'roleDemand', 'scenarios', 'plan2035'].forEach(t => document.getElementById('view-' + t).classList.add('hidden'));
+                populateBuyMandates();
             } else {
                 btnBuild.className = 'px-4 py-1.5 font-bold rounded-lg bg-white text-telosBlue shadow-sm transition';
                 btnBuy.className = 'px-4 py-1.5 font-bold rounded-lg text-telosWhite hover:bg-telosWhite/10 transition';
@@ -418,6 +494,7 @@
 
             if (tabId === 'leaders') recalculateAllLeaders();
             if (tabId === 'ninebox') updateNineBoxGrid();
+            if (tabId === 'roleDemand') renderRoleDemandCards();
         }
 
         function updateClientWeights() {
@@ -483,7 +560,6 @@
             document.getElementById('modalLeaderArchetype').innerText = l.nineBoxArchetype;
             document.getElementById('modalLeaderLIR').innerText = l.lir;
 
-            // Render 4-Axis Coordinates
             const coordList = document.getElementById('modalCoordinatesList');
             coordList.innerHTML = '';
             Object.entries(l.judgeData.coordinates).forEach(([virtue, val]) => {
@@ -497,15 +573,12 @@
                 `;
             });
 
-            // Position 2x2 Quadrant Dot Dynamically based on Fortitude & Prudence
             const dot = document.getElementById('quadrantDot');
-            // Fortitude maps to Y (top/bottom), Prudence/Stewardship maps to X (left/right)
             const xPercent = 50 + (l.judgeData.coordinates.prudence / 12) * 40;
             const yPercent = 50 - (l.judgeData.coordinates.fortitude / 12) * 40;
             dot.style.left = `${Math.max(10, Math.min(90, xPercent))}%`;
             dot.style.top = `${Math.max(10, Math.min(90, yPercent))}%`;
 
-            // Render Scenario Audit Log Table
             const auditBody = document.getElementById('modalAuditBody');
             auditBody.innerHTML = '';
             l.judgeData.auditTrail.forEach(item => {
@@ -540,6 +613,109 @@
                     pill.onclick = () => openLeaderModal(l.id);
                     pill.innerHTML = `<span class="font-bold text-[9px] text-telosDark truncate">${l.name}</span><span class="text-[8px] font-black ${l.stateClass} px-1 rounded">${l.lir}</span>`;
                     boxEl.appendChild(pill);
+                }
+            });
+        }
+
+        function renderRoleDemandCards() {
+            const container = document.getElementById('roleDemandCardsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            strategicWorkstreams.forEach(r => {
+                let badge = r.action === 'BUY' ? '<span class="px-2 py-0.5 bg-orange-50 text-telosOrange border border-telosOrange/30 font-bold rounded text-[10px]">BUY (External Search)</span>' : '<span class="px-2 py-0.5 bg-blue-50 text-telosBlue border border-telosBlue/30 font-bold rounded text-[10px]">BUILD (Internal)</span>';
+                container.innerHTML += `
+                    <div class="bg-white p-5 rounded-2xl border border-telosGrey/30 shadow-sm space-y-3">
+                        <div class="flex justify-between items-center"><span class="text-[10px] font-bold text-telosBlue uppercase bg-blue-50 px-2 py-0.5 rounded">${r.pillar}</span>${badge}</div>
+                        <h3 class="text-sm font-bold text-telosBlue">${r.name}</h3>
+                        <div class="flex justify-between text-xs text-telosGrey"><span>Target Demand:</span><span class="font-bold text-telosDark">${r.demand}/100</span></div>
+                        <div class="flex justify-between text-xs text-telosGrey"><span>Cohort Gap:</span><span class="font-bold text-telosOrange">${r.gap} pts</span></div>
+                    </div>
+                `;
+            });
+        }
+
+        function populateBuyMandates() {
+            const sel = document.getElementById('buyMandateSelect');
+            if (!sel) return;
+            sel.innerHTML = '';
+            Object.keys(buyMandatesData).forEach(key => {
+                const m = buyMandatesData[key];
+                sel.innerHTML += `<option value="${key}">${m.title}</option>`;
+            });
+            changeBuyMandate();
+        }
+
+        function changeBuyMandate() {
+            const sel = document.getElementById('buyMandateSelect');
+            if (!sel) return;
+            activeBuyMandateKey = sel.value;
+            const mandate = buyMandatesData[activeBuyMandateKey];
+            if (!mandate) return;
+            const listEl = document.getElementById('searchCandidateList');
+            listEl.innerHTML = '';
+            mandate.candidates.forEach((c, idx) => {
+                listEl.innerHTML += `
+                    <div onclick="selectBuyCandidate('${activeBuyMandateKey}', ${idx})" id="buyCandItem-${idx}" class="p-3 rounded-xl border ${idx===0?'border-telosBlue bg-blue-50/50':'border-telosGrey/30 bg-white'} cursor-pointer flex items-center justify-between transition">
+                        <span class="font-bold text-telosDark">${c.name}</span>
+                        <span class="text-telosOrange font-bold">Fit: ${c.fit}</span>
+                    </div>
+                `;
+            });
+            selectBuyCandidate(activeBuyMandateKey, 0);
+        }
+
+        function selectBuyCandidate(mandateKey, idx) {
+            activeBuyMandateKey = mandateKey;
+            activeBuyCandIdx = idx;
+            const c = buyMandatesData[mandateKey].candidates[idx];
+            document.getElementById('buyCandName').innerText = c.name;
+            document.getElementById('buyCandRole').innerText = buyMandatesData[mandateKey].title;
+            document.getElementById('buyCandFit').innerText = c.fit;
+            document.getElementById('buyP1').innerText = c.think;
+            document.getElementById('buyP2').innerText = c.show;
+            document.getElementById('buyP3').innerText = c.conn;
+            document.getElementById('buyP4').innerText = c.judge;
+            document.getElementById('buyP5').innerText = c.deliver;
+            document.getElementById('buyCandSynthesis').innerHTML = '<strong>Partner Search Assessment:</strong> ' + c.synthesis;
+
+            buyMandatesData[mandateKey].candidates.forEach((_, i) => {
+                const el = document.getElementById('buyCandItem-' + i);
+                if (el) el.className = i === idx ? 'p-3 rounded-xl border border-telosBlue bg-blue-50/50 cursor-pointer flex items-center justify-between transition' : 'p-3 rounded-xl border border-telosGrey/30 bg-white cursor-pointer flex items-center justify-between transition';
+            });
+
+            renderBuyRadar(c.scores);
+        }
+
+        function setBuyRadarMode(mode) {
+            currentBuyRadarMode = mode;
+            const btnRole = document.getElementById('btnBuyRole');
+            const btnCohort = document.getElementById('btnBuyCohort');
+            const btnPeer = document.getElementById('btnBuyPeer');
+            [btnRole, btnCohort, btnPeer].forEach(b => b.className = 'px-3 py-1 text-telosGrey rounded transition');
+            if (mode === 'role') btnRole.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            else if (mode === 'cohort') btnCohort.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            else btnPeer.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            selectBuyCandidate(activeBuyMandateKey, activeBuyCandIdx);
+        }
+
+        function renderBuyRadar(scores) {
+            const ctx = document.getElementById('buyRadarChart');
+            if (!ctx) return;
+            if (buyRadar) buyRadar.destroy();
+
+            buyRadar = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
+                    datasets: [
+                        { label: 'External Candidate', data: scores, backgroundColor: 'rgba(217, 83, 44, 0.25)', borderColor: 'hsl(7, 77%, 55%)', borderWidth: 2, pointRadius: 3 },
+                        { label: 'Role Benchmark', data: [80, 80, 80, 80, 80], backgroundColor: 'rgba(29, 93, 149, 0.1)', borderColor: 'hsl(213, 54%, 31%)', borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
+                    ]
+                },
+                options: {
+                    scales: { r: { min: 40, max: 100, ticks: { display: false }, pointLabels: { font: { size: 10, weight: 'bold', family: 'Futura PT' } } } },
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10, family: 'Futura PT' } } } },
+                    responsive: true, maintainAspectRatio: false
                 }
             });
         }
