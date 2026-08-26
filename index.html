@@ -69,11 +69,11 @@
             <button onclick="switchTab('leaders')" id="tab-leaders" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Leaders (5-Pillar)</button>
             <button onclick="switchTab('ninebox')" id="tab-ninebox" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">9-Box Grid</button>
             <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Role Demand</button>
-            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Scenarios (EJTD)</button>
+            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Scenarios</button>
             <button onclick="switchTab('plan2035')" id="tab-plan2035" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">2035 Plan</button>
         </div>
         <div class="text-xs text-telosWhite/70 hidden lg:block">
-            Multi-source tool-agnostic ingestion engine active
+            Multi-source vault ingestion engine active
         </div>
     </div>
 
@@ -87,7 +87,7 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 class="text-2xl font-bold text-telosBlue">Leadership Impact Readiness • Group View</h1>
-                    <p class="text-sm text-telosGrey mt-0.5">Enterprise transformation capability vs. role demand • Multi-source tool-agnostic ingestion</p>
+                    <p class="text-sm text-telosGrey mt-0.5">Enterprise transformation capability vs. role demand • Vault ingestion active</p>
                 </div>
                 <div class="flex flex-wrap gap-2 text-xs font-semibold">
                     <button class="px-3 py-1.5 rounded bg-telosBlue text-telosWhite shadow">All pillars</button>
@@ -213,7 +213,7 @@
                         <div class="p-3.5 rounded-lg bg-telosOrange/10 border border-telosOrange/30 space-y-2">
                             <div class="flex justify-between items-center">
                                 <span class="text-xs font-bold text-telosBlue">Hydrogen & Heavy Ventures</span>
-                                <span class="text-[10px] font-bold text-telosOrange uppercase bg-white px-2 py-0.5 rounded border border-telosOrange/30" onclick="setAppMode('buy')" style="cursor: pointer;">Buy Search →</span>
+                                <span class="text-[10px] font-bold text-telosOrange uppercase bg-white px-2 py-0.5 rounded border border-telosOrange/30 cursor-pointer" onclick="setAppMode('buy')">Buy Search →</span>
                             </div>
                             <p class="text-xs text-telosGrey leading-relaxed">
                                 Deficit: -36 pts. In-house timeline &gt; 36 months. Recommendation: External Tier-1 executive search.
@@ -231,7 +231,7 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b pb-4">
                 <div>
                     <h1 class="text-2xl font-bold text-telosBlue">5-Pillar Executive Intelligence Bench</h1>
-                    <p class="text-sm text-telosGrey">Live calibration of internal cohort across Think, Show Up, Connect, Judge, and Deliver.</p>
+                    <p class="text-sm text-telosGrey">Live calibration across all 10 cohort leaders. Adjust weights below to simulate real-time LIR and Fit changes.</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <button onclick="resetWeights()" class="px-3 py-1.5 text-xs font-bold rounded bg-white text-telosGrey border border-gray-300 hover:bg-gray-50">Reset Calibration</button>
@@ -241,11 +241,11 @@
             <!-- WEIGHT SLIDER CONSOLE -->
             <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                    <div class="flex justify-between text-xs font-bold mb-1"><span class="text-telosBlue">1. Think (CPP Complexity)</span><span id="valWeightThink">40%</span></div>
+                    <div class="flex justify-between text-xs font-bold mb-1"><span class="text-telosBlue">1. Think (CPP Cognitive Horizon)</span><span id="valWeightThink">40%</span></div>
                     <input id="sliderThink" type="range" min="10" max="70" value="40" oninput="updateWeights()" class="w-full accent-telosBlue">
                 </div>
                 <div>
-                    <div class="flex justify-between text-xs font-bold mb-1"><span class="text-telosBlue">2. Show Up (ZF 360)</span><span id="valWeightShow">35%</span></div>
+                    <div class="flex justify-between text-xs font-bold mb-1"><span class="text-telosBlue">2. Show Up (ZF 360 Effectiveness)</span><span id="valWeightShow">35%</span></div>
                     <input id="sliderShow" type="range" min="10" max="70" value="35" oninput="updateWeights()" class="w-full accent-telosBlue">
                 </div>
                 <div>
@@ -263,9 +263,9 @@
                             <th class="p-4 text-center">1. Think</th>
                             <th class="p-4 text-center">2. Show Up</th>
                             <th class="p-4 text-center">3. Connect</th>
-                            <th class="p-4 text-center">4. Judge (Virtues)</th>
+                            <th class="p-4 text-center">4. Judge (Vault)</th>
                             <th class="p-4 text-center">5. Deliver</th>
-                            <th class="p-4 text-right">Calculated LIR</th>
+                            <th class="p-4 text-right">Calculated LIR & Fit</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 text-xs" id="leadersTableBody"></tbody>
@@ -283,13 +283,13 @@
                     <p class="text-xs text-telosGrey mt-0.5">Y-Axis: Strategic Potential (Think & Connect) • X-Axis: Observable Performance & Delivery (Show Up - Derailers)</p>
                 </div>
                 <div class="text-xs text-telosGrey bg-white p-2 rounded-lg border border-gray-200 shadow-sm">
-                    <span class="font-bold text-telosBlue">Dynamic Position:</span> Adjusting sliders in Leaders tab live-moves executives across grid boxes.
+                    <span class="font-bold text-telosBlue">Dynamic Position:</span> Adjusting sliders in Leaders tab live-moves all 10 executives across grid boxes.
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-12 bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                    <div class="grid grid-cols-3 gap-4 text-xs min-h-[400px]">
+                    <div class="grid grid-cols-3 gap-4 text-xs min-h-[420px]">
                         <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-4 flex flex-col justify-between">
                             <div class="border-b border-amber-200 pb-2 font-bold text-amber-900 uppercase">The Enigma / Maverick</div>
                             <div class="space-y-2 my-3" id="box-enigma"></div>
@@ -347,98 +347,45 @@
             <div class="border-b pb-4 flex justify-between items-center">
                 <div>
                     <h1 class="text-2xl font-bold text-telosBlue">Executive Role Demand Blueprints</h1>
-                    <p class="text-sm text-telosGrey">Click any role card below to inspect cognitive complexity ceilings, 3-domain telemetry, and ExCo decision triggers.</p>
+                    <p class="text-sm text-telosGrey">Click any role card to inspect structural demands and trigger external search mandates into BUY mode.</p>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="roleDemandCardsContainer"></div>
         </div>
 
         <!-- ================================================================= -->
-        <!-- TAB 5: SCENARIOS (EJTD) VIEW -->
+        <!-- TAB 5: SCENARIOS VIEW -->
         <!-- ================================================================= -->
         <div id="view-scenarios" class="hidden space-y-6">
-            <div class="border-b pb-4 flex justify-between items-center">
-                <div>
-                    <h1 class="text-2xl font-bold text-telosBlue">Executive Judgment & Trade-off Diagnostic (EJTD)</h1>
-                    <p class="text-sm text-telosGrey">High-friction, non-binary trade-off dilemmas testing Prudence (*phronesis*), Fortitude, Temperance, and Justice.</p>
-                </div>
-                <button onclick="calculateEJTDScore()" class="px-4 py-2 rounded bg-telosOrange text-telosWhite font-bold text-xs shadow">Calculate Virtue Profile</button>
+            <div class="border-b pb-4">
+                <h1 class="text-2xl font-bold text-telosBlue">Leader & Role Simulation Engine</h1>
+                <p class="text-sm text-telosGrey">Select any cohort leader and assign them to any strategic workstream to simulate projected performance and capability gaps.</p>
             </div>
             
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-6">
-                <div class="p-4 bg-telosBlue/5 rounded-xl border border-telosBlue/20 flex justify-between items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="text-sm font-bold text-telosBlue">Live Phronesis Coordinate Tracker</h3>
-                        <p class="text-xs text-telosGrey">Select your preferred option in each scenario to map your leadership orientation across the cardinal dimensions.</p>
+                        <label class="block text-xs font-bold text-telosGrey uppercase tracking-wider mb-2">Select Leader</label>
+                        <select id="simLeaderSelect" onchange="runSimulation()" class="w-full bg-gray-50 border border-gray-300 text-telosDark text-xs rounded-xl p-3 focus:outline-none focus:border-telosBlue font-medium"></select>
                     </div>
-                    <div class="text-right text-xs font-bold text-telosBlue" id="ejtdSummaryStatus">Complete all 6 dilemmas to generate profile.</div>
+                    <div>
+                        <label class="block text-xs font-bold text-telosGrey uppercase tracking-wider mb-2">Target Workstream (Role Demand)</label>
+                        <select id="simRoleSelect" onchange="runSimulation()" class="w-full bg-gray-50 border border-gray-300 text-telosDark text-xs rounded-xl p-3 focus:outline-none focus:border-telosBlue font-medium"></select>
+                    </div>
                 </div>
 
-                <div class="space-y-6 pt-2" id="scenariosContainer">
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 1: The Geopolitical Corridor (Public Policy & Trade)</div>
-                        <p class="text-xs text-telosGrey leading-relaxed">You are senior trade commissioner negotiating a mineral corridor. Securing vital green transition lithium requires partnering with a strongman regime notorious for labor suppression. Refusing misses domestic decarbonization targets; accepting makes you complicit in human rights abuses.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd1" value="Prudence" class="mt-0.5"><span><strong>[A]</strong> Execute partnership with strict binding labor clauses, prioritizing domestic green transition. (+Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd1" value="Justice" class="mt-0.5"><span><strong>[B]</strong> Walk away entirely, accepting economic fallout to uphold absolute democratic principles. (+Justice, +Fortitude)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd1" value="Temperance" class="mt-0.5"><span><strong>[C]</strong> Channel extraction through third-party shell entities to secure supply lines while distancing diplomatically. (+Prudence, +Temperance)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd1" value="Fortitude" class="mt-0.5"><span><strong>[D]</strong> Publicly condition the deal on immediate political reform, risking total diplomatic breakdown. (+Fortitude)</span></label>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t">
+                    <div class="text-center p-4 bg-gray-50 rounded-xl border">
+                        <span class="text-[10px] font-bold uppercase text-telosGrey">Leader Baseline LIR</span>
+                        <div class="text-3xl font-black text-telosBlue mt-1" id="simLeaderLir">85</div>
                     </div>
-
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 2: The Algorithmic Triage (Healthcare Crisis)</div>
-                        <p class="text-xs text-telosGrey leading-relaxed">You chair a national healthcare triage committee during a ventilator shortage. Your optimization algorithm inadvertently deprioritizes socio-economic groups with lower baseline life-expectancy. Overriding it slows admissions, raising total deaths by 12%.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd2" value="Justice" class="mt-0.5"><span><strong>[A]</strong> Suspend algorithm for manual clinician triage, accepting 12% more deaths to treat patients as individuals. (+Justice)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd2" value="Prudence" class="mt-0.5"><span><strong>[B]</strong> Maintain algorithm to maximize macro-survival rates, accepting statistical inequality as crisis reality. (+Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd2" value="Temperance" class="mt-0.5"><span><strong>[C]</strong> Implement a weighted hybrid model with equity corrections, slowing processing slightly. (+Prudence, +Justice)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd2" value="Fortitude" class="mt-0.5"><span><strong>[D]</strong> Delegate decision entirely to regional hospital directors based on local demographics. (+Temperance / Autonomy)</span></label>
-                        </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-xl border">
+                        <span class="text-[10px] font-bold uppercase text-telosGrey">Target Role Demand LIR</span>
+                        <div class="text-3xl font-black text-telosOrange mt-1" id="simRoleDemandVal">80</div>
                     </div>
-
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 3: The Generational Asset vs. Near-Term Yield (Corporate Strategy)</div>
-                        <p class="text-xs text-telosGrey leading-relaxed">Your historic energy grid requires a £300m weather hardening. Funding it from cash flow freezes bonuses and triggers an activist takeover vulnerability.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd3" value="Prudence" class="mt-0.5"><span><strong>[A]</strong> Issue long-term infrastructure bonds to protect share price and spread cost over 15 years. (+Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd3" value="Fortitude" class="mt-0.5"><span><strong>[B]</strong> Execute hardening entirely from cash flow, absorbing activist threat head-on. (+Fortitude, +Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd3" value="Temperance" class="mt-0.5"><span><strong>[C]</strong> Execute a phased 7-year hardening plan focusing only on top 30 highest-risk nodes. (+Prudence, +Temperance)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd3" value="Justice" class="mt-0.5"><span><strong>[D]</strong> Monetize and sell off your high-margin EV-charging subsidiary for an immediate cash lump sum. (+Capital Protection)</span></label>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 4: The Diplomatic Leak (Crisis Management)</div>
-                        <p class="text-xs text-telosGrey leading-relaxed">A junior investigator leaks unverified memos proving corporate toxic dumping. It violates tribunal protocol but forces an immediate asset freeze before funds are hidden offshore.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd4" value="Justice" class="mt-0.5"><span><strong>[A]</strong> Condemn leak publicly and pause proceedings to uphold procedural due process. (+Justice)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd4" value="Prudence" class="mt-0.5"><span><strong>[B]</strong> Leverage public uproar unofficially to secure the asset freeze while overlooking the protocol breach. (+Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd4" value="Temperance" class="mt-0.5"><span><strong>[C]</strong> Dismiss junior investigator with formal reprimand while allowing public pressure to work. (+Temperance, +Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd4" value="Fortitude" class="mt-0.5"><span><strong>[D]</strong> Broaden formal investigation to include the source of the leak, suspending the corporate case. (+Fortitude)</span></label>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 5: The Whistleblower’s Dilemma (Academic Research)</div>
-                        <p class="text-xs text-telosGrey leading-relaxed">A world-renowned professor generating £20m in grants is accused of data manipulation. A public tribunal will trigger a media storm, destroy their career, and cause the donor to pull funding.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd5" value="Temperance" class="mt-0.5"><span><strong>[A]</strong> Handle via confidential internal censure and a quiet data correction notice. (+Prudence, +Temperance)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd5" value="Justice" class="mt-0.5"><span><strong>[B]</strong> Initiate immediate public tribunal and notify donor at once, prioritizing absolute institutional truth. (+Justice, +Fortitude)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd5" value="Prudence" class="mt-0.5"><span><strong>[C]</strong> Broker a quiet early retirement for health reasons without publishing a formal correction. (+Pragmatism)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd5" value="Fortitude" class="mt-0.5"><span><strong>[D]</strong> Establish an independent faculty audit panel with limited disclosure rights to penalize lab budget. (+Prudence, +Justice)</span></label>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 6: The Capital Restructuring (Manufacturing Workforce)</div>
-                        <p class="text-xs text-telosGrey leading-relaxed">To modernize a family-owned manufacturing business, you must automate the assembly line and cut 150 loyal craft workers. Delaying automation risks total corporate collapse by year four.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd6" value="Prudence" class="mt-0.5"><span><strong>[A]</strong> Execute immediate automation, cut 150 roles with generous retraining stipends, and secure viability of remaining 450. (+Prudence)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd6" value="Justice" class="mt-0.5"><span><strong>[B]</strong> Delay automation and preserve full employment for three years, absorbing cash burn. (+Justice)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd6" value="Temperance" class="mt-0.5"><span><strong>[C]</strong> Implement shared-work hour reductions (20% pay/hours cut for all 600) to avoid forced redundancies. (+Justice, +Temperance)</span></label>
-                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2"><input type="radio" name="ejtd6" value="Fortitude" class="mt-0.5"><span><strong>[D]</strong> Sell division immediately to a leveraged consolidator, washing hands of redundancy crisis. (+Capital Protection)</span></label>
-                        </div>
+                    <div class="text-center p-4 bg-telosBlue text-telosWhite rounded-xl shadow">
+                        <span class="text-[10px] font-bold uppercase opacity-80">Simulated Fit & Delta</span>
+                        <div class="text-3xl font-black mt-1" id="simDeltaVal">+5 pts</div>
                     </div>
                 </div>
             </div>
@@ -455,7 +402,7 @@
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
                 <h3 class="text-base font-bold text-telosBlue">The Vertical Development Horizon</h3>
                 <p class="text-xs text-telosGrey leading-relaxed">
-                    TELOS continuously maps internal succession cohorts against future macroeconomic and technological shifts. By aligning cognitive complexity (CPP), behavioural reputation (ZF 360), network centrality (ONA), and ethical judgment (Virtues), the platform guarantees zero surprises when executive mandates open.
+                    TELOS continuously maps internal succession cohorts against future macroeconomic and technological shifts. By aligning cognitive complexity (CPP), behavioural reputation (ZF 360), network centrality (ONA), and vault appraisal records, the platform guarantees zero surprises when executive mandates open.
                 </p>
             </div>
         </div>
@@ -464,13 +411,16 @@
         <!-- BUY MODE VIEW -->
         <!-- ================================================================= -->
         <div id="view-buyMode" class="hidden space-y-6">
-            <div class="border-b pb-4">
-                <h1 class="text-2xl font-bold text-telosBlue">BUY • External Executive Search Mandates & Arbitrage</h1>
-                <p class="text-sm text-telosGrey">Evaluating external candidates using the identical 5-pillar telemetry as internal successors.</p>
+            <div class="border-b pb-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-telosBlue">BUY • Executive Search Mandates & Arbitrage</h1>
+                    <p class="text-sm text-telosGrey">Evaluating external candidates using identical 5-pillar telemetry as internal successors.</p>
+                </div>
+                <span class="bg-telosOrange text-telosWhite text-xs px-3 py-1 rounded font-bold uppercase" id="buyMandateBadge">Active Search</span>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="space-y-3">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue">Active Mandates</h3>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue">Active Mandates & Shortlists</h3>
                     <div class="space-y-2 text-xs" id="searchCandidateList">
                         <div onclick="selectSearchCandidate(0)" class="p-3 rounded-xl border border-telosBlue bg-blue-50/50 cursor-pointer flex items-center justify-between">
                             <span class="font-bold">Dr. Aris Thorne</span>
@@ -485,7 +435,7 @@
                 <div class="md:col-span-2 bg-gray-50 p-5 rounded-xl border border-gray-200 space-y-4 text-xs">
                     <div>
                         <h2 class="text-base font-bold text-telosBlue" id="candName">Dr. Aris Thorne</h2>
-                        <p class="text-telosGrey" id="candTitle">Candidate for Head of Hydrogen & Heavy Industrial Ventures</p>
+                        <p class="text-telosGrey" id="candTitle">Candidate for Hydrogen & Heavy Industrial Ventures</p>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-center">
                         <div class="bg-white p-3 rounded-lg border"><span class="text-[10px] text-gray-400 block uppercase font-bold">Match Fit</span><span class="text-base font-bold text-telosBlue" id="candFit">94%</span></div>
@@ -521,10 +471,11 @@
                 </div>
                 <div class="p-3 bg-orange-50 rounded-lg border border-orange-200">
                     <span class="font-bold text-telosOrange block mb-1">ExCo Advisory Recommendation:</span>
-                    <p id="modalRoleAction" class="text-telosDark">Trigger External Executive Search Mandate.</p>
+                    <p id="modalRoleAction" class="text-telosDark">Deficit > 15 pts. Trigger External Executive Search Mandate.</p>
                 </div>
             </div>
-            <div class="text-right pt-2">
+            <div class="flex justify-between items-center pt-2">
+                <button onclick="triggerBuySearchFromModal()" class="px-4 py-2 bg-telosOrange text-telosWhite text-xs font-bold rounded shadow">Trigger BUY Search Mandate →</button>
                 <button onclick="closeRoleModal()" class="px-4 py-2 bg-telosBlue text-telosWhite text-xs font-bold rounded">Close Blueprint</button>
             </div>
         </div>
@@ -540,19 +491,37 @@
     <script>
         let currentAppMode = 'build';
 
+        // All 10 original cohort leaders
         let leadersData = [
-            { id: 'holt', name: 'Dr. Alexander Holt', role: 'Chief Scientist, Battery Tech', baseThink: 96, baseShow: 78, baseConn: 65, derailerPenalty: 4, think: 96, show: 78, conn: 65, deliver: 88, lir: 85 },
-            { id: 'jenkins', name: 'Naomi Jenkins', role: 'VP Digital Transformation', baseThink: 82, baseShow: 88, baseConn: 90, derailerPenalty: 2, think: 82, show: 88, conn: 90, deliver: 85, lir: 86 },
-            { id: 'mercer', name: 'Elena Mercer', role: 'Managing Director, EV Platforms', baseThink: 88, baseShow: 92, baseConn: 85, derailerPenalty: 1, think: 88, show: 92, conn: 85, deliver: 90, lir: 89 },
-            { id: 'koehler', name: 'Marcus Koehler', role: 'Plant Ops Director', baseThink: 70, baseShow: 91, baseConn: 68, derailerPenalty: 3, think: 70, show: 91, conn: 68, deliver: 92, lir: 79 },
-            { id: 'varma', name: 'Siddharth Varma', role: 'Head of Supply Chain', baseThink: 62, baseShow: 55, baseConn: 60, derailerPenalty: 12, think: 62, show: 55, conn: 60, deliver: 60, lir: 59 }
+            { id: 'holt', name: 'Dr. Alexander Holt', role: 'Chief Scientist, Battery Tech', baseThink: 96, baseShow: 78, baseConn: 65, derailerPenalty: 4, judge: 'Solid', deliver: 88, lir: 85 },
+            { id: 'jenkins', name: 'Naomi Jenkins', role: 'VP Digital Transformation', baseThink: 82, baseShow: 88, baseConn: 90, derailerPenalty: 2, judge: 'Exemplary', deliver: 85, lir: 86 },
+            { id: 'mercer', name: 'Elena Mercer', role: 'Managing Director, EV Platforms', baseThink: 88, baseShow: 92, baseConn: 85, derailerPenalty: 1, judge: 'Exemplary', deliver: 90, lir: 89 },
+            { id: 'koehler', name: 'Marcus Koehler', role: 'Plant Ops Director', baseThink: 70, baseShow: 91, baseConn: 68, derailerPenalty: 3, judge: 'Solid', deliver: 92, lir: 79 },
+            { id: 'varma', name: 'Siddharth Varma', role: 'Head of Supply Chain', baseThink: 62, baseShow: 55, baseConn: 60, derailerPenalty: 12, judge: 'At Risk', deliver: 60, lir: 59 },
+            { id: 'smythe', name: 'Claire Smythe', role: 'Director of Propulsion Systems', baseThink: 78, baseShow: 82, baseConn: 75, derailerPenalty: 2, judge: 'Solid', deliver: 84, lir: 78 },
+            { id: 'larsson', name: 'Henrik Larsson', role: 'Head of Autonomous Software', baseThink: 91, baseShow: 74, baseConn: 70, derailerPenalty: 5, judge: 'Solid', deliver: 82, lir: 80 },
+            { id: 'patel', name: 'Ananya Patel', role: 'VP Commercial Strategy', baseThink: 85, baseShow: 89, baseConn: 92, derailerPenalty: 1, judge: 'Exemplary', deliver: 88, lir: 89 },
+            { id: 'dupont', name: 'Jean-Luc Dupont', role: 'Director of Manufacturing', baseThink: 68, baseShow: 85, baseConn: 72, derailerPenalty: 3, judge: 'Solid', deliver: 86, lir: 76 },
+            { id: 'o_connor', name: 'Liam O’Connor', role: 'Head of Hydrogen Ventures', baseThink: 74, baseShow: 68, baseConn: 65, derailerPenalty: 8, judge: 'At Risk', deliver: 70, lir: 68 }
         ];
 
         let weights = { think: 0.40, show: 0.35, conn: 0.25 };
 
+        let roleDemands = [
+            { id: 'ssb', title: 'Solid-State Battery & Next-Gen Cell Chemistry', pillar: 'Electrified Propulsion', lir: 78, gap: '-18 pts', think: 'Level 5 Complex R&D', connect: 'Low ONA, Deep Technical Focus' },
+            { id: 'ice', title: 'Legacy ICE Engine Run-Out & Cash Harvest', pillar: 'Electrified Propulsion', lir: 70, gap: '+12 pts', think: 'Level 4 Operational Efficiency', connect: 'High Operational Centrality' },
+            { id: 'h2', title: 'Hydrogen Fuel Cell & Heavy Industrial Ventures', pillar: 'Electrified Propulsion', lir: 82, gap: '-36 pts', think: 'Level 5 Enterprise Horizon', connect: 'Multi-Stakeholder Alliance Builder' },
+            { id: 'adas', title: 'Autonomous Drive & ADAS Platform Architecture', pillar: 'Software & Autonomous', lir: 80, gap: '-23 pts', think: 'Level 5 Algorithmic Convergence', connect: 'Top 5% ONA Brokerage' },
+            { id: 'ota', title: 'Connected Fleet & Over-The-Air Monetization', pillar: 'Software & Autonomous', lir: 76, gap: '-4 pts', think: 'Level 4.5 Digital Ecosystems', connect: 'Cross-Silo Ecosystem Integrator' },
+            { id: 'cockpit', title: 'Digital Cockpit & In-Vehicle Experience', pillar: 'Software & Autonomous', lir: 76, gap: '-1 pts', think: 'Level 4 Product Experience', connect: 'Customer-Centric Connector' },
+            { id: 'giga', title: 'Gigafactory Modular Manufacturing', pillar: 'Next-Gen Operations', lir: 82, gap: '-14 pts', think: 'Level 4.5 Scale Operations', connect: 'Plant & Supply Network Anchor' },
+            { id: 'supply', title: 'Resilient Global Supply Chain', pillar: 'Next-Gen Operations', lir: 75, gap: '-8 pts', think: 'Level 4 Risk Modeling', connect: 'Global Logistical Hub' },
+            { id: 'decarb', title: 'Scope 1-3 Decarbonization Roadmap', pillar: 'Next-Gen Operations', lir: 79, gap: '-10 pts', think: 'Level 5 Regulatory & Systems', connect: 'Sustainability Super-Connector' }
+        ];
+
         let searchCandidates = [
-            { name: 'Dr. Aris Thorne', title: 'Former CTO, Quantum Energy Systems', fit: '94%', cpp: 'Level 5', hpi: '92nd', thinkNotes: 'Exceptional strategic horizon', ref: 'Exemplary', hds: 'Low risk', showNotes: 'High inspirational impact', connLevel: 'Top 5%', connType: 'Enterprise Integrator', connNotes: 'Strong cross-sector ties', synthesis: 'Exceptional systemic integrator with deep technical pedigree and zero derailer risks.' },
-            { name: 'Elena Rostova', title: 'VP Engineering, Global Autonomous', fit: '88%', cpp: 'Level 4.5', hpi: '85th', thinkNotes: 'Strong operational foresight', ref: 'Solid', hds: 'Moderate Cautious', showNotes: 'Respected by engineering peers', connLevel: 'Top 15%', connType: 'Functional Expert', connNotes: 'Silo-resistant', synthesis: 'High technical competence with minor caution derailer risks under high stress.' }
+            { name: 'Dr. Aris Thorne', title: 'Candidate for Hydrogen & Heavy Industrial Ventures', fit: '94%', cpp: 'Level 5', hpi: '92nd', synthesis: 'Exceptional systemic integrator with deep chemical engineering pedigree and zero derailer risks under acute market pressure.' },
+            { name: 'Elena Rostova', title: 'Candidate for Autonomous Drive & ADAS Platform', fit: '88%', cpp: 'Level 4.5', hpi: '85th', synthesis: 'High technical competence with minor caution derailer risks under high stress.' }
         ];
 
         function setAppMode(mode) {
@@ -594,6 +563,7 @@
             if (tabId === 'leaders') renderLeadersTable();
             if (tabId === 'ninebox') updateNineBoxGrid();
             if (tabId === 'roleDemand') renderRoleDemandCards();
+            if (tabId === 'scenarios') populateScenarioDropdowns();
         }
 
         function updateWeights() {
@@ -638,15 +608,16 @@
             if (!tbody) return;
             tbody.innerHTML = '';
             leadersData.forEach(l => {
+                let fitBadge = l.lir >= 80 ? '<span class="text-emerald-600 font-bold">Optimal Fit</span>' : (l.lir >= 70 ? '<span class="text-blue-600 font-bold">Stretch Fit</span>' : '<span class="text-telosOrange font-bold">Redeploy</span>');
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-4 font-bold text-telosBlue">${l.name}<br><span class="font-normal text-telosGrey text-[11px]">${l.role}</span></td>
                         <td class="p-4 text-center font-semibold">${l.baseThink}</td>
                         <td class="p-4 text-center font-semibold">${l.baseShow}</td>
                         <td class="p-4 text-center font-semibold">${l.baseConn}</td>
-                        <td class="p-4 text-center font-semibold text-telosOrange">Prudence / Justice</td>
+                        <td class="p-4 text-center font-semibold text-telosGrey">${l.judge}</td>
                         <td class="p-4 text-center font-semibold">${l.deliver}</td>
-                        <td class="p-4 text-right font-black text-telosBlue text-sm">${l.lir} / 100</td>
+                        <td class="p-4 text-right"><div class="font-black text-telosBlue text-sm">${l.lir} / 100</div><div class="text-[10px]">${fitBadge}</div></td>
                     </tr>
                 `;
             });
@@ -681,13 +652,8 @@
         function renderRoleDemandCards() {
             const container = document.getElementById('roleDemandCardsContainer');
             if (!container) return;
-            const roles = [
-                { title: 'Solid-State Battery R&D', pillar: 'Electrified Propulsion', lir: 78, gap: '-18 pts', think: 'Level 5 Complex R&D', connect: 'Low ONA, Deep Technical Focus' },
-                { title: 'Autonomous ADAS Platform', pillar: 'Software & Autonomous', lir: 80, gap: '-23 pts', think: 'Level 5 Algorithmic Convergence', connect: 'Top 5% ONA Brokerage' },
-                { title: 'Hydrogen Venture Leadership', pillar: 'Electrified Propulsion', lir: 82, gap: '-36 pts', think: 'Level 5 Enterprise Horizon', connect: 'Multi-Stakeholder Alliance Builder' }
-            ];
             container.innerHTML = '';
-            roles.forEach((r, idx) => {
+            roleDemands.forEach(r => {
                 container.innerHTML += `
                     <div onclick="openRoleModal('${r.title}', '${r.think}', '${r.connect}')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 space-y-3 cursor-pointer hover:border-telosBlue transition">
                         <span class="text-[10px] font-bold text-telosOrange uppercase bg-orange-50 px-2 py-0.5 rounded">${r.pillar}</span>
@@ -699,7 +665,9 @@
             });
         }
 
+        let activeModalRole = '';
         function openRoleModal(title, think, connect) {
+            activeModalRole = title;
             document.getElementById('modalRoleTitle').innerText = title;
             document.getElementById('modalRoleThink').innerText = think;
             document.getElementById('modalRoleConnect').innerText = connect;
@@ -710,16 +678,47 @@
             document.getElementById('roleDemandModal').classList.add('hidden');
         }
 
-        function calculateEJTDScore() {
-            let counts = { Prudence: 0, Fortitude: 0, Temperance: 0, Justice: 0 };
-            for (let i = 1; i <= 6; i++) {
-                const radios = document.getElementsByName('ejtd' + i);
-                for (let r of radios) {
-                    if (r.checked) counts[r.value]++;
-                }
-            }
-            let dominant = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
-            document.getElementById('ejtdSummaryStatus').innerText = `Profile Calculated: Dominant Orientation is ${dominant} (Prudence: ${counts.Prudence}, Justice: ${counts.Justice}, Temperance: ${counts.Temperance}, Fortitude: ${counts.Fortitude})`;
+        function triggerBuySearchFromModal() {
+            closeRoleModal();
+            setAppMode('buy');
+            document.getElementById('buyMandateBadge').innerText = 'Triggered from: ' + activeModalRole;
+        }
+
+        function populateScenarioDropdowns() {
+            const leadSel = document.getElementById('simLeaderSelect');
+            const roleSel = document.getElementById('simRoleSelect');
+            if (!leadSel || !roleSel) return;
+
+            leadSel.innerHTML = '';
+            leadersData.forEach(l => {
+                leadSel.innerHTML += `<option value="${l.id}">${l.name} — ${l.role} (LIR: ${l.lir})</option>`;
+            });
+
+            roleSel.innerHTML = '';
+            roleDemands.forEach(r => {
+                roleSel.innerHTML += `<option value="${r.lir}">${r.pillar} • ${r.title} (Demand: ${r.lir})</option>`;
+            });
+
+            runSimulation();
+        }
+
+        function runSimulation() {
+            const leadSel = document.getElementById('simLeaderSelect');
+            const roleSel = document.getElementById('simRoleSelect');
+            if (!leadSel || !roleSel) return;
+
+            const selectedLeader = leadersData.find(l => l.id === leadSel.value);
+            const targetDemand = parseInt(roleSel.value);
+
+            if (!selectedLeader) return;
+
+            document.getElementById('simLeaderLir').innerText = selectedLeader.lir;
+            document.getElementById('simRoleDemandVal').innerText = targetDemand;
+
+            let delta = selectedLeader.lir - targetDemand;
+            let deltaEl = document.getElementById('simDeltaVal');
+            deltaEl.innerText = (delta >= 0 ? '+' : '') + delta + ' pts';
+            deltaEl.className = delta >= 0 ? 'text-3xl font-black mt-1 text-emerald-300' : 'text-3xl font-black mt-1 text-orange-300';
         }
 
         function selectSearchCandidate(idx) {
