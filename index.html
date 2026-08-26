@@ -63,8 +63,8 @@
     </header>
 
     <!-- SUB-NAVIGATION TABS (BUILD MODE) -->
-    <div id="mainTabs" class="bg-telosBlue/90 text-telosWhite px-6 py-2.5 flex items-center justify-between border-t border-telosWhite/10 overflow-x-auto">
-        <div class="flex space-x-6 text-sm font-medium whitespace-nowrap">
+    <div id="mainTabs" class="bg-telosBlue/95 text-telosWhite px-6 py-3 flex items-center justify-between border-t border-telosWhite/10 overflow-x-auto shadow-inner">
+        <div class="flex space-x-8 text-sm font-semibold whitespace-nowrap">
             <button onclick="switchTab('portfolio')" id="tab-portfolio" class="border-b-2 border-telosOrange pb-1 text-telosWhite transition">Portfolio</button>
             <button onclick="switchTab('leaders')" id="tab-leaders" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Leaders (5-Pillar)</button>
             <button onclick="switchTab('ninebox')" id="tab-ninebox" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">9-Box Grid</button>
@@ -72,7 +72,7 @@
             <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Scenarios</button>
             <button onclick="switchTab('plan2035')" id="tab-plan2035" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">2035 Plan</button>
         </div>
-        <div class="text-xs text-telosWhite/70 hidden lg:block">
+        <div class="text-xs text-telosWhite/70 hidden lg:block font-medium">
             Multi-source vault ingestion engine active
         </div>
     </div>
@@ -90,10 +90,10 @@
                     <p class="text-sm text-telosGrey mt-0.5">Enterprise transformation capability vs. role demand • Vault ingestion active</p>
                 </div>
                 <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                    <button class="px-3 py-1.5 rounded bg-telosBlue text-telosWhite shadow">All pillars</button>
-                    <button class="px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300">Electrified Propulsion</button>
-                    <button class="px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300">Software & Autonomous</button>
-                    <button class="px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300">Next-Gen Operations</button>
+                    <button onclick="filterPortfolio('all')" id="filter-all" class="px-3 py-1.5 rounded bg-telosBlue text-telosWhite shadow transition">All pillars</button>
+                    <button onclick="filterPortfolio('propulsion')" id="filter-propulsion" class="px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300 transition">Electrified Propulsion</button>
+                    <button onclick="filterPortfolio('software')" id="filter-software" class="px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300 transition">Software & Autonomous</button>
+                    <button onclick="filterPortfolio('operations')" id="filter-operations" class="px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300 transition">Next-Gen Operations</button>
                 </div>
             </div>
 
@@ -134,53 +134,54 @@
                         <p class="text-xs text-telosGrey">Mean LIR by engineering transformation block • dark tick = target demand</p>
                     </div>
 
-                    <div class="space-y-4">
+                    <!-- PROPULSION -->
+                    <div id="section-propulsion" class="space-y-4 portfolio-section">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue border-b pb-1">Electrified Propulsion Systems</h3>
                         <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-semibold">
-                                <span>Solid-State Battery & Next-Gen Cell Chemistry</span>
-                                <span class="text-telosOrange font-bold">60 <span class="text-[10px] font-normal text-gray-500">vs. 78 (-18)</span></span>
-                            </div>
+                            <div class="flex justify-between text-xs font-semibold"><span>Solid-State Battery & Next-Gen Cell Chemistry</span><span class="text-telosOrange font-bold">60 vs. 78 (-18)</span></div>
                             <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosOrange h-full" style="width: 60%"></div></div>
                         </div>
                         <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-semibold">
-                                <span>Legacy ICE Engine Run-Out & Cash Harvest</span>
-                                <span class="text-telosBlue font-bold">82 <span class="text-[10px] font-normal text-gray-500">vs. 70 (+12)</span></span>
-                            </div>
+                            <div class="flex justify-between text-xs font-semibold"><span>Legacy ICE Engine Run-Out & Cash Harvest</span><span class="text-telosBlue font-bold">82 vs. 70 (+12)</span></div>
                             <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosBlue h-full" style="width: 82%"></div></div>
                         </div>
                         <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-semibold">
-                                <span>Hydrogen Fuel Cell & Heavy Industrial Ventures</span>
-                                <span class="text-telosOrange font-bold">46 <span class="text-[10px] font-normal text-gray-500">vs. 82 (-36)</span></span>
-                            </div>
+                            <div class="flex justify-between text-xs font-semibold"><span>Hydrogen Fuel Cell & Heavy Industrial Ventures</span><span class="text-telosOrange font-bold">46 vs. 82 (-36)</span></div>
                             <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosOrange h-full" style="width: 46%"></div></div>
                         </div>
                     </div>
 
-                    <div class="space-y-4 pt-2">
+                    <!-- SOFTWARE -->
+                    <div id="section-software" class="space-y-4 portfolio-section pt-2">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue border-b pb-1">Software & Autonomous Systems</h3>
                         <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-semibold">
-                                <span>Autonomous Drive & ADAS Platform Architecture</span>
-                                <span class="text-telosOrange font-bold">57 <span class="text-[10px] font-normal text-gray-500">vs. 80 (-23)</span></span>
-                            </div>
+                            <div class="flex justify-between text-xs font-semibold"><span>Autonomous Drive & ADAS Platform Architecture</span><span class="text-telosOrange font-bold">57 vs. 80 (-23)</span></div>
                             <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosOrange h-full" style="width: 57%"></div></div>
                         </div>
                         <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-semibold">
-                                <span>Connected Fleet & Over-The-Air Monetization</span>
-                                <span class="text-telosGrey font-bold">72 <span class="text-[10px] font-normal text-gray-500">vs. 76 (-4)</span></span>
-                            </div>
+                            <div class="flex justify-between text-xs font-semibold"><span>Connected Fleet & Over-The-Air Monetization</span><span class="text-telosGrey font-bold">72 vs. 76 (-4)</span></div>
                             <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosGrey h-full" style="width: 72%"></div></div>
                         </div>
                         <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-semibold">
-                                <span>Digital Cockpit & In-Vehicle Experience</span>
-                                <span class="text-telosBlue font-bold">75 <span class="text-[10px] font-normal text-gray-500">vs. 76 (-1)</span></span>
-                            </div>
+                            <div class="flex justify-between text-xs font-semibold"><span>Digital Cockpit & In-Vehicle Experience</span><span class="text-telosBlue font-bold">75 vs. 76 (-1)</span></div>
                             <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosBlue h-full" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- OPERATIONS -->
+                    <div id="section-operations" class="space-y-4 portfolio-section pt-2">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue border-b pb-1">Next-Gen Operations</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-semibold"><span>Gigafactory Modular Manufacturing</span><span class="text-telosOrange font-bold">68 vs. 82 (-14)</span></div>
+                            <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosOrange h-full" style="width: 68%"></div></div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-semibold"><span>Resilient Global Supply Chain</span><span class="text-telosBlue font-bold">77 vs. 75 (+2)</span></div>
+                            <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosBlue h-full" style="width: 77%"></div></div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-semibold"><span>Scope 1-3 Decarbonization Roadmap</span><span class="text-telosOrange font-bold">69 vs. 79 (-10)</span></div>
+                            <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden"><div class="bg-telosOrange h-full" style="width: 69%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -202,22 +203,6 @@
                         </div>
                         <div class="flex justify-between text-[10px] text-telosGrey font-semibold px-1">
                             <span>&lt;30</span><span>50-59</span><span>70-79</span><span>90+</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-sm font-bold text-telosBlue">Strategic Build vs. Buy Triggers</h2>
-                            <span class="bg-telosBlue text-telosWhite text-[10px] px-2 py-0.5 rounded font-bold">EXCO ENGINE</span>
-                        </div>
-                        <div class="p-3.5 rounded-lg bg-telosOrange/10 border border-telosOrange/30 space-y-2">
-                            <div class="flex justify-between items-center">
-                                <span class="text-xs font-bold text-telosBlue">Hydrogen & Heavy Ventures</span>
-                                <span class="text-[10px] font-bold text-telosOrange uppercase bg-white px-2 py-0.5 rounded border border-telosOrange/30 cursor-pointer" onclick="setAppMode('buy')">Buy Search →</span>
-                            </div>
-                            <p class="text-xs text-telosGrey leading-relaxed">
-                                Deficit: -36 pts. In-house timeline &gt; 36 months. Recommendation: External Tier-1 executive search.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -254,18 +239,18 @@
                 </div>
             </div>
 
-            <!-- LEADERS TABLE -->
+            <!-- COMPARATIVE RADARS & TABLE -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-gray-50 text-[11px] font-bold text-telosGrey uppercase tracking-wider border-b">
                             <th class="p-4">Leader & Role</th>
-                            <th class="p-4 text-center">1. Think</th>
-                            <th class="p-4 text-center">2. Show Up</th>
-                            <th class="p-4 text-center">3. Connect</th>
-                            <th class="p-4 text-center">4. Judge (Vault)</th>
-                            <th class="p-4 text-center">5. Deliver</th>
-                            <th class="p-4 text-right">Calculated LIR & Fit</th>
+                            <th class="p-4 text-center">1. Think (CPP)</th>
+                            <th class="p-4 text-center">2. Show Up (ZF 360)</th>
+                            <th class="p-4 text-center">3. Connect (ONA)</th>
+                            <th class="p-4 text-center">4. Judge (Virtues)</th>
+                            <th class="p-4 text-center">5. Deliver (Competency)</th>
+                            <th class="p-4 text-right">LIR Score & Fit</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 text-xs" id="leadersTableBody"></tbody>
@@ -347,7 +332,7 @@
             <div class="border-b pb-4 flex justify-between items-center">
                 <div>
                     <h1 class="text-2xl font-bold text-telosBlue">Executive Role Demand Blueprints</h1>
-                    <p class="text-sm text-telosGrey">Click any role card to inspect structural demands and trigger external search mandates into BUY mode.</p>
+                    <p class="text-sm text-telosGrey">Click any role card to inspect structural gaps. Deficits requiring external acquisition automatically trigger BUY mandates.</p>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="roleDemandCardsContainer"></div>
@@ -359,7 +344,7 @@
         <div id="view-scenarios" class="hidden space-y-6">
             <div class="border-b pb-4">
                 <h1 class="text-2xl font-bold text-telosBlue">Leader & Role Simulation Engine</h1>
-                <p class="text-sm text-telosGrey">Select any cohort leader and assign them to any strategic workstream to simulate projected performance and capability gaps.</p>
+                <p class="text-sm text-telosGrey">Select any cohort leader and assign them to any strategic workstream to simulate projected capability gaps.</p>
             </div>
             
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-6">
@@ -399,11 +384,27 @@
                 <h1 class="text-2xl font-bold text-telosBlue">2035 Strategic Workforce Roadmap</h1>
                 <p class="text-sm text-telosGrey">Long-term vertical capability evolution and leadership continuity planning.</p>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
-                <h3 class="text-base font-bold text-telosBlue">The Vertical Development Horizon</h3>
-                <p class="text-xs text-telosGrey leading-relaxed">
-                    TELOS continuously maps internal succession cohorts against future macroeconomic and technological shifts. By aligning cognitive complexity (CPP), behavioural reputation (ZF 360), network centrality (ONA), and vault appraisal records, the platform guarantees zero surprises when executive mandates open.
-                </p>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-6">
+                <div class="p-4 bg-telosBlue/5 rounded-xl border border-telosBlue/20 space-y-2">
+                    <h3 class="text-sm font-bold text-telosBlue">The Vertical Development Horizon</h3>
+                    <p class="text-xs text-telosGrey leading-relaxed">
+                        TELOS continuously maps internal succession cohorts against future macroeconomic and technological shifts. By aligning cognitive complexity (CPP), behavioral reputation (ZF 360), network centrality (ONA), and competency appraisals, the platform guarantees zero surprises when executive mandates open.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="p-4 bg-white rounded-xl border shadow-sm">
+                        <span class="font-bold text-telosOrange uppercase block mb-1">Horizon 1 (2026–2028)</span>
+                        <p class="text-telosGrey">Aggressive upskilling in Solid-State & ADAS; internal succession pipeline activation for 35 critical seats.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl border shadow-sm">
+                        <span class="font-bold text-telosBlue uppercase block mb-1">Horizon 2 (2029–2031)</span>
+                        <p class="text-telosGrey">Full transition from ICE harvest to Hydrogen commercialization; automated BUILD/BUY arbitrage integration.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl border shadow-sm">
+                        <span class="font-bold text-telosOrange uppercase block mb-1">Horizon 3 (2032–2035)</span>
+                        <p class="text-telosGrey">Enterprise-wide autonomous platform leadership with 75% internal executive readiness across all 9 pillars.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -416,19 +417,23 @@
                     <h1 class="text-2xl font-bold text-telosBlue">BUY • Executive Search Mandates & Arbitrage</h1>
                     <p class="text-sm text-telosGrey">Evaluating external candidates using identical 5-pillar telemetry as internal successors.</p>
                 </div>
-                <span class="bg-telosOrange text-telosWhite text-xs px-3 py-1 rounded font-bold uppercase" id="buyMandateBadge">Active Search</span>
+                <span class="bg-telosOrange text-telosWhite text-xs px-3 py-1 rounded font-bold uppercase" id="buyMandateBadge">Active Search Mandate</span>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="space-y-3">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue">Active Mandates & Shortlists</h3>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-telosBlue">Candidate Shortlist (3 Candidates)</h3>
                     <div class="space-y-2 text-xs" id="searchCandidateList">
                         <div onclick="selectSearchCandidate(0)" class="p-3 rounded-xl border border-telosBlue bg-blue-50/50 cursor-pointer flex items-center justify-between">
                             <span class="font-bold">Dr. Aris Thorne</span>
-                            <span class="text-telosBlue font-bold">LIR: 84</span>
+                            <span class="text-telosBlue font-bold">Fit: 94%</span>
                         </div>
                         <div onclick="selectSearchCandidate(1)" class="p-3 rounded-xl border border-gray-200 hover:border-gray-300 bg-white cursor-pointer flex items-center justify-between">
                             <span class="font-bold">Elena Rostova</span>
-                            <span class="text-telosOrange font-bold">LIR: 79</span>
+                            <span class="text-telosOrange font-bold">Fit: 88%</span>
+                        </div>
+                        <div onclick="selectSearchCandidate(2)" class="p-3 rounded-xl border border-gray-200 hover:border-gray-300 bg-white cursor-pointer flex items-center justify-between">
+                            <span class="font-bold">Marcus Vance</span>
+                            <span class="text-telosGrey font-bold">Fit: 82%</span>
                         </div>
                     </div>
                 </div>
@@ -439,8 +444,8 @@
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-center">
                         <div class="bg-white p-3 rounded-lg border"><span class="text-[10px] text-gray-400 block uppercase font-bold">Match Fit</span><span class="text-base font-bold text-telosBlue" id="candFit">94%</span></div>
-                        <div class="bg-white p-3 rounded-lg border"><span class="text-[10px] text-gray-400 block uppercase font-bold">CPP Ceiling</span><span class="text-base font-bold text-telosBlue" id="candCpp">Level 5 (Strategic)</span></div>
-                        <div class="bg-white p-3 rounded-lg border"><span class="text-[10px] text-gray-400 block uppercase font-bold">HPI Norm</span><span class="text-base font-bold text-telosBlue" id="candHpi">92nd %ile</span></div>
+                        <div class="bg-white p-3 rounded-lg border"><span class="text-[10px] text-gray-400 block uppercase font-bold">CPP Ceiling</span><span class="text-base font-bold text-telosBlue" id="candCpp">Level 5 (Pure Strategy)</span></div>
+                        <div class="bg-white p-3 rounded-lg border"><span class="text-[10px] text-gray-400 block uppercase font-bold">Hogan Proxy</span><span class="text-base font-bold text-telosBlue" id="candHpi">92nd %ile</span></div>
                     </div>
                     <div class="p-3 bg-white rounded-lg border" id="candSynthesis">
                         <strong>Partner Assessment Note:</strong> Exceptional systemic integrator with deep chemical engineering pedigree and zero derailer risks under acute market pressure.
@@ -462,7 +467,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="p-3 bg-gray-50 rounded-lg border">
                         <span class="font-bold text-telosBlue block mb-1">Cognitive Ceiling Demand:</span>
-                        <p id="modalRoleThink">Level 5 Complex Horizon</p>
+                        <p id="modalRoleThink">Level 5 Pure Strategy</p>
                     </div>
                     <div class="p-3 bg-gray-50 rounded-lg border">
                         <span class="font-bold text-telosBlue block mb-1">Behavioral & ONA Profile:</span>
@@ -471,7 +476,7 @@
                 </div>
                 <div class="p-3 bg-orange-50 rounded-lg border border-orange-200">
                     <span class="font-bold text-telosOrange block mb-1">ExCo Advisory Recommendation:</span>
-                    <p id="modalRoleAction" class="text-telosDark">Deficit > 15 pts. Trigger External Executive Search Mandate.</p>
+                    <p id="modalRoleAction" class="text-telosDark">Structural deficit &gt; 15 pts. Trigger External Executive Search Mandate (BUY).</p>
                 </div>
             </div>
             <div class="flex justify-between items-center pt-2">
@@ -491,37 +496,38 @@
     <script>
         let currentAppMode = 'build';
 
-        // All 10 original cohort leaders
+        // All 10 original cohort leaders with 5-pillar telemetry
         let leadersData = [
-            { id: 'holt', name: 'Dr. Alexander Holt', role: 'Chief Scientist, Battery Tech', baseThink: 96, baseShow: 78, baseConn: 65, derailerPenalty: 4, judge: 'Solid', deliver: 88, lir: 85 },
-            { id: 'jenkins', name: 'Naomi Jenkins', role: 'VP Digital Transformation', baseThink: 82, baseShow: 88, baseConn: 90, derailerPenalty: 2, judge: 'Exemplary', deliver: 85, lir: 86 },
-            { id: 'mercer', name: 'Elena Mercer', role: 'Managing Director, EV Platforms', baseThink: 88, baseShow: 92, baseConn: 85, derailerPenalty: 1, judge: 'Exemplary', deliver: 90, lir: 89 },
-            { id: 'koehler', name: 'Marcus Koehler', role: 'Plant Ops Director', baseThink: 70, baseShow: 91, baseConn: 68, derailerPenalty: 3, judge: 'Solid', deliver: 92, lir: 79 },
-            { id: 'varma', name: 'Siddharth Varma', role: 'Head of Supply Chain', baseThink: 62, baseShow: 55, baseConn: 60, derailerPenalty: 12, judge: 'At Risk', deliver: 60, lir: 59 },
-            { id: 'smythe', name: 'Claire Smythe', role: 'Director of Propulsion Systems', baseThink: 78, baseShow: 82, baseConn: 75, derailerPenalty: 2, judge: 'Solid', deliver: 84, lir: 78 },
-            { id: 'larsson', name: 'Henrik Larsson', role: 'Head of Autonomous Software', baseThink: 91, baseShow: 74, baseConn: 70, derailerPenalty: 5, judge: 'Solid', deliver: 82, lir: 80 },
-            { id: 'patel', name: 'Ananya Patel', role: 'VP Commercial Strategy', baseThink: 85, baseShow: 89, baseConn: 92, derailerPenalty: 1, judge: 'Exemplary', deliver: 88, lir: 89 },
-            { id: 'dupont', name: 'Jean-Luc Dupont', role: 'Director of Manufacturing', baseThink: 68, baseShow: 85, baseConn: 72, derailerPenalty: 3, judge: 'Solid', deliver: 86, lir: 76 },
-            { id: 'o_connor', name: 'Liam O’Connor', role: 'Head of Hydrogen Ventures', baseThink: 74, baseShow: 68, baseConn: 65, derailerPenalty: 8, judge: 'At Risk', deliver: 70, lir: 68 }
+            { id: 'holt', name: 'Dr. Alexander Holt', role: 'Chief Scientist, Battery Tech', baseThink: 96, thinkLevel: 'Level 5: Pure Strategy', baseShow: 78, baseConn: 65, connDesc: 'Cross-Silo Bridge', judge: '-1P, +2J, +1F, -2T', deliver: 'Met', derailerPenalty: 4, lir: 85 },
+            { id: 'jenkins', name: 'Naomi Jenkins', role: 'VP Digital Transformation', baseThink: 82, thinkLevel: 'Level 4: Parallel Processing', baseShow: 88, baseConn: 90, connDesc: 'Enterprise Super-Connector', judge: '+2P, +2J, +1F, +1T', deliver: 'Exceeding', derailerPenalty: 2, lir: 86 },
+            { id: 'mercer', name: 'Elena Mercer', role: 'Managing Director, EV Platforms', baseThink: 88, thinkLevel: 'Level 4: Parallel Processing', baseShow: 92, baseConn: 85, connDesc: 'Enterprise Super-Connector', judge: '+1P, +2J, +2F, +1T', deliver: 'Exceeding', derailerPenalty: 1, lir: 89 },
+            { id: 'koehler', name: 'Marcus Koehler', role: 'Plant Ops Director', baseThink: 70, thinkLevel: 'Level 3: Tactical Strategy', baseShow: 91, baseConn: 68, connDesc: 'Isolated Specialist', judge: '+2P, +1J, +2F, -1T', deliver: 'Met', derailerPenalty: 3, lir: 79 },
+            { id: 'varma', name: 'Siddharth Varma', role: 'Head of Supply Chain', baseThink: 62, thinkLevel: 'Level 2: Diagnostic Accumulation', baseShow: 55, baseConn: 60, connDesc: 'Bottleneck', judge: '-2P, -1J, -1F, -2T', deliver: 'Developing', derailerPenalty: 12, lir: 59 },
+            { id: 'smythe', name: 'Claire Smythe', role: 'Director of Propulsion Systems', baseThink: 78, thinkLevel: 'Level 3: Tactical Strategy', baseShow: 82, baseConn: 75, connDesc: 'Cross-Silo Bridge', judge: '+1P, +1J, +1F, 0T', deliver: 'Met', derailerPenalty: 2, lir: 78 },
+            { id: 'larsson', name: 'Henrik Larsson', role: 'Head of Autonomous Software', baseThink: 91, thinkLevel: 'Level 5: Pure Strategy', baseShow: 74, baseConn: 70, connDesc: 'Cross-Silo Bridge', judge: '+2P, 0J, +1F, -1T', deliver: 'Exceeding', derailerPenalty: 5, lir: 80 },
+            { id: 'patel', name: 'Ananya Patel', role: 'VP Commercial Strategy', baseThink: 85, thinkLevel: 'Level 4: Parallel Processing', baseShow: 89, baseConn: 92, connDesc: 'Enterprise Super-Connector', judge: '+2P, +2J, +2F, +2T', deliver: 'Exceeding', derailerPenalty: 1, lir: 89 },
+            { id: 'dupont', name: 'Jean-Luc Dupont', role: 'Director of Manufacturing', baseThink: 68, thinkLevel: 'Level 2: Diagnostic Accumulation', baseShow: 85, baseConn: 72, connDesc: 'Cross-Silo Bridge', judge: '+1P, +1J, +1F, +1T', deliver: 'Met', derailerPenalty: 3, lir: 76 },
+            { id: 'o_connor', name: 'Liam O’Connor', role: 'Head of Hydrogen Ventures', baseThink: 74, thinkLevel: 'Level 3: Tactical Strategy', baseShow: 68, baseConn: 65, connDesc: 'Isolated Specialist', judge: '-1P, 0J, +1F, -2T', deliver: 'Developing', derailerPenalty: 8, lir: 68 }
         ];
 
         let weights = { think: 0.40, show: 0.35, conn: 0.25 };
 
         let roleDemands = [
-            { id: 'ssb', title: 'Solid-State Battery & Next-Gen Cell Chemistry', pillar: 'Electrified Propulsion', lir: 78, gap: '-18 pts', think: 'Level 5 Complex R&D', connect: 'Low ONA, Deep Technical Focus' },
-            { id: 'ice', title: 'Legacy ICE Engine Run-Out & Cash Harvest', pillar: 'Electrified Propulsion', lir: 70, gap: '+12 pts', think: 'Level 4 Operational Efficiency', connect: 'High Operational Centrality' },
-            { id: 'h2', title: 'Hydrogen Fuel Cell & Heavy Industrial Ventures', pillar: 'Electrified Propulsion', lir: 82, gap: '-36 pts', think: 'Level 5 Enterprise Horizon', connect: 'Multi-Stakeholder Alliance Builder' },
-            { id: 'adas', title: 'Autonomous Drive & ADAS Platform Architecture', pillar: 'Software & Autonomous', lir: 80, gap: '-23 pts', think: 'Level 5 Algorithmic Convergence', connect: 'Top 5% ONA Brokerage' },
-            { id: 'ota', title: 'Connected Fleet & Over-The-Air Monetization', pillar: 'Software & Autonomous', lir: 76, gap: '-4 pts', think: 'Level 4.5 Digital Ecosystems', connect: 'Cross-Silo Ecosystem Integrator' },
-            { id: 'cockpit', title: 'Digital Cockpit & In-Vehicle Experience', pillar: 'Software & Autonomous', lir: 76, gap: '-1 pts', think: 'Level 4 Product Experience', connect: 'Customer-Centric Connector' },
-            { id: 'giga', title: 'Gigafactory Modular Manufacturing', pillar: 'Next-Gen Operations', lir: 82, gap: '-14 pts', think: 'Level 4.5 Scale Operations', connect: 'Plant & Supply Network Anchor' },
-            { id: 'supply', title: 'Resilient Global Supply Chain', pillar: 'Next-Gen Operations', lir: 75, gap: '-8 pts', think: 'Level 4 Risk Modeling', connect: 'Global Logistical Hub' },
-            { id: 'decarb', title: 'Scope 1-3 Decarbonization Roadmap', pillar: 'Next-Gen Operations', lir: 79, gap: '-10 pts', think: 'Level 5 Regulatory & Systems', connect: 'Sustainability Super-Connector' }
+            { id: 'ssb', title: 'Solid-State Battery & Next-Gen Cell Chemistry', pillar: 'Electrified Propulsion', section: 'propulsion', lir: 78, gap: '-18 pts', think: 'Level 5 Pure Strategy', connect: 'Low ONA, Deep Technical Focus' },
+            { id: 'ice', title: 'Legacy ICE Engine Run-Out & Cash Harvest', pillar: 'Electrified Propulsion', section: 'propulsion', lir: 70, gap: '+12 pts', think: 'Level 3 Tactical Strategy', connect: 'High Operational Centrality' },
+            { id: 'h2', title: 'Hydrogen Fuel Cell & Heavy Industrial Ventures', pillar: 'Electrified Propulsion', section: 'propulsion', lir: 82, gap: '-36 pts', think: 'Level 5 Pure Strategy', connect: 'Multi-Stakeholder Alliance Builder' },
+            { id: 'adas', title: 'Autonomous Drive & ADAS Platform Architecture', pillar: 'Software & Autonomous', section: 'software', lir: 80, gap: '-23 pts', think: 'Level 5 Pure Strategy', connect: 'Top 5% ONA Brokerage' },
+            { id: 'ota', title: 'Connected Fleet & Over-The-Air Monetization', pillar: 'Software & Autonomous', section: 'software', lir: 76, gap: '-4 pts', think: 'Level 4 Parallel Processing', connect: 'Cross-Silo Ecosystem Integrator' },
+            { id: 'cockpit', title: 'Digital Cockpit & In-Vehicle Experience', pillar: 'Software & Autonomous', section: 'software', lir: 76, gap: '-1 pts', think: 'Level 4 Parallel Processing', connect: 'Customer-Centric Connector' },
+            { id: 'giga', title: 'Gigafactory Modular Manufacturing', pillar: 'Next-Gen Operations', section: 'operations', lir: 82, gap: '-14 pts', think: 'Level 4 Parallel Processing', connect: 'Plant & Supply Network Anchor' },
+            { id: 'supply', title: 'Resilient Global Supply Chain', pillar: 'Next-Gen Operations', section: 'operations', lir: 75, gap: '-8 pts', think: 'Level 3 Tactical Strategy', connect: 'Global Logistical Hub' },
+            { id: 'decarb', title: 'Scope 1-3 Decarbonization Roadmap', pillar: 'Next-Gen Operations', section: 'operations', lir: 79, gap: '-10 pts', think: 'Level 4 Parallel Processing', connect: 'Sustainability Super-Connector' }
         ];
 
         let searchCandidates = [
-            { name: 'Dr. Aris Thorne', title: 'Candidate for Hydrogen & Heavy Industrial Ventures', fit: '94%', cpp: 'Level 5', hpi: '92nd', synthesis: 'Exceptional systemic integrator with deep chemical engineering pedigree and zero derailer risks under acute market pressure.' },
-            { name: 'Elena Rostova', title: 'Candidate for Autonomous Drive & ADAS Platform', fit: '88%', cpp: 'Level 4.5', hpi: '85th', synthesis: 'High technical competence with minor caution derailer risks under high stress.' }
+            { name: 'Dr. Aris Thorne', title: 'Candidate for Hydrogen & Heavy Industrial Ventures', fit: '94%', cpp: 'Level 5 (Pure Strategy)', hpi: '92nd', synthesis: 'Exceptional systemic integrator with deep chemical engineering pedigree and zero derailer risks under acute market pressure.' },
+            { name: 'Elena Rostova', title: 'Candidate for Autonomous Drive & ADAS Platform', fit: '88%', cpp: 'Level 4 (Parallel Processing)', hpi: '85th', synthesis: 'High technical competence with minor caution derailer risks under high stress.' },
+            { name: 'Marcus Vance', title: 'Candidate for Solid-State Battery R&D', fit: '82%', cpp: 'Level 4 (Parallel Processing)', hpi: '78th', synthesis: 'Strong foundational research background with robust network connections across academic and industrial labs.' }
         ];
 
         function setAppMode(mode) {
@@ -566,6 +572,26 @@
             if (tabId === 'scenarios') populateScenarioDropdowns();
         }
 
+        function filterPortfolio(category) {
+            ['all', 'propulsion', 'software', 'operations'].forEach(c => {
+                const btn = document.getElementById('filter-' + c);
+                if (btn) {
+                    btn.className = c === category ? 'px-3 py-1.5 rounded bg-telosBlue text-telosWhite shadow transition' : 'px-3 py-1.5 rounded bg-white text-telosGrey hover:bg-gray-100 border border-gray-300 transition';
+                }
+            });
+
+            ['propulsion', 'software', 'operations'].forEach(sec => {
+                const el = document.getElementById('section-' + sec);
+                if (el) {
+                    if (category === 'all' || category === sec) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
         function updateWeights() {
             const t = parseInt(document.getElementById('sliderThink').value);
             const s = parseInt(document.getElementById('sliderShow').value);
@@ -608,16 +634,16 @@
             if (!tbody) return;
             tbody.innerHTML = '';
             leadersData.forEach(l => {
-                let fitBadge = l.lir >= 80 ? '<span class="text-emerald-600 font-bold">Optimal Fit</span>' : (l.lir >= 70 ? '<span class="text-blue-600 font-bold">Stretch Fit</span>' : '<span class="text-telosOrange font-bold">Redeploy</span>');
+                let fitBadge = l.lir >= 80 ? '<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">Aligned</span>' : (l.lir >= 70 ? '<span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px]">Stretch</span>' : '<span class="px-2 py-0.5 rounded bg-orange-100 text-telosOrange font-bold text-[10px]">Redeploy</span>');
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-4 font-bold text-telosBlue">${l.name}<br><span class="font-normal text-telosGrey text-[11px]">${l.role}</span></td>
-                        <td class="p-4 text-center font-semibold">${l.baseThink}</td>
-                        <td class="p-4 text-center font-semibold">${l.baseShow}</td>
-                        <td class="p-4 text-center font-semibold">${l.baseConn}</td>
-                        <td class="p-4 text-center font-semibold text-telosGrey">${l.judge}</td>
+                        <td class="p-4 text-center font-semibold">${l.thinkLevel}</td>
+                        <td class="p-4 text-center font-semibold">${l.baseShow}%ile</td>
+                        <td class="p-4 text-center font-semibold">${l.baseConn} (${l.connDesc})</td>
+                        <td class="p-4 text-center font-semibold text-telosOrange">${l.judge}</td>
                         <td class="p-4 text-center font-semibold">${l.deliver}</td>
-                        <td class="p-4 text-right"><div class="font-black text-telosBlue text-sm">${l.lir} / 100</div><div class="text-[10px]">${fitBadge}</div></td>
+                        <td class="p-4 text-right"><div class="font-black text-telosBlue text-sm">${l.lir} / 100</div><div class="mt-1">${fitBadge}</div></td>
                     </tr>
                 `;
             });
@@ -681,7 +707,7 @@
         function triggerBuySearchFromModal() {
             closeRoleModal();
             setAppMode('buy');
-            document.getElementById('buyMandateBadge').innerText = 'Triggered from: ' + activeModalRole;
+            document.getElementById('buyMandateBadge').innerText = 'Active Search: ' + activeModalRole;
         }
 
         function populateScenarioDropdowns() {
