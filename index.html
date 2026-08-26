@@ -489,7 +489,7 @@
 
     <footer class="bg-telosBlue text-telosWhite/80 py-3 px-6 border-t border-telosWhite/10 text-xs mt-auto flex justify-between items-center">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>TELOS Executive Intelligence • v2.3</span>
+        <span>TELOS Executive Intelligence • v2.4</span>
     </footer>
 
     <!-- Interactive Data Store & Script Engine -->
@@ -502,15 +502,15 @@
         let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
 
         const strategicWorkstreams = [
-            { id: "ssb", name: "Solid-State Battery & Next-Gen Chemistry", pillar: "Electrified Propulsion", demand: 78, gap: -18, action: "BUY" },
+            { id: "ssb", name: "Solid-State Battery & Next-Gen Cell Chemistry", pillar: "Electrified Propulsion", demand: 78, gap: -18, action: "BUY" },
             { id: "ice", name: "Legacy ICE Engine Run-Out & Cash Harvest", pillar: "Electrified Propulsion", demand: 70, gap: 12, action: "BUILD" },
-            { id: "h2", name: "Hydrogen Fuel Cell & Heavy Ventures", pillar: "Electrified Propulsion", demand: 82, gap: -36, action: "BUY" },
+            { id: "h2", name: "Hydrogen Fuel Cell & Heavy Industrial Ventures", pillar: "Electrified Propulsion", demand: 82, gap: -36, action: "BUY" },
             { id: "adas", name: "Autonomous Drive & ADAS Platform Architecture", pillar: "Software & Autonomous", demand: 80, gap: -23, action: "BUY" },
             { id: "ota", name: "Connected Fleet & Over-The-Air Monetization", pillar: "Software & Autonomous", demand: 76, gap: -4, action: "BUILD" },
-            { id: "ux", name: "Digital Cockpit & In-Vehicle UX", pillar: "Software & Autonomous", demand: 76, gap: -1, action: "BUILD" },
-            { id: "giga", name: "Gigafactory Modular Manufacturing & Automation", pillar: "Next-Gen Operations", demand: 70, gap: 13, action: "BUILD" },
-            { id: "minerals", name: "Critical Mineral & Supply Resilience", pillar: "Next-Gen Operations", demand: 78, gap: -1, action: "BUILD" },
-            { id: "jv", name: "Capital Allocation & JV Structuring", pillar: "Next-Gen Operations", demand: 78, gap: 1, action: "BUILD" }
+            { id: "ux", name: "Digital Cockpit & In-Vehicle Experience", pillar: "Software & Autonomous", demand: 76, gap: -1, action: "BUILD" },
+            { id: "giga", name: "Gigafactory Modular Manufacturing", pillar: "Next-Gen Operations", demand: 70, gap: 13, action: "BUILD" },
+            { id: "minerals", name: "Resilient Global Supply Chain", pillar: "Next-Gen Operations", demand: 78, gap: -1, action: "BUILD" },
+            { id: "decarb", name: "Scope 1-3 Decarbonization Roadmap", pillar: "Next-Gen Operations", demand: 78, gap: 1, action: "BUILD" }
         ];
 
         let leadersData = [
@@ -661,6 +661,7 @@
 
         function renderLeaderRoster() {
             const rosterContainer = document.getElementById('leaderRoster');
+            if (!rosterContainer) return;
             rosterContainer.innerHTML = '';
             leadersData.forEach((l) => {
                 const row = document.createElement('div');
@@ -730,7 +731,6 @@
             ['box-enigma', 'box-star-growth', 'box-star-top', 'box-dilemma', 'box-core', 'box-engine', 'box-risk', 'box-specialist', 'box-rock'].forEach(id => {
                 const el = document.getElementById(id); if (el) el.innerHTML = '';
             });
-            let countStars = 0, countEngines = 0, countEnigmas = 0, countRisk = 0;
             leadersData.forEach(l => {
                 let potScore = (l.pillarScores[0] * 0.5) + (l.pillarScores[2] * 0.5);
                 let perfScore = l.pillarScores[4];
@@ -751,7 +751,7 @@
             const container = document.getElementById('roleDemandCardsContainer');
             if (!container) return;
             container.innerHTML = '';
-            roleDemands.forEach(r => {
+            strategicWorkstreams.forEach(r => {
                 let badge = r.action === 'BUY' ? '<span class="px-2 py-0.5 bg-orange-50 text-telosOrange border border-telosOrange/30 font-bold rounded text-[10px]">BUY (External Search)</span>' : '<span class="px-2 py-0.5 bg-blue-50 text-telosBlue border border-telosBlue/30 font-bold rounded text-[10px]">BUILD (Internal)</span>';
                 container.innerHTML += `
                     <div class="bg-white p-5 rounded-2xl border border-telosGrey/30 shadow-sm space-y-3">
@@ -776,7 +776,9 @@
         }
 
         function changeBuyMandate() {
-            const key = document.getElementById('buyMandateSelect').value;
+            const sel = document.getElementById('buyMandateSelect');
+            if (!sel) return;
+            const key = sel.value;
             const mandate = buyMandatesData[key];
             if (!mandate) return;
             const listEl = document.getElementById('searchCandidateList');
@@ -871,6 +873,7 @@
 
         window.onload = function() {
             recalculateAllLeaders();
+            renderRoleDemandCards();
         };
     </script>
 </body>
