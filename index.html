@@ -51,7 +51,6 @@
 
     <!-- STICKY TOP NAVIGATION BANNER & SUB-TABS -->
     <div class="sticky top-0 z-50 shadow-md">
-        <!-- Top Global Brand Banner -->
         <header class="bg-telosBlue text-telosWhite border-b border-telosWhite/10">
             <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between py-3 md:h-16 gap-3">
                 <div class="flex items-center space-x-4">
@@ -63,7 +62,6 @@
                         </div>
                     </div>
 
-                    <!-- Top Mode Switcher: BUILD (Left) vs BUY (Right) -->
                     <div class="flex items-center bg-telosDark/30 p-1 rounded-xl border border-telosWhite/20 text-xs">
                         <button id="btnModeBuild" onclick="setAppMode('build')" class="px-4 py-1.5 font-bold rounded-lg bg-telosWhite text-telosBlue shadow-sm transition">
                             BUILD • Succession & Bench
@@ -80,7 +78,6 @@
             </div>
         </header>
 
-        <!-- Sequential Navigation Tabs (BUILD Mode) -->
         <div class="bg-telosBlue/95 text-telosWhite border-t border-telosWhite/10 px-6 py-2.5 shadow-inner" id="mainTabsContainer">
             <div class="max-w-7xl mx-auto flex space-x-8 text-xs font-semibold overflow-x-auto" id="mainTabs">
                 <button onclick="switchTab('portfolio')" id="tab-portfolio" class="border-b-2 border-telosOrange pb-1 text-telosWhite transition whitespace-nowrap">Portfolio</button>
@@ -93,19 +90,17 @@
         </div>
     </div>
 
-    <!-- Main Dynamic Application Container -->
+    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto px-6 py-6 flex-1 w-full space-y-6">
 
-        <!-- ================================================================= -->
-        <!-- TAB 1: PORTFOLIO VIEW -->
-        <!-- ================================================================= -->
+        <!-- TAB 1: PORTFOLIO -->
         <div id="view-portfolio" class="space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-telosGrey/30 pb-5">
                 <div>
                     <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Leadership Impact Readiness • Group view</h1>
                     <p class="text-xs text-telosGrey mt-1 font-medium">Enterprise transformation capability vs. role demand • 52,000 employees • 9 strategic blocks • 320 senior executives scored</p>
                 </div>
-                <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-telosGrey/30 shadow-sm text-xs font-semibold" id="pillarFilterButtons">
+                <div class="flex flex-wrap gap-1.5 bg-white p-1 rounded-lg border border-telosGrey/30 shadow-sm text-xs font-semibold">
                     <button onclick="filterPillar('all')" id="btn-pillar-all" class="px-3 py-1 bg-telosBlue text-telosWhite rounded transition">All pillars</button>
                     <button onclick="filterPillar('propulsion')" id="btn-pillar-propulsion" class="px-3 py-1 text-telosGrey hover:bg-gray-100 rounded transition">Electrified Propulsion</button>
                     <button onclick="filterPillar('software')" id="btn-pillar-software" class="px-3 py-1 text-telosGrey hover:bg-gray-100 rounded transition">Software & Autonomous</button>
@@ -113,50 +108,36 @@
                 </div>
             </div>
 
-            <!-- 5 Top Stat Boxes -->
+            <!-- STATS CARDS -->
             <div class="grid grid-cols-2 md:grid-cols-5 gap-3.5">
                 <div class="bg-white p-4 rounded-xl border border-telosGrey/30 shadow-sm border-t-4 border-t-telosBlue">
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">Group LIR (Mean)</span>
-                    <div class="flex items-baseline gap-1 mt-1">
-                        <span class="text-3xl font-black text-telosBlue">68</span>
-                        <span class="text-xs text-telosGrey">/100</span>
-                    </div>
+                    <div class="flex items-baseline gap-1 mt-1"><span class="text-3xl font-black text-telosBlue">68</span><span class="text-xs text-telosGrey">/100</span></div>
                     <span class="text-[11px] font-bold text-telosBlue mt-1 block">▲ +5 vs. baseline Q1 2026</span>
                 </div>
-
                 <div class="bg-white p-4 rounded-xl border border-telosGrey/30 shadow-sm border-t-4 border-t-telosOrange">
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">Leaders Aligned to Role</span>
-                    <div class="mt-1">
-                        <span class="text-3xl font-black text-telosOrange">24<span class="text-xl font-normal">%</span></span>
-                    </div>
+                    <div class="mt-1"><span class="text-3xl font-black text-telosOrange">24<span class="text-xl font-normal">%</span></span></div>
                     <span class="text-[11px] font-bold text-telosOrange mt-1 block">➔ target 75% for 2035 roadmap</span>
                 </div>
-
                 <div class="bg-white p-4 rounded-xl border border-telosGrey/30 shadow-sm border-t-4 border-t-telosGrey">
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">Capability-at-Risk Blocks</span>
-                    <div class="mt-1">
-                        <span class="text-3xl font-black text-telosGrey">3<span class="text-lg font-normal text-telosGrey/60">/9</span></span>
-                    </div>
+                    <div class="mt-1"><span class="text-3xl font-black text-telosGrey">3<span class="text-lg font-normal text-telosGrey/60">/9</span></span></div>
                     <span class="text-[11px] font-bold text-telosOrange mt-1 block">▼ in current selection</span>
                 </div>
-
                 <div class="bg-white p-4 rounded-xl border border-telosGrey/30 shadow-sm border-t-4 border-t-telosBlue">
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">Successor Coverage</span>
-                    <div class="mt-1">
-                        <span class="text-3xl font-black text-telosBlue">2.3<span class="text-xl font-normal text-telosGrey">×</span></span>
-                    </div>
+                    <div class="mt-1"><span class="text-3xl font-black text-telosBlue">2.3<span class="text-xl font-normal text-telosGrey">×</span></span></div>
                     <span class="text-[11px] font-bold text-telosBlue mt-1 block">▲ +0.5 top 35 critical seats</span>
                 </div>
-
                 <div class="bg-white p-4 rounded-xl border border-telosGrey/30 shadow-sm border-t-4 border-t-telosOrange">
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">Transformation Lift</span>
-                    <div class="mt-1">
-                        <span class="text-3xl font-black text-telosOrange">£42<span class="text-lg font-normal">m</span></span>
-                    </div>
+                    <div class="mt-1"><span class="text-3xl font-black text-telosOrange">£42<span class="text-lg font-normal">m</span></span></div>
                     <span class="text-[11px] font-bold text-telosOrange mt-1 block">▲ unlocked via realignment</span>
                 </div>
             </div>
 
+            <!-- PORTFOLIO BLOCKS -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-telosGrey/30 shadow-sm space-y-6">
                     <div>
@@ -164,8 +145,7 @@
                         <p class="text-xs text-telosGrey mt-0.5">Mean LIR by engineering transformation block • dark tick = target demand</p>
                     </div>
 
-                    <!-- Pillar 1 -->
-                    <div class="space-y-3.5 pillar-section" id="section-propulsion">
+                    <div class="space-y-3.5" id="section-propulsion">
                         <span class="text-[11px] font-bold text-telosGrey tracking-wider uppercase block">Electrified Propulsion Systems</span>
                         <div>
                             <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-telosDark">Solid-State Battery & Next-Gen Cell Chemistry</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-telosDark">60</span><span class="text-[11px] text-telosOrange font-bold w-24 text-right">vs. 78 (-18 [BUY])</span></div></div>
@@ -181,8 +161,7 @@
                         </div>
                     </div>
 
-                    <!-- Pillar 2 -->
-                    <div class="space-y-3.5 pt-2 border-t border-telosGrey/20 pillar-section" id="section-software">
+                    <div class="space-y-3.5 pt-2 border-t border-telosGrey/20" id="section-software">
                         <span class="text-[11px] font-bold text-telosGrey tracking-wider uppercase block">Software & Autonomous Systems</span>
                         <div>
                             <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-telosDark">Autonomous Drive & ADAS Platform Architecture</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-telosDark">57</span><span class="text-[11px] text-telosOrange font-bold w-24 text-right">vs. 80 (-23 [BUY])</span></div></div>
@@ -198,8 +177,7 @@
                         </div>
                     </div>
 
-                    <!-- Pillar 3 -->
-                    <div class="space-y-3.5 pt-2 border-t border-telosGrey/20 pillar-section" id="section-operations">
+                    <div class="space-y-3.5 pt-2 border-t border-telosGrey/20" id="section-operations">
                         <span class="text-[11px] font-bold text-telosGrey tracking-wider uppercase block">Next-Gen Operations & Scale</span>
                         <div>
                             <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-telosDark">Gigafactory Modular Manufacturing & Automation</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-telosDark">83</span><span class="text-[11px] text-telosBlue font-bold w-24 text-right">vs. 70 (+13 [BUILD])</span></div></div>
@@ -237,39 +215,32 @@
             </div>
         </div>
 
-        <!-- ================================================================= -->
-        <!-- TAB 2: LEADERS (5-PILLAR ARCHITECTURE + 5-PILLAR WEIGHTING CONSOLE) -->
-        <!-- ================================================================= -->
+        <!-- TAB 2: LEADERS (5-PILLAR SUMMARY TABLE & WEIGHTING CONSOLE) -->
         <div id="view-leaders" class="hidden space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-telosGrey/30 pb-5">
                 <div>
-                    <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Leaders • 5-Pillar Triangulated Diagnostics</h1>
-                    <p class="text-xs text-telosGrey mt-1 font-medium">Click any leader in the roster to open their interactive pop-out radar and telemetry profile.</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <input type="text" id="leaderSearch" onkeyup="filterLeaderList()" placeholder="Filter leaders..." class="px-3 py-1.5 bg-white border border-telosGrey/30 rounded-lg text-xs w-60 shadow-sm" />
+                    <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Leaders • 5-Pillar Triangulated Bench</h1>
+                    <p class="text-xs text-telosGrey mt-1 font-medium">Click any leader row to open their telemetry profile and interactive comparative radar.</p>
                 </div>
             </div>
 
-            <!-- 5-PILLAR CLIENT CALIBRATION CONSOLE (DYNAMIC WEIGHTING SLIDERS) -->
+            <!-- WEIGHTING SLIDERS -->
             <div class="bg-white rounded-2xl p-4 border border-telosGrey/30 shadow-sm">
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                     <div class="flex items-center space-x-2">
                         <span class="text-telosOrange text-base">⚙</span>
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-telosDark">5-Pillar Client Calibration Console</h4>
-                            <p class="text-[11px] text-telosGrey">Adjust pillar weightings in real time. Total automatically normalized to 100%.</p>
+                            <p class="text-[11px] text-telosGrey">Adjust weights in real time. Total automatically normalized to 100%.</p>
                         </div>
                     </div>
-
-                    <!-- Sliders Grid (5 Pillars) -->
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 flex-1 max-w-4xl px-2">
                         <div>
                             <div class="flex justify-between text-[11px] font-bold mb-0.5"><span class="text-telosDark">1. Think</span><span class="text-telosBlue" id="valWeight1">30%</span></div>
                             <input type="range" id="slider1" min="0" max="50" value="30" oninput="updateClientWeights()" class="w-full accent-telosBlue cursor-pointer" />
                         </div>
                         <div>
-                            <div class="flex justify-between text-[11px] font-bold mb-0.5"><span class="text-telosDark">2. Show</span><span class="text-telosBlue" id="valWeight2">25%</span></div>
+                            <div class="flex justify-between text-[11px] font-bold mb-0.5"><span class="text-telosDark">2. Show Up</span><span class="text-telosBlue" id="valWeight2">25%</span></div>
                             <input type="range" id="slider2" min="0" max="50" value="25" oninput="updateClientWeights()" class="w-full accent-telosBlue cursor-pointer" />
                         </div>
                         <div>
@@ -285,36 +256,28 @@
                             <input type="range" id="slider5" min="0" max="50" value="15" oninput="updateClientWeights()" class="w-full accent-telosBlue cursor-pointer" />
                         </div>
                     </div>
-
-                    <button onclick="resetWeights()" class="px-2.5 py-1 text-[11px] font-bold text-telosGrey hover:text-telosDark border border-telosGrey/30 rounded-lg hover:bg-gray-50 transition shrink-0">
-                        Reset Default
-                    </button>
+                    <button onclick="resetWeights()" class="px-2.5 py-1 text-[11px] font-bold text-telosGrey hover:text-telosDark border border-telosGrey/30 rounded-lg hover:bg-gray-50 transition shrink-0">Reset</button>
                 </div>
             </div>
 
-            <!-- Roster Table (Full Width) -->
+            <!-- SUMMARY TABLE -->
             <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 space-y-4">
                 <div class="grid grid-cols-12 items-center text-xs font-bold text-telosGrey uppercase tracking-wider border-b border-telosGrey/30 pb-3 px-2">
                     <span class="col-span-4 cursor-pointer" onclick="sortTable('name')">Leader & Role ↕</span>
-                    <span class="col-span-2 text-center">1. Think (CPP)</span>
-                    <span class="col-span-2 text-center">2. Show Up (ZF 360)</span>
+                    <span class="col-span-2 text-center">1. Think</span>
+                    <span class="col-span-2 text-center">2. Show Up</span>
                     <span class="col-span-1 text-center">3. Connect</span>
                     <span class="col-span-1 text-center cursor-pointer" onclick="sortTable('lir')">LIR ▼</span>
                     <span class="col-span-2 text-right">Role Fit Status</span>
                 </div>
-                <div class="divide-y divide-gray-100 text-xs" id="leaderRoster">
-                    <!-- JS Populated -->
-                </div>
+                <div class="divide-y divide-gray-100 text-xs" id="leaderRoster"></div>
             </div>
         </div>
 
-        <!-- ================================================================= -->
-        <!-- TAB 2.5: 9-BOX GRID -->
-        <!-- ================================================================= -->
+        <!-- TAB 2.5: 9-BOX -->
         <div id="view-ninebox" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
-                <p class="text-xs text-telosGrey mt-1 font-medium">Y-Axis: Future Potential (Think & Connect) • X-Axis: Performance & Delivery (Show Up & Deliver)</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-9 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6">
@@ -342,9 +305,7 @@
             </div>
         </div>
 
-        <!-- ================================================================= -->
         <!-- TAB 3: ROLE DEMAND -->
-        <!-- ================================================================= -->
         <div id="view-roleDemand" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Role demand • 5-pillar benchmark profiles & BUILD / BUY decisions</h1>
@@ -353,17 +314,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="roleDemandCardsContainer"></div>
         </div>
 
-        <!-- ================================================================= -->
-        <!-- TAB 4: SCENARIOS SIMULATOR -->
-        <!-- ================================================================= -->
+        <!-- TAB 4: SCENARIOS -->
         <div id="view-scenarios" class="hidden space-y-6">
-            <div class="border-b border-telosGrey/30 pb-5">
-                <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Scenario Simulator • transfer and recompute LIR</h1>
-            </div>
+            <div class="border-b border-telosGrey/30 pb-5"><h1 class="text-2xl font-bold text-telosBlue tracking-tight">Scenario Simulator • transfer and recompute LIR</h1></div>
             <div class="bg-telosBlue text-telosWhite rounded-2xl p-6 shadow-md space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div><label class="block text-xs font-bold text-telosWhite/80 uppercase mb-2">Select Executive</label><select id="scenLeaderSelect" onchange="runSimulation()" class="w-full bg-telosDark/40 border border-telosWhite/20 text-telosWhite text-xs rounded-xl p-3"></select></div>
-                    <div><label class="block text-xs font-bold text-telosWhite/80 uppercase mb-2">Transfer to Workstream</label><select id="scenBlockSelect" onchange="runSimulation()" class="w-full bg-telosDark/40 border border-telosWhite/20 text-telosWhite text-xs rounded-xl p-3"></select></div>
+                    <div><label class="block text-xs font-bold text-telosWhite/80 uppercase mb-2">Select Executive</label><select id="scenLeaderSelect" onchange="runSimulation()" class="w-full bg-telosDark/45 border border-telosWhite/20 text-telosWhite text-xs rounded-xl p-3"></select></div>
+                    <div><label class="block text-xs font-bold text-telosWhite/80 uppercase mb-2">Transfer to Workstream</label><select id="scenBlockSelect" onchange="runSimulation()" class="w-full bg-telosDark/45 border border-telosWhite/20 text-telosWhite text-xs rounded-xl p-3"></select></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-telosWhite/10">
                     <div class="text-center p-4 bg-telosDark/30 rounded-xl border border-telosWhite/10"><span class="text-[10px] font-bold uppercase text-telosWhite/70">Current Role LIR</span><div class="text-4xl font-black text-telosWhite mt-1" id="scenCurrVal">88</div></div>
@@ -372,13 +329,10 @@
             </div>
         </div>
 
-        <!-- ================================================================= -->
         <!-- TAB 5: 2035 PLAN -->
-        <!-- ================================================================= -->
         <div id="view-plan2035" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">2035 Plan • capability trajectory by building block</h1>
-                <p class="text-xs text-telosGrey mt-1 font-medium">Where the capability sits today, where the 2035 plan needs it to be, and the leadership gap that has to close in between</p>
             </div>
             <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
@@ -397,9 +351,7 @@
             </div>
         </div>
 
-        <!-- ================================================================= -->
         <!-- MODE 2: BUY VIEW -->
-        <!-- ================================================================= -->
         <div id="view-buyMode" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -429,13 +381,22 @@
                         </div>
                     </div>
 
-                    <!-- 5 External Pillars Grid -->
                     <div class="grid grid-cols-5 gap-2 text-center text-xs">
-                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">1. Think (CPP)</span><span class="font-bold text-telosDark text-[11px]" id="buyP1">Level 5</span></div>
-                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">2. Show (Hogan)</span><span class="font-bold text-telosDark text-[11px]" id="buyP2">92nd %ile</span></div>
-                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">3. Connect (ONA)</span><span class="font-bold text-telosDark text-[11px]" id="buyP3">Global Hub</span></div>
-                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">4. Judge (Virtues)</span><span class="font-bold text-telosBlue text-[11px]" id="buyP4">+2P / +2J</span></div>
-                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">5. Deliver (CV)</span><span class="font-bold text-telosBlue text-[11px]" id="buyP5">Exceeding</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">1. Think</span><span class="font-bold text-telosDark text-[11px]" id="buyP1">Level 5</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">2. Show Up</span><span class="font-bold text-telosDark text-[11px]" id="buyP2">92nd %ile</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">3. Connect</span><span class="font-bold text-telosDark text-[11px]" id="buyP3">Global Hub</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">4. Judge</span><span class="font-bold text-telosBlue text-[11px]" id="buyP4">+2P / +2J</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">5. Deliver</span><span class="font-bold text-telosBlue text-[11px]" id="buyP5">Exceeding</span></div>
+                    </div>
+
+                    <!-- 3-WAY TOGGLE FOR BUY RADAR -->
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="text-[10px] font-bold text-telosGrey uppercase tracking-wider">Benchmark Overlay:</span>
+                        <div class="flex bg-gray-100 p-1 rounded-lg text-xs font-semibold gap-1">
+                            <button onclick="setBuyRadarMode('role')" id="btnBuyRole" class="px-3 py-1 bg-telosBlue text-telosWhite rounded transition">Role Benchmark</button>
+                            <button onclick="setBuyRadarMode('cohort')" id="btnBuyCohort" class="px-3 py-1 text-telosGrey rounded transition">Cohort Average</button>
+                            <button onclick="setBuyRadarMode('peer')" id="btnBuyPeer" class="px-3 py-1 text-telosGrey rounded transition">Compare Peer...</button>
+                        </div>
                     </div>
 
                     <div class="relative h-56 w-full flex items-center justify-center">
@@ -451,9 +412,9 @@
 
     </main>
 
-    <!-- INTERACTIVE POP-OUT MODAL FOR LEADERS (BUILD) -->
+    <!-- INTERACTIVE POP-OUT MODAL FOR LEADERS (BUILD) WITH 3-WAY TOGGLE -->
     <div id="leaderModal" class="hidden fixed inset-0 bg-telosDark/70 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 space-y-6 shadow-2xl relative">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 space-y-5 shadow-2xl relative">
             <button onclick="closeLeaderModal()" class="absolute top-6 right-6 text-telosGrey hover:text-telosDark font-bold text-xl">✕</button>
             <div class="flex items-start justify-between border-b border-telosGrey/20 pb-4">
                 <div>
@@ -471,17 +432,32 @@
 
             <div class="grid grid-cols-5 gap-2 text-center text-xs">
                 <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">1. Think</span><span class="font-bold text-telosDark text-[11px]" id="modalP1">Level 5</span></div>
-                <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">2. Show</span><span class="font-bold text-telosDark text-[11px]" id="modalP2">92%ile</span></div>
+                <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">2. Show Up</span><span class="font-bold text-telosDark text-[11px]" id="modalP2">92%ile</span></div>
                 <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">3. Connect</span><span class="font-bold text-telosDark text-[11px]" id="modalP3">Top 5%</span></div>
                 <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">4. Judge</span><span class="font-bold text-telosBlue text-[11px]" id="modalP4">+3P / +2T</span></div>
                 <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">5. Deliver</span><span class="font-bold text-telosBlue text-[11px]" id="modalP5">Transformational</span></div>
             </div>
 
-            <div class="relative h-48 w-full flex items-center justify-center">
+            <!-- 3-WAY TOGGLE FOR LEADER MODAL RADAR -->
+            <div class="flex items-center justify-between pt-1">
+                <span class="text-[10px] font-bold text-telosGrey uppercase tracking-wider">Benchmark Overlay:</span>
+                <div class="flex bg-gray-100 p-1 rounded-lg text-xs font-semibold gap-1">
+                    <button onclick="setModalRadarMode('role')" id="btnModalRole" class="px-3 py-1 bg-telosBlue text-telosWhite rounded transition">Role Benchmark</button>
+                    <button onclick="setModalRadarMode('cohort')" id="btnModalCohort" class="px-3 py-1 text-telosGrey rounded transition">Cohort Average</button>
+                    <button onclick="setModalRadarMode('peer')" id="btnModalPeer" class="px-3 py-1 text-telosGrey rounded transition">Compare Peer...</button>
+                </div>
+            </div>
+
+            <!-- Peer Selector Dropdown -->
+            <div id="modalPeerSelectorContainer" class="hidden">
+                <select id="modalPeerSelect" onchange="renderModalRadar()" class="w-full bg-gray-50 border border-telosGrey/30 text-telosDark text-xs rounded-lg p-2 font-medium"></select>
+            </div>
+
+            <div class="relative h-44 w-full flex items-center justify-center">
                 <canvas id="modalRadarChart"></canvas>
             </div>
 
-            <div class="p-4 bg-gray-50 rounded-2xl border border-telosGrey/30 text-xs text-telosDark leading-relaxed font-medium" id="modalLeaderSynthesis">
+            <div class="p-3 bg-gray-50 rounded-2xl border border-telosGrey/30 text-xs text-telosDark leading-relaxed font-medium" id="modalLeaderSynthesis">
                 <strong>Diagnostic Summary:</strong> Balanced cognitive agility with top-decile network centrality.
             </div>
         </div>
@@ -489,16 +465,21 @@
 
     <footer class="bg-telosBlue text-telosWhite/80 py-3 px-6 border-t border-telosWhite/10 text-xs mt-auto flex justify-between items-center">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>TELOS Executive Intelligence • v2.4</span>
+        <span>TELOS Executive Intelligence • v2.6</span>
     </footer>
 
-    <!-- Interactive Data Store & Script Engine -->
+    <!-- SCRIPT ENGINE -->
     <script>
         let leaderModalRadar = null;
         let buyRadar = null;
         let currentAppMode = 'build';
+        let currentModalRadarMode = 'role';
+        let currentBuyRadarMode = 'role';
         let currentSortColumn = 'lir';
         let currentSortAsc = false;
+        let activeModalLeaderId = 'mercer';
+        let activeBuyMandateKey = 'h2';
+        let activeBuyCandIdx = 0;
         let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
 
         const strategicWorkstreams = [
@@ -683,6 +664,7 @@
         }
 
         function openLeaderModal(id) {
+            activeModalLeaderId = id;
             const l = leadersData.find(item => item.id === id);
             if (!l) return;
             document.getElementById('modalLeaderName').innerText = l.name;
@@ -698,25 +680,85 @@
             document.getElementById('modalP5').innerText = l.deliverScore;
             document.getElementById('modalLeaderSynthesis').innerHTML = '<strong>Diagnostic Summary:</strong> ' + l.synthesis;
 
+            populateModalPeerDropdown();
             document.getElementById('leaderModal').classList.remove('hidden');
-            renderModalRadar(l.pillarScores);
+            setModalRadarMode('role');
         }
 
         function closeLeaderModal() {
             document.getElementById('leaderModal').classList.add('hidden');
         }
 
-        function renderModalRadar(scores) {
+        function setModalRadarMode(mode) {
+            currentModalRadarMode = mode;
+            const btnRole = document.getElementById('btnModalRole');
+            const btnCohort = document.getElementById('btnModalCohort');
+            const btnPeer = document.getElementById('btnModalPeer');
+            const peerCont = document.getElementById('modalPeerSelectorContainer');
+
+            [btnRole, btnCohort, btnPeer].forEach(b => b.className = 'px-3 py-1 text-telosGrey rounded transition');
+            peerCont.classList.add('hidden');
+
+            if (mode === 'role') {
+                btnRole.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            } else if (mode === 'cohort') {
+                btnCohort.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            } else if (mode === 'peer') {
+                btnPeer.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+                peerCont.classList.remove('hidden');
+            }
+            renderModalRadar();
+        }
+
+        function populateModalPeerDropdown() {
+            const sel = document.getElementById('modalPeerSelect');
+            if (!sel) return;
+            sel.innerHTML = '';
+            leadersData.filter(l => l.id !== activeModalLeaderId).forEach(l => {
+                sel.innerHTML += `<option value="${l.id}">${l.name} (${l.role})</option>`;
+            });
+        }
+
+        function getCohortAverageScores() {
+            let sums = [0, 0, 0, 0, 0];
+            leadersData.forEach(l => { for(let i=0; i<5; i++) sums[i] += l.pillarScores[i]; });
+            return sums.map(s => Math.round(s / leadersData.length));
+        }
+
+        function renderModalRadar() {
             const ctx = document.getElementById('modalRadarChart');
             if (!ctx) return;
+            const l = leadersData.find(item => item.id === activeModalLeaderId);
+            if (!l) return;
             if (leaderModalRadar) leaderModalRadar.destroy();
+
+            let overlayData, overlayLabel, overlayBorder, overlayBg;
+            if (currentModalRadarMode === 'role') {
+                overlayData = [80, 80, 80, 80, 80];
+                overlayLabel = 'Role Benchmark';
+                overlayBorder = 'hsl(7, 77%, 55%)';
+                overlayBg = 'rgba(217, 83, 44, 0.1)';
+            } else if (currentModalRadarMode === 'cohort') {
+                overlayData = getCohortAverageScores();
+                overlayLabel = 'Cohort Average';
+                overlayBorder = 'rgb(91, 89, 89)';
+                overlayBg = 'rgba(91, 89, 89, 0.1)';
+            } else {
+                const peerId = document.getElementById('modalPeerSelect').value;
+                const peer = leadersData.find(item => item.id === peerId) || leadersData[0];
+                overlayData = peer.pillarScores;
+                overlayLabel = peer.name;
+                overlayBorder = 'hsl(213, 54%, 31%)';
+                overlayBg = 'rgba(29, 93, 149, 0.15)';
+            }
+
             leaderModalRadar = new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
                     datasets: [
-                        { label: 'Leader Profile', data: scores, backgroundColor: 'rgba(29, 93, 149, 0.25)', borderColor: 'hsl(213, 54%, 31%)', borderWidth: 2, pointRadius: 3 },
-                        { label: 'Role Benchmark', data: [80, 80, 80, 80, 80], backgroundColor: 'rgba(217, 83, 44, 0.1)', borderColor: 'hsl(7, 77%, 55%)', borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
+                        { label: l.name, data: l.pillarScores, backgroundColor: 'rgba(29, 93, 149, 0.25)', borderColor: 'hsl(213, 54%, 31%)', borderWidth: 2, pointRadius: 3 },
+                        { label: overlayLabel, data: overlayData, backgroundColor: overlayBg, borderColor: overlayBorder, borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
                     ]
                 },
                 options: {
@@ -725,6 +767,18 @@
                     responsive: true, maintainAspectRatio: false
                 }
             });
+        }
+
+        function setBuyRadarMode(mode) {
+            currentBuyRadarMode = mode;
+            const btnRole = document.getElementById('btnBuyRole');
+            const btnCohort = document.getElementById('btnBuyCohort');
+            const btnPeer = document.getElementById('btnBuyPeer');
+            [btnRole, btnCohort, btnPeer].forEach(b => b.className = 'px-3 py-1 text-telosGrey rounded transition');
+            if (mode === 'role') btnRole.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            else if (mode === 'cohort') btnCohort.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            else btnPeer.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
+            selectBuyCandidate(activeBuyMandateKey, activeBuyCandIdx);
         }
 
         function updateNineBoxGrid() {
@@ -778,23 +832,25 @@
         function changeBuyMandate() {
             const sel = document.getElementById('buyMandateSelect');
             if (!sel) return;
-            const key = sel.value;
-            const mandate = buyMandatesData[key];
+            activeBuyMandateKey = sel.value;
+            const mandate = buyMandatesData[activeBuyMandateKey];
             if (!mandate) return;
             const listEl = document.getElementById('searchCandidateList');
             listEl.innerHTML = '';
             mandate.candidates.forEach((c, idx) => {
                 listEl.innerHTML += `
-                    <div onclick="selectBuyCandidate('${key}', ${idx})" id="buyCandItem-${idx}" class="p-3 rounded-xl border ${idx===0?'border-telosBlue bg-blue-50/50':'border-telosGrey/30 bg-white'} cursor-pointer flex items-center justify-between transition">
+                    <div onclick="selectBuyCandidate('${activeBuyMandateKey}', ${idx})" id="buyCandItem-${idx}" class="p-3 rounded-xl border ${idx===0?'border-telosBlue bg-blue-50/50':'border-telosGrey/30 bg-white'} cursor-pointer flex items-center justify-between transition">
                         <span class="font-bold text-telosDark">${c.name}</span>
                         <span class="text-telosOrange font-bold">Fit: ${c.fit}</span>
                     </div>
                 `;
             });
-            selectBuyCandidate(key, 0);
+            selectBuyCandidate(activeBuyMandateKey, 0);
         }
 
         function selectBuyCandidate(mandateKey, idx) {
+            activeBuyMandateKey = mandateKey;
+            activeBuyCandIdx = idx;
             const c = buyMandatesData[mandateKey].candidates[idx];
             document.getElementById('buyCandName').innerText = c.name;
             document.getElementById('buyCandRole').innerText = buyMandatesData[mandateKey].title;
@@ -818,13 +874,33 @@
             const ctx = document.getElementById('buyRadarChart');
             if (!ctx) return;
             if (buyRadar) buyRadar.destroy();
+
+            let overlayData, overlayLabel, overlayBorder, overlayBg;
+            if (currentBuyRadarMode === 'role') {
+                overlayData = [80, 80, 80, 80, 80];
+                overlayLabel = 'Role Benchmark';
+                overlayBorder = 'hsl(213, 54%, 31%)';
+                overlayBg = 'rgba(29, 93, 149, 0.1)';
+            } else if (currentBuyRadarMode === 'cohort') {
+                overlayData = getCohortAverageScores();
+                overlayLabel = 'Cohort Average';
+                overlayBorder = 'rgb(91, 89, 89)';
+                overlayBg = 'rgba(91, 89, 89, 0.1)';
+            } else {
+                const firstLeader = leadersData[0];
+                overlayData = firstLeader.pillarScores;
+                overlayLabel = firstLeader.name + ' (Peer)';
+                overlayBorder = 'hsl(7, 77%, 55%)';
+                overlayBg = 'rgba(217, 83, 44, 0.15)';
+            }
+
             buyRadar = new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: ['1. Think', '2. Show Up', '3. Connect', '4. Judge', '5. Deliver'],
                     datasets: [
                         { label: 'External Candidate', data: scores, backgroundColor: 'rgba(217, 83, 44, 0.25)', borderColor: 'hsl(7, 77%, 55%)', borderWidth: 2, pointRadius: 3 },
-                        { label: 'Role Benchmark', data: [80, 80, 80, 80, 80], backgroundColor: 'rgba(29, 93, 149, 0.1)', borderColor: 'hsl(213, 54%, 31%)', borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
+                        { label: overlayLabel, data: overlayData, backgroundColor: overlayBg, borderColor: overlayBorder, borderWidth: 2, borderDash: [4, 4], pointRadius: 3 }
                     ]
                 },
                 options: {
