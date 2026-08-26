@@ -69,7 +69,7 @@
             <button onclick="switchTab('leaders')" id="tab-leaders" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Leaders (5-Pillar)</button>
             <button onclick="switchTab('ninebox')" id="tab-ninebox" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">9-Box Grid</button>
             <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Role Demand</button>
-            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Scenarios</button>
+            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">Scenarios (EJTD)</button>
             <button onclick="switchTab('plan2035')" id="tab-plan2035" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition">2035 Plan</button>
         </div>
         <div class="text-xs text-telosWhite/70 hidden lg:block">
@@ -238,7 +238,6 @@
                 </div>
             </div>
 
-            <!-- WEIGHT SLIDER CONTROL CONSOLE -->
             <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                     <div class="flex justify-between text-xs font-bold mb-1"><span class="text-telosBlue">1. Think (CPP Complexity)</span><span id="valWeightThink">40%</span></div>
@@ -254,7 +253,6 @@
                 </div>
             </div>
 
-            <!-- LEADERS TABLE -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -268,9 +266,7 @@
                             <th class="p-4 text-right">Calculated LIR</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-100 text-xs" id="leadersTableBody">
-                        <!-- Dynamically populated via script -->
-                    </tbody>
+                    <tbody class="divide-y divide-gray-100 text-xs" id="leadersTableBody"></tbody>
                 </table>
             </div>
         </div>
@@ -289,11 +285,9 @@
                 </div>
             </div>
 
-            <!-- 9-BOX GRID CONTAINER -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-12 bg-white rounded-xl border border-gray-200 shadow-sm p-6">
                     <div class="grid grid-cols-3 gap-4 text-xs min-h-[400px]">
-                        <!-- ROW 1 -->
                         <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-4 flex flex-col justify-between">
                             <div class="border-b border-amber-200 pb-2 font-bold text-amber-900 uppercase">The Enigma / Maverick</div>
                             <div class="space-y-2 my-3" id="box-enigma"></div>
@@ -309,7 +303,6 @@
                             <div class="space-y-2 my-3" id="box-star-top"></div>
                             <span class="text-[10px] text-gray-500">Action: C-suite succession pipeline</span>
                         </div>
-                        <!-- ROW 2 -->
                         <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col justify-between">
                             <div class="border-b border-gray-200 pb-2 font-bold text-gray-800 uppercase">The Inconsistent Dilemma</div>
                             <div class="space-y-2 my-3" id="box-dilemma"></div>
@@ -325,7 +318,6 @@
                             <div class="space-y-2 my-3" id="box-engine"></div>
                             <span class="text-[10px] text-gray-500">Action: Operational promotion track</span>
                         </div>
-                        <!-- ROW 3 -->
                         <div class="bg-red-50/50 border border-red-200 rounded-xl p-4 flex flex-col justify-between">
                             <div class="border-b border-red-200 pb-2 font-bold text-red-900 uppercase">The Straining Specialist</div>
                             <div class="space-y-2 my-3" id="box-risk"></div>
@@ -350,48 +342,56 @@
         <!-- TAB 4: ROLE DEMAND VIEW -->
         <!-- ================================================================= -->
         <div id="view-roleDemand" class="hidden space-y-6">
-            <div class="border-b pb-4">
-                <h1 class="text-2xl font-bold text-telosBlue">Executive Role Demand Blueprints</h1>
-                <p class="text-sm text-telosGrey">Inspect the 3-domain telemetry, cognitive complexity ceilings, and structural demands for each critical seat.</p>
+            <div class="border-b pb-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-telosBlue">Executive Role Demand Blueprints</h1>
+                    <p class="text-sm text-telosGrey">Click any role card below to inspect cognitive complexity ceilings, 3-domain telemetry, and ExCo decision triggers.</p>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="roleDemandCardsContainer">
-                <!-- Dynamically populated via script -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="roleDemandCardsContainer"></div>
         </div>
 
         <!-- ================================================================= -->
         <!-- TAB 5: SCENARIOS (EJTD) VIEW -->
         <!-- ================================================================= -->
         <div id="view-scenarios" class="hidden space-y-6">
-            <div class="border-b pb-4">
-                <h1 class="text-2xl font-bold text-telosBlue">Executive Judgment & Trade-off Diagnostic (EJTD)</h1>
-                <p class="text-sm text-telosGrey">High-friction, non-binary trade-off dilemmas testing Prudence (*phronesis*), Fortitude, Temperance, and Justice.</p>
+            <div class="border-b pb-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-telosBlue">Executive Judgment & Trade-off Diagnostic (EJTD)</h1>
+                    <p class="text-sm text-telosGrey">High-friction, non-binary trade-off dilemmas testing Prudence (*phronesis*), Fortitude, Temperance, and Justice.</p>
+                </div>
+                <button onclick="calculateEJTDScore()" class="px-4 py-2 rounded bg-telosOrange text-telosWhite font-bold text-xs shadow">Calculate Virtue Profile</button>
             </div>
             
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
-                <h3 class="text-base font-bold text-telosBlue">Interactive Phronesis Calibration Engine</h3>
-                <p class="text-xs text-telosGrey">Select options across the non-binary scenarios below to calculate your leadership radar profile across the 4 cardinal virtues.</p>
-                
-                <div class="space-y-6 pt-4 border-t" id="scenariosContainer">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-6">
+                <div class="p-4 bg-telosBlue/5 rounded-xl border border-telosBlue/20 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-sm font-bold text-telosBlue">Live Phronesis Coordinate Tracker</h3>
+                        <p class="text-xs text-telosGrey">Select your preferred option in each scenario to map your leadership orientation across the cardinal dimensions.</p>
+                    </div>
+                    <div class="text-right text-xs font-bold text-telosBlue" id="ejtdSummaryStatus">Complete all 6 dilemmas to generate profile.</div>
+                </div>
+
+                <div class="space-y-6 pt-2" id="scenariosContainer">
                     <!-- Scenario 1 -->
                     <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
                         <div class="text-xs font-bold text-telosOrange uppercase">Scenario 1: The Geopolitical Corridor (Public Policy & Trade)</div>
                         <p class="text-xs text-telosGrey leading-relaxed">You are senior trade commissioner negotiating a mineral corridor. Securing vital green transition lithium requires partnering with a strongman regime notorious for labor suppression. Refusing misses domestic decarbonization targets; accepting makes you complicit in human rights abuses.</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen1" value="A" class="mt-0.5">
+                                <input type="radio" name="ejtd1" value="Prudence" class="mt-0.5">
                                 <span><strong>[A]</strong> Execute partnership with strict binding labor clauses, prioritizing domestic green transition. (+Prudence)</span>
                             </label>
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen1" value="B" class="mt-0.5">
+                                <input type="radio" name="ejtd1" value="Justice" class="mt-0.5">
                                 <span><strong>[B]</strong> Walk away entirely, accepting economic fallout to uphold absolute democratic principles. (+Justice, +Fortitude)</span>
                             </label>
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen1" value="C" class="mt-0.5">
+                                <input type="radio" name="ejtd1" value="Temperance" class="mt-0.5">
                                 <span><strong>[C]</strong> Channel extraction through third-party shell entities to secure supply lines while distancing diplomatically. (+Prudence, +Temperance)</span>
                             </label>
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen1" value="D" class="mt-0.5">
+                                <input type="radio" name="ejtd1" value="Fortitude" class="mt-0.5">
                                 <span><strong>[D]</strong> Publicly condition the deal on immediate political reform, risking total diplomatic breakdown. (+Fortitude)</span>
                             </label>
                         </div>
@@ -403,20 +403,116 @@
                         <p class="text-xs text-telosGrey leading-relaxed">You chair a national healthcare triage committee during a ventilator shortage. Your optimization algorithm inadvertently deprioritizes socio-economic groups with lower baseline life-expectancy. Overriding it slows admissions, raising total deaths by 12%.</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen2" value="A" class="mt-0.5">
+                                <input type="radio" name="ejtd2" value="Justice" class="mt-0.5">
                                 <span><strong>[A]</strong> Suspend algorithm for manual clinician triage, accepting 12% more deaths to treat patients as individuals. (+Justice)</span>
                             </label>
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen2" value="B" class="mt-0.5">
+                                <input type="radio" name="ejtd2" value="Prudence" class="mt-0.5">
                                 <span><strong>[B]</strong> Maintain algorithm to maximize macro-survival rates, accepting statistical inequality as crisis reality. (+Prudence)</span>
                             </label>
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen2" value="C" class="mt-0.5">
+                                <input type="radio" name="ejtd2" value="Temperance" class="mt-0.5">
                                 <span><strong>[C]</strong> Implement a weighted hybrid model with equity corrections, slowing processing slightly. (+Prudence, +Justice)</span>
                             </label>
                             <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
-                                <input type="radio" name="scen2" value="D" class="mt-0.5">
+                                <input type="radio" name="ejtd2" value="Fortitude" class="mt-0.5">
                                 <span><strong>[D]</strong> Delegate decision entirely to regional hospital directors based on local demographics. (+Temperance / Autonomy)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 3 -->
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 3: The Generational Asset vs. Near-Term Yield (Corporate Strategy)</div>
+                        <p class="text-xs text-telosGrey leading-relaxed">Your historic energy grid requires a £300m weather hardening. Funding it from cash flow freezes bonuses and triggers an activist takeover vulnerability.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd3" value="Prudence" class="mt-0.5">
+                                <span><strong>[A]</strong> Issue long-term infrastructure bonds to protect share price and spread cost over 15 years. (+Prudence)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd3" value="Fortitude" class="mt-0.5">
+                                <span><strong>[B]</strong> Execute hardening entirely from cash flow, absorbing activist threat head-on. (+Fortitude, +Prudence)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd3" value="Temperance" class="mt-0.5">
+                                <span><strong>[C]</strong> Execute a phased 7-year hardening plan focusing only on top 30 highest-risk nodes. (+Prudence, +Temperance)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd3" value="Justice" class="mt-0.5">
+                                <span><strong>[D]</strong> Monetize and sell off your high-margin EV-charging subsidiary for an immediate cash lump sum. (+Capital Protection)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 4 -->
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 4: The Diplomatic Leak (Crisis Management)</div>
+                        <p class="text-xs text-telosGrey leading-relaxed">A junior investigator leaks unverified memos proving corporate toxic dumping. It violates tribunal protocol but forces an immediate asset freeze before funds are hidden offshore.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd4" value="Justice" class="mt-0.5">
+                                <span><strong>[A]</strong> Condemn leak publicly and pause proceedings to uphold procedural due process. (+Justice)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd4" value="Prudence" class="mt-0.5">
+                                <span><strong>[B]</strong> Leverage public uproar unofficially to secure the asset freeze while overlooking the protocol breach. (+Prudence)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd4" value="Temperance" class="mt-0.5">
+                                <span><strong>[C]</strong> Dismiss junior investigator with formal reprimand while allowing public pressure to work. (+Temperance, +Prudence)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd4" value="Fortitude" class="mt-0.5">
+                                <span><strong>[D]</strong> Broaden formal investigation to include the source of the leak, suspending the corporate case. (+Fortitude)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 5 -->
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 5: The Whistleblower’s Dilemma (Academic Research)</div>
+                        <p class="text-xs text-telosGrey leading-relaxed">A world-renowned professor generating £20m in grants is accused of data manipulation. A public tribunal will trigger a media storm, destroy their career, and cause the donor to pull funding.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd5" value="Temperance" class="mt-0.5">
+                                <span><strong>[A]</strong> Handle via confidential internal censure and a quiet data correction notice. (+Prudence, +Temperance)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd5" value="Justice" class="mt-0.5">
+                                <span><strong>[B]</strong> Initiate immediate public tribunal and notify donor at once, prioritizing absolute institutional truth. (+Justice, +Fortitude)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd5" value="Prudence" class="mt-0.5">
+                                <span><strong>[C]</strong> Broker a quiet early retirement for health reasons without publishing a formal correction. (+Pragmatism)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd5" value="Fortitude" class="mt-0.5">
+                                <span><strong>[D]</strong> Establish an independent faculty audit panel with limited disclosure rights to penalize lab budget. (+Prudence, +Justice)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 6 -->
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+                        <div class="text-xs font-bold text-telosOrange uppercase">Scenario 6: The Capital Restructuring (Manufacturing Workforce)</div>
+                        <p class="text-xs text-telosGrey leading-relaxed">To modernize a family-owned manufacturing business, you must automate the assembly line and cut 150 loyal craft workers. Delaying automation risks total corporate collapse by year four.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd6" value="Prudence" class="mt-0.5">
+                                <span><strong>[A]</strong> Execute immediate automation, cut 150 roles with generous retraining stipends, and secure viability of remaining 450. (+Prudence)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd6" value="Justice" class="mt-0.5">
+                                <span><strong>[B]</strong> Delay automation and preserve full employment for three years, absorbing cash burn. (+Justice)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd6" value="Temperance" class="mt-0.5">
+                                <span><strong>[C]</strong> Implement shared-work hour reductions (20% pay/hours cut for all 600) to avoid forced redundancies. (+Justice, +Temperance)</span>
+                            </label>
+                            <label class="p-3 rounded bg-white border border-gray-200 cursor-pointer hover:border-telosBlue flex items-start gap-2">
+                                <input type="radio" name="ejtd6" value="Fortitude" class="mt-0.5">
+                                <span><strong>[D]</strong> Sell division immediately to a leveraged consolidator, washing hands of redundancy crisis. (+Capital Protection)</span>
                             </label>
                         </div>
                     </div>
@@ -441,7 +537,7 @@
         </div>
 
         <!-- ================================================================= -->
-        <!-- BUY MODE VIEW (HIDDEN UNTIL TOGGLED) -->
+        <!-- BUY MODE VIEW -->
         <!-- ================================================================= -->
         <div id="view-buyMode" class="hidden space-y-6">
             <div class="border-b pb-4">
@@ -480,6 +576,35 @@
         </div>
 
     </main>
+
+    <!-- ROLE DEMAND MODAL POPUP -->
+    <div id="roleDemandModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-xl">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h2 class="text-lg font-bold text-telosBlue" id="modalRoleTitle">Role Blueprint</h2>
+                <button onclick="closeRoleModal()" class="text-gray-400 hover:text-gray-600 font-bold text-lg">✕</button>
+            </div>
+            <div class="space-y-3 text-xs text-telosGrey">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-3 bg-gray-50 rounded-lg border">
+                        <span class="font-bold text-telosBlue block mb-1">Cognitive Ceiling Demand:</span>
+                        <p id="modalRoleThink">Level 5 Complex Horizon</p>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg border">
+                        <span class="font-bold text-telosBlue block mb-1">Behavioral & ONA Profile:</span>
+                        <p id="modalRoleConnect">Enterprise Multiplier (Centrality > 0.80)</p>
+                    </div>
+                </div>
+                <div class="p-3 bg-orange-50 rounded-lg border border-orange-200">
+                    <span class="font-bold text-telosOrange block mb-1">ExCo Advisory Recommendation:</span>
+                    <p id="modalRoleAction" class="text-telosDark">Trigger External Executive Search Mandate.</p>
+                </div>
+            </div>
+            <div class="text-right pt-2">
+                <button onclick="closeRoleModal()" class="px-4 py-2 bg-telosBlue text-telosWhite text-xs font-bold rounded">Close Blueprint</button>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-telosBlue text-telosWhite py-3 px-6 text-center text-xs flex items-center justify-between mt-auto">
@@ -633,14 +758,14 @@
             const container = document.getElementById('roleDemandCardsContainer');
             if (!container) return;
             const roles = [
-                { title: 'Solid-State Battery R&D', pillar: 'Electrified Propulsion', lir: 78, gap: '-18 pts' },
-                { title: 'Autonomous ADAS Platform', pillar: 'Software & Autonomous', lir: 80, gap: '-23 pts' },
-                { title: 'Hydrogen Venture Leadership', pillar: 'Electrified Propulsion', lir: 82, gap: '-36 pts' }
+                { title: 'Solid-State Battery R&D', pillar: 'Electrified Propulsion', lir: 78, gap: '-18 pts', think: 'Level 5 Complex R&D', connect: 'Low ONA, Deep Technical Focus' },
+                { title: 'Autonomous ADAS Platform', pillar: 'Software & Autonomous', lir: 80, gap: '-23 pts', think: 'Level 5 Algorithmic Convergence', connect: 'Top 5% ONA Brokerage' },
+                { title: 'Hydrogen Venture Leadership', pillar: 'Electrified Propulsion', lir: 82, gap: '-36 pts', think: 'Level 5 Enterprise Horizon', connect: 'Multi-Stakeholder Alliance Builder' }
             ];
             container.innerHTML = '';
-            roles.forEach(r => {
+            roles.forEach((r, idx) => {
                 container.innerHTML += `
-                    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 space-y-3">
+                    <div onclick="openRoleModal('${r.title}', '${r.think}', '${r.connect}')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 space-y-3 cursor-pointer hover:border-telosBlue transition">
                         <span class="text-[10px] font-bold text-telosOrange uppercase bg-orange-50 px-2 py-0.5 rounded">${r.pillar}</span>
                         <h3 class="text-sm font-bold text-telosBlue">${r.title}</h3>
                         <div class="flex justify-between text-xs text-telosGrey"><span>Target LIR Demand:</span><span class="font-bold text-telosBlue">${r.lir}/100</span></div>
@@ -648,6 +773,29 @@
                     </div>
                 `;
             });
+        }
+
+        function openRoleModal(title, think, connect) {
+            document.getElementById('modalRoleTitle').innerText = title;
+            document.getElementById('modalRoleThink').innerText = think;
+            document.getElementById('modalRoleConnect').innerText = connect;
+            document.getElementById('roleDemandModal').classList.remove('hidden');
+        }
+
+        function closeRoleModal() {
+            document.getElementById('roleDemandModal').classList.add('hidden');
+        }
+
+        function calculateEJTDScore() {
+            let counts = { Prudence: 0, Fortitude: 0, Temperance: 0, Justice: 0 };
+            for (let i = 1; i <= 6; i++) {
+                const radios = document.getElementsByName('ejtd' + i);
+                for (let r of radios) {
+                    if (r.checked) counts[r.value]++;
+                }
+            }
+            let dominant = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+            document.getElementById('ejtdSummaryStatus').innerText = `Profile Calculated: Dominant Orientation is ${dominant} (Prudence: ${counts.Prudence}, Justice: ${counts.Justice}, Temperance: ${counts.Temperance}, Fortitude: ${counts.Fortitude})`;
         }
 
         function selectSearchCandidate(idx) {
@@ -660,7 +808,6 @@
             document.getElementById('candSynthesis').innerHTML = '<strong>Partner Assessment Note:</strong> ' + c.synthesis;
         }
 
-        // Initialize table on load
         window.onload = function() {
             renderLeadersTable();
         };
