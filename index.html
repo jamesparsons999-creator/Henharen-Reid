@@ -42,6 +42,8 @@
             background-color: rgb(6, 1, 0);
             z-index: 10;
         }
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: rgb(91, 89, 89); border-radius: 4px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col font-sans">
@@ -126,6 +128,44 @@
                     <span class="text-[11px] font-bold text-telosOrange mt-1 block">▲ unlocked via realignment</span>
                 </div>
             </div>
+
+            <!-- PORTFOLIO BLOCKS -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-telosGrey/30 shadow-sm space-y-6">
+                    <div>
+                        <h2 class="text-base font-bold text-telosBlue">Portfolio capability vs. role demand</h2>
+                        <p class="text-xs text-telosGrey mt-0.5">Mean LIR by engineering transformation block • dark tick = target demand</p>
+                    </div>
+                    <div class="space-y-3.5">
+                        <span class="text-[11px] font-bold text-telosGrey tracking-wider uppercase block">Electrified Propulsion Systems</span>
+                        <div>
+                            <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-telosDark">Solid-State Battery & Next-Gen Cell Chemistry</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-telosDark">60</span><span class="text-[11px] text-telosOrange font-bold w-24 text-right">vs. 78 (-18 [BUY])</span></div></div>
+                            <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-telosOrange h-full" style="width: 60%;"></div><div class="bar-target-tick" style="left: 78%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center text-xs mb-1.5"><span class="font-medium text-telosDark">Legacy ICE Engine Run-Out & Cash Harvest</span><div class="flex items-center space-x-3"><span class="font-black text-sm text-telosDark">82</span><span class="text-[11px] text-telosBlue font-bold w-24 text-right">vs. 70 (+12 [BUILD])</span></div></div>
+                            <div class="bar-track w-full h-3 rounded-sm overflow-hidden"><div class="bg-telosBlue h-full" style="width: 82%;"></div><div class="bar-target-tick" style="left: 70%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-telosGrey/30 shadow-sm space-y-4">
+                    <div>
+                        <h3 class="text-sm font-bold text-telosBlue">LIR distribution • senior engineering cohort</h3>
+                        <p class="text-[11px] text-telosGrey">320 leaders assessed • orange = target realignment band</p>
+                    </div>
+                    <div class="flex items-end justify-between h-28 pt-4 px-2 border-b border-telosGrey/30">
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosGrey/50 rounded-t h-2"></div><span class="text-[9px] text-telosGrey">&lt;30</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosGrey/50 rounded-t h-3"></div><span class="text-[9px] text-telosGrey">30-39</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosGrey rounded-t h-6"></div><span class="text-[9px] text-telosGrey">40-49</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosOrange rounded-t h-16"></div><span class="text-[9px] text-telosGrey">50-59</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosBlue rounded-t h-24"></div><span class="text-[9px] text-telosGrey">60-69</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosBlue rounded-t h-28"></div><span class="text-[9px] text-telosGrey">70-79</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosGrey rounded-t h-12"></div><span class="text-[9px] text-telosGrey">80-89</span></div>
+                        <div class="flex flex-col items-center gap-1 w-8"><div class="w-full bg-telosGrey/50 rounded-t h-2"></div><span class="text-[9px] text-telosGrey">90+</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- TAB 2: LEADERS (5-PILLAR SUMMARY TABLE & WEIGHTING CONSOLE) -->
@@ -193,19 +233,17 @@
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div class="lg:col-span-12 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6">
-                    <div class="grid grid-cols-3 gap-3 text-xs">
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Catalyst</span><div class="space-y-1 my-2" id="box-catalyst"></div></div>
-                        <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Pioneer</span><div class="space-y-1 my-2" id="box-pioneer"></div></div>
-                        <div class="bg-blue-100/50 border border-telosBlue rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Vanguard</span><div class="space-y-1 my-2" id="box-vanguard"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Drift</span><div class="space-y-1 my-2" id="box-drift"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Steward</span><div class="space-y-1 my-2" id="box-steward"></div></div>
-                        <div class="bg-blue-50/30 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Anchor</span><div class="space-y-1 my-2" id="box-anchor"></div></div>
-                        <div class="bg-orange-50/50 border border-orange-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosOrange uppercase">Outlier</span><div class="space-y-1 my-2" id="box-outlier"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Operator</span><div class="space-y-1 my-2" id="box-operator"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Pillar</span><div class="space-y-1 my-2" id="box-pillar"></div></div>
-                    </div>
+            <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6">
+                <div class="grid grid-cols-3 gap-3 text-xs">
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Catalyst</span><div class="space-y-1 my-2" id="box-catalyst"></div></div>
+                    <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Pioneer</span><div class="space-y-1 my-2" id="box-pioneer"></div></div>
+                    <div class="bg-blue-100/50 border border-telosBlue rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Vanguard</span><div class="space-y-1 my-2" id="box-vanguard"></div></div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Drift</span><div class="space-y-1 my-2" id="box-drift"></div></div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Steward</span><div class="space-y-1 my-2" id="box-steward"></div></div>
+                    <div class="bg-blue-50/30 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Anchor</span><div class="space-y-1 my-2" id="box-anchor"></div></div>
+                    <div class="bg-orange-50/50 border border-orange-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosOrange uppercase">Outlier</span><div class="space-y-1 my-2" id="box-outlier"></div></div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Operator</span><div class="space-y-1 my-2" id="box-operator"></div></div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Pillar</span><div class="space-y-1 my-2" id="box-pillar"></div></div>
                 </div>
             </div>
         </div>
@@ -243,7 +281,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-4 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-5 space-y-3">
-                    <h3 class="text-sm font-bold text-telosBlue">Candidate Shortlist (3 Candidates)</h3>
+                    <h3 class="text-sm font-bold text-telosBlue">Candidate Shortlist</h3>
                     <div class="space-y-2 text-xs" id="searchCandidateList"></div>
                 </div>
                 <div class="lg:col-span-8 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 space-y-6">
@@ -262,18 +300,8 @@
                         <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">1. Think</span><span class="font-bold text-telosDark text-[11px]" id="buyP1">Level 5</span></div>
                         <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">2. Show Up</span><span class="font-bold text-telosDark text-[11px]" id="buyP2">92nd %ile</span></div>
                         <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">3. Connect</span><span class="font-bold text-telosDark text-[11px]" id="buyP3">Global Hub</span></div>
-                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">4. Judge</span><span class="font-bold text-telosBlue text-[11px]" id="buyP4">+2P / +2J</span></div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">4. Judge</span><span class="font-bold text-telosBlue text-[11px]" id="buyP4">+2P, +2J</span></div>
                         <div class="bg-gray-50 p-2.5 rounded-xl border"><span class="block text-[9px] text-telosGrey font-bold uppercase">5. Deliver</span><span class="font-bold text-telosBlue text-[11px]" id="buyP5">Exceeding</span></div>
-                    </div>
-
-                    <!-- 3-WAY TOGGLE FOR BUY RADAR -->
-                    <div class="flex items-center justify-between pt-2">
-                        <span class="text-[10px] font-bold text-telosGrey uppercase tracking-wider">Benchmark Overlay:</span>
-                        <div class="flex bg-gray-100 p-1 rounded-lg text-xs font-semibold gap-1">
-                            <button onclick="setBuyRadarMode('role')" id="btnBuyRole" class="px-3 py-1 bg-telosBlue text-telosWhite rounded transition">Role Benchmark</button>
-                            <button onclick="setBuyRadarMode('cohort')" id="btnBuyCohort" class="px-3 py-1 text-telosGrey rounded transition">Cohort Average</button>
-                            <button onclick="setBuyRadarMode('peer')" id="btnBuyPeer" class="px-3 py-1 text-telosGrey rounded transition">Compare Peer...</button>
-                        </div>
                     </div>
 
                     <div class="relative h-56 w-full flex items-center justify-center">
@@ -308,22 +336,19 @@
                 </div>
             </div>
 
-            <!-- Visual Grid: 4-Axis Radar & 2x2 Judgment Quadrant -->
+            <!-- Visual Grid: 4-Axis Character Vector & 2x2 Judgment Quadrant -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- 1. Character Radar Vector (-12 to +12) -->
                 <div class="bg-gray-50 border border-telosGrey/30 p-4 rounded-2xl flex flex-col justify-between">
                     <h4 class="text-xs uppercase tracking-wider text-telosGrey font-bold mb-3">4-Axis Character Vector (-12 to +12)</h4>
                     <div id="modalCoordinatesList" class="space-y-2 text-xs"></div>
                 </div>
 
-                <!-- 2. 2x2 Judgment Quadrant (Dynamic Dot Positioned per Leader) -->
                 <div class="bg-gray-50 border border-telosGrey/30 p-4 rounded-2xl flex flex-col justify-between">
                     <h4 class="text-xs uppercase tracking-wider text-telosGrey font-bold mb-2">Behavioral Risk Quadrant</h4>
                     <div class="relative bg-white border border-telosGrey/30 h-40 rounded-xl p-3 flex flex-col justify-between text-center text-[10px] text-telosGrey">
                         <div class="text-telosBlue font-bold">▲ High Courage / Confrontation</div>
                         <div class="flex justify-between items-center px-2">
                             <span>◀ Pragmatic / Evasion</span>
-                            <!-- Dynamic Glowing Dot Positioned via JS -->
                             <div id="quadrantDot" class="absolute w-4 h-4 bg-telosOrange rounded-full shadow-[0_0_12px_rgba(217,83,44,0.9)] transition-all duration-500" style="top: 50%; left: 50%;"></div>
                             <span>Systemic Stewardship ▶</span>
                         </div>
@@ -356,14 +381,13 @@
 
     <footer class="bg-telosBlue text-telosWhite/80 py-3 px-6 border-t border-telosWhite/10 text-xs mt-auto flex justify-between items-center">
         <span><strong>5-Pillar Talent Architecture:</strong> Think • Show Up • Connect • Judge • Deliver.</span>
-        <span>TELOS Executive Intelligence • v2.9</span>
+        <span>TELOS Executive Intelligence • v3.0</span>
     </footer>
 
     <!-- SCRIPT ENGINE -->
     <script>
         let buyRadar = null;
         let currentAppMode = 'build';
-        let currentBuyRadarMode = 'role';
         let activeBuyMandateKey = 'h2';
         let activeBuyCandIdx = 0;
         let weights = { p1: 0.30, p2: 0.25, p3: 0.15, p4: 0.15, p5: 0.15 };
@@ -684,18 +708,6 @@
             });
 
             renderBuyRadar(c.scores);
-        }
-
-        function setBuyRadarMode(mode) {
-            currentBuyRadarMode = mode;
-            const btnRole = document.getElementById('btnBuyRole');
-            const btnCohort = document.getElementById('btnBuyCohort');
-            const btnPeer = document.getElementById('btnBuyPeer');
-            [btnRole, btnCohort, btnPeer].forEach(b => b.className = 'px-3 py-1 text-telosGrey rounded transition');
-            if (mode === 'role') btnRole.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
-            else if (mode === 'cohort') btnCohort.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
-            else btnPeer.className = 'px-3 py-1 bg-telosBlue text-telosWhite rounded transition';
-            selectBuyCandidate(activeBuyMandateKey, activeBuyCandIdx);
         }
 
         function renderBuyRadar(scores) {
