@@ -276,31 +276,31 @@
             </div>
             
             <div class="flex flex-col lg:flex-row items-start gap-8">
-                <!-- Matrix Container -->
-                <div class="flex items-center gap-3 flex-1 w-full max-w-5xl">
-                    <!-- Y-Axis Label (Potential) - Aligned directly beside the matrix border -->
+                <!-- Matrix Container - Expanded Width -->
+                <div class="flex items-center gap-3 flex-1 w-full max-w-6xl">
+                    <!-- Y-Axis Label (Potential) -->
                     <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-20 text-center select-none">
                         Potential ▲
                     </div>
 
                     <!-- Matrix Board Card -->
                     <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 flex-1 w-full">
-                        <!-- Inner 3x3 Grid with compact, responsive box heights -->
-                        <div class="grid grid-cols-3 gap-3 text-xs">
+                        <!-- Inner 3x3 Grid -->
+                        <div class="grid grid-cols-3 gap-4 text-xs">
                             <!-- Row 1 (Top): High Potential -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
-                            <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 my-auto" id="box-visionary"></div></div>
-                            <div class="bg-blue-100/60 border border-telosBlue rounded-2xl p-3 min-h-[110px] flex flex-col shadow-sm"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 my-auto" id="box-vanguard"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
+                            <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 my-auto" id="box-visionary"></div></div>
+                            <div class="bg-blue-100/60 border border-telosBlue rounded-2xl p-4 min-h-[120px] flex flex-col shadow-sm"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 my-auto" id="box-vanguard"></div></div>
 
                             <!-- Row 2 (Middle): Medium Potential -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 my-auto" id="box-variable"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 my-auto" id="box-steward"></div></div>
-                            <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 my-auto" id="box-keystone"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 my-auto" id="box-variable"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 my-auto" id="box-steward"></div></div>
+                            <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 my-auto" id="box-keystone"></div></div>
 
                             <!-- Row 3 (Bottom): Low Potential -->
-                            <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 my-auto" id="box-misaligned"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 my-auto" id="box-practitioner"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 my-auto" id="box-stalwart"></div></div>
+                            <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 my-auto" id="box-misaligned"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 my-auto" id="box-practitioner"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 my-auto" id="box-stalwart"></div></div>
                         </div>
 
                         <!-- X-Axis Label (Performance) -->
