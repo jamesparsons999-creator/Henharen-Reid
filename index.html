@@ -269,38 +269,38 @@
             </div>
         </div>
 
-     <!-- TAB 2.5: 9-BOX -->
+   <!-- TAB 2.5: 9-BOX -->
         <div id="view-ninebox" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
             </div>
             
             <div class="flex flex-col lg:flex-row items-start gap-8">
-                <!-- Outer Matrix Shell with Clean Margins for Axes -->
-                <div class="flex items-center gap-4 flex-1 w-full max-w-5xl">
-                    <!-- Y-Axis Label (Potential) -->
-                    <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-24 text-center select-none">
+                <!-- Matrix Container -->
+                <div class="flex items-center gap-3 flex-1 w-full max-w-5xl">
+                    <!-- Y-Axis Label (Potential) - Aligned directly beside the matrix border -->
+                    <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-20 text-center select-none">
                         Potential ▲
                     </div>
 
                     <!-- Matrix Board Card -->
-                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 flex-1 w-full relative">
-                        <!-- Inner 3x3 Grid -->
-                        <div class="grid grid-cols-3 gap-3.5 text-xs">
+                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 flex-1 w-full">
+                        <!-- Inner 3x3 Grid with compact, responsive box heights -->
+                        <div class="grid grid-cols-3 gap-3 text-xs">
                             <!-- Row 1 (Top): High Potential -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-enigma"></div></div>
-                            <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-visionary"></div></div>
-                            <div class="bg-blue-100/60 border border-telosBlue rounded-2xl p-3 h-32 flex flex-col shadow-sm"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-vanguard"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
+                            <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 my-auto" id="box-visionary"></div></div>
+                            <div class="bg-blue-100/60 border border-telosBlue rounded-2xl p-3 min-h-[110px] flex flex-col shadow-sm"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 my-auto" id="box-vanguard"></div></div>
 
                             <!-- Row 2 (Middle): Medium Potential -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-variable"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-steward"></div></div>
-                            <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-keystone"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 my-auto" id="box-variable"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 my-auto" id="box-steward"></div></div>
+                            <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 my-auto" id="box-keystone"></div></div>
 
                             <!-- Row 3 (Bottom): Low Potential -->
-                            <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-misaligned"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-practitioner"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-3 h-32 flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 overflow-y-auto custom-scroll my-auto" id="box-stalwart"></div></div>
+                            <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 my-auto" id="box-misaligned"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 my-auto" id="box-practitioner"></div></div>
+                            <div class="bg-white border border-slate-200 rounded-2xl p-3 min-h-[110px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 my-auto" id="box-stalwart"></div></div>
                         </div>
 
                         <!-- X-Axis Label (Performance) -->
@@ -310,8 +310,8 @@
                     </div>
                 </div>
 
-                <!-- Succession Breakdown Panel (Aligned cleanly on the right) -->
-                <div class="w-full lg:w-80 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 shrink-0 lg:mt-12">
+                <!-- Succession Breakdown Panel -->
+                <div class="w-full lg:w-80 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 shrink-0 lg:mt-6">
                     <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
                     <div class="space-y-2.5 text-xs">
                         <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Top Talent / Stars:</span><span class="font-black" id="countStars">2</span></div>
