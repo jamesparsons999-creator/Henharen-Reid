@@ -277,14 +277,14 @@
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <!-- Matrix Container (Span 8) -->
-                <div class="lg:col-span-8 flex items-center gap-4 w-full">
-                    <!-- Y-Axis Label (Potential) with corrected arrow pointing UP -->
-                    <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-24 text-center select-none">
-                        Potential ▶
-                    </div>
+                <div class="lg:col-span-8 w-full">
+                    <!-- Matrix Board Card with Relative Positioning -->
+                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 pl-16 pb-8 relative w-full">
+                        <!-- Y-Axis Label (Potential) - Docked vertically centered inside the left edge of the card -->
+                        <div class="absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none">
+                            Potential ▶
+                        </div>
 
-                    <!-- Matrix Board Card -->
-                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 flex-1 w-full">
                         <!-- Inner 3x3 Grid -->
                         <div class="grid grid-cols-3 gap-4 text-xs">
                             <!-- Row 1 (Top): High Potential -->
