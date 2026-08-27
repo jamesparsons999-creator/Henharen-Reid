@@ -616,7 +616,25 @@
             if (tabId === 'scenarios') { populateScenarioDropdowns(); runSimulation(); }
             if (tabId === 'plan2035') renderPlanTable();
         }
-
+function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Remove active styling from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-navy-950', 'text-white', 'shadow');
+                el.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+            // Show selected tab content
+            const targetContent = document.getElementById('tab-' + tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
+            
+            // Highlight selected tab button if it exists
+            const targetBtn = document.getElementById('btnTab-' + tabId);
+            if (targetBtn) {
+                targetBtn.classList.add('bg-navy-950', 'text-white', 'shadow');
+                targetbtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            }
+        }
         function filterPillar(pillar) {
             ['all', 'propulsion', 'software', 'operations'].forEach(b => {
                 const btn = document.getElementById('btn-pillar-' + b);
