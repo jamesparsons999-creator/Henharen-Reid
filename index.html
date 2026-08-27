@@ -269,7 +269,7 @@
             </div>
         </div>
 
-  <!-- TAB 2.5: 9-BOX -->
+ <!-- TAB 2.5: 9-BOX -->
         <div id="view-ninebox" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
@@ -281,14 +281,14 @@
                     <!-- Matrix Board Card -->
                     <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 pb-8 w-full">
                         
-                        <!-- Flex Row for Axis Label + 3x3 Grid -->
+                        <!-- Side-by-side Flow Layout for Axis Label + 3x3 Grid -->
                         <div class="flex items-center gap-4">
-                            <!-- Y-Axis Label (Potential) in Flow (No Absolute Overlap) -->
+                            <!-- Y-Axis Label (Potential) in Flow (Matches Performance Alignment Style) -->
                             <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-16 text-center select-none">
                                 Potential ▶
                             </div>
 
-                            <!-- Inner 3x3 Grid (Flex-1 to fill remaining width) -->
+                            <!-- Inner 3x3 Grid -->
                             <div class="grid grid-cols-3 gap-4 text-xs flex-1">
                                 <!-- Row 1 (Top): High Potential -->
                                 <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
@@ -308,13 +308,13 @@
                         </div>
 
                         <!-- X-Axis Label (Performance) -->
-                        <div class="text-center mt-5 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none pl-20">
+                        <div class="text-center mt-5 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none pl-16">
                             Performance ►
                         </div>
                     </div>
                 </div>
 
-                <!-- Succession Breakdown Panel (Span 4 on Right) -->
+                <!-- Succession Breakdown Panel (Span 4 on Right - Single Instance) -->
                 <div class="lg:col-span-4 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 lg:mt-6">
                     <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
                     <div class="space-y-2.5 text-xs">
@@ -326,20 +326,7 @@
                 </div>
             </div>
         </div>
-
-                <!-- Succession Breakdown Panel (Span 4 on Right) -->
-                <div class="lg:col-span-4 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 lg:mt-6">
-                    <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
-                    <div class="space-y-2.5 text-xs">
-                        <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Top Talent / Stars:</span><span class="font-black" id="countStars">2</span></div>
-                        <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Execution Engines:</span><span class="font-black" id="countEngines">4</span></div>
-                        <div class="flex justify-between font-medium"><span class="text-telosGrey font-bold">Enigmas / Dilemmas:</span><span class="font-black" id="countEnigmas">2</span></div>
-                        <div class="flex justify-between font-medium"><span class="text-telosOrange font-bold">At Risk / Redeploy:</span><span class="font-black text-telosOrange" id="countRisk">2</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
+               
         <!-- TAB 3: ROLE DEMAND -->
         <div id="view-roleDemand" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
