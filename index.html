@@ -80,12 +80,12 @@
 
         <div class="bg-telosBlue/95 text-telosWhite border-t border-telosWhite/10 px-6 py-2.5 shadow-inner" id="mainTabsContainer">
             <div class="max-w-7xl mx-auto flex space-x-8 text-xs font-semibold overflow-x-auto" id="mainTabs">
-                <button onclick="switchTab('portfolio')" id="tab-portfolio" class="border-b-2 border-telosOrange pb-1 text-telosWhite transition whitespace-nowrap">Portfolio</button>
-                <button onclick="switchTab('leaders')" id="tab-leaders" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap">Leaders (5-Pillar)</button>
-                <button onclick="switchTab('ninebox')" id="tab-ninebox" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap">9-Box Grid</button>
-                <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap">Role Demand</button>
-                <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap">Scenarios</button>
-                <button onclick="switchTab('plan2035')" id="tab-plan2035" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap">2035 Plan</button>
+                <button onclick="switchTab('portfolio')" id="tab-portfolio" class="border-b-2 border-telosOrange pb-1 text-telosWhite transition whitespace-nowrap font-bold">Portfolio</button>
+                <button onclick="switchTab('leaders')" id="tab-leaders" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap pb-1">Leaders (5-Pillar)</button>
+                <button onclick="switchTab('ninebox')" id="tab-ninebox" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap pb-1">9-Box Grid</button>
+                <button onclick="switchTab('roleDemand')" id="tab-roleDemand" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap pb-1">Role Demand</button>
+                <button onclick="switchTab('scenarios')" id="tab-scenarios" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap pb-1">Scenarios</button>
+                <button onclick="switchTab('plan2035')" id="tab-plan2035" class="border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap pb-1">2035 Plan</button>
             </div>
         </div>
     </div>
@@ -254,7 +254,8 @@
             </div>
 
             <!-- SUMMARY TABLE -->
-            <div class="grid grid-cols-12 items-center text-xs font-bold text-telosGrey uppercase tracking-wider border-b border-telosGrey/30 pb-3 px-2">
+            <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm overflow-hidden p-4">
+                <div class="grid grid-cols-12 items-center text-xs font-bold text-telosGrey uppercase tracking-wider border-b border-telosGrey/30 pb-3 px-2">
                     <span class="col-span-3 cursor-pointer" onclick="sortTable('name')">Leader & Role ↕</span>
                     <span class="col-span-1 text-center">1. Think</span>
                     <span class="col-span-1 text-center">2. Show</span>
@@ -408,7 +409,7 @@
 
     <!-- INTERACTIVE POP-OUT MODAL FOR LEADERS (BUILD) WITH 3-WAY TOGGLE -->
     <div id="leaderModal" class="hidden fixed inset-0 bg-telosDark/70 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 space-y-5 shadow-2xl relative">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scroll">
             <button onclick="closeLeaderModal()" class="absolute top-6 right-6 text-telosGrey hover:text-telosDark font-bold text-xl">✕</button>
             <div class="flex items-start justify-between border-b border-telosGrey/20 pb-4">
                 <div>
@@ -432,10 +433,10 @@
                 <div class="bg-gray-50 p-2 rounded border"><span class="block text-[9px] text-telosGrey font-bold uppercase">5. Deliver</span><span class="font-bold text-telosBlue text-[11px]" id="modalP5">Transformational</span></div>
             </div>
 
-          <!-- 4-Virtue Character Radar -->
-            <div class="bg-gray-50 border border-telosGrey/30 p-4 rounded-2xl flex flex-col justify-between my-4">
-                <h4 class="text-xs uppercase tracking-wider text-telosGrey font-bold mb-3">Character Telemetry • 4 Virtue Profile</h4>
-                <div class="relative h-48 w-full flex items-center justify-center">
+            <!-- 4-Virtue Profile Radar -->
+            <div class="bg-gray-50 border border-telosGrey/30 p-4 rounded-2xl flex flex-col justify-between my-2">
+                <h4 class="text-xs uppercase tracking-wider text-telosGrey font-bold mb-3">Character Telemetry • 4-Virtue Profile</h4>
+                <div class="relative h-44 w-full flex items-center justify-center">
                     <canvas id="virtueRadarChart"></canvas>
                 </div>
             </div>
@@ -473,6 +474,7 @@
     <!-- SCRIPT ENGINE -->
     <script>
         let leaderModalRadar = null;
+        let virtueRadar = null;
         let buyRadar = null;
         let currentAppMode = 'build';
         let currentModalRadarMode = 'role';
@@ -601,11 +603,13 @@
 
         function switchTab(tabId) {
             ['portfolio', 'leaders', 'ninebox', 'roleDemand', 'scenarios', 'plan2035'].forEach(t => {
-                document.getElementById('view-' + t).classList.add('hidden');
+                const viewEl = document.getElementById('view-' + t);
+                if (viewEl) viewEl.classList.add('hidden');
                 const btn = document.getElementById('tab-' + t);
                 if (btn) btn.className = 'border-b-2 border-transparent text-telosWhite/70 hover:text-telosWhite transition whitespace-nowrap pb-1';
             });
-            document.getElementById('view-' + tabId).classList.remove('hidden');
+            const targetView = document.getElementById('view-' + tabId);
+            if (targetView) targetView.classList.remove('hidden');
             const activeBtn = document.getElementById('tab-' + tabId);
             if (activeBtn) activeBtn.className = 'border-b-2 border-telosOrange pb-1 text-telosWhite transition whitespace-nowrap font-bold';
 
@@ -615,25 +619,7 @@
             if (tabId === 'scenarios') { populateScenarioDropdowns(); runSimulation(); }
             if (tabId === 'plan2035') renderPlanTable();
         }
-function switchTab(tabId) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            // Remove active styling from all tab buttons
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-navy-950', 'text-white', 'shadow');
-                el.classList.add('text-slate-600', 'hover:bg-slate-100');
-            });
-            // Show selected tab content
-            const targetContent = document.getElementById('tab-' + tabId);
-            if (targetContent) targetContent.classList.remove('hidden');
-            
-            // Highlight selected tab button if it exists
-            const targetBtn = document.getElementById('btnTab-' + tabId);
-            if (targetBtn) {
-                targetBtn.classList.add('bg-navy-950', 'text-white', 'shadow');
-                targetbtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
-            }
-        }
+
         function filterPillar(pillar) {
             ['all', 'propulsion', 'software', 'operations'].forEach(b => {
                 const btn = document.getElementById('btn-pillar-' + b);
@@ -732,17 +718,7 @@ function switchTab(tabId) {
             document.getElementById('modalP5').innerText = l.deliverScore;
             document.getElementById('modalLeaderSynthesis').innerHTML = '<strong>Diagnostic Summary:</strong> ' + l.synthesis;
 
-            // Position 2x2 Character Heatmap Dot Dynamically
-            const dot = document.getElementById('quadrantDot');
-            if (dot) {
-                let xCoord = id === 'holt' ? 8 : (id === 'bergstrom' ? -7 : 4);
-                let yCoord = id === 'bergstrom' ? -8 : (id === 'holt' ? 7 : 5);
-                const xPercent = 50 + (xCoord / 10) * 35;
-                const yPercent = 50 - (yCoord / 10) * 35;
-                dot.style.left = `${Math.max(15, Math.min(85, xPercent))}%`;
-                dot.style.top = `${Math.max(15, Math.min(85, yPercent))}%`;
-            }
-renderVirtueRadar(l.virtueScores || [80, 80, 80, 80]);
+            renderVirtueRadar(l.virtueScores || [80, 80, 80, 80]);
             populateModalPeerDropdown();
             document.getElementById('leaderModal').classList.remove('hidden');
             setModalRadarMode('role');
@@ -1009,7 +985,6 @@ renderVirtueRadar(l.virtueScores || [80, 80, 80, 80]);
                 `;
             });
         }
-let virtueRadar = null;
 
         function renderVirtueRadar(scores) {
             const ctx = document.getElementById('virtueRadarChart');
@@ -1037,10 +1012,6 @@ let virtueRadar = null;
             });
         }
 
-        window.onload = function() {
-            recalculateAllLeaders();
-            renderRoleDemandCards();
-        };
         window.onload = function() {
             recalculateAllLeaders();
             renderRoleDemandCards();
