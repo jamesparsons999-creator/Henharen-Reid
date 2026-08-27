@@ -278,39 +278,43 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <!-- Matrix Container (Span 8) -->
                 <div class="lg:col-span-8 w-full">
-                    <!-- Matrix Board Card with Clean Left Margin Channel -->
-                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 pl-14 pb-8 relative w-full">
-                        <!-- Y-Axis Label (Potential) - Safely docked in the left margin -->
-                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 -rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none">
-                            Potential ▶
-                        </div>
+                    <!-- Matrix Board Card -->
+                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 pb-8 w-full">
+                        
+                        <!-- Flex Row for Axis Label + 3x3 Grid -->
+                        <div class="flex items-center gap-4">
+                            <!-- Y-Axis Label (Potential) in Flow (No Absolute Overlap) -->
+                            <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-16 text-center select-none">
+                                Potential ▶
+                            </div>
 
-                        <!-- Inner 3x3 Grid -->
-                        <div class="grid grid-cols-3 gap-4 text-xs">
-                            <!-- Row 1 (Top): High Potential -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
-                            <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 my-auto" id="box-visionary"></div></div>
-                            <div class="bg-blue-100/60 border border-telosBlue rounded-2xl p-4 min-h-[120px] flex flex-col shadow-sm"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 my-auto" id="box-vanguard"></div></div>
+                            <!-- Inner 3x3 Grid (Flex-1 to fill remaining width) -->
+                            <div class="grid grid-cols-3 gap-4 text-xs flex-1">
+                                <!-- Row 1 (Top): High Potential -->
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
+                                <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 my-auto" id="box-visionary"></div></div>
+                                <div class="bg-blue-100/60 border border-telosBlue rounded-2xl p-4 min-h-[120px] flex flex-col shadow-sm"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 my-auto" id="box-vanguard"></div></div>
 
-                            <!-- Row 2 (Middle): Medium Potential -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 my-auto" id="box-variable"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 my-auto" id="box-steward"></div></div>
-                            <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 my-auto" id="box-keystone"></div></div>
+                                <!-- Row 2 (Middle): Medium Potential -->
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 my-auto" id="box-variable"></div></div>
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 my-auto" id="box-steward"></div></div>
+                                <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 my-auto" id="box-keystone"></div></div>
 
-                            <!-- Row 3 (Bottom): Low Potential -->
-                            <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 my-auto" id="box-misaligned"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 my-auto" id="box-practitioner"></div></div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 my-auto" id="box-stalwart"></div></div>
+                                <!-- Row 3 (Bottom): Low Potential -->
+                                <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 my-auto" id="box-misaligned"></div></div>
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 my-auto" id="box-practitioner"></div></div>
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 my-auto" id="box-stalwart"></div></div>
+                            </div>
                         </div>
 
                         <!-- X-Axis Label (Performance) -->
-                        <div class="text-center mt-5 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none">
+                        <div class="text-center mt-5 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none pl-20">
                             Performance ►
                         </div>
                     </div>
                 </div>
 
-                <!-- Succession Breakdown Panel (Span 4 on Right - Single Instance) -->
+                <!-- Succession Breakdown Panel (Span 4 on Right) -->
                 <div class="lg:col-span-4 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 lg:mt-6">
                     <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
                     <div class="space-y-2.5 text-xs">
