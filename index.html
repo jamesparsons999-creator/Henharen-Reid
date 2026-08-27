@@ -262,18 +262,16 @@
 
             <!-- SUMMARY TABLE -->
             <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 space-y-4">
-                <div class="grid grid-cols-12 items-center text-xs font-bold text-telosGrey uppercase tracking-wider border-b border-telosGrey/30 pb-3 px-2">
-                    <span class="col-span-4 cursor-pointer" onclick="sortTable('name')">Leader & Role ↕</span>
-                    <span class="col-span-2 text-center">1. Think</span>
-                    <span class="col-span-2 text-center">2. Show Up</span>
-                    <span class="col-span-1 text-center">3. Connect</span>
-                    <span class="col-span-1 text-center cursor-pointer" onclick="sortTable('lir')">LIR ▼</span>
-                    <span class="col-span-2 text-right">Role Fit Status</span>
-                </div>
-                <div class="divide-y divide-gray-100 text-xs" id="leaderRoster"></div>
-            </div>
-        </div>
-
+               <div class="grid grid-cols-12 items-center text-xs font-bold text-telosGrey uppercase tracking-wider border-b border-telosGrey/30 pb-3 px-2">
+    <span class="col-span-3">Leader & Role</span>
+    <span class="col-span-1 text-center">1. Think</span>
+    <span class="col-span-1 text-center">2. Show</span>
+    <span class="col-span-1 text-center">3. Connect</span>
+    <span class="col-span-1 text-center">4. Judge</span>
+    <span class="col-span-1 text-center">5. Deliver</span>
+    <span class="col-span-1 text-center">LIR ▼</span>
+    <span class="col-span-2 text-right">Role Fit Status</span>
+</div>
         <!-- TAB 2.5: 9-BOX -->
         <div id="view-ninebox" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
@@ -648,17 +646,19 @@
                 const row = document.createElement('div');
                 row.className = 'grid grid-cols-12 items-center py-3 px-2 hover:bg-gray-50 cursor-pointer transition rounded-xl border border-transparent hover:border-telosGrey/30';
                 row.onclick = () => openLeaderModal(l.id);
-                row.innerHTML = `
-                    <div class="col-span-4 flex items-center gap-2.5 overflow-hidden pr-2">
-                        <div class="w-8 h-8 rounded-full bg-telosBlue text-telosWhite font-bold flex items-center justify-center text-xs shrink-0">${l.initials}</div>
-                        <div class="overflow-hidden"><h4 class="font-bold text-telosDark truncate">${l.name}</h4><p class="text-[10px] text-telosGrey truncate">${l.role}</p></div>
-                    </div>
-                    <span class="col-span-2 text-center font-bold text-telosGrey">${l.cppLevel}</span>
-                    <span class="col-span-2 text-center font-bold text-telosBlue">${l.zfPct}</span>
-                    <span class="col-span-1 text-center font-bold text-telosGrey">${l.onaBadge}</span>
-                    <span class="col-span-1 text-center font-black text-telosDark">${l.lir}</span>
-                    <div class="col-span-2 text-right"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span></div>
-                `;
+               row.innerHTML = `
+    <div class="col-span-3 flex items-center gap-2.5 overflow-hidden pr-2">
+        <div class="w-8 h-8 rounded-full bg-telosBlue text-telosWhite font-bold flex items-center justify-center text-xs shrink-0">${l.initials}</div>
+        <div class="overflow-hidden"><h4 class="font-bold text-telosDark truncate">${l.name}</h4><p class="text-[10px] text-telosGrey truncate">${l.role}</p></div>
+    </div>
+    <span class="col-span-1 text-center font-bold text-telosGrey">${l.cppLevel}</span>
+    <span class="col-span-1 text-center font-bold text-telosBlue">${l.zfPct}</span>
+    <span class="col-span-1 text-center font-bold text-telosGrey">${l.onaBadge}</span>
+    <span class="col-span-1 text-center"><span class="bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded text-[10px] font-bold">${l.judgeData.dominantVirtue}</span></span>
+    <span class="col-span-1 text-center text-telosDark text-[11px] font-semibold">Verified</span>
+    <span class="col-span-1 text-center font-black text-telosDark">${l.lir}</span>
+    <div class="col-span-2 text-right"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span></div>
+`;
                 rosterContainer.appendChild(row);
             });
         }
