@@ -276,16 +276,18 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-9 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6">
-                    <div class="grid grid-cols-3 gap-3 text-xs">
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">The Enigma / Maverick</span><div class="space-y-1 my-2" id="box-enigma"></div></div>
-                        <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">The High-Potential Star</span><div class="space-y-1 my-2" id="box-star-growth"></div></div>
-                        <div class="bg-blue-100/50 border border-telosBlue rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">The Enterprise Star</span><div class="space-y-1 my-2" id="box-star-top"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">The Inconsistent Dilemma</span><div class="space-y-1 my-2" id="box-dilemma"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">The Core Contributor</span><div class="space-y-1 my-2" id="box-core"></div></div>
-                        <div class="bg-blue-50/30 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">The Execution Engine</span><div class="space-y-1 my-2" id="box-engine"></div></div>
-                        <div class="bg-orange-50/50 border border-orange-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosOrange uppercase">The Straining Specialist</span><div class="space-y-1 my-2" id="box-risk"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">The Effective Specialist</span><div class="space-y-1 my-2" id="box-specialist"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">The Solid Rock / Anchor</span><div class="space-y-1 my-2" id="box-rock"></div></div>
+                 <div class="grid grid-cols-3 gap-3 text-xs">
+                        <div class="bg-blue-100/50 border border-telosBlue rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Vanguard</span><div class="space-y-1 my-2" id="box-vanguard"></div></div>
+                        <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Visionary</span><div class="space-y-1 my-2" id="box-visionary"></div></div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Enigma</span><div class="space-y-1 my-2" id="box-enigma"></div></div>
+                        
+                        <div class="bg-blue-50/30 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Keystone</span><div class="space-y-1 my-2" id="box-keystone"></div></div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Steward</span><div class="space-y-1 my-2" id="box-steward"></div></div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Variable</span><div class="space-y-1 my-2" id="box-variable"></div></div>
+                        
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Stalwart</span><div class="space-y-1 my-2" id="box-stalwart"></div></div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Practitioner</span><div class="space-y-1 my-2" id="box-practitioner"></div></div>
+                        <div class="bg-orange-50/50 border border-orange-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosOrange uppercase">Misaligned</span><div class="space-y-1 my-2" id="box-misaligned"></div></div>
                     </div>
                 </div>
                 <div class="lg:col-span-3 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-5 space-y-3">
@@ -821,15 +823,32 @@
         }
 
         function updateNineBoxGrid() {
-            ['box-enigma', 'box-star-growth', 'box-star-top', 'box-dilemma', 'box-core', 'box-engine', 'box-risk', 'box-specialist', 'box-rock'].forEach(id => {
-                const el = document.getElementById(id); if (el) el.innerHTML = '';
+            // Clear all 9 boxes first
+            ['box-vanguard', 'box-visionary', 'box-enigma', 'box-keystone', 'box-steward', 'box-variable', 'box-stalwart', 'box-practitioner', 'box-misaligned'].forEach(id => {
+                const el = document.getElementById(id); 
+                if (el) el.innerHTML = '';
             });
+
             leadersData.forEach(l => {
+                // Determine Y-Axis (Potential: Think & Connect) and X-Axis (Performance: Deliver/Show)
                 let potScore = (l.pillarScores[0] * 0.5) + (l.pillarScores[2] * 0.5);
                 let perfScore = l.pillarScores[4];
-                let targetBox = potScore >= 78 && perfScore >= 80 ? 'box-star-top' : (potScore >= 78 ? 'box-star-growth' : (potScore >= 78 ? 'box-enigma' : (perfScore >= 80 ? 'box-engine' : 'box-core')));
-                if (l.stateBadge === 'REDEPLOY') targetBox = 'box-risk';
-                const boxEl = document.getElementById(targetBox) || document.getElementById('box-core');
+
+                let targetBox = 'box-steward'; // default fallback
+
+                if (potScore >= 78 && perfScore >= 80) targetBox = 'box-vanguard';
+                else if (potScore >= 78 && perfScore >= 65) targetBox = 'box-visionary';
+                else if (potScore >= 78) targetBox = 'box-enigma';
+                else if (potScore >= 65 && perfScore >= 80) targetBox = 'box-keystone';
+                else if (potScore >= 65 && perfScore >= 65) targetBox = 'box-steward';
+                else if (potScore >= 65) targetBox = 'box-variable';
+                else if (perfScore >= 80) targetBox = 'box-stalwart';
+                else if (perfScore >= 65) targetBox = 'box-practitioner';
+                else targetBox = 'box-misaligned';
+
+                if (l.stateBadge === 'REDEPLOY') targetBox = 'box-misaligned';
+
+                const boxEl = document.getElementById(targetBox);
                 if (boxEl) {
                     const pill = document.createElement('div');
                     pill.className = 'flex items-center justify-between p-1 bg-white rounded border border-telosGrey/30 cursor-pointer hover:border-telosBlue transition';
