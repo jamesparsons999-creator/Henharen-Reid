@@ -643,13 +643,15 @@
                 row.className = 'grid grid-cols-12 items-center py-3 px-2 hover:bg-gray-50 cursor-pointer transition rounded-xl border border-transparent hover:border-telosGrey/30';
                 row.onclick = () => openLeaderModal(l.id);
                 row.innerHTML = `
-                    <div class="col-span-4 flex items-center gap-2.5 overflow-hidden pr-2">
+                    <div class="col-span-3 flex items-center gap-2.5 overflow-hidden pr-2">
                         <div class="w-8 h-8 rounded-full bg-telosBlue text-telosWhite font-bold flex items-center justify-center text-xs shrink-0">${l.initials}</div>
                         <div class="overflow-hidden"><h4 class="font-bold text-telosDark truncate">${l.name}</h4><p class="text-[10px] text-telosGrey truncate">${l.role}</p></div>
                     </div>
-                    <span class="col-span-2 text-center font-bold text-telosGrey">${l.cppLevel}</span>
-                    <span class="col-span-2 text-center font-bold text-telosBlue">${l.zfPct}</span>
+                    <span class="col-span-1 text-center font-bold text-telosGrey">${l.cppLevel}</span>
+                    <span class="col-span-1 text-center font-bold text-telosBlue">${l.zfPct}</span>
                     <span class="col-span-1 text-center font-bold text-telosGrey">${l.onaBadge}</span>
+                    <span class="col-span-1 text-center font-bold text-indigo-700">${l.judgeScore || '+2P / +2J'}</span>
+                    <span class="col-span-1 text-center font-bold text-telosDark">${l.deliverScore || 'Verified'}</span>
                     <span class="col-span-1 text-center font-black text-telosDark">${l.lir}</span>
                     <div class="col-span-2 text-right"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${l.stateClass} inline-block">${l.stateBadge}</span></div>
                 `;
