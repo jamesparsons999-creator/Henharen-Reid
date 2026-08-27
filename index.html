@@ -275,12 +275,12 @@
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
             </div>
             
-            <div class="flex flex-col lg:flex-row items-start gap-8">
-                <!-- Matrix Container - Expanded Width -->
-                <div class="flex items-center gap-3 flex-1 w-full max-w-6xl">
-                    <!-- Y-Axis Label (Potential) -->
-                    <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-20 text-center select-none">
-                        Potential ▲
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Matrix Container (Span 8) -->
+                <div class="lg:col-span-8 flex items-center gap-4 w-full">
+                    <!-- Y-Axis Label (Potential) with corrected arrow pointing UP -->
+                    <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-24 text-center select-none">
+                        Potential ▶
                     </div>
 
                     <!-- Matrix Board Card -->
@@ -310,8 +310,8 @@
                     </div>
                 </div>
 
-                <!-- Succession Breakdown Panel -->
-                <div class="w-full lg:w-80 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 shrink-0 lg:mt-6">
+                <!-- Succession Breakdown Panel (Span 4 on Right) -->
+                <div class="lg:col-span-4 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 lg:mt-6">
                     <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
                     <div class="space-y-2.5 text-xs">
                         <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Top Talent / Stars:</span><span class="font-black" id="countStars">2</span></div>
