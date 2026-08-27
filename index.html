@@ -269,22 +269,21 @@
             </div>
         </div>
 
-      <!-- TAB 2.5: 9-BOX -->
+     <!-- TAB 2.5: 9-BOX -->
         <div id="view-ninebox" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
             </div>
             
-            <div class="flex flex-col lg:flex-row items-start gap-8">
-                <!-- Outer Wrapper with Left Potential Axis Label -->
-                <div class="relative pl-10 flex-1 w-full">
-                    <!-- Y-Axis Label (Potential) - Positioned entirely outside the card on the left -->
-                    <div class="absolute -left-2 top-1/2 -translate-y-1/2 -rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase">
+            <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+                <!-- Main Grid Card Container -->
+                <div class="flex items-center gap-4 flex-1 w-full max-w-4xl">
+                    <!-- Y-Axis Label (Potential) - Sits cleanly to the absolute left of the grid card -->
+                    <div class="-rotate-90 text-[11px] font-bold text-telosGrey tracking-widest uppercase shrink-0 w-20 text-center">
                         Potential ▲
                     </div>
 
-                    <!-- Main Grid Card -->
-                    <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 pb-8">
+                    <div class="bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 pb-8 flex-1 w-full relative">
                         <div class="grid grid-cols-3 gap-3 text-xs">
                             <!-- Row 1 (Top): High Potential -->
                             <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px] flex flex-col"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2">Enigma</span><div class="space-y-1 my-auto" id="box-enigma"></div></div>
@@ -309,8 +308,8 @@
                     </div>
                 </div>
 
-                <!-- Succession Breakdown Panel (Cleanly on the Right) -->
-                <div class="w-full lg:w-80 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-5 space-y-3 shrink-0">
+                <!-- Succession Breakdown Panel (Aligned cleanly on the right) -->
+                <div class="w-full lg:w-80 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-5 space-y-3 shrink-0 lg:mt-6">
                     <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
                     <div class="space-y-2 text-xs">
                         <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Top Talent / Stars:</span><span class="font-black" id="countStars">2</span></div>
@@ -321,7 +320,7 @@
                 </div>
             </div>
         </div>
-
+       
         <!-- TAB 3: ROLE DEMAND -->
         <div id="view-roleDemand" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
