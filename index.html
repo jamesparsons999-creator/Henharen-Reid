@@ -100,6 +100,8 @@
                     <p class="text-xs text-telosGrey mt-1 font-medium">Enterprise transformation capability vs. role demand • 52,000 employees • 9 strategic blocks • 320 senior executives scored</p>
                 </div>
             </div>
+            
+            <!-- PORTFOLIO METRICS -->
             <div class="grid grid-cols-2 md:grid-cols-5 gap-3.5">
                 <div class="bg-white p-4 rounded-xl border border-telosGrey/30 shadow-sm border-t-4 border-t-telosBlue">
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">Group LIR (Mean)</span>
@@ -125,6 +127,47 @@
                     <span class="text-[10px] font-bold tracking-wider text-telosGrey uppercase">2035 Target Gap</span>
                     <div class="flex items-baseline gap-1 mt-1"><span class="text-3xl font-black text-telosBlue">+12</span><span class="text-xs text-telosGrey">pts needed</span></div>
                     <span class="text-[11px] font-bold text-telosBlue mt-1 block">Trajectory on track</span>
+                </div>
+            </div>
+
+            <!-- ORGANIZATIONAL CONTEXT & DIAGNOSTIC SYNTHESIS PANEL -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-7 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 space-y-4">
+                    <div class="flex items-center justify-between border-b border-telosGrey/20 pb-3">
+                        <h2 class="text-sm font-bold uppercase tracking-wider text-telosBlue">Organizational Context & Baseline Health</h2>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-blue-50 text-telosBlue border border-telosBlue/30">Vault Ingest Active</span>
+                    </div>
+                    <p class="text-xs text-telosDark leading-relaxed font-medium">
+                        Enterprise transformation capability is currently constrained by legacy structural inertia and post-merger leadership friction. Recent portfolio moves (accelerated EV pivot and software monetization rollout) have exposed acute relational bottlenecks and leadership fragility across middle-to-senior tiers.
+                    </p>
+                    <div class="grid grid-cols-3 gap-3 pt-2">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-telosGrey/20 text-center">
+                            <span class="block text-[9px] font-bold text-telosGrey uppercase">Leadership Fragility</span>
+                            <span class="text-sm font-black text-telosOrange mt-0.5 block">High (Siloed)</span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-telosGrey/20 text-center">
+                            <span class="block text-[9px] font-bold text-telosGrey uppercase">Cultural Friction</span>
+                            <span class="text-sm font-black text-telosBlue mt-0.5 block">Moderate / Burnout</span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-telosGrey/20 text-center">
+                            <span class="block text-[9px] font-bold text-telosGrey uppercase">Empty Critical Seats</span>
+                            <span class="text-sm font-black text-telosOrange mt-0.5 block">4 Open Mandates</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-telosBlue text-telosWhite rounded-2xl p-6 shadow-sm flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="text-[10px] font-bold tracking-widest text-telosOrange uppercase block mb-1">Executive Advisory Summary</span>
+                        <h3 class="text-base font-bold">Triangulated Baseline Integrity</h3>
+                    </div>
+                    <p class="text-xs text-telosWhite/80 leading-relaxed">
+                        By replacing gameable self-report questionnaires with objective multi-source telemetry (CPP, ZF 360, ONA, and Cardinal Virtues), the board gains an un-gameable baseline of enterprise capability.
+                    </p>
+                    <div class="pt-2 border-t border-telosWhite/10 flex justify-between items-center text-xs">
+                        <span class="font-bold">Total Evaluated:</span>
+                        <span class="font-black text-telosOrange">320 Senior Executives</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,38 +233,48 @@
             </div>
         </div>
 
-        <!-- TAB 2.5: 9-BOX -->
+        <!-- TAB 2.5: 9-BOX GRID -->
         <div id="view-ninebox" class="hidden space-y-6">
             <div class="border-b border-telosGrey/30 pb-5">
                 <h1 class="text-2xl font-bold text-telosBlue tracking-tight">Objective 9-Box Grid • Talent Review Matrix</h1>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div class="lg:col-span-9 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-6 relative pb-10 pl-10">
-                    <!-- Y-Axis Label -->
-                    <div class="absolute left-2.5 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] font-bold text-telosGrey tracking-widest uppercase">
-                        Potential ▲
-                    </div>
-                    <div class="grid grid-cols-3 gap-3 text-xs">
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Enigma</span><div class="space-y-1 my-2" id="box-enigma"></div></div>
-                        <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Visionary</span><div class="space-y-1 my-2" id="box-visionary"></div></div>
-                        <div class="bg-blue-100/50 border border-telosBlue rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Vanguard</span><div class="space-y-1 my-2" id="box-vanguard"></div></div>
-                        
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Variable</span><div class="space-y-1 my-2" id="box-variable"></div></div>
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Steward</span><div class="space-y-1 my-2" id="box-steward"></div></div>
-                        <div class="bg-blue-50/30 border border-blue-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosBlue uppercase">Keystone</span><div class="space-y-1 my-2" id="box-keystone"></div></div>
-                        
-                        <div class="bg-orange-50/50 border border-orange-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosOrange uppercase">Misaligned</span><div class="space-y-1 my-2" id="box-misaligned"></div></div>
-                        <div class="bg-white border border-slate-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Practitioner</span><div class="space-y-1 my-2" id="box-practitioner"></div></div>
-                        <div class="bg-white border border-slate-200 rounded-xl p-3 min-h-[130px]"><span class="text-[10px] font-black text-telosDark uppercase">Stalwart</span><div class="space-y-1 my-2" id="box-stalwart"></div></div>
-                    </div>
-                    <!-- X-Axis Label -->
-                    <div class="text-center mt-4 text-[10px] font-bold text-telosGrey tracking-widest uppercase">
-                        Performance ►
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Matrix Container (Span 8) -->
+                <div class="lg:col-span-8 w-full">
+                    <div class="bg-slate-50/70 rounded-3xl border-2 border-telosGrey/20 shadow-sm p-6 relative w-full">
+                        <div class="flex items-center gap-4">
+                            <!-- Y-Axis Label (Potential) -->
+                            <div class="flex flex-col items-center justify-center shrink-0 w-12 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none">
+                                <span class="mb-6">▲</span>
+                                <span class="-rotate-90 my-6">Potential</span>
+                            </div>
+                            <!-- 3x3 Matrix Grid -->
+                            <div class="grid grid-cols-3 gap-3 text-xs flex-1">
+                                <!-- Row 1 (Top) -->
+                                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Enigma</span><div class="space-y-1.5 my-auto" id="box-enigma"></div></div>
+                                <div class="bg-blue-50/40 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Visionary</span><div class="space-y-1.5 my-auto" id="box-visionary"></div></div>
+                                <div class="bg-blue-100/50 border border-telosBlue rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Vanguard</span><div class="space-y-1.5 my-auto" id="box-vanguard"></div></div>
+                                <!-- Row 2 (Middle) -->
+                                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Variable</span><div class="space-y-1.5 my-auto" id="box-variable"></div></div>
+                                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Steward</span><div class="space-y-1.5 my-auto" id="box-steward"></div></div>
+                                <div class="bg-blue-50/30 border border-blue-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosBlue uppercase text-center block mb-2 tracking-wide">Keystone</span><div class="space-y-1.5 my-auto" id="box-keystone"></div></div>
+                                <!-- Row 3 (Bottom) -->
+                                <div class="bg-orange-50/60 border border-orange-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosOrange uppercase text-center block mb-2 tracking-wide">Misaligned</span><div class="space-y-1.5 my-auto" id="box-misaligned"></div></div>
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Practitioner</span><div class="space-y-1.5 my-auto" id="box-practitioner"></div></div>
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 min-h-[120px] flex flex-col shadow-xs"><span class="text-[10px] font-black text-telosDark uppercase text-center block mb-2 tracking-wide">Stalwart</span><div class="space-y-1.5 my-auto" id="box-stalwart"></div></div>
+                            </div>
+                        </div>
+                        <!-- X-Axis Label (Performance) -->
+                        <div class="text-center mt-5 text-[11px] font-bold text-telosGrey tracking-widest uppercase select-none pl-12">
+                            Performance ►
+                        </div>
                     </div>
                 </div>
-                <div class="lg:col-span-3 bg-white rounded-2xl border border-telosGrey/30 shadow-sm p-5 space-y-3">
+                <!-- Succession Breakdown Panel -->
+                <div class="lg:col-span-4 bg-white rounded-3xl border border-telosGrey/30 shadow-sm p-6 space-y-4 lg:mt-6">
                     <h3 class="text-sm font-bold text-telosBlue">Succession Breakdown</h3>
-                    <div class="space-y-2 text-xs">
+                    <div class="space-y-2.5 text-xs">
                         <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Top Talent / Stars:</span><span class="font-black" id="countStars">2</span></div>
                         <div class="flex justify-between font-medium"><span class="text-telosBlue font-bold">Execution Engines:</span><span class="font-black" id="countEngines">4</span></div>
                         <div class="flex justify-between font-medium"><span class="text-telosGrey font-bold">Enigmas / Dilemmas:</span><span class="font-black" id="countEnigmas">2</span></div>
@@ -535,7 +588,7 @@
                 let delta = l.lir - l.roleDemand;
                 if (delta >= -3) { l.stateBadge = "ALIGNED"; l.stateClass = "bg-blue-50 text-telosBlue border border-telosBlue/30"; }
                 else if (delta >= -10) { l.stateBadge = "STRETCH"; l.stateClass = "bg-orange-50 text-telosOrange border border-orange-300"; }
-                else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-50 text-telosOrange border border-telosOrange/50"; }
+                else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-50 text-telosOrange border border-orange-50/50"; }
             });
             renderLeaderRoster();
             updateNineBoxGrid();
