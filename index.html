@@ -683,22 +683,19 @@
 
         function recalculateAllLeaders() {
     leadersData.forEach(l => {
-        // Apply weights with an exponential stretch factor to make slider changes feel aggressive
         let raw = (weights.p1 * l.pillarScores[0]) + 
                   (weights.p2 * l.pillarScores[1]) + 
                   (weights.p3 * l.pillarScores[2]) + 
                   (weights.p4 * l.pillarScores[3]) + 
-                  (weights.p5 * l.pillarScores[4]) - (l.derailerPenalty * 1.8); // Amplified derailer impact
-        
+                  (weights.p5 * l.pillarScores[4]) - l.derailerPenalty;
         l.lir = Math.round(raw);
         let delta = l.lir - l.roleDemand;
-        
         if (delta >= -3) { 
             l.stateBadge = "ALIGNED"; 
             l.stateClass = "bg-blue-50 text-telosBlue border border-telosBlue/30"; 
         } else if (delta >= -10) { 
             l.stateBadge = "STRETCH"; 
-            l.stateClass = "bg-orange-50 text-telosOrange border border-telosOrange/30"; 
+            l.stateClass = "bg-orange-50 text-telosOrange border border-orange-200"; 
         } else { 
             l.stateBadge = "REDEPLOY"; 
             l.stateClass = "bg-red-50 text-telosOrange border border-telosOrange/50"; 
