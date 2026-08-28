@@ -673,17 +673,22 @@
         }
 
         function recalculateAllLeaders() {
-            leadersData.forEach(l => {
-                let raw = (weights.p1 * l.pillarScores[0]) + (weights.p2 * l.pillarScores[1]) + (weights.p3 * l.pillarScores[2]) + (weights.p4 * l.pillarScores[3]) + (weights.p5 * l.pillarScores[4]) - l.derailerPenalty;
-                l.lir = Math.round(raw);
-                let delta = l.lir - l.roleDemand;
-                if (delta >= -3) { l.stateBadge = "ALIGNED"; l.stateClass = "bg-blue-50 text-telosBlue border border-telosBlue/30"; }
-                else if (delta >= -10) { l.stateBadge = "STRETCH"; l.stateClass = "bg-orange-50 text-telosOrange border border-telosOrange/30"; }
-                else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-50 text-telosOrange border border-telosOrange/50"; }
-            });
-            renderLeaderRoster();
-            updateNineBoxGrid();
-        }
+    leadersData.forEach(l => {
+        let baseAvg = (l.pillarScores[0] + l.pillarScores[1] + l.pillarScores[2] + l.pillarScores[3] + l.pillarScores[4]) / 5;
+        let weightedSum = (weights.p1 * l.pillarScores[0]) + (weights.p2 * l.pillarScores[1]) + (weights.p3 * l.pillarScores[2]) + (weights.p4 * l.pillarScores[3]) + (weights.p5 * l.pillarScores[4]);
+        
+        // Amplified variance multiplier so slider changes create dynamic shifts
+        let raw = baseAvg + (weightedSum - baseAvg) * 2.2 - l.derailerPenalty;
+        l.lir = Math.max(25, Math.min(100, Math.round(raw)));
+        
+        let delta = l.lir - l.roleDemand;
+        if (delta >= -3) { l.stateBadge = "ALIGNED"; l.stateClass = "bg-blue-50 text-telosBlue border border-telosBlue/30"; }
+        else if (delta >= -10) { l.stateBadge = "STRETCH"; l.stateClass = "bg-orange-50 text-telosOrange border border-orange-300"; }
+        else { l.stateBadge = "REDEPLOY"; l.stateClass = "bg-red-50 text-telosOrange border border-orange-50/50"; }
+    });
+    renderLeaderRoster();
+    updateNineBoxGrid();
+}
 
         function sortTable(column) {
             currentSortAsc = currentSortColumn === column ? !currentSortAsc : column === 'name';
